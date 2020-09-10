@@ -26,7 +26,7 @@ Timer timer ;
                 finish();
             }
         },3000 );
-int n=0; //HIII ANYONE?
+
 
 /*
         Button button = (Button) findViewById(R.id.mainButton);
