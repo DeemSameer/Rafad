@@ -26,7 +26,7 @@ Timer timer ;
                 finish();
             }
         },3000 );
-
+/* deem
 
 /*
         Button button = (Button) findViewById(R.id.mainButton);
