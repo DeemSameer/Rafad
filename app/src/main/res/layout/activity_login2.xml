@@ -23,7 +23,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.754"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="20dp"
+        tools:ignore="RtlCompat" />
 
     <EditText
         android:id="@+id/editTextTextPassword2"
@@ -42,7 +45,8 @@
         app:layout_constraintHorizontal_bias="0.754"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.647" />
+        app:layout_constraintVertical_bias="0.647"
+        tools:ignore="RtlCompat" />
 
     <Button
         android:id="@+id/button"
@@ -60,7 +64,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.834" />
+        app:layout_constraintVertical_bias="0.834"
+        tools:ignore="RtlCompat" />
 
     <Button
         android:id="@+id/button2"
