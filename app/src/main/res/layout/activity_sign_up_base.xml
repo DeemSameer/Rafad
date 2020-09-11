@@ -7,7 +7,61 @@
     android:background="@drawable/default_outlined_button_style"
     tools:context=".signUpBase">
 
+    <EditText
+        android:id="@+id/signUpEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
 
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="5dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="البريد الالكتروني"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/SignUpPassword1"
+        app:layout_constraintEnd_toEndOf="@+id/SignUpPassword1"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/SignUpPassword1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="360dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="كلمة المرور"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/SignUpPassword2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:autofillHints="تأكيد كلمة المرور"
+        android:ems="10"
+        android:hint="تأكيد كلمة المرور"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@+id/SignUpPassword1"
+        app:layout_constraintTop_toBottomOf="@+id/SignUpPassword1" />
+
+    <EditText
+        android:id="@+id/signUpPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
+        android:autofillHints="رقم الجوال"
+        android:ems="10"
+        android:hint="رقم الجوال"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="@+id/SignUpPassword2"
+        app:layout_constraintTop_toBottomOf="@+id/SignUpPassword2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
