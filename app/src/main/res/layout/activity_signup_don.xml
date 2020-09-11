@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mainloginsignup"
-    tools:context=".login">
+    tools:context=".signupDon">
+
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/signUpEmail"
         android:layout_width="283dp"
         android:layout_height="47dp"
         android:layout_marginStart="20dp"
@@ -29,7 +30,7 @@
         tools:ignore="RtlCompat" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/SignUpPassword1"
         android:layout_width="283dp"
         android:layout_height="47dp"
         android:layout_marginStart="20dp"
@@ -45,26 +46,47 @@
         app:layout_constraintHorizontal_bias="0.754"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.647"
+        app:layout_constraintVertical_bias="0.578"
         tools:ignore="RtlCompat" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="179dp"
-        android:layout_height="55dp"
-        android:layout_margin="10dp"
-        android:background="@drawable/default_outlined_button_style"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="تسجيل الدخول"
-        android:textAlignment="center"
-        android:textColor="#4C4B4B"
-        android:textSize="20sp"
+    <EditText
+        android:id="@+id/SignUpPassword2"
+        android:layout_width="283dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="2dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="تأكيد كلمة المرور"
+        android:inputType="textPassword"
+        android:textAlignment="textEnd"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.754"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.834"
+        app:layout_constraintVertical_bias="0.66"
+        tools:ignore="RtlCompat" />
+
+    <EditText
+        android:id="@+id/signUpPhone"
+        android:layout_width="283dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="2dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="رقم الجوال"
+        android:inputType="phone"
+        android:textAlignment="textEnd"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.754"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.742"
         tools:ignore="RtlCompat" />
 
     <Button
@@ -73,7 +95,7 @@
         android:layout_height="55dp"
         android:background="#8FC0A9"
         android:fontFamily="sans-serif"
-        android:text="انشاء حساب"
+        android:text="تسجيل الدخول"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:typeface="normal"
@@ -82,19 +104,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.927" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="112dp"
-        android:layout_height="16dp"
-        android:text="نسيت كلمة المرور؟"
-        android:textColor="#8FC0A9"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.876"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.685" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
