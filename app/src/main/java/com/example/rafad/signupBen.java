@@ -71,12 +71,27 @@ public class signupBen extends AppCompatActivity {
                 final String signUpTotalincome2=signUpTotalincome.getText().toString();
 
 
-//Arob make all reminding checks pleeeeeeeeeaseeeeeee <3
                 if(TextUtils.isEmpty(email)){
                     signUpEmail.setError("email is required");
                     return;
                 }
                 if(TextUtils.isEmpty(Password)){
+                    SignUpPassword1.setError("Password is required");
+                    return;
+                }
+                if(TextUtils.isEmpty(userName2)){
+                    signUpEmail.setError("email is required");
+                    return;
+                }
+                if(TextUtils.isEmpty(Phone)){
+                    SignUpPassword1.setError("Password is required");
+                    return;
+                }
+                if(TextUtils.isEmpty(signUpTotalincome2)){
+                    signUpEmail.setError("email is required");
+                    return;
+                }
+                if(TextUtils.isEmpty(signUpssn2)){
                     SignUpPassword1.setError("Password is required");
                     return;
                 }
