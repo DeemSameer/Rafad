@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -41,7 +40,7 @@ public class signupDon extends AppCompatActivity {
         SignUpPassword1 = findViewById(R.id.SignUpPassword1);
         SignUpPassword2 = findViewById(R.id.SignUpPassword2);
         signUpPhone = findViewById(R.id.signUpPhone);
-        signupDonButton = findViewById(R.id.signupDonButton);
+        signupDonButton = findViewById(R.id.button2);
         UserName= findViewById(R.id.UserName);
 
         fAuth = FirebaseAuth.getInstance();
