@@ -129,7 +129,7 @@
         app:layout_constraintVertical_bias="0.927" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/haveAccount"
         android:layout_width="234dp"
         android:layout_height="18dp"
         android:text="هل تملك حسابا بالفعل؟ تسجيل الدخول"
