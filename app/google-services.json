@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "311257201544",
+    "firebase_url": "https://rafad11.firebaseio.com",
+    "project_id": "rafad11",
+    "storage_bucket": "rafad11.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311257201544:android:e211e41ee01f6b44b8983d",
+        "android_client_info": {
+          "package_name": "com.example.rafad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "311257201544-maie388r3122v68g98ei0d8398qg511g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChGOSasnFsRRW6JE4hzP6dg8cMas7QNy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "311257201544-maie388r3122v68g98ei0d8398qg511g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
