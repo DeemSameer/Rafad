@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/walpaper"
+    android:background="@drawable/default_outlined_button_style"
     tools:context=".signUpBase">
 
     <EditText
@@ -16,12 +16,12 @@
         android:layout_marginRight="1dp"
         android:layout_marginBottom="5dp"
         android:autofillHints=""
-        android:hint="البريد الالكتروني"
         android:ems="10"
+        android:hint="البريد الالكتروني"
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/SignUpPassword1"
         app:layout_constraintEnd_toEndOf="@+id/SignUpPassword1"
-        tools:ignore="MissingConstraints"
-        android:inputType="textEmailAddress" />
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/SignUpPassword1"
@@ -30,8 +30,8 @@
 
         android:layout_marginBottom="360dp"
         android:autofillHints=""
-        android:hint="كلمة المرور"
         android:ems="10"
+        android:hint="كلمة المرور"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,8 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:autofillHints="تأكيد كلمة المرور"
-        android:hint="تأكيد كلمة المرور"
         android:ems="10"
+        android:hint="تأكيد كلمة المرور"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@+id/SignUpPassword1"
         app:layout_constraintTop_toBottomOf="@+id/SignUpPassword1" />
@@ -57,8 +57,8 @@
         android:layout_marginEnd="3dp"
         android:layout_marginRight="3dp"
         android:autofillHints="رقم الجوال"
-        android:hint="رقم الجوال"
         android:ems="10"
+        android:hint="رقم الجوال"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="@+id/SignUpPassword2"
         app:layout_constraintTop_toBottomOf="@+id/SignUpPassword2" />
