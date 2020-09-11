@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
@@ -33,7 +31,7 @@ public class login extends AppCompatActivity {
         email = findViewById(R.id.editTextTextPersonName);
         pass = findViewById(R.id.editTextTextPassword2);
         login = findViewById(R.id.button);
-        signup = findViewById(R.id.button2);
+        signup = findViewById(R.id.signupDonButton);
         mAuthStateListener =new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -93,7 +91,7 @@ public class login extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent ins=new Intent(login.this, MainActivity.class);
+                Intent ins=new Intent(login.this, signUpBase.class);
                 startActivity(ins);
             }
         });
