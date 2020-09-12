@@ -83,7 +83,7 @@ public class signupDon extends AppCompatActivity {
                     SignUpPassword1.setError("Password is required");
                     return;
                 }
-                if (Password.length()<8){
+                if (Password.length()<7){
                     SignUpPassword1.setError("Password most be equal or greater than 8");
                     return;
                 }

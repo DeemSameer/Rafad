@@ -132,7 +132,7 @@ public class signupBen extends AppCompatActivity {
                     SignUpPassword1.setError("الهوية الوطنية مطلوبة");
                     return;
                 }
-                if (Password.length()<8){
+                if (Password.length()<7){
                     SignUpPassword1.setError("طول كلمة السر يجب أن لا يقل عن 8 ارقام او حروف");
                     return;
                 }
