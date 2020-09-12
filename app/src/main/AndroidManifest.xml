@@ -15,9 +15,7 @@
         <activity android:name=".signupDon" />
         <activity android:name=".signupBen" />
         <activity android:name=".login" />
-        <activity
-            android:name=".ui.login.Login"
-            android:label="@string/title_activity_login" />
+
         <activity android:name=".signUpBase" />
         <activity android:name=".MainActivity">
             <intent-filter>
