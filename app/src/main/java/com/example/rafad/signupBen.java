@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,8 +28,9 @@ import java.util.Map;
 public class signupBen extends AppCompatActivity {
     public static final String TAG = "TAG";
 
-    EditText signUpEmail,userName,SignUpPassword1,SignUpPassword2,signUpPhone,signUpssn,signUpTotalincome;
+    EditText signUpEmail,userName,SignUpPassword1,SignUpPassword2,signUpPhone,signUpssn,signUpTotalincome,number;
     Button signup_button;
+    RadioButton radioButton0,radioButton1;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
@@ -47,8 +49,11 @@ public class signupBen extends AppCompatActivity {
         signUpPhone = findViewById(R.id.signUpPhone);
         signup_button = findViewById(R.id.signup_button);
         userName= findViewById(R.id.userName);
-        signUpssn= findViewById(R.id.signUpssn);
+        signUpssn= findViewById(R.id.signUpsn);
         signUpTotalincome= findViewById(R.id.signUpTotalincome);
+        radioButton0=findViewById(R.id.radioButton3);
+        radioButton1=findViewById(R.id.radioButton4);
+        number=findViewById(R.id.signUpssn);
 
         fAuth = FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
@@ -82,41 +87,57 @@ public class signupBen extends AppCompatActivity {
                 final String signUpssn2= signUpssn.getText().toString();
                 final String signUpTotalincome2=signUpTotalincome.getText().toString();
                 final String flag = "Admin";
+                String rB0= radioButton0.getText().toString();
+                String rB1= radioButton1.getText().toString();
+                String TOR;
+                final String Number=number.getText().toString();//الضمان الاجتماعي
+
+
+
+                if (rB0.matches("")&&rB1.matches("")){
+                    radioButton0.setError("نوع السكن مطلوب");
+                }
+                if (!rB0.matches(""))
+                  TOR="ملك";
+                else
+                    TOR="اجار";
+
+                final String typeOfResidence=TOR;
 
 
 
 
 
                 if(TextUtils.isEmpty(email)){
-                    signUpEmail.setError("email is required");
+                    signUpEmail.setError("الايميل مطلوب");
                     return;
                 }
                 if(TextUtils.isEmpty(Password)){
-                    SignUpPassword1.setError("Password is required");
+                    SignUpPassword1.setError("كلمة السر مطلوبة");
                     return;
                 }
                 if(TextUtils.isEmpty(userName2)){
-                    signUpEmail.setError("email is required");
+                    signUpEmail.setError("اسم المستخدم مطلوب");
                     return;
                 }
                 if(TextUtils.isEmpty(Phone)){
-                    SignUpPassword1.setError("Password is required");
+                    SignUpPassword1.setError("رقم الجوال مطلوب");
                     return;
                 }
                 if(TextUtils.isEmpty(signUpTotalincome2)){
-                    signUpEmail.setError("email is required");
+                    signUpEmail.setError("اجمالي الدخل مطلوب");
                     return;
                 }
                 if(TextUtils.isEmpty(signUpssn2)){
-                    SignUpPassword1.setError("Password is required");
+                    SignUpPassword1.setError("الهوية الوطنية مطلوبة");
                     return;
                 }
                 if (Password.length()<8){
-                    SignUpPassword1.setError("Password most be equal or greater than 8");
+                    SignUpPassword1.setError("طول كلمة السر يجب أن لا يقل عن 8 ارقام او حروف");
                     return;
                 }
                 if (!Password.equals(Password2)){
-                    SignUpPassword2.setError("Paswords are mismatch");
+                    SignUpPassword2.setError("كلمات السر غير متطابقة");
                     return;
                 }
                 fAuth.createUserWithEmailAndPassword(email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -136,19 +157,21 @@ public class signupBen extends AppCompatActivity {
                             user.put("SSN",signUpssn2);
                             user.put("TotalIncome",signUpTotalincome2 );
                             user.put("flag",flag);
+                            user.put("typeOfResidence",typeOfResidence);
+                            user.put("securityNumber",Number);///check ittt -----
 
                             //check the add if it's success or not
                             documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Log.d(TAG,"User id created for"+userID);
+                                    Log.d(TAG,"تم انشاء الحساب"+userID);
                                 }
                             });
 
 
                             startActivity(new Intent(getApplicationContext(),login.class) );
                         }else{
-                            Toast.makeText(signupBen.this, "Error"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(signupBen.this, "غلط"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
                         }//end else
                     }//end on complete
