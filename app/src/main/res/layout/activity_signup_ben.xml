@@ -26,6 +26,28 @@ tools:context=".signUpBase">
         app:layout_constraintHorizontal_bias="0.754"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.372"
+        tools:ignore="RtlCompat" />
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="283dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="اسم المستخدم او البريد الالكتروني "
+        android:inputType="textPersonName"
+        android:textAlignment="viewEnd"
+        android:textColor="#717171"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.754"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.457"
         tools:ignore="RtlCompat" />
 
@@ -146,7 +168,7 @@ tools:context=".signUpBase">
         app:layout_constraintVertical_bias="0.927" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/haveAccount"
         android:layout_width="234dp"
         android:layout_height="18dp"
         android:text="هل تملك حسابا بالفعل؟ تسجيل الدخول"
