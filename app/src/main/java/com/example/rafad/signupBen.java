@@ -69,7 +69,7 @@ public class signupBen extends AppCompatActivity {
                 final String type= "beneficiary";
                 final String signUpssn2= signUpssn.getText().toString();
                 final String signUpTotalincome2=signUpTotalincome.getText().toString();
-
+                final String flag = "Admin";
 
                 if(TextUtils.isEmpty(email)){
                     signUpEmail.setError("email is required");
@@ -119,6 +119,7 @@ public class signupBen extends AppCompatActivity {
                             user.put("email",email);
                             user.put("SSN",signUpssn2);
                             user.put("TotalIncome",signUpTotalincome2 );
+                            user.put("flag",flag);
 
                             //check the add if it's success or not
                             documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
