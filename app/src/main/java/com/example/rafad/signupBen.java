@@ -158,7 +158,7 @@ public class signupBen extends AppCompatActivity {
                             user.put("TotalIncome",signUpTotalincome2 );
                             user.put("flag",flag);
                             user.put("typeOfResidence",typeOfResidence);
-                            user.put("NumberOfSocialwarrenty",Number);///check ittt ----- I know it's wrong but i will edit it again sorry
+                            user.put("securityNumber",Number);///check ittt -----
 
                             //check the add if it's success or not
                             documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
