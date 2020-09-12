@@ -1,11 +1,9 @@
 package com.example.rafad;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -21,7 +19,7 @@ Timer timer ;
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent (MainActivity.this, login.class);
+                Intent intent = new Intent (MainActivity.this, signUpBase.class);
                 startActivity(intent);
                 finish();
             }
