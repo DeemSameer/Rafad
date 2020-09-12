@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,6 +28,7 @@ public class signupDon extends AppCompatActivity {
     public static final String TAG = "TAG";
     EditText signUpEmail, SignUpPassword1, SignUpPassword2, signUpPhone,UserName;
     Button signupDonButton;
+    TextView textView1;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
@@ -52,6 +54,16 @@ public class signupDon extends AppCompatActivity {
              startActivity(new Intent(getApplicationContext(),login.class) );/////////////////////////////Change to the login
              finish();
          }
+
+
+        //have account?
+        textView1=findViewById(R.id.textView);
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(signupDon.this , login.class));
+            }
+        });
 
         signupDonButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

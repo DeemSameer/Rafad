@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,7 +32,7 @@ public class signupBen extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
-
+    TextView textView1;
 
 
     @Override
@@ -59,6 +60,17 @@ public class signupBen extends AppCompatActivity {
             finish();
         }
 
+
+        //have account?
+        textView1=findViewById(R.id.textView);
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(signupBen.this , login.class));
+            }
+        });
+
+
         signup_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 final String email = signUpEmail.getText().toString().trim();
@@ -70,6 +82,10 @@ public class signupBen extends AppCompatActivity {
                 final String signUpssn2= signUpssn.getText().toString();
                 final String signUpTotalincome2=signUpTotalincome.getText().toString();
                 final String flag = "Admin";
+
+
+
+
 
                 if(TextUtils.isEmpty(email)){
                     signUpEmail.setError("email is required");
