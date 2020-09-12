@@ -11,11 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".forgetp"></activity>
+        <activity android:name=".homePage"></activity>
+        <activity android:name=".forgetp" />
         <activity android:name=".signupDon" />
         <activity android:name=".signupBen" />
         <activity android:name=".login" />
-
         <activity android:name=".signUpBase" />
         <activity android:name=".MainActivity">
             <intent-filter>
