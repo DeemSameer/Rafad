@@ -91,6 +91,11 @@ public class signupDon extends AppCompatActivity {
                     SignUpPassword2.setError("Paswords are mismatch");
                     return;
                 }
+                if (Phone.length()!=10){
+                    signUpPhone.setError("رقم الجوال اقل من 10 ارقام");
+                    return;
+                }
+
                 fAuth.createUserWithEmailAndPassword(email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

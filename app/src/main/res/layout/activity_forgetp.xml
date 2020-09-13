@@ -8,43 +8,48 @@
     android:background="@drawable/mainloginsignup">
 
     <EditText
-
-        android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="323dp"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="ادخل بريدك الالكتروني"
-        tools:layout_editor_absoluteX="122dp"
-        tools:layout_editor_absoluteY="232dp"
-        tools:ignore="MissingConstraints"
         android:textColor="#717171"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.561"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="reset"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="423dp"
-        tools:ignore="MissingConstraints"
         android:background="#8FC0A9"
         android:fontFamily="sans-serif"
+        android:text="reset"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.669"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="إعادة تيين كلمة السر للحساب"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.981"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.505" />
 </androidx.constraintlayout.widget.ConstraintLayout>

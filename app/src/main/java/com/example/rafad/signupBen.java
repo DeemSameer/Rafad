@@ -140,6 +140,14 @@ public class signupBen extends AppCompatActivity {
                     SignUpPassword2.setError("كلمات السر غير متطابقة");
                     return;
                 }
+                if (Phone.length()!=10){
+                    signUpPhone.setError("رقم الجوال اقل من 10 ارقام");
+                    return;
+                }
+                if (signUpssn2.length()!=10){
+                    signUpssn.setError("رقم الهوية الوطنية غير صالح");
+                    return;
+                }
                 fAuth.createUserWithEmailAndPassword(email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
