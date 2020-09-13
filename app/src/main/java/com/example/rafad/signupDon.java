@@ -49,11 +49,13 @@ public class signupDon extends AppCompatActivity {
         fStore=FirebaseFirestore.getInstance();
 
 
-        //check if it's current user
+   /*     //check if it's current user
          if (fAuth.getCurrentUser()!=null){
              startActivity(new Intent(getApplicationContext(),login.class) );/////////////////////////////Change to the login
              finish();
          }
+
+    */
 
 
         //have account?
@@ -62,6 +64,7 @@ public class signupDon extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(signupDon.this , login.class));
+                finish();
             }
         });
 
@@ -124,9 +127,10 @@ public class signupDon extends AppCompatActivity {
 
 
                                     startActivity(new Intent(getApplicationContext(),login.class) );
+                                    finish();
                                 }
                                 else{
-                                    Toast.makeText(signupDon.this, "غلط"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(signupDon.this, "غلط", Toast.LENGTH_SHORT).show();
 
                                 }
                              }

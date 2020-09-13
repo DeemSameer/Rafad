@@ -58,13 +58,13 @@ public class signupBen extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
 
-
+/*
         //check if it's current user
         if (fAuth.getCurrentUser()!=null){
             startActivity(new Intent(getApplicationContext(),login.class) );/////////////////////////////Change to the login
             finish();
         }
-
+*/
 
         //have account?
         textView1=findViewById(R.id.textView);
@@ -72,6 +72,7 @@ public class signupBen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(signupBen.this , login.class));
+                finish();
             }
         });
 
@@ -180,6 +181,8 @@ public class signupBen extends AppCompatActivity {
                                             }
                                         });
                                         startActivity(new Intent(getApplicationContext(),login.class) );
+                                        finish();
+
                                     }//end if
                                     else {
                                         Toast.makeText(signupBen.this, "غلط"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();

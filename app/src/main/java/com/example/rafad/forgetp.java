@@ -43,6 +43,7 @@ public class forgetp extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 Toast.makeText(forgetp.this," تم ارسال رسالة إعادة تعيين كلمة المرور الى بريدك الإلكتروني ",Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(forgetp.this,login.class));
+                                finish();
 
                             }
                             else{

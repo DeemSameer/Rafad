@@ -45,6 +45,8 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(login.this , forgetp.class));
+                finish();
+
             }
         });
         lSignup.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +90,8 @@ public class login extends AppCompatActivity {
                             if(fAuth.getCurrentUser().isEmailVerified()){
                                 Toast.makeText(login.this, "تم تسجيل تخولك بنجاح!", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(),homePage.class));
+                                finish();
+
                             }
                             else {
                                 Toast.makeText(login.this, "يرجى تأكيد الايميل", Toast.LENGTH_SHORT).show();

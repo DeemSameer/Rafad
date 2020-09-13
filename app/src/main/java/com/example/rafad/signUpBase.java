@@ -33,11 +33,13 @@ public class signUpBase extends AppCompatActivity {
     public void open_SignUpBen(){
         Intent intent = new Intent(this, signupBen.class);
         startActivity(intent);
+        finish();
 
     }
     public void open_SignUpDon(){
         Intent intent = new Intent(this, signupDon.class);
         startActivity(intent);
+        finish();
 
     }
 }
