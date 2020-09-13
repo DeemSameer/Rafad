@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="please enter yout email"
+        android:text="ادخل بريدك الالكتروني"
         tools:layout_editor_absoluteX="122dp"
         tools:layout_editor_absoluteY="232dp"
         tools:ignore="MissingConstraints"
