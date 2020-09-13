@@ -144,33 +144,43 @@ public class signupBen extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(signupBen.this, "User created", Toast.LENGTH_SHORT).show();
-
-                            userID= fAuth.getCurrentUser().getUid();
-                            DocumentReference documentrefReference = fStore.collection("users").document(userID);
-                            //store data
-                            Map<String,Object> user= new HashMap<>();
-                            user.put("phoneNumber", Phone);
-                            user.put("userName", userName2);
-                            user.put("type",type);
-                            user.put("email",email);
-                            user.put("SSN",signUpssn2);
-                            user.put("TotalIncome",signUpTotalincome2 );
-                            user.put("flag",flag);
-                            user.put("typeOfResidence",typeOfResidence);
-                            user.put("securityNumber",Number);///check ittt -----
-
-                            //check the add if it's success or not
-                            documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            fAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
-                                public void onSuccess(Void aVoid) {
-                                    Log.d(TAG,"تم انشاء الحساب"+userID);
-                                }
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(signupBen.this, "User created", Toast.LENGTH_SHORT).show();
+
+                                        userID = fAuth.getCurrentUser().getUid();
+                                        DocumentReference documentrefReference = fStore.collection("users").document(userID);
+                                        //store data
+                                        Map<String, Object> user = new HashMap<>();
+                                        user.put("phoneNumber", Phone);
+                                        user.put("userName", userName2);
+                                        user.put("type", type);
+                                        user.put("email", email);
+                                        user.put("SSN", signUpssn2);
+                                        user.put("TotalIncome", signUpTotalincome2);
+                                        user.put("flag", flag);
+                                        user.put("typeOfResidence", typeOfResidence);
+                                        user.put("securityNumber", Number);///check ittt -----
+
+                                        //check the add if it's success or not
+                                        documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Log.d(TAG, "تم انشاء الحساب" + userID);
+                                            }
+                                        });
+                                        startActivity(new Intent(getApplicationContext(),login.class) );
+                                    }//end if
+                                    else {
+                                        Toast.makeText(signupBen.this, "غلط"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }//end else
+                                }//oncomplete
                             });
 
-
-                            startActivity(new Intent(getApplicationContext(),login.class) );
-                        }else{
+                        }//end if1
+                        else{
                             Toast.makeText(signupBen.this, "غلط"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
                         }//end else

@@ -68,8 +68,15 @@ public class login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(login.this, "تم تسجيل تخولك بنجاح!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),homePage.class));
+                            if(fAuth.getCurrentUser().isEmailVerified()){
+                                Toast.makeText(login.this, "تم تسجيل تخولك بنجاح!", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(),homePage.class));
+                            }
+                            else {
+                                Toast.makeText(login.this, "يرجى تأكيد الايميل", Toast.LENGTH_SHORT).show();
+
+                            }
+
                         } else {
                             Toast.makeText(login.this, "حصل خطأ ما!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }

@@ -95,26 +95,38 @@ public class signupDon extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                      if (task.isSuccessful()){
-                         Toast.makeText(signupDon.this, "User created", Toast.LENGTH_SHORT).show();
-
-                         userID= fAuth.getCurrentUser().getUid();
-                         DocumentReference documentrefReference = fStore.collection("users").document(userID);
-                         //store data
-                         Map<String,Object> user= new HashMap<>();
-                         user.put("phoneNumber", Phone);
-                         user.put("userName", userName);
-                         user.put("type",type);
-                         user.put("email",email);
-                         //check the add if it's success or not
-                         documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                         fAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                              @Override
-                             public void onSuccess(Void aVoid) {
-                                 Log.d(TAG,"User id created for"+userID);
+                             public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()){
+                                    Toast.makeText(signupDon.this, "User created", Toast.LENGTH_SHORT).show();
+
+                                    userID= fAuth.getCurrentUser().getUid();
+                                    DocumentReference documentrefReference = fStore.collection("users").document(userID);
+                                    //store data
+                                    Map<String,Object> user= new HashMap<>();
+                                    user.put("phoneNumber", Phone);
+                                    user.put("userName", userName);
+                                    user.put("type",type);
+                                    user.put("email",email);
+                                    //check the add if it's success or not
+                                    documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.d(TAG,"User id created for"+userID);
+                                        }
+                                    });
+
+
+                                    startActivity(new Intent(getApplicationContext(),login.class) );
+                                }
+                                else{
+                                    Toast.makeText(signupDon.this, "غلط"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                                }
                              }
                          });
 
-
-                         startActivity(new Intent(getApplicationContext(),login.class) );
                      }else{
                          Toast.makeText(signupDon.this, "Error"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
