@@ -10,6 +10,48 @@
 
 
     <EditText
+        android:id="@+id/SignUpPassword2"
+        android:layout_width="283dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="2dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="تأكيد كلمة المرور"
+        android:inputType="textPassword"
+        android:textAlignment="textEnd"
+        android:textColor="#717171"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.641"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.647"
+        tools:ignore="RtlCompat" />
+
+    <EditText
+        android:id="@+id/SignUpPassword1"
+        android:layout_width="283dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="2dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="كلمة المرور"
+        android:inputType="textPassword"
+        android:textAlignment="textEnd"
+        android:textColor="#717171"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.641"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.565"
+        tools:ignore="RtlCompat" />
+
+    <EditText
         android:id="@+id/signUpEmail"
         android:layout_width="283dp"
         android:layout_height="47dp"
@@ -23,12 +65,13 @@
         android:inputType="textPersonName"
         android:textAlignment="viewEnd"
         android:textColor="#717171"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.754"
+        app:layout_constraintHorizontal_bias="0.641"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.435"
+        app:layout_constraintVertical_bias="0.422"
         tools:ignore="RtlCompat" />
 
     <EditText
@@ -45,51 +88,13 @@
         android:inputType="textPersonName"
         android:textAlignment="viewEnd"
         android:textColor="#717171"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.754"
+        app:layout_constraintHorizontal_bias="0.641"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="RtlCompat" />
-
-    <EditText
-        android:id="@+id/SignUpPassword1"
-        android:layout_width="283dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="2dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="كلمة المرور"
-        android:inputType="textPassword"
-        android:textAlignment="textEnd"
-        android:textColor="#717171"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.754"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.578"
-        tools:ignore="RtlCompat" />
-
-    <EditText
-        android:id="@+id/SignUpPassword2"
-        android:layout_width="283dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="2dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="تأكيد كلمة المرور"
-        android:inputType="textPassword"
-        android:textAlignment="textEnd"
-        android:textColor="#717171"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.754"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.66"
+        app:layout_constraintVertical_bias="0.486"
         tools:ignore="RtlCompat" />
 
     <EditText
@@ -104,23 +109,24 @@
         android:inputType="phone"
         android:textAlignment="textEnd"
         android:textColor="#717171"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.754"
+        app:layout_constraintHorizontal_bias="0.641"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742"
+        app:layout_constraintVertical_bias="0.729"
         tools:ignore="RtlCompat" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="55dp"
         android:background="#8FC0A9"
         android:fontFamily="sans-serif"
-        android:text="تسجيل الدخول"
-        android:textColor="#717171"
-        android:textSize="20sp"
+        android:text="إنشاء حساب "
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
         android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,12 +139,27 @@
         android:layout_width="234dp"
         android:layout_height="18dp"
         android:text="هل تملك حسابا بالفعل؟ تسجيل الدخول"
+        android:textAllCaps="false"
         android:textColor="#8FC0A9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.841"
+        app:layout_constraintHorizontal_bias="0.723"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.778" />
+        app:layout_constraintVertical_bias="0.765" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="89dp"
+        android:layout_height="38dp"
+        android:text="أهلًا بك !"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/signUpEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.756" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

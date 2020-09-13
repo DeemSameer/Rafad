@@ -68,18 +68,18 @@ public class login extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(email)){
 
-                    lEmail.setError("الإيميل مطلوب");
+                    lEmail.setError(" الإيميل مطلوب ");
                     return;
                 }
 
 
                 if (TextUtils.isEmpty(password)){
-                    lpassword.setError("كلمة المرور مطلوبة");
+                    lpassword.setError(" كلمة المرور مطلوبة ");
                     return;
                 }
 
-                if (password.length() < 6){
-                    lpassword.setError("الرقم السري يجب أن يكون أكثر من ٦ رموز");
+                if (password.length() < 8){
+                    lpassword.setError(" الرقم السري يجب أن يحتوي على ٨ رموز أو أكثر ");
                     return;
                 }
 
@@ -88,18 +88,18 @@ public class login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             if(fAuth.getCurrentUser().isEmailVerified()){
-                                Toast.makeText(login.this, "تم تسجيل تخولك بنجاح!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(login.this, " تم تسجيل تخولك بنجاح! ", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(),homePage.class));
                                 finish();
 
                             }
                             else {
-                                Toast.makeText(login.this, "يرجى تأكيد الايميل", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(login.this, " يرجى تأكيد الإيميل ", Toast.LENGTH_SHORT).show();
 
                             }
 
                         } else {
-                            Toast.makeText(login.this, "حصل خطأ ما!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(login.this, " حصل خطأ ما! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
                     }

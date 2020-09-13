@@ -15,4 +15,6 @@
     <string name="login">تسجيل الدخول</string>
     <string name="forget">نسيت كلمة المرور؟</string>
     <string name="logout">تسجيل الخروج</string>
+    <string name="eh">إنشاء حساب</string>
+    <string name="hb">أهلًا بعودتك !</string>
 </resources>

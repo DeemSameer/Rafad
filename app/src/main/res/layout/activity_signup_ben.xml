@@ -8,6 +8,99 @@ android:background="@drawable/mainloginsignup"
 tools:context=".signUpBase">
 
     <EditText
+        android:id="@+id/signUpTotalincome"
+        android:layout_width="297dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="2dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="الدخل الشهري"
+        android:inputType="number|phone"
+        android:textAlignment="textEnd"
+        android:textColor="#717171"
+        android:textSize="13dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.608"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.717"
+        tools:ignore="RtlCompat" />
+
+    <EditText
+        android:id="@+id/signUpssn"
+        android:layout_width="148dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginEnd="2dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="رقم الضمان الإجتماعي-يمكن تركه"
+        android:inputType="number|phone"
+        android:textAlignment="textEnd"
+        android:textColor="#717171"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65"
+        tools:ignore="RtlCompat" />
+
+    <RadioGroup
+        android:layout_width="59dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="51dp"
+
+        android:layout_marginBottom="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/type"
+        app:layout_constraintHorizontal_bias="0.887"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/signUpTotalincome"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="إيجار"
+            android:textColor="#717171" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="مُلك"
+            android:textColor="#717171" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/signUpsn"
+        android:layout_width="145dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="2dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="رقم الهوية الوطنية"
+        android:inputType="number|phone"
+        android:textAlignment="textEnd"
+        android:textColor="#717171"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.229"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65"
+        tools:ignore="RtlCompat" />
+
+    <EditText
         android:id="@+id/signUpEmail"
         android:layout_width="297dp"
         android:layout_height="47dp"
@@ -21,12 +114,55 @@ tools:context=".signUpBase">
         android:inputType="textPersonName"
         android:textAlignment="viewEnd"
         android:textColor="#717171"
+        android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.754"
+        app:layout_constraintHorizontal_bias="0.608"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.372"
+        app:layout_constraintVertical_bias="0.377"
+        tools:ignore="RtlCompat" />
+
+    <EditText
+        android:id="@+id/signUpPhone"
+        android:layout_width="297dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="2dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="رقم الجوال"
+        android:inputType="phone"
+        android:textAlignment="textEnd"
+        android:textColor="#717171"
+        android:textSize="13dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.608"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.583"
+        tools:ignore="RtlCompat" />
+
+    <EditText
+        android:id="@+id/SignUpPassword2"
+        android:layout_width="146dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="2dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="تأكيد كلمة المرور"
+        android:inputType="textPassword"
+        android:textAlignment="textEnd"
+        android:textColor="#717171"
+        android:textSize="13dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.226"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.514"
         tools:ignore="RtlCompat" />
 
     <EditText
@@ -43,12 +179,13 @@ tools:context=".signUpBase">
         android:inputType="textPersonName"
         android:textAlignment="viewEnd"
         android:textColor="#717171"
+        android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.754"
+        app:layout_constraintHorizontal_bias="0.608"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.457"
+        app:layout_constraintVertical_bias="0.445"
         tools:ignore="RtlCompat" />
 
     <EditText
@@ -63,130 +200,14 @@ tools:context=".signUpBase">
         android:inputType="textPassword"
         android:textAlignment="textEnd"
         android:textColor="#717171"
+        android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.913"
+        app:layout_constraintHorizontal_bias="0.855"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526"
+        app:layout_constraintVertical_bias="0.514"
         tools:ignore="RtlCompat" />
-
-    <EditText
-        android:id="@+id/SignUpPassword2"
-        android:layout_width="146dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="2dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="تأكيد كلمة المرور"
-        android:inputType="textPassword"
-        android:textAlignment="textEnd"
-        android:textColor="#717171"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.283"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526"
-        tools:ignore="RtlCompat" />
-
-    <EditText
-        android:id="@+id/signUpPhone"
-        android:layout_width="297dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="2dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="رقم الجوال"
-        android:inputType="phone"
-        android:textAlignment="textEnd"
-        android:textColor="#717171"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.596"
-        tools:ignore="RtlCompat" />
-
-    <EditText
-        android:id="@+id/signUpssn"
-        android:layout_width="148dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="2dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="رقم الضمان الإجتماعي-يمكن تركه"
-        android:inputType="number|phone"
-        android:textAlignment="textEnd"
-        android:textColor="#717171"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.908"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.663"
-        tools:ignore="RtlCompat" />
-
-    <EditText
-        android:id="@+id/signUpsn"
-        android:layout_width="145dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="2dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="رقم الهوية الوطنية"
-        android:inputType="number|phone"
-        android:textAlignment="textEnd"
-        android:textColor="#717171"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.278"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.663"
-        tools:ignore="RtlCompat" />
-
-    <EditText
-        android:id="@+id/signUpTotalincome"
-        android:layout_width="297dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="2dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="الدخل الشهري"
-        android:inputType="number|phone"
-        android:textAlignment="textEnd"
-        android:textColor="#717171"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.754"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.73"
-        tools:ignore="RtlCompat" />
-
-    <Button
-        android:id="@+id/signup_button"
-        android:layout_width="180dp"
-        android:layout_height="55dp"
-        android:background="#8FC0A9"
-        android:fontFamily="sans-serif"
-        android:text="تسجيل الدخول"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:typeface="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.958" />
 
     <TextView
         android:id="@+id/type"
@@ -196,10 +217,10 @@ tools:context=".signUpBase">
         android:textColor="#8FC0A9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.933"
+        app:layout_constraintHorizontal_bias="0.892"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.779" />
+        app:layout_constraintVertical_bias="0.788" />
 
     <TextView
         android:id="@+id/textView"
@@ -209,36 +230,41 @@ tools:context=".signUpBase">
         android:textColor="#8FC0A9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintHorizontal_bias="0.853"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.865" />
+        app:layout_constraintVertical_bias="0.87" />
 
-    <RadioGroup
-        android:layout_width="59dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="51dp"
-
-        android:layout_marginBottom="18dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintEnd_toStartOf="@+id/type"
-        app:layout_constraintHorizontal_bias="0.893"
+    <Button
+        android:id="@+id/signup_button"
+        android:layout_width="160dp"
+        android:layout_height="55dp"
+        android:background="#8FC0A9"
+        android:fontFamily="sans-serif"
+        android:text="إنشاء حساب"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/signUpTotalincome"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.961" />
 
-        <RadioButton
-            android:id="@+id/radioButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="إيجار" />
-
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="مُلك" />
-
-    </RadioGroup>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="#FBF6F6"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/signUpEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.84"
+        tools:text="أهلًا بك !" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
