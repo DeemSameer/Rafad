@@ -34,20 +34,20 @@ public class forgetp extends AppCompatActivity {
             public void onClick(View view) {
                 String userem=ed.getText().toString();
                 if(TextUtils.isEmpty(userem)){
-                    Toast.makeText(forgetp.this,"please write your email address",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(forgetp.this," الرجاء كتابة بريدك الإلكتروني ",Toast.LENGTH_SHORT).show();
                 }
                 else{
                     m.sendPasswordResetEmail(userem).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(forgetp.this,"please check your email account if you want to reset yout password",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(forgetp.this," تم ارسال رسالة إعادة تعيين كلمة المرور الى بريدك الإلكتروني ",Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(forgetp.this,login.class));
 
                             }
                             else{
                                 String message=task.getException().getMessage();
-                                Toast.makeText(forgetp.this,"error occurred"+message,Toast.LENGTH_SHORT).show();
+                                Toast.makeText(forgetp.this," حدث خطأ ما ! "+message,Toast.LENGTH_SHORT).show();
 
                             }
                         }

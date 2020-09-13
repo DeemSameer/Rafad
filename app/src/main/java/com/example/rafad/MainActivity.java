@@ -19,7 +19,7 @@ Timer timer ;
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent (MainActivity.this, login.class);
+                Intent intent = new Intent (MainActivity.this, signUpBase.class);
                 startActivity(intent);
                 finish();
             }
