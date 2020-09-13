@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".forgetp">
+    tools:context=".forgetp"
+    android:background="@drawable/mainloginsignup">
 
     <EditText
+
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,6 +19,10 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +31,9 @@
         android:text="please enter yout email"
         tools:layout_editor_absoluteX="122dp"
         tools:layout_editor_absoluteY="232dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:textColor="#717171"
+        />
 
     <Button
         android:id="@+id/button2"
@@ -34,5 +42,9 @@
         android:text="reset"
         tools:layout_editor_absoluteX="170dp"
         tools:layout_editor_absoluteY="423dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:background="#8FC0A9"
+        android:fontFamily="sans-serif"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
