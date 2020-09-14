@@ -79,23 +79,23 @@ public class signupDon extends AppCompatActivity {
 
 
                 if(TextUtils.isEmpty(email)){
-                    signUpEmail.setError("email is required");
+                    signUpEmail.setError(" البريد الإلكتروني مطلوب ");
                     return;
                 }
                 if(TextUtils.isEmpty(Password)){
-                    SignUpPassword1.setError("Password is required");
+                    SignUpPassword1.setError(" كلمة المرور مطلوبة ");
                     return;
                 }
                 if (Password.length()<7){
-                    SignUpPassword1.setError("Password most be equal or greater than 8");
+                    SignUpPassword1.setError("كلمة المرور يجب أن تحتوي على ٨ رموز أو أكثر ");
                     return;
                 }
                 if (!Password.equals(Password2)){
-                    SignUpPassword2.setError("Paswords are mismatch");
+                    SignUpPassword2.setError(" كلمة المرور غير متطابقة ");
                     return;
                 }
                 if (Phone.length()!=10){
-                    signUpPhone.setError("رقم الجوال اقل من 10 ارقام");
+                    signUpPhone.setError(" يجب أن يكون رقم الجوال ١٠ أرقام ");
                     return;
                 }
 
@@ -130,14 +130,14 @@ public class signupDon extends AppCompatActivity {
                                     finish();
                                 }
                                 else{
-                                    Toast.makeText(signupDon.this, "غلط", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(signupDon.this, " حصل خطأ ما ! ", Toast.LENGTH_SHORT).show();
 
                                 }
                              }
                          });
 
                      }else{
-                         Toast.makeText(signupDon.this, "Error"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                         Toast.makeText(signupDon.this, " حصل خطأ ما ! "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
                      }//end else
                     }//end on complete
