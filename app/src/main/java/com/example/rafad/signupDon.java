@@ -98,6 +98,10 @@ public class signupDon extends AppCompatActivity {
                     signUpPhone.setError(" يجب أن يكون رقم الجوال ١٠ أرقام ");
                     return;
                 }
+                if (Phone.substring(0,2).equals("05")){
+                    signUpPhone.setError("رقم الجوال يجب ان يبدأ ب 05");
+                    return;
+                }
 
                 fAuth.createUserWithEmailAndPassword(email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override

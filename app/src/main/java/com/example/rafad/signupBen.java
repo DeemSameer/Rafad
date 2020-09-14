@@ -145,6 +145,10 @@ public class signupBen extends AppCompatActivity {
                     signUpPhone.setError("رقم الجوال اقل من 10 ارقام");
                     return;
                 }
+                if (Phone.substring(0,2).equals("05")){
+                    signUpPhone.setError("رقم الجوال يجب ان يبدأ ب 05");
+                    return;
+                }
                 if (signUpssn2.length()!=10){
                     signUpssn.setError("رقم الهوية الوطنية غير صالح");
                     return;
