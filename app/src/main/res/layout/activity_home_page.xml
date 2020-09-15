@@ -9,16 +9,15 @@
 
     <Button
         android:id="@+id/logoutButton"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:background="@drawable/default_outlined_button_style"
-        android:text="تسجيل خروج"
+        android:layout_width="40dp"
+        android:layout_height="43dp"
+        android:background="@drawable/logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.956"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.963" />
+        app:layout_constraintVertical_bias="0.01999998" />
 
     <TextView
         android:id="@+id/homepagetext"
