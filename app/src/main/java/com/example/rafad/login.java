@@ -69,12 +69,15 @@ public class login extends AppCompatActivity {
                 if (TextUtils.isEmpty(email)){
 
                     lEmail.setError(" الإيميل مطلوب ");
+                    Toast.makeText(login.this, " الإيميل مطلوب ", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
 
                 if (TextUtils.isEmpty(password)){
                     lpassword.setError(" كلمة المرور مطلوبة ");
+                    Toast.makeText(login.this, " كلمة المرور مطلوبة ", Toast.LENGTH_SHORT).show();
+
                     return;
                 }
 
@@ -99,6 +102,13 @@ public class login extends AppCompatActivity {
                             }
 
                         } else {
+                            if (task.getException().getMessage().equals("There is no user record corresponding to this identifier. The user may have been deleted."))
+                                Toast.makeText(login.this, " الايميل غير موجود لدينا يرجى تسجيل حساب جديد " , Toast.LENGTH_SHORT).show();
+                            else if (task.getException().getMessage().equals("The password is invalid or the user does not have a password."))
+                                Toast.makeText(login.this, " كلمة السر غير صحيحة " , Toast.LENGTH_SHORT).show();
+                            else if (task.getException().getMessage().equals("We have blocked all requests from this device due to unusual activity. Try again later. [ Too many unsuccessful login attempts. Please try again later. ]"))
+                                Toast.makeText(login.this, " تم حجب تسجيل الدخول للمستخدم لتجاوز الحد المسموح من المحاولات عاود التسجيل بعد فترة  " , Toast.LENGTH_SHORT).show();
+                            else
                             Toast.makeText(login.this, " حصل خطأ ما! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
 

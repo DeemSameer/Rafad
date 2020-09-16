@@ -47,8 +47,11 @@ public class forgetp extends AppCompatActivity {
 
                             }
                             else{
+                                if (task.getException().getMessage().equals("There is no user record corresponding to this identifier. The user may have been deleted."))
+                                    Toast.makeText(forgetp.this, " الايميل غير موجود لدينا يرجى تسجيل حساب جديد " , Toast.LENGTH_SHORT).show();
+                                else{
                                 String message=task.getException().getMessage();
-                                Toast.makeText(forgetp.this," حدث خطأ ما ! "+message,Toast.LENGTH_SHORT).show();
+                                Toast.makeText(forgetp.this," حدث خطأ ما ! "+message,Toast.LENGTH_SHORT).show();}
 
                             }
                         }
