@@ -4,30 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainloginsignup"
+    android:background="@drawable/homepage"
     tools:context=".homePage">
 
     <Button
         android:id="@+id/logoutButton"
-        android:layout_width="40dp"
-        android:layout_height="43dp"
+        android:layout_width="34dp"
+        android:layout_height="31dp"
         android:background="@drawable/logout"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintHorizontal_bias="0.958"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01999998" />
+        app:layout_constraintVertical_bias="0.022" />
 
     <TextView
         android:id="@+id/homepagetext"
         android:layout_width="84dp"
         android:layout_height="19dp"
-        android:text="الصفحة الرئيسية"
+        android:text="@string/hp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.349" />
+        app:layout_constraintVertical_bias="0.139" />
 </androidx.constraintlayout.widget.ConstraintLayout>

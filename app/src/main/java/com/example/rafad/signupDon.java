@@ -87,19 +87,19 @@ public class signupDon extends AppCompatActivity {
                     return;
                 }
                 if (Password.length()<7){
-                    SignUpPassword1.setError("كلمة المرور يجب أن تحتوي على ٨ رموز أو أكثر ");
+                    SignUpPassword1.setError("كلمة المرور يجب أن تحتوي على 8 رموز أو أكثر ");
                     return;
                 }
                 if (!Password.equals(Password2)){
-                    SignUpPassword2.setError(" كلمة المرور غير متطابقة ");
+                    SignUpPassword2.setError("  كلمة المرور غير متطابقة مع تأكيد كلمة المرور ");
                     return;
                 }
                 if (Phone.length()!=10){
-                    signUpPhone.setError(" يجب أن يكون رقم الجوال ١٠ أرقام ");
+                    signUpPhone.setError(" يجب أن يتكون رقم الجوال من 10 أرقام ");
                     return;
                 }
                 if (Phone.substring(0,1).equals("05")){
-                    signUpPhone.setError("رقم الجوال يجب ان يبدأ ب 05");
+                    signUpPhone.setError(" يجب أن يبدأ رقم الجوال بـ 05 ");
                     return;
                 }
 

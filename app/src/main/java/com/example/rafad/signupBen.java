@@ -96,12 +96,12 @@ public class signupBen extends AppCompatActivity {
 
 
                 if (rB0.matches("")&&rB1.matches("")){
-                    radioButton0.setError("نوع السكن مطلوب");
+                    radioButton0.setError(" نوع السكن مطلوب ");
                 }
                 if (!rB0.matches(""))
                   TOR="ملك";
                 else
-                    TOR="اجار";
+                    TOR="ايجار";
 
                 final String typeOfResidence=TOR;
 
@@ -110,11 +110,11 @@ public class signupBen extends AppCompatActivity {
 
 
                 if(TextUtils.isEmpty(email)){
-                    signUpEmail.setError("الايميل مطلوب");
+                    signUpEmail.setError(" البريد الإلكتروني مطلوب ");
                     return;
                 }
                 if(TextUtils.isEmpty(Password)){
-                    SignUpPassword1.setError("كلمة السر مطلوبة");
+                    SignUpPassword1.setError(" كلمة المرور مطلوبة ");
                     return;
                 }
                 if(TextUtils.isEmpty(userName2)){
@@ -122,11 +122,11 @@ public class signupBen extends AppCompatActivity {
                     return;
                 }
                 if(TextUtils.isEmpty(Phone)){
-                    SignUpPassword1.setError("رقم الجوال مطلوب");
+                    SignUpPassword1.setError(" رقم الجوال مطلوب ");
                     return;
                 }
                 if(TextUtils.isEmpty(signUpTotalincome2)){
-                    signUpEmail.setError("اجمالي الدخل مطلوب");
+                    signUpEmail.setError(" اجمالي الدخل مطلوب ");
                     return;
                 }
                 if(TextUtils.isEmpty(signUpssn2)){
@@ -134,23 +134,23 @@ public class signupBen extends AppCompatActivity {
                     return;
                 }
                 if (Password.length()<7){
-                    SignUpPassword1.setError("طول كلمة السر يجب أن لا يقل عن 8 ارقام او حروف");
+                    SignUpPassword1.setError(" كلمة المرور يجب أن تحتوي على 8 رموز ");
                     return;
                 }
                 if (!Password.equals(Password2)){
-                    SignUpPassword2.setError("كلمات السر غير متطابقة");
+                    SignUpPassword2.setError(" كلمة المرور غير متطابقة مع تأكيد كلمة المرور ");
                     return;
                 }
                 if (Phone.length()!=10){
-                    signUpPhone.setError("رقم الجوال اقل من 10 ارقام");
+                    signUpPhone.setError("يجب أن يتكون رقم الجوال من 10 أرقام");
                     return;
                 }
                 if (Phone.substring(0,1).equals("05")){
-                    signUpPhone.setError("رقم الجوال يجب ان يبدأ ب 05");
+                    signUpPhone.setError(" يجب أن يبدأ رقم الجوال بـ 05 ");
                     return;
                 }
                 if (signUpssn2.length()!=10){
-                    signUpssn.setError("رقم الهوية الوطنية غير صالح");
+                    signUpssn.setError(" رقم الهوية الوطنية غير صالح ");
                     return;
                 }
                 fAuth.createUserWithEmailAndPassword(email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -161,7 +161,7 @@ public class signupBen extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(signupBen.this, "User created", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(signupBen.this, " تم إنشاء الحساب ", Toast.LENGTH_SHORT).show();
 
                                         userID = fAuth.getCurrentUser().getUid();
                                         DocumentReference documentrefReference = fStore.collection("users").document(userID);
@@ -181,7 +181,7 @@ public class signupBen extends AppCompatActivity {
                                         documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
-                                                Log.d(TAG, "تم انشاء الحساب" + userID);
+                                                Log.d(TAG, " تم انشاء الحساب " + userID);
                                             }
                                         });
                                         startActivity(new Intent(getApplicationContext(),login.class) );
@@ -189,14 +189,14 @@ public class signupBen extends AppCompatActivity {
 
                                     }//end if
                                     else {
-                                        Toast.makeText(signupBen.this, "غلط"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(signupBen.this, " حصل خطأ ما ! "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }//end else
                                 }//oncomplete
                             });
 
                         }//end if1
                         else{
-                            Toast.makeText(signupBen.this, "غلط"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(signupBen.this, " حصل خطأ ما ! "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
                         }//end else
                     }//end on complete
