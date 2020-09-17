@@ -111,7 +111,7 @@ public class signupDon extends AppCompatActivity {
                              @Override
                              public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
-                                    Toast.makeText(signupDon.this, "User created", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(signupDon.this, "تم انشاء الحساب", Toast.LENGTH_SHORT).show();
 
                                     userID= fAuth.getCurrentUser().getUid();
                                     DocumentReference documentrefReference = fStore.collection("users").document(userID);
@@ -141,6 +141,11 @@ public class signupDon extends AppCompatActivity {
                          });
 
                      }else{
+                         if (task.getException().getMessage().equals("The email address is already in use by another account."))
+                             Toast.makeText(signupDon.this, " الايميل موجود لدينا يرجى تسجيل دخول " , Toast.LENGTH_SHORT).show();
+                         else if (task.getException().getMessage().equals("We have blocked all requests from this device due to unusual activity. Try again later. [ Too many unsuccessful login attempts. Please try again later. ]"))
+                             Toast.makeText(signupDon.this, " تم حجب تسجيل جديد للمستخدم لتجاوز الحد المسموح من المحاولات عاود التسجيل بعد فترة  " , Toast.LENGTH_SHORT).show();
+                         else
                          Toast.makeText(signupDon.this, " حصل خطأ ما ! "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
                      }//end else

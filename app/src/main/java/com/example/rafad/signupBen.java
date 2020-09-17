@@ -196,6 +196,11 @@ public class signupBen extends AppCompatActivity {
 
                         }//end if1
                         else{
+                            if (task.getException().getMessage().equals("The email address is already in use by another account."))
+                                Toast.makeText(signupBen.this, " الايميل موجود لدينا يرجى تسجيل دخول " , Toast.LENGTH_SHORT).show();
+                            else if (task.getException().getMessage().equals("We have blocked all requests from this device due to unusual activity. Try again later. [ Too many unsuccessful login attempts. Please try again later. ]"))
+                                Toast.makeText(signupBen.this, " تم حجب تسجيل جديد للمستخدم لتجاوز الحد المسموح من المحاولات عاود التسجيل بعد فترة  " , Toast.LENGTH_SHORT).show();
+                            else
                             Toast.makeText(signupBen.this, " حصل خطأ ما ! "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
                         }//end else
