@@ -145,7 +145,7 @@ public class signupBen extends AppCompatActivity {
                     signUpPhone.setError("يجب أن يتكون رقم الجوال من 10 أرقام");
                     return;
                 }
-                if (Phone.substring(0,1).equals("05")){
+                if (!Phone.substring(0,2).equals("05")){
                     signUpPhone.setError(" يجب أن يبدأ رقم الجوال بـ 05 ");
                     return;
                 }

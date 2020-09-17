@@ -28,6 +28,8 @@ public class signUpBase extends AppCompatActivity {
                 open_SignUpDon();
             }
         });
+
+
     }
 
     public void open_SignUpBen(){
@@ -42,4 +44,6 @@ public class signUpBase extends AppCompatActivity {
         finish();
 
     }
+
+
 }

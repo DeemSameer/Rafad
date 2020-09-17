@@ -98,7 +98,7 @@ public class signupDon extends AppCompatActivity {
                     signUpPhone.setError(" يجب أن يتكون رقم الجوال من 10 أرقام ");
                     return;
                 }
-                if (Phone.substring(0,1).equals("05")){
+                if (!Phone.substring(0,2).equals("05")){
                     signUpPhone.setError(" يجب أن يبدأ رقم الجوال بـ 05 ");
                     return;
                 }
@@ -111,7 +111,7 @@ public class signupDon extends AppCompatActivity {
                              @Override
                              public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
-                                    Toast.makeText(signupDon.this, "تم انشاء الحساب", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(signupDon.this, "تم انشاء الحساب" , Toast.LENGTH_SHORT).show();
 
                                     userID= fAuth.getCurrentUser().getUid();
                                     DocumentReference documentrefReference = fStore.collection("users").document(userID);
