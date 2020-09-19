@@ -2,13 +2,14 @@ package com.example.rafad;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 public class signUpBase extends AppCompatActivity {
-
+  //Button b;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,17 @@ public class signUpBase extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 open_SignUpDon();
+            }
+        });
+
+
+        Button button4 = (Button) findViewById(R.id.but);
+
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(signUpBase.this, login.class));
+                finish();
             }
         });
 

@@ -5,30 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".forgetp"
-    android:background="@drawable/mainloginsignup">
+    android:background="@drawable/newreset">
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="210dp"
         android:layout_height="45dp"
-        android:layout_marginTop="392dp"
         android:ems="10"
         android:hint="أدخل بريدك الألكتروني"
         android:inputType="textPersonName"
         android:textColor="#717171"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.879"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:background="#8FC0A9"
+        android:layout_width="97dp"
+        android:layout_height="46dp"
+        android:background="#397A96"
         android:fontFamily="sans-serif"
         android:text="إعادة تعيين"
         android:textColor="#FFFFFF"
@@ -37,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767"
+        app:layout_constraintVertical_bias="0.636"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

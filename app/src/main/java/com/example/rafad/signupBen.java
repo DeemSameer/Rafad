@@ -58,13 +58,17 @@ public class signupBen extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
 
-/*
-        //check if it's current user
-        if (fAuth.getCurrentUser()!=null){
-            startActivity(new Intent(getApplicationContext(),login.class) );/////////////////////////////Change to the login
-            finish();
-        }
-*/
+        Button button4 = (Button) findViewById(R.id.but2);
+
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(signupBen.this, login.class));
+                finish();
+            }
+        });
+
+
 
         //have account?
         textView1=findViewById(R.id.textView);

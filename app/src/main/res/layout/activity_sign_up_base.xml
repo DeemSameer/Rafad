@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainloginsignup"
+    android:background="@drawable/signbase"
     tools:context=".signUpBase">
 
     <Button
         android:id="@+id/signupBen"
         android:layout_width="180dp"
         android:layout_height="55dp"
-        android:background="#8FC0A9"
+        android:background="#397A96"
         android:fontFamily="sans-serif"
         android:text="مستفيد"
         android:textColor="#FFFFFF"
@@ -22,13 +22,13 @@
         app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.779" />
+        app:layout_constraintVertical_bias="0.711" />
 
     <Button
         android:id="@+id/signupDon"
         android:layout_width="180dp"
         android:layout_height="55dp"
-        android:background="#8FC0A9"
+        android:background="#397A96"
         android:fontFamily="sans-serif"
         android:text="متبرع"
         android:textColor="#FFFFFF"
@@ -39,7 +39,7 @@
         app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.647" />
+        app:layout_constraintVertical_bias="0.584" />
 
     <TextView
         android:id="@+id/textView3"
@@ -49,10 +49,23 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.813"
+        app:layout_constraintHorizontal_bias="0.808"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526"
+        app:layout_constraintVertical_bias="0.472"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/but"
+        android:layout_width="34dp"
+        android:layout_height="27dp"
+        android:background="@drawable/leftarrow"
+
+        app:layout_constraintBottom_toTopOf="@+id/signupDon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

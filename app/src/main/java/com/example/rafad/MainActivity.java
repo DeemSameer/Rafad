@@ -23,26 +23,10 @@ Timer timer ;
                 startActivity(intent);
                 finish();
             }
-        },4000 );
+        },3000 );
 
 
-/*
-        Button button = (Button) findViewById(R.id.mainButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                open_SignUp();
-            }
-        });
 
-    }
-
-    public void open_SignUp(){
-        Intent intent = new Intent(this, signUpBase.class);
-        startActivity(intent);
-    }
-
- */
 
     }
 }
