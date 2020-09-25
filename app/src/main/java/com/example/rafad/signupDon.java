@@ -53,7 +53,7 @@ public class signupDon extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(signupDon.this, login.class));
+                startActivity(new Intent(signupDon.this, signUpBase.class));
                 finish();
             }
         });
