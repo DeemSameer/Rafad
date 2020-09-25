@@ -93,7 +93,7 @@ public class signupDon extends AppCompatActivity {
                     SignUpPassword1.setError(" كلمة المرور مطلوبة ");
                     return;
                 }
-                if (Password.length()<7){
+                if (Password.length()<=7){
                     SignUpPassword1.setError("كلمة المرور يجب أن تحتوي على 8 رموز أو أكثر ");
                     return;
                 }
