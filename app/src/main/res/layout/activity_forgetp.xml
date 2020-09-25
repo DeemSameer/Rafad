@@ -7,6 +7,22 @@
     tools:context=".forgetp"
     android:background="@drawable/newreset">
 
+    <Button
+        android:id="@+id/but"
+        android:layout_width="25dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="8dp"
+
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/leftarrow"
+        app:layout_constraintBottom_toTopOf="@+id/signupDon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073" />
+
     <EditText
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="210dp"
@@ -15,6 +31,7 @@
         android:hint="أدخل بريدك الألكتروني"
         android:inputType="textPersonName"
         android:textColor="#717171"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +47,7 @@
         android:fontFamily="sans-serif"
         android:text="إعادة تعيين"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

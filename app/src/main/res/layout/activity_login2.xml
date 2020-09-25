@@ -23,7 +23,7 @@
         android:inputType="textLongMessage|textPersonName|text|textEmailAddress"
         android:textAlignment="viewEnd"
         android:textColor="#717171"
-        android:textSize="18sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.378"
@@ -44,6 +44,7 @@
         android:inputType="textPassword"
         android:textAlignment="textEnd"
         android:textColor="#090909"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.378"
@@ -54,8 +55,8 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="160dp"
-        android:layout_height="55dp"
+        android:layout_width="120dp"
+        android:layout_height="45dp"
         android:layout_margin="10dp"
         android:background="@drawable/default_outlined_button_style"
         android:clickable="true"
@@ -66,31 +67,29 @@
         android:textColor="#676464"
         android:textColorHighlight="#397A96"
         android:textColorLink="#397A96"
-        android:textSize="20sp"
+        android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonsign"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.838"
         tools:ignore="RtlCompat" />
 
     <Button
         android:id="@+id/buttonsign"
-        android:layout_width="160dp"
-        android:layout_height="55dp"
+        android:layout_width="120dp"
+        android:layout_height="45dp"
         android:background="#397A96"
         android:fontFamily="sans-serif"
         android:text="@string/eh"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.865" />
+        app:layout_constraintVertical_bias="0.848" />
 
     <TextView
         android:id="@+id/forget"
@@ -98,6 +97,7 @@
         android:layout_height="16dp"
         android:text="@string/forget"
         android:textColor="#397A96"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.799"
@@ -107,17 +107,18 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="123dp"
-        android:layout_height="39dp"
+        android:layout_width="108dp"
+        android:layout_height="28dp"
         android:text="@string/hb"
         android:textColor="#999999"
-        android:textSize="24sp"
+        android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.867" />
+        app:layout_constraintVertical_bias="0.861"
+        tools:text="تسجيل الدخول" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

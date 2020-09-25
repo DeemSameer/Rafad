@@ -85,6 +85,10 @@ public class signupDon extends AppCompatActivity {
                     signUpEmail.setError(" البريد الإلكتروني مطلوب ");
                     return;
                 }
+                if(TextUtils.isEmpty(userName)){
+                    UserName.setError("اسم المستخدم مطلوب");
+                    return;
+                }
                 if(TextUtils.isEmpty(Password)){
                     SignUpPassword1.setError(" كلمة المرور مطلوبة ");
                     return;
@@ -114,15 +118,15 @@ public class signupDon extends AppCompatActivity {
                              @Override
                              public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
-                                    Toast.makeText(signupDon.this, "تم انشاء الحساب" , Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(signupDon.this, "تم انشاء الحساب" , Toast.LENGTH_LONG).show();
 
                                     userID= fAuth.getCurrentUser().getUid();
-                                    DocumentReference documentrefReference = fStore.collection("users").document(userID);
+                                    DocumentReference documentrefReference = fStore.collection("donators").document(userID);
                                     //store data
                                     Map<String,Object> user= new HashMap<>();
                                     user.put("phoneNumber", Phone);
                                     user.put("userName", userName);
-                                    user.put("type",type);
+                                    //user.put("type",type);
                                     user.put("email",email);
                                     //check the add if it's success or not
                                     documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -137,7 +141,7 @@ public class signupDon extends AppCompatActivity {
                                     finish();
                                 }
                                 else{
-                                    Toast.makeText(signupDon.this, " حصل خطأ ما ! ", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(signupDon.this, " حصل خطأ ما ! ", Toast.LENGTH_LONG).show();
 
                                 }
                              }
@@ -145,11 +149,13 @@ public class signupDon extends AppCompatActivity {
 
                      }else{
                          if (task.getException().getMessage().equals("The email address is already in use by another account."))
-                             Toast.makeText(signupDon.this, " الايميل موجود لدينا يرجى تسجيل دخول " , Toast.LENGTH_SHORT).show();
+                             Toast.makeText(signupDon.this, " الايميل موجود لدينا يرجى تسجيل دخول " , Toast.LENGTH_LONG).show();
                          else if (task.getException().getMessage().equals("We have blocked all requests from this device due to unusual activity. Try again later. [ Too many unsuccessful login attempts. Please try again later. ]"))
-                             Toast.makeText(signupDon.this, " تم حجب تسجيل جديد للمستخدم لتجاوز الحد المسموح من المحاولات عاود التسجيل بعد فترة  " , Toast.LENGTH_SHORT).show();
+                             Toast.makeText(signupDon.this, " تم حجب تسجيل جديد للمستخدم لتجاوز الحد المسموح من المحاولات عاود التسجيل بعد فترة  " , Toast.LENGTH_LONG).show();
+                         else if (task.getException().getMessage().equals("The email address is badly formatted."))
+                             Toast.makeText(signupDon.this, " يرجى كتابة الايميل بشكل صحيح " , Toast.LENGTH_LONG).show();
                          else
-                         Toast.makeText(signupDon.this, " حصل خطأ ما ! "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                         Toast.makeText(signupDon.this, " حصل خطأ ما ! "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
 
                      }//end else
                     }//end on complete

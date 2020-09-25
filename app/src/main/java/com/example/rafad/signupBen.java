@@ -34,7 +34,7 @@ public class signupBen extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
-    TextView textView1;
+    TextView textView1, type1;
 
 
     @Override
@@ -54,7 +54,7 @@ public class signupBen extends AppCompatActivity {
         radioButton0=findViewById(R.id.radioButton3);
         radioButton1=findViewById(R.id.radioButton4);
         number=findViewById(R.id.signUpssn);
-
+        type1 = findViewById(R.id.type);
         fAuth = FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
 
@@ -99,10 +99,12 @@ public class signupBen extends AppCompatActivity {
 
 
 
-                if (rB0.matches("")&&rB1.matches("")){
-                    radioButton0.setError(" نوع السكن مطلوب ");
+                if (!(radioButton0.isChecked()|| radioButton1.isChecked())){
+                    type1.setError(" نوع السكن مطلوب ");
+                    return;
                 }
-                if (!rB0.matches(""))
+
+                if (radioButton0.isChecked())
                   TOR="ملك";
                 else
                     TOR="ايجار";
@@ -122,19 +124,24 @@ public class signupBen extends AppCompatActivity {
                     return;
                 }
                 if(TextUtils.isEmpty(userName2)){
-                    signUpEmail.setError("اسم المستخدم مطلوب");
+                    userName.setError("اسم المستخدم مطلوب");
                     return;
                 }
+                if(TextUtils.isEmpty(userName2)){
+                    userName.setError("اسم المستخدم مطلوب");
+                    return;
+                }
+
                 if(TextUtils.isEmpty(Phone)){
-                    SignUpPassword1.setError(" رقم الجوال مطلوب ");
+                    signUpPhone.setError(" رقم الجوال مطلوب ");
                     return;
                 }
                 if(TextUtils.isEmpty(signUpTotalincome2)){
-                    signUpEmail.setError(" اجمالي الدخل مطلوب ");
+                    signUpTotalincome.setError(" اجمالي الدخل مطلوب ");
                     return;
                 }
                 if(TextUtils.isEmpty(signUpssn2)){
-                    SignUpPassword1.setError("الهوية الوطنية مطلوبة");
+                    signUpssn.setError("الهوية الوطنية مطلوبة");
                     return;
                 }
                 if (Password.length()<7){
@@ -165,15 +172,15 @@ public class signupBen extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(signupBen.this, " تم إنشاء الحساب ", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(signupBen.this, " تم إنشاء الحساب ", Toast.LENGTH_LONG).show();
 
                                         userID = fAuth.getCurrentUser().getUid();
-                                        DocumentReference documentrefReference = fStore.collection("users").document(userID);
+                                        DocumentReference documentrefReference = fStore.collection("beneficiaries").document(userID);
                                         //store data
                                         Map<String, Object> user = new HashMap<>();
                                         user.put("phoneNumber", Phone);
                                         user.put("userName", userName2);
-                                        user.put("type", type);
+                                        //user.put("type", type);
                                         user.put("email", email);
                                         user.put("SSN", signUpssn2);
                                         user.put("TotalIncome", signUpTotalincome2);
@@ -193,7 +200,7 @@ public class signupBen extends AppCompatActivity {
 
                                     }//end if
                                     else {
-                                        Toast.makeText(signupBen.this, " حصل خطأ ما ! "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(signupBen.this, " حصل خطأ ما ! "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     }//end else
                                 }//oncomplete
                             });
@@ -201,11 +208,13 @@ public class signupBen extends AppCompatActivity {
                         }//end if1
                         else{
                             if (task.getException().getMessage().equals("The email address is already in use by another account."))
-                                Toast.makeText(signupBen.this, " الايميل موجود لدينا يرجى تسجيل دخول " , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(signupBen.this, " الايميل موجود لدينا يرجى تسجيل دخول " , Toast.LENGTH_LONG).show();
+                            else if (task.getException().getMessage().equals("The email address is badly formatted."))
+                                Toast.makeText(signupBen.this, " يرجى كتابة الايميل بشكل صحيح " , Toast.LENGTH_LONG).show();
                             else if (task.getException().getMessage().equals("We have blocked all requests from this device due to unusual activity. Try again later. [ Too many unsuccessful login attempts. Please try again later. ]"))
-                                Toast.makeText(signupBen.this, " تم حجب تسجيل جديد للمستخدم لتجاوز الحد المسموح من المحاولات عاود التسجيل بعد فترة  " , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(signupBen.this, " تم حجب تسجيل جديد للمستخدم لتجاوز الحد المسموح من المحاولات عاود التسجيل بعد فترة  " , Toast.LENGTH_LONG).show();
                             else
-                            Toast.makeText(signupBen.this, " حصل خطأ ما ! "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(signupBen.this, " حصل خطأ ما ! "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
 
                         }//end else
                     }//end on complete

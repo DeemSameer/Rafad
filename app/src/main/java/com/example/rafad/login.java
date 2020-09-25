@@ -69,14 +69,14 @@ public class login extends AppCompatActivity {
                 if (TextUtils.isEmpty(email)){
 
                     lEmail.setError(" الإيميل مطلوب ");
-                    Toast.makeText(login.this, " الإيميل مطلوب ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(login.this, " الإيميل مطلوب ", Toast.LENGTH_LONG).show();
                     return;
                 }
 
 
                 if (TextUtils.isEmpty(password)){
                     lpassword.setError(" كلمة المرور مطلوبة ");
-                    Toast.makeText(login.this, " كلمة المرور مطلوبة ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(login.this, " كلمة المرور مطلوبة ", Toast.LENGTH_LONG).show();
 
                     return;
                 }
@@ -91,25 +91,27 @@ public class login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             if(fAuth.getCurrentUser().isEmailVerified()){
-                                Toast.makeText(login.this, " تم تسجيل دخولك بنجاح! ", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(login.this, " تم تسجيل دخولك بنجاح! ", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(getApplicationContext(),homePage.class));
                                 finish();
 
                             }
                             else {
-                                Toast.makeText(login.this, " يرجى تأكيد الإيميل ", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(login.this, " يرجى تأكيد الإيميل ", Toast.LENGTH_LONG).show();
 
                             }
 
                         } else {
                             if (task.getException().getMessage().equals("There is no user record corresponding to this identifier. The user may have been deleted."))
-                                Toast.makeText(login.this, " الايميل غير موجود لدينا يرجى تسجيل حساب جديد " , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(login.this, " الايميل غير موجود لدينا يرجى تسجيل حساب جديد " , Toast.LENGTH_LONG).show();
                             else if (task.getException().getMessage().equals("The password is invalid or the user does not have a password."))
-                                Toast.makeText(login.this, " كلمة السر غير صحيحة " , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(login.this, " كلمة السر غير صحيحة " , Toast.LENGTH_LONG).show();
                             else if (task.getException().getMessage().equals("We have blocked all requests from this device due to unusual activity. Try again later. [ Too many unsuccessful login attempts. Please try again later. ]"))
-                                Toast.makeText(login.this, " تم حجب تسجيل الدخول للمستخدم لتجاوز الحد المسموح من المحاولات عاود التسجيل بعد فترة  " , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(login.this, " تم حجب تسجيل الدخول للمستخدم لتجاوز الحد المسموح من المحاولات عاود التسجيل بعد فترة  " , Toast.LENGTH_LONG).show();
+                            else if (task.getException().getMessage().equals("The email address is badly formatted."))
+                                Toast.makeText(login.this, " يرجى كتابة الايميل بشكل صحيح " , Toast.LENGTH_LONG).show();
                             else
-                            Toast.makeText(login.this, " حصل خطأ ما! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(login.this, " حصل خطأ ما! " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
 
                     }

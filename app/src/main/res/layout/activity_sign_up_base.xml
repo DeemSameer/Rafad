@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/signupBen"
-        android:layout_width="180dp"
+        android:layout_width="150dp"
         android:layout_height="55dp"
         android:background="#397A96"
         android:fontFamily="sans-serif"
@@ -26,7 +26,7 @@
 
     <Button
         android:id="@+id/signupDon"
-        android:layout_width="180dp"
+        android:layout_width="150dp"
         android:layout_height="55dp"
         android:background="#397A96"
         android:fontFamily="sans-serif"
@@ -57,15 +57,15 @@
 
     <Button
         android:id="@+id/but"
-        android:layout_width="34dp"
-        android:layout_height="27dp"
+        android:layout_width="25dp"
+        android:layout_height="22dp"
         android:background="@drawable/leftarrow"
 
         app:layout_constraintBottom_toTopOf="@+id/signupDon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintVertical_bias="0.099" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
