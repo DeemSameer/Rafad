@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class homePage extends AppCompatActivity {
-    Button logout;
+    Button logout, profile;
     FirebaseAuth fAuth;
 
     @Override
@@ -38,6 +38,16 @@ public class homePage extends AppCompatActivity {
 
 
         logout=findViewById(R.id.logoutButton);
+        profile= findViewById(R.id.profileButton);
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homePage.this, donProfile.class));
+                finish();
+
+            }
+        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
