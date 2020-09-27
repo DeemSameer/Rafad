@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 public class donProfile extends AppCompatActivity {
 
@@ -50,6 +51,14 @@ public class donProfile extends AppCompatActivity {
         fstore = FirebaseFirestore.getInstance();
         storageRefrence = FirebaseStorage.getInstance().getReference();
 
+        StorageReference profileRef = storageRefrence.child("users/"+fAuth.getCurrentUser().getUid()+"profile.jpg"); //هنا يقول حط اسمها الصدقي مافهمت مره
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profileImage);
+            }
+        });
+
 
         changeProfileIMG.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +79,7 @@ public class donProfile extends AppCompatActivity {
         if (requestCode == 1000){
             if (resultCode == Activity.RESULT_OK){
                 Uri imageUri = data.getData();
-                profileImage.setImageURI(imageUri);
+                //profileImage.setImageURI(imageUri);
                 //upload to firebase
                 uploadImageToFirebase(imageUri);
 
@@ -80,16 +89,22 @@ public class donProfile extends AppCompatActivity {
 
     private void uploadImageToFirebase(Uri imageUri) {
         //to upload image to firebase
-        StorageReference fileRef = storageRefrence.child("profile.jpg");
+        final StorageReference fileRef = storageRefrence.child("users/"+fAuth.getCurrentUser().getUid()+"profile.jpg");
         fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(donProfile.this, " تم تحميل الصورة بنجاح ", Toast.LENGTH_SHORT).show();
+              fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                  @Override
+                  public void onSuccess(Uri uri) {
+                      Picasso.get().load(uri).into(profileImage);
+                  }
+              });
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(donProfile.this, " فشل تحميل الصورة ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(donProfile.this, " فشل تغيير الصورة ", Toast.LENGTH_SHORT).show();
             }
         });
     }
