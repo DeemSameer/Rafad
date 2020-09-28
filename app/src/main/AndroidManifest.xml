@@ -7,12 +7,11 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/nwelogo"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".postitem"></activity>
-        <activity android:name=".homepageDonator" />
+        <activity android:name=".homepageDonator"></activity>
         <activity android:name=".homepageAdmin" />
         <activity android:name=".MainChat" />
         <activity android:name=".donProfile" />
@@ -21,6 +20,7 @@
         <activity android:name=".signupDon" />
         <activity android:name=".signupBen" />
         <activity android:name=".login" />
+        <activity android:name=".mainProfile"/>
         <activity android:name=".signUpBase" />
         <activity android:name=".MainActivity">
             <intent-filter>
