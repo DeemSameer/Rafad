@@ -2,8 +2,7 @@ package com.example.rafad;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
-import android.annotation.SuppressLint;
+
 import android.os.Bundle;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,21 +18,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.*;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class login extends AppCompatActivity {
-    public static final String TAG = "TAG";
+
     EditText lEmail, lpassword;
     Button lLogin,lSignup;
     FirebaseAuth fAuth;
     TextView textView1;
-    FirebaseUser firebaseUser;
+
 
 
     @Override
@@ -47,8 +40,6 @@ public class login extends AppCompatActivity {
         lSignup = findViewById(R.id.buttonsign);
         fAuth = FirebaseAuth.getInstance();
         textView1=findViewById(R.id.forget);
-
-
 
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +62,7 @@ public class login extends AppCompatActivity {
         lLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                lLogin.setBackgroundColor(getResources().getColor(R.color.blue));
 
                 String email = lEmail.getText().toString().trim();
                 String password = lpassword.getText().toString().trim();
@@ -99,66 +91,10 @@ public class login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-
                             if(fAuth.getCurrentUser().isEmailVerified()){
-                                //UID
-                                String UID=FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                //First collection - - - - - Admin
-                                FirebaseFirestore db=FirebaseFirestore.getInstance();
-                                //1
-                                CollectionReference Admins = db.collection("admins");
-                                DocumentReference docRef = Admins.document(UID);
-                                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if (task.isSuccessful()) {
-                                            DocumentSnapshot document = task.getResult();
-                                            if (document.exists()) {
-                                                Toast.makeText(login.this, " تم تسجيل دخولك بنجاح! ", Toast.LENGTH_LONG).show();
-                                                Intent i = new Intent(login.this, homepageAdmin.class);
-                                                startActivity(i);
-                                                finish();
-                                            }
-                                        }
-                                    }
-                                });
-                                //End Admin Checking - - - - - - - - - - -
-                                //Second collection - - - - - donator
-                                CollectionReference donators = db.collection("donators");
-                                DocumentReference docRefD = donators.document(UID);
-                                docRefD.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if (task.isSuccessful()) {
-                                            DocumentSnapshot document = task.getResult();
-                                            if (document.exists()) {
-                                                Toast.makeText(login.this, " تم تسجيل دخولك بنجاح! ", Toast.LENGTH_LONG).show();
-                                                Intent i = new Intent(login.this, homepageDonator.class);
-                                                startActivity(i);
-                                                finish();
-                                            }
-                                        }
-                                    }
-                                });
-                                //End donator Checking - - - - - - - - - - -
-                                //Third collection - - - - - beneficiaries
-                                CollectionReference beneficiaries = db.collection("beneficiaries");
-                                DocumentReference docRefB = beneficiaries.document(UID);
-                                docRefB.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if (task.isSuccessful()) {
-                                            DocumentSnapshot document = task.getResult();
-                                            if (document.exists()) {
-                                                Toast.makeText(login.this, " تم تسجيل دخولك بنجاح! ", Toast.LENGTH_LONG).show();
-                                                Intent i = new Intent(login.this, homePage.class);
-                                                startActivity(i);
-                                                finish();
-                                            }
-                                        }
-                                    }
-                                });
-                                //End beneficiaries Checking - - - - - - - - - - -
+                                Toast.makeText(login.this, " تم تسجيل دخولك بنجاح! ", Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(getApplicationContext(),AdminPage.class));
+                                finish();
 
                             }
                             else {
@@ -195,74 +131,8 @@ public class login extends AppCompatActivity {
 
 
             });
-    }
-    @SuppressLint("MissingSuperCall")
-    @Override
-    protected void onStart() {
-        super.onStart();
-        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        //Check if the user already logged in  --> login automatically - Saving current user-
-        if (firebaseUser!=null) {
-        //UID
-        String UID=FirebaseAuth.getInstance().getCurrentUser().getUid();
-        //First collection - - - - - Admin
-        FirebaseFirestore db=FirebaseFirestore.getInstance();
-        CollectionReference Admins = db.collection("admins");
-        DocumentReference docRef = Admins.document(UID);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Intent i = new Intent(login.this, homepageAdmin.class);
-                        startActivity(i);
-                        finish();
-                    }
-                }
-            }
-        });
-        //End Admin Checking - - - - - - - - - - -
-            //Second collection - - - - - donator
-            CollectionReference donators = db.collection("donators");
-            DocumentReference docRefD = donators.document(UID);
-            docRefD.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Intent i = new Intent(login.this, homepageDonator.class);
-                            startActivity(i);
-                            finish();
-                        }
-                    }
-                }
-            });
-            //End donator Checking - - - - - - - - - - -
-            //Third collection - - - - - beneficiaries
-            CollectionReference beneficiaries = db.collection("beneficiaries");
-            DocumentReference docRefB = beneficiaries.document(UID);
-            docRefD.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Intent i = new Intent(login.this, homePage.class);
-                            startActivity(i);
-                            finish();
-                        }
-                    }
-                }
-            });
-            //End beneficiaries Checking - - - - - - - - - - -
-        }//end if not null
-        //finish checking
-    }
 
 
 
 
-}
-
+    }}
