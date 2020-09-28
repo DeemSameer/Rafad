@@ -24,7 +24,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.336"
-        app:srcCompat="@drawable/firstscreen" />
+        app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
+        tools:ignore="VectorDrawableCompat" />
+
+    <EditText
+
+        android:id="@+id/descrption"
+        android:layout_width="310dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginRight="51dp"
+        android:layout_marginBottom="57dp"
+        android:ems="20"
+        android:hint="الوصف"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.88"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button3"
@@ -41,6 +64,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/chosepicture"
+        android:layout_width="110dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="388dp"
+        android:layout_marginBottom="11dp"
+        android:background="#00FFFFFF"
+        android:text="اختر صورة"
+        android:textColor="#397A96"
+        android:textColorHighlight="#397A96"
+        android:textColorLink="#397A96"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/descrption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.854"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button4"
@@ -69,29 +111,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/prof" />
-
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="310dp"
-        android:layout_height="82dp"
-        android:ems="20"
-        android:hint="الوصف"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="405dp"
-        tools:ignore="MissingConstraints" />
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#397A96"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.865"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.735" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

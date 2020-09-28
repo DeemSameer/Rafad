@@ -23,6 +23,16 @@ public class homepageDonator extends AppCompatActivity {
 
         logout = findViewById(R.id.logoutButton);
 
+        post= findViewById(R.id.uploud);
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(homepageDonator.this, postitem.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,14 +42,7 @@ public class homepageDonator extends AppCompatActivity {
             }
         });
 
-        post= findViewById(R.id.uploud);
-        post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(homepageDonator.this, postitem.class));
-                finish();
-            }
-        });
+
     }
 
 
