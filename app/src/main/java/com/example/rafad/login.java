@@ -61,6 +61,7 @@ public class login extends AppCompatActivity {
         lSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                lSignup.setBackgroundColor(getResources().getColor(R.color.blueLight));
                 Intent ins=new Intent(login.this, signUpBase.class);
                 startActivity(ins);
                 finish();
