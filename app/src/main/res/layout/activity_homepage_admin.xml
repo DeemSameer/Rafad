@@ -36,19 +36,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.028" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="143dp"
-        android:layout_marginLeft="143dp"
-        android:layout_marginTop="271dp"
-        android:layout_marginEnd="211dp"
-        android:layout_marginRight="211dp"
-        android:layout_marginBottom="400dp"
-        android:text="AdminMainPage"
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="416dp"
+        android:layout_height="645dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homepagetext" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
