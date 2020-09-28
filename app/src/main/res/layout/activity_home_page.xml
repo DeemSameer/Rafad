@@ -39,8 +39,8 @@
     <Button
         android:id="@+id/profileButton"
         android:layout_width="32dp"
-        android:layout_height="30dp"
-        android:background="@drawable/user"
+        android:layout_height="32dp"
+        android:background="@drawable/userr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.926"

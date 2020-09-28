@@ -9,7 +9,7 @@
     tools:context=".donProfile">
 
     <TextView
-        android:id="@+id/phoneNo "
+        android:id="@+id/phonen"
         android:layout_width="155dp"
         android:layout_height="17dp"
         android:ems="10"
@@ -167,12 +167,16 @@
         android:id="@+id/textView4"
         android:layout_width="65dp"
         android:layout_height="14dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
         android:layout_marginTop="28dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:text="الإسم الكامل "
         android:textColor="#397A96"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.815"
+        app:layout_constraintHorizontal_bias="0.878"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -245,8 +249,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="207dp"
-        android:layout_height="199dp"
+        android:layout_width="221dp"
+        android:layout_height="225dp"
         android:layout_marginTop="544dp"
         android:background="#00FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -266,7 +270,7 @@
         app:layout_constraintHorizontal_bias="0.414"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.226" />
+        app:layout_constraintVertical_bias="0.216" />
 
     <TextView
         android:id="@+id/userEmail"
@@ -286,6 +290,7 @@
         android:layout_width="76dp"
         android:layout_height="16dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
         android:text="البريد الإلكتروني"
         android:textColor="#397A96"
         android:textSize="12sp"

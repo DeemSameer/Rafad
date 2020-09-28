@@ -41,7 +41,7 @@ public class donProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_don_profile);
-        phone = findViewById(R.id.phoneNo);
+        phone = findViewById(R.id.phonen);
         fullname =findViewById(R.id.name);
         email = findViewById(R.id.userEmail);
         profileImage= findViewById(R.id.profileImg);
