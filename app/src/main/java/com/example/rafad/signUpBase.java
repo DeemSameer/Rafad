@@ -15,17 +15,19 @@ public class signUpBase extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_base);
 
-        Button button = (Button) findViewById(R.id.signupBen);//signupDon
+        final Button button = (Button) findViewById(R.id.signupBen);//signupDon
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                button.setBackgroundColor(getResources().getColor(R.color.blueLight));
                 open_SignUpBen();
             }
         });
-        Button button2 = (Button) findViewById(R.id.signupDon);
+        final Button button2 = (Button) findViewById(R.id.signupDon);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                button2.setBackgroundColor(getResources().getColor(R.color.blueLight));
                 open_SignUpDon();
             }
         });
