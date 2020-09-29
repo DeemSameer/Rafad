@@ -107,7 +107,7 @@ public class donProfile extends AppCompatActivity {
 
             }
         }
-   }
+    }
 
     private void uploadImageToFirebase(Uri imageUri) {
         //to upload image to firebase
