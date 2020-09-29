@@ -18,4 +18,15 @@
     <string name="eh">إنشاء حساب</string>
     <string name="hb">أهلًا بعودتك !</string>
     <string name="hp">الصفحة الرئيسية</string>
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
 </resources>
