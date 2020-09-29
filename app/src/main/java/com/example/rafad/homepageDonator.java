@@ -10,7 +10,7 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class homepageDonator extends AppCompatActivity {
-    Button logout;
+    Button logout ,profile1;
     FirebaseAuth fAuth;
 
     @Override
@@ -22,6 +22,16 @@ public class homepageDonator extends AppCompatActivity {
 
 
         logout = findViewById(R.id.logoutButton);
+        profile1= findViewById(R.id.profileb);
+
+        profile1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homepageDonator.this, mainProfile.class));
+                finish();
+
+            }
+        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
