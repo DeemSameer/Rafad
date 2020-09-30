@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -42,8 +44,9 @@ public class postItem2 extends AppCompatActivity {
     Uri imageUri;
     String itemID;
     String idImage;
-    Reference postRef;
+    String postRef;
     FirebaseFirestore fStore;
+    String UID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,20 +85,38 @@ public class postItem2 extends AppCompatActivity {
 
                 uploadImageToFirebase(imageUri);
 
-                String des = descerption.getText().toString();
+                final String des = descerption.getText().toString().trim();
                 String cat ="book";
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 itemID = database.getReference("item").push().getKey();
                 DocumentReference documentrefReference = fStore.collection("item").document(itemID);
                 //UID
-                String UID=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                UID=FirebaseAuth.getInstance().getCurrentUser().getUid();
                 //postRef=idImage;
+
+                if(TextUtils.isEmpty(des)){
+                    descerption.setError(" الوصف مطلوب ");
+                    return;
+                }
+
+               /* if(idImage.isEmpty()){
+                    Toast.makeText(postItem2.this, " الصورة مطلوبة " , Toast.LENGTH_LONG).show();
+                    return;
+                }*/
+
+
                 //store data
                 Map<String, Object> post = new HashMap<>();
                 post.put("image", idImage);
                 post.put("description", des);
                 post.put("cat", cat);
                 post.put("user id", UID);
+
+                //assign itemID to the person how post it
+                postRef=fStore.collection("item").document(itemID).getPath();
+                DocumentReference washingtonRef = fStore.collection("donators").document(UID);
+                washingtonRef.update("items", FieldValue.arrayUnion(postRef));
+
                 //check the add if it's success or not
                 documentrefReference.set(post).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
