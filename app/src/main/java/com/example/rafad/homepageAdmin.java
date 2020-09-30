@@ -23,28 +23,9 @@ import java.util.List;
 public class homepageAdmin extends AppCompatActivity {
     Button logout;
     FirebaseAuth fAuth;
-    //ArrayList<benDataModel> arrayList=new ArrayList<>();
     List<benDataModel> arrayList=new ArrayList<>();
     public static final String TAG = "TAG";
     ListView list;
-
-    String[] maintitle ={
-            "Title 1","Title 2",
-            "Title 3","Title 4",
-            "Title 5",
-    };
-
-    String[] subtitle ={
-            "Sub Title 1","Sub Title 2",
-            "Sub Title 3","Sub Title 4",
-            "Sub Title 5",
-    };
-
-    Integer[] imgid={
-            R.drawable.chaticon,R.drawable.chaticon,
-            R.drawable.chaticon,R.drawable.chaticon,
-            R.drawable.chaticon,
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
