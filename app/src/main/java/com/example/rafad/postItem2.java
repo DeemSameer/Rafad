@@ -56,9 +56,9 @@ public class postItem2 extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference();
         descerption=findViewById(R.id.descrption);
         fStore=FirebaseFirestore.getInstance();
-
-
         share = findViewById(R.id.button3);
+
+
 
         changePostImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,13 +87,15 @@ public class postItem2 extends AppCompatActivity {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 itemID = database.getReference("item").push().getKey();
                 DocumentReference documentrefReference = fStore.collection("item").document(itemID);
+                //UID
+                String UID=FirebaseAuth.getInstance().getCurrentUser().getUid();
                 //postRef=idImage;
                 //store data
                 Map<String, Object> post = new HashMap<>();
                 post.put("image", idImage);
                 post.put("description", des);
                 post.put("cat", cat);
-
+                post.put("user id", UID);
                 //check the add if it's success or not
                 documentrefReference.set(post).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -115,7 +117,6 @@ public class postItem2 extends AppCompatActivity {
         if (requestCode == 1000){
             if (resultCode == Activity.RESULT_OK){
                 imageUri = data.getData();
-
                 postImage.setImageURI(imageUri);
                 //upload to firebase
                 //uploadImageToFirebase(imageUri);
