@@ -11,9 +11,12 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,7 +33,9 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.lang.ref.Reference;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class postItem2 extends AppCompatActivity {
@@ -46,6 +51,8 @@ public class postItem2 extends AppCompatActivity {
     String idImage;
     String postRef;
     FirebaseFirestore fStore;
+    Object cat;
+    Spinner dropdown;
     String UID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +67,38 @@ public class postItem2 extends AppCompatActivity {
         descerption=findViewById(R.id.descrption);
         fStore=FirebaseFirestore.getInstance();
         share = findViewById(R.id.button3);
+        // Spinner element
+        Spinner spinner = (Spinner) findViewById(R.id.spinner1);
+
+        spinner.setOnItemSelectedListener(this);
 
 
 
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Multiply");
+        categories.add("Divide");
+        categories.add("Subtract");
+        categories.add("Add");
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
+/*
+//get the spinner from the xml.
+         dropdown = (Spinner) findViewById(R.id.spinner1);
+//create a list of items for the spinner.
+        String[] items = new String[]{"clothes", "tools", "books"};
+//create an adapter to describe how the items are displayed, adapters are used in several places in android.
+//There are multiple variations of this, but this is the basic variant.
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+//set the spinners adapter to the previously created one.
+        dropdown.setAdapter(adapter);
+        dropdown.setOnItemSelectedListener(this);*/
         changePostImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +121,7 @@ public class postItem2 extends AppCompatActivity {
 
                 uploadImageToFirebase(imageUri);
 
-                final String des = descerption.getText().toString().trim();
+                String des = descerption.getText().toString();
                 String cat ="book";
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 itemID = database.getReference("item").push().getKey();
@@ -130,6 +166,31 @@ public class postItem2 extends AppCompatActivity {
             }
         });
     }
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
+
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+/*
+        public void onItemSelected(AdapterView<?> parent, View view,
+                                   int pos, long id) {
+            // An item was selected. You can retrieve the selected item using
+            // parent.getItemAtPosition(pos)
+            cat = parent.getItemAtPosition(pos);
+        }
+
+        public void onNothingSelected(AdapterView<?> parent) {
+            // Another interface callback
+        }*/
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @androidx.annotation.Nullable Intent data){
