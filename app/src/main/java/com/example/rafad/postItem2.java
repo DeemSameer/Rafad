@@ -36,7 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class postItem2 extends AppCompatActivity {
+public class postItem2 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public static final String TAG = "TAG";
     FirebaseAuth fAuth;
@@ -115,6 +115,7 @@ public class postItem2 extends AppCompatActivity {
 
             public void onClick(View view) {
 
+
                 uploadImageToFirebase(imageUri);
 
                 String des = descerption.getText().toString();
@@ -146,27 +147,16 @@ public class postItem2 extends AppCompatActivity {
     }
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
-        String item = parent.getItemAtPosition(position).toString();
+        String cat = parent.getItemAtPosition(position).toString();
 
         // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        Toast.makeText(parent.getContext(), "Selected: " + cat, Toast.LENGTH_LONG).show();
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-/*
-        public void onItemSelected(AdapterView<?> parent, View view,
-                                   int pos, long id) {
-            // An item was selected. You can retrieve the selected item using
-            // parent.getItemAtPosition(pos)
-            cat = parent.getItemAtPosition(pos);
-        }
 
         public void onNothingSelected(AdapterView<?> parent) {
             // Another interface callback
-        }*/
+        }
 
 
 
