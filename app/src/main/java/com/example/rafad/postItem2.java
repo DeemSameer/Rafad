@@ -70,7 +70,7 @@ public class postItem2 extends AppCompatActivity {
         // Spinner element
         Spinner spinner = (Spinner) findViewById(R.id.spinner1);
 
-        spinner.setOnItemSelectedListener(this);
+        //spinner.setOnItemSelectedListener(this);
 
 
 
@@ -88,29 +88,15 @@ public class postItem2 extends AppCompatActivity {
 
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
-/*
-//get the spinner from the xml.
-         dropdown = (Spinner) findViewById(R.id.spinner1);
-//create a list of items for the spinner.
-        String[] items = new String[]{"clothes", "tools", "books"};
-//create an adapter to describe how the items are displayed, adapters are used in several places in android.
-//There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-//set the spinners adapter to the previously created one.
-        dropdown.setAdapter(adapter);
-        dropdown.setOnItemSelectedListener(this);*/
+
         changePostImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // I want to open gallery
                 Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(openGalleryIntent, 1000);
-                /*Intent i = new Intent(v.getContext(),EditProfile.class);
-                i.putExtra("fullName",fullName.getText().toString());
-                i.putExtra("email",email.getText().toString());
-                i.putExtra("phone",phone.getText().toString());
-                startActivity(i);*/
-//
+
+
 
             }
         });
@@ -174,21 +160,7 @@ public class postItem2 extends AppCompatActivity {
         Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-/*
-        public void onItemSelected(AdapterView<?> parent, View view,
-                                   int pos, long id) {
-            // An item was selected. You can retrieve the selected item using
-            // parent.getItemAtPosition(pos)
-            cat = parent.getItemAtPosition(pos);
-        }
-
-        public void onNothingSelected(AdapterView<?> parent) {
-            // Another interface callback
-        }*/
+    
 
 
 
