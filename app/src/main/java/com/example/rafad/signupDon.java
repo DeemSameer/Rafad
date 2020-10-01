@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -128,6 +129,8 @@ public class signupDon extends AppCompatActivity {
                                     user.put("userName", userName);
                                     //user.put("type",type);
                                     user.put("email",email);
+
+                                    user.put("items",Arrays.asList("array for items"));
                                     //check the add if it's success or not
                                     documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -47,10 +48,11 @@ public class postItem2 extends AppCompatActivity implements AdapterView.OnItemSe
     Uri imageUri;
     String itemID;
     String idImage;
-    Reference postRef;
+    String postRef;
     FirebaseFirestore fStore;
     Object cat;
     Spinner dropdown;
+    String UID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,11 +60,11 @@ public class postItem2 extends AppCompatActivity implements AdapterView.OnItemSe
 
 
         fAuth = FirebaseAuth.getInstance();
-        postImage = findViewById(R.id.postImage);
-        changePostImage = findViewById(R.id.chosepicture);
+        postImage=findViewById(R.id.postImage);
+        changePostImage=findViewById(R.id.chosepicture);
         storageReference = FirebaseStorage.getInstance().getReference();
-        descerption = findViewById(R.id.descrption);
-        fStore = FirebaseFirestore.getInstance();
+        descerption=findViewById(R.id.descrption);
+        fStore=FirebaseFirestore.getInstance();
         share = findViewById(R.id.button3);
         // Spinner element
         Spinner spinner = (Spinner) findViewById(R.id.spinner1);
@@ -85,36 +87,21 @@ public class postItem2 extends AppCompatActivity implements AdapterView.OnItemSe
 
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
-/*
-//get the spinner from the xml.
-         dropdown = (Spinner) findViewById(R.id.spinner1);
-//create a list of items for the spinner.
-        String[] items = new String[]{"clothes", "tools", "books"};
-//create an adapter to describe how the items are displayed, adapters are used in several places in android.
-//There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-//set the spinners adapter to the previously created one.
-        dropdown.setAdapter(adapter);
-        dropdown.setOnItemSelectedListener(this);*/
+
         changePostImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // I want to open gallery
                 Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(openGalleryIntent, 1000);
-                /*Intent i = new Intent(v.getContext(),EditProfile.class);
-                i.putExtra("fullName",fullName.getText().toString());
-                i.putExtra("email",email.getText().toString());
-                i.putExtra("phone",phone.getText().toString());
-                startActivity(i);*/
-//
+
+
 
             }
         });
         share.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-
 
                 uploadImageToFirebase(imageUri);
 
@@ -126,12 +113,30 @@ public class postItem2 extends AppCompatActivity implements AdapterView.OnItemSe
                 //UID
                 String UID=FirebaseAuth.getInstance().getCurrentUser().getUid();
                 //postRef=idImage;
+
+                if(TextUtils.isEmpty(des)){
+                    descerption.setError(" الوصف مطلوب ");
+                    return;
+                }
+
+               /* if(idImage.isEmpty()){
+                    Toast.makeText(postItem2.this, " الصورة مطلوبة " , Toast.LENGTH_LONG).show();
+                    return;
+                }*/
+
+
                 //store data
                 Map<String, Object> post = new HashMap<>();
                 post.put("Image", idImage);
                 post.put("Description", des);
                 post.put("Catogery", cat);
                 post.put("User id", UID);
+
+                //assign itemID to the person how post it
+                postRef=fStore.collection("item").document(itemID).getPath();
+                DocumentReference washingtonRef = fStore.collection("donators").document(UID);
+                washingtonRef.update("items", FieldValue.arrayUnion(postRef));
+
                 //check the add if it's success or not
                 documentrefReference.set(post).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
