@@ -3,44 +3,59 @@ package com.example.rafad;
 
 import android.app.Activity;
 
+import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-class MyListAdapter extends ArrayAdapter<String> {
+import androidx.annotation.NonNull;
 
+import java.util.List;
+
+class MyListAdapter extends ArrayAdapter<benDataModel> {
+    public static final String TAG = "TAG";
     private final Activity context;
-    private final String[] maintitle;
-    private final String[] subtitle;
-    private final Integer[] imgid;
+    private final List<benDataModel> arrayList;
 
-    public MyListAdapter(Activity context, String[] maintitle,String[] subtitle, Integer[] imgid) {
-        super(context, R.layout.mylist, maintitle);
-        // TODO Auto-generated constructor stub
-
+    public MyListAdapter(@NonNull Activity context, @NonNull List<benDataModel> arrayList) {
+        super(context, R.layout.mylist, arrayList);
+        this.arrayList=arrayList;
+        Log.d(TAG,  "SIZE ADAPTER => " +arrayList.size());
         this.context=context;
-        this.maintitle=maintitle;
-        this.subtitle=subtitle;
-        this.imgid=imgid;
-
     }
+
+
 
     public View getView(int position,View view,ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
-       View rowView=inflater.inflate(R.layout.mylist, null,true);
+        View rowView=inflater.inflate(R.layout.mylist, null,true);
 
         TextView titleText = (TextView) rowView.findViewById(R.id.title);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
         TextView subtitleText = (TextView) rowView.findViewById(R.id.subtitle);
+        Button button=(Button)rowView.findViewById(R.id.button);
 
-        titleText.setText(maintitle[position]);
-        imageView.setImageResource(imgid[position]);
-        subtitleText.setText(subtitle[position]);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "HIIIIIIIIIII ");
+
+            }
+        });
+
+        titleText.setText(arrayList.get(position).getUserName());
+        imageView.setImageResource(R.drawable.chaticon);
+        subtitleText.setText(arrayList.get(position).getPhoneNumber());
 
         return rowView;
 
     };
 }
+
+
