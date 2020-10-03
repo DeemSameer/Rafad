@@ -78,9 +78,9 @@ public class donProfile extends AppCompatActivity {
 
         //pring data from mainProfile activity
         Intent data = getIntent();
-        String fullName = data.getStringExtra("fullName");
+        final String fullName = data.getStringExtra("fullName");
         final String email = data.getStringExtra("email");
-        String phone = data.getStringExtra("phone");
+        final String phone = data.getStringExtra("phone");
 
         profileEmail.setText(email);
         profileFullName.setText(fullName);
@@ -135,9 +135,16 @@ public class donProfile extends AppCompatActivity {
                         docRef.update(edited).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(donProfile.this, " تم تحديث الملف الشخصي بنجاح ", Toast.LENGTH_LONG).show();
+
+                                if(profileFullName.getText().toString().equals(fullName) && profileEmail.getText().toString().equals(email) && profilePhoneNumber.getText().toString().equals(phone)){
+                                    startActivity(new Intent(getApplicationContext(), mainProfile.class));
+                                    finish();
+                                }
+
+                                else {
+                                    Toast.makeText(donProfile.this, " تم تحديث الملف الشخصي بنجاح ", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(getApplicationContext(), mainProfile.class));
-                                finish();
+                                finish();}
                             }
                         });
 
@@ -154,6 +161,10 @@ public class donProfile extends AppCompatActivity {
                         String exMsg = e.getMessage();
                         if (exMsg.equals("The email address is already in use by another account.")){
                             Toast.makeText(donProfile.this, "البريد الإلكتروني موجود مسبقًا  ", Toast.LENGTH_LONG).show();
+                        }
+
+                        if (exMsg.equals("This operation is sensitive and requires recent authentication. Log in again before retrying this request.")){
+                            Toast.makeText(getApplicationContext(),  "هذه العملية حساسة وتتطلب مصادقة حديثة. قم بتسجيل الدخول مرة أخرى قبل إعادة محاولة هذا الطلب.", Toast.LENGTH_LONG).show();
                         }
                         else {
                             Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
