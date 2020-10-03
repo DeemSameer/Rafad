@@ -106,19 +106,18 @@
         app:layout_constraintVertical_bias="0.664" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textView8"
         android:layout_width="108dp"
-        android:layout_height="28dp"
-        android:text="@string/hb"
+        android:layout_height="26dp"
+        android:text="تسجيل الدخول "
         android:textColor="#397A96"
         android:textSize="19sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.861"
-        tools:text="تسجيل الدخول" />
+        app:layout_constraintVertical_bias="0.382" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
