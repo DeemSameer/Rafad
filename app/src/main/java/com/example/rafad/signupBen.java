@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,14 +31,14 @@ import java.util.Map;
 public class signupBen extends AppCompatActivity {
     public static final String TAG = "TAG";
 
-    EditText signUpEmail,userName,SignUpPassword1,SignUpPassword2,signUpPhone,signUpssn,signUpTotalincome,number;
+    EditText signUpEmail,userName,SignUpPassword1,SignUpPassword2,signUpPhone,signUpssn,signUpTotalincome,number,location;
     Button signup_button;
     RadioButton radioButton0,radioButton1;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
     TextView textView1, type1;
-
+    String[]CountryList={"المدينة المنورة","مكة المكرمة","الرياض","القصيم","الشرقية","عسير","تبوك","الجوف","الباحة","نجران","جازان","الحدود الشمالية","حائل"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +56,15 @@ public class signupBen extends AppCompatActivity {
         signUpTotalincome= findViewById(R.id.signUpTotalincome);
         radioButton0=findViewById(R.id.radioButton3);
         radioButton1=findViewById(R.id.radioButton4);
+
         number=findViewById(R.id.signUpssn);
         type1 = findViewById(R.id.type);
         fAuth = FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
+        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line, CountryList);
+        final MaterialBetterSpinner betterSpinner=(MaterialBetterSpinner) findViewById(R.id.loc);
+        betterSpinner.setAdapter(arrayAdapter);
+
 
         Button button4 = (Button) findViewById(R.id.but2);
 
@@ -88,6 +96,7 @@ public class signupBen extends AppCompatActivity {
                 final String Password2 = SignUpPassword2.getText().toString();
                 final String Phone = signUpPhone.getText().toString();
                 final String userName2= userName.getText().toString();
+                final String location=betterSpinner.getText().toString();
                 final String type= "beneficiary";
                 final String signUpssn2= signUpssn.getText().toString();
                 final String signUpTotalincome2=signUpTotalincome.getText().toString();
@@ -144,7 +153,7 @@ public class signupBen extends AppCompatActivity {
                     signUpssn.setError("الهوية الوطنية مطلوبة");
                     return;
                 }
-                if (Password.length()<7){
+                if (Password.length()<=7){
                     SignUpPassword1.setError(" كلمة المرور يجب أن تحتوي على 8 رموز ");
                     return;
                 }
@@ -187,6 +196,8 @@ public class signupBen extends AppCompatActivity {
                                         user.put("flag", flag);
                                         user.put("typeOfResidence", typeOfResidence);
                                         user.put("securityNumber", Number);///check ittt -----
+                                        user.put("location",location);
+
 
                                         //check the add if it's success or not
                                         documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -224,4 +235,5 @@ public class signupBen extends AppCompatActivity {
         });
 
     }
+
 }

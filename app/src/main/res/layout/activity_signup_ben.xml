@@ -50,9 +50,10 @@ tools:context=".signUpBase">
         app:layout_constraintVertical_bias="0.664"
         tools:ignore="RtlCompat" />
 
+
     <EditText
         android:id="@+id/signUpTotalincome"
-        android:layout_width="297dp"
+        android:layout_width="146dp"
         android:layout_height="47dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="2dp"
@@ -65,11 +66,29 @@ tools:context=".signUpBase">
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.402"
+        app:layout_constraintHorizontal_bias="0.765"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.732"
         tools:ignore="RtlCompat" />
+
+    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+        android:id="@+id/loc"
+        android:layout_width="146dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="38dp"
+        android:hint="اختر المنطقة"
+        android:textColor="#717171"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.716"
+
+
+        />
 
     <EditText
         android:id="@+id/userName"

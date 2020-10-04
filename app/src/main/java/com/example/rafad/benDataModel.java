@@ -1,5 +1,6 @@
 package com.example.rafad;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class benDataModel {
     private String UID;
     private String securityNumber;
@@ -9,6 +10,7 @@ public class benDataModel {
     private String userName;
     private String email;
     private String SSN;
+
 
     public benDataModel(String UID,String phoneNumber, String typeOfResidence, String totalIncome, String userName, String email, String SSN, String securityNumber) {
         this.UID = UID;
@@ -72,6 +74,7 @@ public class benDataModel {
     public String getSSN() {
         return SSN;
     }
+
 
     public void setSSN(String SSN) {
         this.SSN = SSN;

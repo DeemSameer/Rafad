@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +34,8 @@ public class signupDon extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
+    String[]CountryList={"المدينة المنورة","مكة المكرمة","الرياض","القصيم","الشرقية","عسير","تبوك","الجوف","الباحة","نجران","جازان","الحدود الشمالية","حائل"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,9 @@ public class signupDon extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
+        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line, CountryList);
+        final MaterialBetterSpinner betterSpinner=(MaterialBetterSpinner) findViewById(R.id.loca);
+        betterSpinner.setAdapter(arrayAdapter);
 
         Button button4 = (Button) findViewById(R.id.but3);
 
@@ -77,12 +84,13 @@ public class signupDon extends AppCompatActivity {
                 final String Password = SignUpPassword1.getText().toString();
                 final String Password2 = SignUpPassword2.getText().toString();
                 final String Phone = signUpPhone.getText().toString();
+                final String location=betterSpinner.getText().toString();
                 final String userName= UserName.getText().toString();
                 final String type= "Donator";
 
 
                 if(TextUtils.isEmpty(email)){
-                    signUpEmail.setError(" البريد الإلكتروني مطلوب ");
+                    signUpEmail.setError("البريد الإلكتروني مطلوب");
                     return;
                 }
                 if(TextUtils.isEmpty(userName)){
@@ -90,11 +98,11 @@ public class signupDon extends AppCompatActivity {
                     return;
                 }
                 if(TextUtils.isEmpty(Password)){
-                    SignUpPassword1.setError(" كلمة المرور مطلوبة ");
+                    SignUpPassword1.setError(" كلمة المرور مطلوبة");
                     return;
                 }
                 if (Password.length()<=7){
-                    SignUpPassword1.setError("كلمة المرور يجب أن تحتوي على 8 رموز أو أكثر ");
+                    SignUpPassword1.setError("كلمة المرور يجب أن تحتوي على 8 رموز أو أكثر");
                     return;
                 }
                 if (!Password.equals(Password2)){
@@ -106,58 +114,59 @@ public class signupDon extends AppCompatActivity {
                     return;
                 }
                 if (!Phone.substring(0,2).equals("05")){
-                    signUpPhone.setError(" يجب أن يبدأ رقم الجوال بـ 05 ");
+                    signUpPhone.setError("يجب أن يبدأ رقم الجوال بـ 05 ");
                     return;
                 }
 
                 fAuth.createUserWithEmailAndPassword(email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                     if (task.isSuccessful()){
-                         fAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                             @Override
-                             public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()){
-                                    Toast.makeText(signupDon.this, "تم انشاء الحساب" , Toast.LENGTH_LONG).show();
+                        if (task.isSuccessful()){
+                            fAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()){
+                                        Toast.makeText(signupDon.this, "تم انشاء الحساب" , Toast.LENGTH_LONG).show();
 
-                                    userID= fAuth.getCurrentUser().getUid();
-                                    DocumentReference documentrefReference = fStore.collection("donators").document(userID);
-                                    //store data
-                                    Map<String,Object> user= new HashMap<>();
-                                    user.put("phoneNumber", Phone);
-                                    user.put("userName", userName);
-                                    //user.put("type",type);
-                                    user.put("email",email);
-                                    //check the add if it's success or not
-                                    documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void aVoid) {
-                                            Log.d(TAG,"User id created for"+userID);
-                                        }
-                                    });
+                                        userID= fAuth.getCurrentUser().getUid();
+                                        DocumentReference documentrefReference = fStore.collection("donators").document(userID);
+                                        //store data
+                                        Map<String,Object> user= new HashMap<>();
+                                        user.put("phoneNumber", Phone);
+                                        user.put("userName", userName);
+                                        //user.put("type",type);
+                                        user.put("email",email);
+                                        user.put("location",location);
+                                        //check the add if it's success or not
+                                        documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Log.d(TAG,"User id created for"+userID);
+                                            }
+                                        });
 
 
-                                    startActivity(new Intent(getApplicationContext(),login.class) );
-                                    finish();
+                                        startActivity(new Intent(getApplicationContext(),login.class) );
+                                        finish();
+                                    }
+                                    else{
+                                        Toast.makeText(signupDon.this, " حصل خطأ ما ! ", Toast.LENGTH_LONG).show();
+
+                                    }
                                 }
-                                else{
-                                    Toast.makeText(signupDon.this, " حصل خطأ ما ! ", Toast.LENGTH_LONG).show();
+                            });
 
-                                }
-                             }
-                         });
+                        }else{
+                            if (task.getException().getMessage().equals("The email address is already in use by another account."))
+                                Toast.makeText(signupDon.this, "الايميل موجود لدينا يرجى تسجيل دخول " , Toast.LENGTH_LONG).show();
+                            else if (task.getException().getMessage().equals("We have blocked all requests from this device due to unusual activity. Try again later. [ Too many unsuccessful login attempts. Please try again later. ]"))
+                                Toast.makeText(signupDon.this, " تم حجب تسجيل جديد للمستخدم لتجاوز الحد المسموح من المحاولات عاود التسجيل بعد فترة  " , Toast.LENGTH_LONG).show();
+                            else if (task.getException().getMessage().equals("The email address is badly formatted."))
+                                Toast.makeText(signupDon.this, " يرجى كتابة الايميل بشكل صحيح  " , Toast.LENGTH_LONG).show();
+                            else
+                                Toast.makeText(signupDon.this, " حصل خطأ ما !  "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
 
-                     }else{
-                         if (task.getException().getMessage().equals("The email address is already in use by another account."))
-                             Toast.makeText(signupDon.this, " الايميل موجود لدينا يرجى تسجيل دخول " , Toast.LENGTH_LONG).show();
-                         else if (task.getException().getMessage().equals("We have blocked all requests from this device due to unusual activity. Try again later. [ Too many unsuccessful login attempts. Please try again later. ]"))
-                             Toast.makeText(signupDon.this, " تم حجب تسجيل جديد للمستخدم لتجاوز الحد المسموح من المحاولات عاود التسجيل بعد فترة  " , Toast.LENGTH_LONG).show();
-                         else if (task.getException().getMessage().equals("The email address is badly formatted."))
-                             Toast.makeText(signupDon.this, " يرجى كتابة الايميل بشكل صحيح " , Toast.LENGTH_LONG).show();
-                         else
-                         Toast.makeText(signupDon.this, " حصل خطأ ما ! "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
-
-                     }//end else
+                        }//end else
                     }//end on complete
                 });
             }// end method on click

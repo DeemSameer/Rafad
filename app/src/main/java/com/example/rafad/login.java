@@ -58,6 +58,7 @@ public class login extends AppCompatActivity {
 
             }
         });
+        //hhhh
         lSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,21 +79,21 @@ public class login extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(email)){
 
-                    lEmail.setError(" ط§ظ„ط¥ظٹظ…ظٹظ„ ظ…ط·ظ„ظˆط¨ ");
-                    Toast.makeText(login.this, " ط§ظ„ط¥ظٹظ…ظٹظ„ ظ…ط·ظ„ظˆط¨ ", Toast.LENGTH_LONG).show();
+                    lEmail.setError("لايميل مطلوب ");
+                    Toast.makeText(login.this, "الايميل مطلوب ", Toast.LENGTH_LONG).show();
                     return;
                 }
 
 
                 if (TextUtils.isEmpty(password)){
-                    lpassword.setError(" ظƒظ„ظ…ط© ط§ظ„ظ…ط±ظˆط± ظ…ط·ظ„ظˆط¨ط© ");
-                    Toast.makeText(login.this, " ظƒظ„ظ…ط© ط§ظ„ظ…ط±ظˆط± ظ…ط·ظ„ظˆط¨ط© ", Toast.LENGTH_LONG).show();
+                    lpassword.setError("كلمة المرور مطلوبة ");
+                    Toast.makeText(login.this, "كلمة المرور مطلوبة", Toast.LENGTH_LONG).show();
 
                     return;
                 }
 
                 if (password.length() < 8){
-                    lpassword.setError(" ط§ظ„ط±ظ‚ظ… ط§ظ„ط³ط±ظٹ ظٹط¬ط¨ ط£ظ† ظٹط­طھظˆظٹ ط¹ظ„ظ‰ ظ¨ ط±ظ…ظˆط² ط£ظˆ ط£ظƒط«ط± ");
+                    lpassword.setError("  الرقم السري يجب أن يحتوي على ٨ رموز أو أكثر ");
                     return;
                 }
 
@@ -115,7 +116,7 @@ public class login extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
-                                                Toast.makeText(login.this, " طھظ… طھط³ط¬ظٹظ„ ط¯ط®ظˆظ„ظƒ ط¨ظ†ط¬ط§ط­! ", Toast.LENGTH_LONG).show();
+                                                Toast.makeText(login.this, "تم تسجيل دخولك بنجاح! ", Toast.LENGTH_LONG).show();
                                                 Intent i = new Intent(login.this, homepageAdmin.class);
                                                 startActivity(i);
                                                 finish();
@@ -133,7 +134,7 @@ public class login extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
-                                                Toast.makeText(login.this, " طھظ… طھط³ط¬ظٹظ„ ط¯ط®ظˆظ„ظƒ ط¨ظ†ط¬ط§ط­! ", Toast.LENGTH_LONG).show();
+                                                Toast.makeText(login.this, "تم تسجيل دخولك بنجاح!", Toast.LENGTH_LONG).show();
                                                 Intent i = new Intent(login.this, homepageDonator.class);
                                                 startActivity(i);
                                                 finish();
@@ -149,13 +150,20 @@ public class login extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                         if (task.isSuccessful()) {
+
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
-                                                Toast.makeText(login.this, " طھظ… طھط³ط¬ظٹظ„ ط¯ط®ظˆظ„ظƒ ط¨ظ†ط¬ط§ط­! ", Toast.LENGTH_LONG).show();
-                                                Intent i = new Intent(login.this, homePage.class);
-                                                startActivity(i);
-                                                finish();
-                                            }
+                                                if (((String)document.get("flag")).equals("Admin")){
+                                                    Toast.makeText(login.this,"حسابك معلق,الجاء انتظار الموافقة",Toast.LENGTH_SHORT).show();
+                                                    return;
+
+                                                }
+                                                else{
+                                                    Toast.makeText(login.this,"تم تسجيل الدخول بنجاح",Toast.LENGTH_SHORT).show();
+                                                    Intent i = new Intent(login.this, homePage.class);
+                                                    startActivity(i);
+                                                    finish();
+                                                }}
                                         }
                                     }
                                 });
@@ -163,21 +171,21 @@ public class login extends AppCompatActivity {
 
                             }
                             else {
-                                Toast.makeText(login.this, " ظٹط±ط¬ظ‰ طھط£ظƒظٹط¯ ط§ظ„ط¥ظٹظ…ظٹظ„ ", Toast.LENGTH_LONG).show();
+                                Toast.makeText(login.this, " يرجى تأكيد الايميل ", Toast.LENGTH_LONG).show();
 
                             }
 
                         } else {
                             if (task.getException().getMessage().equals("There is no user record corresponding to this identifier. The user may have been deleted."))
-                                Toast.makeText(login.this, " ط§ظ„ط§ظٹظ…ظٹظ„ ط؛ظٹط± ظ…ظˆط¬ظˆط¯ ظ„ط¯ظٹظ†ط§ ظٹط±ط¬ظ‰ طھط³ط¬ظٹظ„ ط­ط³ط§ط¨ ط¬ط¯ظٹط¯ " , Toast.LENGTH_LONG).show();
+                                Toast.makeText(login.this, " الايميل غير موجود لدينا يرجى تسجيل حساب جديد " , Toast.LENGTH_LONG).show();
                             else if (task.getException().getMessage().equals("The password is invalid or the user does not have a password."))
-                                Toast.makeText(login.this, " ظƒظ„ظ…ط© ط§ظ„ط³ط± ط؛ظٹط± طµط­ظٹط­ط© " , Toast.LENGTH_LONG).show();
+                                Toast.makeText(login.this, "  كلمة السر غير صحيحة" , Toast.LENGTH_LONG).show();
                             else if (task.getException().getMessage().equals("We have blocked all requests from this device due to unusual activity. Try again later. [ Too many unsuccessful login attempts. Please try again later. ]"))
-                                Toast.makeText(login.this, " طھظ… ط­ط¬ط¨ طھط³ط¬ظٹظ„ ط§ظ„ط¯ط®ظˆظ„ ظ„ظ„ظ…ط³طھط®ط¯ظ… ظ„طھط¬ط§ظˆط² ط§ظ„ط­ط¯ ط§ظ„ظ…ط³ظ…ظˆط­ ظ…ظ† ط§ظ„ظ…ط­ط§ظˆظ„ط§طھ ط¹ط§ظˆط¯ ط§ظ„طھط³ط¬ظٹظ„ ط¨ط¹ط¯ ظپطھط±ط©  " , Toast.LENGTH_LONG).show();
+                                Toast.makeText(login.this, "تم حجب تسجيل الدخول للمستخدم لتجاوز الحد المسموح من المحاولات عاود التسجيل بعد فترة " , Toast.LENGTH_LONG).show();
                             else if (task.getException().getMessage().equals("The email address is badly formatted."))
-                                Toast.makeText(login.this, " ظٹط±ط¬ظ‰ ظƒطھط§ط¨ط© ط§ظ„ط§ظٹظ…ظٹظ„ ط¨ط´ظƒظ„ طµط­ظٹط­ " , Toast.LENGTH_LONG).show();
+                                Toast.makeText(login.this, " يرجى كتابة الايميل بشكل صحيح  " , Toast.LENGTH_LONG).show();
                             else
-                                Toast.makeText(login.this, " ط­طµظ„ ط®ط·ط£ ظ…ط§! " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(login.this, "حصل خطأ ما! " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
 
                     }
@@ -204,60 +212,68 @@ public class login extends AppCompatActivity {
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         //Check if the user already logged in  --> login automatically - Saving current user-
         if (firebaseUser!=null) {
-            //UID
-            String UID=FirebaseAuth.getInstance().getCurrentUser().getUid();
-            //First collection - - - - - Admin
-            FirebaseFirestore db=FirebaseFirestore.getInstance();
-            CollectionReference Admins = db.collection("admins");
-            DocumentReference docRef = Admins.document(UID);
-            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Intent i = new Intent(login.this, homepageAdmin.class);
-                            startActivity(i);
-                            finish();
+            if(fAuth.getCurrentUser().isEmailVerified()) {
+                //UID
+                String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                //First collection - - - - - Admin
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                CollectionReference Admins = db.collection("admins");
+                DocumentReference docRef = Admins.document(UID);
+                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Intent i = new Intent(login.this, homepageAdmin.class);
+                                startActivity(i);
+                                finish();
+                            }
                         }
                     }
-                }
-            });
-            //End Admin Checking - - - - - - - - - - -
-            //Second collection - - - - - donator
-            CollectionReference donators = db.collection("donators");
-            DocumentReference docRefD = donators.document(UID);
-            docRefD.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Intent i = new Intent(login.this, homepageDonator.class);
-                            startActivity(i);
-                            finish();
+                });
+                //End Admin Checking - - - - - - - - - - -
+                //Second collection - - - - - donator
+                CollectionReference donators = db.collection("donators");
+                DocumentReference docRefD = donators.document(UID);
+                docRefD.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Intent i = new Intent(login.this, homepageDonator.class);
+                                startActivity(i);
+                                finish();
+                            }
                         }
                     }
-                }
-            });
-            //End donator Checking - - - - - - - - - - -
-            //Third collection - - - - - beneficiaries
-            CollectionReference beneficiaries = db.collection("beneficiaries");
-            DocumentReference docRefB = beneficiaries.document(UID);
-            docRefD.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Intent i = new Intent(login.this, homePage.class);
-                            startActivity(i);
-                            finish();
+                });
+                //End donator Checking - - - - - - - - - - -
+                //Third collection - - - - - beneficiaries
+                CollectionReference beneficiaries = db.collection("beneficiaries");
+                final DocumentReference docRefB = beneficiaries.document(UID);
+                docRefB.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                if (((String)document.get("flag")).equals("Admin")){
+                                    Toast.makeText(login.this,"حسابك معلق,الجاء انتظار الموافقة",Toast.LENGTH_SHORT).show();
+                                    return;
+
+                                }
+                                else{
+                                Intent i = new Intent(login.this, homePage.class);
+                                startActivity(i);
+                                finish();
+                            }}
                         }
                     }
-                }
-            });
-            //End beneficiaries Checking - - - - - - - - - - -
+                });
+                //End beneficiaries Checking - - - - - - - - - - -
+            }//end verfiying
         }//end if not null
         //finish checking
     }
@@ -266,4 +282,10 @@ public class login extends AppCompatActivity {
 
 
 }
+
+
+
+
+
+
 
