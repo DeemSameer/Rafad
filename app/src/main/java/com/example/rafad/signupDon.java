@@ -82,7 +82,7 @@ public class signupDon extends AppCompatActivity {
 
 
                 if(TextUtils.isEmpty(email)){
-                    signUpEmail.setError(" البريد الإلكتروني مطلوب ");
+                    signUpEmail.setError(" البريد الإلكتروني مطلوب");
                     return;
                 }
                 if(TextUtils.isEmpty(userName)){
