@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class benEditProfile extends AppCompatActivity {
     EditText profileFullNameBEn, profileEmailBEn, profilePhoneNumberBEn;
-    Button saveChanges, changeProfileIMG, cancelBtn1;
+    Button saveChanges, changeProfileIMG, cancelBtn1 ,changeBenPass;
     FirebaseUser user;
     FirebaseAuth fAuth;
     FirebaseFirestore fstore;
@@ -50,6 +50,7 @@ public class benEditProfile extends AppCompatActivity {
         profileImage =findViewById(R.id.profileImgBen2);
         changeProfileIMG = findViewById(R.id.changeBenImg);
         cancelBtn1 =findViewById(R.id.c1);
+        changeBenPass =findViewById(R.id.changeBenPass);
 
 
         user = fAuth.getCurrentUser();
@@ -75,6 +76,15 @@ public class benEditProfile extends AppCompatActivity {
                 startActivity(new Intent(benEditProfile.this, BenMainProfile.class));
                 finish();
 
+            }
+        });
+
+
+        changeBenPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(benEditProfile.this, benChangePass.class));
+                finish();
             }
         });
 
