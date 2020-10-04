@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -37,6 +39,15 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
         TextView titleText = (TextView) rowView.findViewById(R.id.title);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
         TextView subtitleText = (TextView) rowView.findViewById(R.id.subtitle);
+        Button button=(Button)rowView.findViewById(R.id.button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "HIIIIIIIIIII ");
+
+            }
+        });
 
         titleText.setText(arrayList.get(position).getUserName());
         imageView.setImageResource(R.drawable.chaticon);

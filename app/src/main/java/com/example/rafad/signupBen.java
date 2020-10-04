@@ -145,7 +145,7 @@ public class signupBen extends AppCompatActivity {
                     return;
                 }
                 if (Password.length()<7){
-                    SignUpPassword1.setError(" كلمة المرور يجب أن تحتوي على 8 رموز ");
+                    SignUpPassword1.setError(" كلمة المرور يجب أن تحتوي على 8 رموز أو أكثر ");
                     return;
                 }
                 if (!Password.equals(Password2)){
