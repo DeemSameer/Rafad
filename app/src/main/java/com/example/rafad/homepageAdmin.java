@@ -69,11 +69,7 @@ public class homepageAdmin extends AppCompatActivity {
                     }
                 });
         ////////////////////////////////////////////////////////////////
-        /*
-        MyListAdapter adapter=new MyListAdapter(this, arrayList);
-        list=(ListView)findViewById(R.id.list);
-        list.setAdapter(adapter);
-        
-         */
+
     }
+
 }

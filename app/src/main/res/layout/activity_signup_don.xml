@@ -1,69 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Basic"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/newsignup"
-    tools:context=".signupDon">
+<?xml version="1.0" encoding="UTF-8"?>
 
+<androidx.constraintlayout.widget.ConstraintLayout tools:context=".signupDon" android:background="@drawable/newsignup" android:layout_height="match_parent" android:layout_width="match_parent" android:id="@+id/Basic" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <EditText
-        android:id="@+id/SignUpPassword1"
-        android:layout_width="283dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="2dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="كلمة المرور"
-        android:inputType="textPassword"
-        android:textAlignment="textEnd"
-        android:textColor="#717171"
-        android:textSize="13dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.415"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.592"
-        tools:ignore="RtlCompat" />
+    <EditText android:layout_height="47dp" android:layout_width="283dp" android:id="@+id/SignUpPassword1" tools:ignore="RtlCompat" app:layout_constraintVertical_bias="0.592" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.415" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:textSize="13dp" android:textColor="#717171" android:textAlignment="textEnd" android:inputType="textPassword" android:hint="كلمة المرور" android:ems="10" android:autofillHints="" android:layout_marginEnd="2dp" android:layout_marginStart="20dp"/>
 
-    <EditText
-        android:id="@+id/SignUpPassword2"
-        android:layout_width="283dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="2dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="تأكيد كلمة المرور"
-        android:inputType="textPassword"
-        android:textAlignment="textEnd"
-        android:textColor="#717171"
-        android:textSize="13dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.415"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671"
-        tools:ignore="RtlCompat" />
+    <EditText android:layout_height="47dp" android:layout_width="283dp" android:id="@+id/SignUpPassword2" tools:ignore="RtlCompat" app:layout_constraintVertical_bias="0.671" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.415" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:textSize="13dp" android:textColor="#717171" android:textAlignment="textEnd" android:inputType="textPassword" android:hint="تأكيد كلمة المرور" android:ems="10" android:autofillHints="" android:layout_marginEnd="2dp" android:layout_marginStart="20dp"/>
 
-    <EditText
-        android:id="@+id/UserName"
+    <EditText android:layout_height="47dp" android:layout_width="283dp" android:id="@+id/UserName" tools:ignore="RtlCompat" app:layout_constraintVertical_bias="0.51" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.415" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:textSize="13dp" android:textColor="#717171" android:textAlignment="viewEnd" android:inputType="textPersonName" android:hint="الإسم الكامل" android:ems="10" android:autofillHints="" android:layout_marginEnd="2dp" android:layout_marginStart="20dp" android:layout_marginRight="2dp" android:layout_marginLeft="20dp"/>
+
+    <TextView android:layout_height="17dp" android:layout_width="179dp" android:id="@+id/textView" app:layout_constraintVertical_bias="0.92" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:textSize="12dp" android:textColor="#397A96" android:textAllCaps="false" android:text="هل تملك حسابا بالفعل؟ تسجيل الدخول"/>
+
+    <EditText android:layout_height="47dp" android:layout_width="283dp" android:id="@+id/signUpPhone" tools:ignore="RtlCompat" app:layout_constraintVertical_bias="0.75" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.415" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:textSize="13dp" android:textColor="#717171" android:textAlignment="textEnd" android:inputType="phone" android:hint="رقم الجوال مثال: (0500000000) " android:ems="10" android:autofillHints="" android:layout_marginEnd="2dp" android:layout_marginStart="20dp"/>
+
+    <EditText android:layout_height="47dp" android:layout_width="283dp" android:id="@+id/signUpEmail" tools:ignore="RtlCompat" app:layout_constraintVertical_bias="0.431" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.415" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:textSize="13dp" android:textColor="#717171" android:textAlignment="viewEnd" android:inputType="textPersonName" android:hint="البريد الالكتروني " android:ems="10" android:autofillHints="" android:layout_marginEnd="2dp" android:layout_marginStart="20dp" android:layout_marginRight="2dp" android:layout_marginLeft="20dp"/>
+    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+        android:id="@+id/loca"
         android:layout_width="283dp"
         android:layout_height="47dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="2dp"
         android:layout_marginRight="2dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="الإسم الكامل"
-        android:inputType="textPersonName"
-        android:textAlignment="viewEnd"
+        android:hint="اختر المنطقة"
         android:textColor="#717171"
         android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,105 +29,13 @@
         app:layout_constraintHorizontal_bias="0.415"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.51"
-        tools:ignore="RtlCompat" />
+        app:layout_constraintVertical_bias="0.812"
+        tools:ignore="MissingClass" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="179dp"
-        android:layout_height="17dp"
-        android:text="هل تملك حسابا بالفعل؟ تسجيل الدخول"
-        android:textAllCaps="false"
-        android:textColor="#397A96"
-        android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.92" />
+    <Button android:background="#397A96" android:layout_height="45dp" android:layout_width="120dp" android:id="@+id/button2" app:layout_constraintVertical_bias="0.869" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:textSize="18sp" android:textColor="#FFFFFF" android:text="إنشاء حساب " android:typeface="normal" android:fontFamily="sans-serif"/>
 
-    <EditText
-        android:id="@+id/signUpPhone"
-        android:layout_width="283dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="2dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="رقم الجوال  مثال: (0500000000) "
-        android:inputType="phone"
-        android:textAlignment="textEnd"
-        android:textColor="#717171"
-        android:textSize="13dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.415"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75"
-        tools:ignore="RtlCompat" />
+    <TextView android:layout_height="24dp" android:layout_width="139dp" android:id="@+id/textView6" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" android:textSize="19sp" android:textColor="#397A96" android:text="إنشاء حساب كمتبرع" app:layout_constraintBottom_toTopOf="@+id/signUpEmail" android:layout_marginBottom="24dp"/>
 
-    <EditText
-        android:id="@+id/signUpEmail"
-        android:layout_width="283dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="البريد الالكتروني "
-        android:inputType="textPersonName"
-        android:textAlignment="viewEnd"
-        android:textColor="#717171"
-        android:textSize="13dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.415"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.431"
-        tools:ignore="RtlCompat" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="120dp"
-        android:layout_height="45dp"
-        android:background="#397A96"
-        android:fontFamily="sans-serif"
-        android:text="إنشاء حساب "
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:typeface="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.869" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="139dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="24dp"
-        android:text="إنشاء حساب كمتبرع"
-        android:textColor="#397A96"
-        android:textSize="19sp"
-        app:layout_constraintBottom_toTopOf="@+id/signUpEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/but3"
-        android:layout_width="25dp"
-        android:layout_height="22dp"
-        android:background="@drawable/leftarrow"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16" />
+    <Button android:background="@drawable/leftarrow" android:layout_height="22dp" android:layout_width="25dp" android:id="@+id/but3" app:layout_constraintVertical_bias="0.16" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.042" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/textView6"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
