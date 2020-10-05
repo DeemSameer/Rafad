@@ -1,4 +1,5 @@
 package com.example.rafad;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
@@ -42,7 +43,7 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
         fAuth = FirebaseAuth.getInstance();
         View rowView=inflater.inflate(R.layout.mylist, null,true);
 
-        Button button=(Button)rowView.findViewById(R.id.button);
+      Button button=rowView.findViewById(R.id.button);
 
         final String UID=arrayList.get(position).getUID();
         //First accept
@@ -170,7 +171,7 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
             }
         });//End Big accept button
         ///Disapprove///
-        Button DisApprove=(Button) rowView.findViewById(R.id.button7);
+        Button DisApprove=rowView.findViewById(R.id.button7);
         DisApprove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
