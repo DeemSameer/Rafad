@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".HistoryItemAdapter"></activity>
         <activity android:name=".changePasswordDon" />
         <activity android:name=".homepageDonator" />
         <activity android:name=".homepageAdmin" />

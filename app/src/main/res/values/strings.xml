@@ -18,6 +18,7 @@
     <string name="eh">إنشاء حساب</string>
     <string name="hb">أهلًا بعودتك !</string>
     <string name="hp">الصفحة الرئيسية</string>
+    <string name="todo">TODO</string>
     <string-array name="planets_array">
         <item>Mercury</item>
         <item>Venus</item>
