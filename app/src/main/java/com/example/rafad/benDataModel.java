@@ -1,5 +1,5 @@
 package com.example.rafad;
-
+@SuppressWarnings("SpellCheckingInspection")
 public class benDataModel {
     private String UID;
     private String securityNumber;
