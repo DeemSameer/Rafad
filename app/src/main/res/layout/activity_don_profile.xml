@@ -174,7 +174,7 @@
         app:srcCompat="@drawable/phone" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/TextProgres2"
         android:layout_width="131dp"
         android:layout_height="20dp"
         android:layout_marginStart="40dp"

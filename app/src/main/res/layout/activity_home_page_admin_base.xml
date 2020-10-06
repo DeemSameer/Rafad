@@ -171,7 +171,7 @@
     <RelativeLayout
         android:layout_width="416dp"
         android:layout_height="361dp"
-        android:background="@color/white"
+        android:background="@color/topBar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -185,12 +185,12 @@
             android:layout_height="100dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="254dp"
-            android:background="@drawable/rounded_corner">
+            android:background="@color/white">
 
             <Button
                 android:id="@+id/button6"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
@@ -219,7 +219,7 @@
             android:layout_height="100dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="151dp"
-            android:background="@drawable/rounded_corner3">
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/textView19"
@@ -236,14 +236,14 @@
 
             <Button
                 android:id="@+id/button7"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="306dp"
-                android:layout_marginLeft="306dp"
-                android:layout_marginTop="9dp"
+                android:layout_marginStart="315dp"
+                android:layout_marginLeft="315dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/report" />
         </RelativeLayout>
 
@@ -252,7 +252,7 @@
             android:layout_height="100dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="48dp"
-            android:background="@drawable/rounded_corner2">
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/textView20"
@@ -270,8 +270,8 @@
 
             <Button
                 android:id="@+id/button8"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"

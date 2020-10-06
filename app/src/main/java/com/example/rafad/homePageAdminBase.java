@@ -3,7 +3,10 @@ package com.example.rafad;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -16,11 +19,14 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class homePageAdminBase extends AppCompatActivity {
 ProgressBar b1,b2,d1;
 TextView ta,ta1,ta2;
+Button up1;
 int Tsize,size;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_admin_base);
+
+        up1=findViewById(R.id.button6);
 
 
 
@@ -86,6 +92,15 @@ int Tsize,size;
         }
 
 
+
+        up1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(homePageAdminBase.this, homepageAdmin.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
 
 
