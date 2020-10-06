@@ -118,7 +118,7 @@ public class login extends AppCompatActivity {
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
                                                 Toast.makeText(login.this, " تم تسجيل دخولك بنجاح! ", Toast.LENGTH_LONG).show();
-                                                Intent i = new Intent(login.this, homepageAdmin.class);
+                                                Intent i = new Intent(login.this, homePageAdminBase.class);
                                                 startActivity(i);
                                                 finish();
                                             }
@@ -237,7 +237,7 @@ public class login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                Intent i = new Intent(login.this, homepageAdmin.class);
+                                Intent i = new Intent(login.this, homePageAdminBase.class);
                                 startActivity(i);
                                 finish();
                             }

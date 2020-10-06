@@ -24,6 +24,7 @@ public class homepageAdmin extends AppCompatActivity {
     Button logout;
     FirebaseAuth fAuth;
     List<benDataModel> arrayList=new ArrayList<>();
+    static int size;
     public static final String TAG = "TAG";
     ListView list;
 

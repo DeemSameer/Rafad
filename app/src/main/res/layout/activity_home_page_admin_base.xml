@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".homePageAdminBase">
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="22dp"
+        android:layout_height="20dp"
+        android:background="@drawable/logout"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.958"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.026" />
+
+    <TextView
+        android:id="@+id/homepagetext"
+        android:layout_width="84dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/hp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="411dp"
+        android:layout_height="205dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homepagetext">
+
+        <ProgressBar
+            android:id="@+id/progressBarBenAccounts"
+            style="?android:progressBarStyleHorizontal"
+            android:layout_width="86dp"
+            android:layout_height="80dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="34dp"
+            android:layout_marginLeft="34dp"
+            android:layout_marginTop="46dp"
+            android:progressDrawable="@drawable/circle" />
+
+        <ProgressBar
+            android:id="@+id/progressBarBenAccounts2"
+            style="?android:progressBarStyleHorizontal"
+            android:layout_width="167dp"
+            android:layout_height="26dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="57dp"
+            android:layout_marginLeft="57dp"
+            android:layout_marginEnd="284dp"
+            android:layout_marginRight="284dp"
+            android:layout_marginBottom="33dp"
+            android:layout_toEndOf="@+id/textView25"
+            android:layout_toRightOf="@+id/textView25" />
+
+        <ProgressBar
+            android:id="@+id/progressBarBenAccounts3"
+            style="?android:progressBarStyleHorizontal"
+            android:layout_width="167dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/textView18"
+            android:layout_marginStart="74dp"
+            android:layout_marginLeft="74dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="284dp"
+            android:layout_marginRight="284dp"
+            android:layout_toEndOf="@+id/progressBarBenAccounts"
+            android:layout_toRightOf="@+id/progressBarBenAccounts" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="113dp"
+            android:layout_height="38dp"
+            android:layout_below="@+id/progressBarBenAccounts"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="9dp"
+            android:gravity="center"
+            android:text="نسبة حسابات المستفيدين المعلقة" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="206dp"
+            android:layout_height="35dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="60dp"
+            android:gravity="center"
+            android:text="نسبة حسابات المستفيدين المبلغ عنها" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="201dp"
+            android:layout_height="31dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="38dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:text="نسبة حسابات المتبرعين المبلغ عنها" />
+
+        <TextView
+            android:id="@+id/textProgres"
+            android:layout_width="43dp"
+            android:layout_height="21dp"
+            android:layout_alignStart="@+id/progressBarBenAccounts"
+            android:layout_alignLeft="@+id/progressBarBenAccounts"
+            android:layout_alignTop="@+id/progressBarBenAccounts"
+            android:layout_alignEnd="@+id/progressBarBenAccounts"
+            android:layout_alignRight="@+id/progressBarBenAccounts"
+            android:layout_alignBottom="@+id/progressBarBenAccounts"
+            android:layout_marginStart="23dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp" />
+
+        <TextView
+            android:id="@+id/TextProgres2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView18"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:text="tttt" />
+
+        <TextView
+            android:id="@+id/textProgres2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView18"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:text="tttt" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="416dp"
+        android:layout_height="361dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+        app:layout_constraintVertical_bias="0.184">
+
+        <RelativeLayout
+            android:id="@+id/up1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="254dp"
+            android:background="@drawable/rounded_corner">
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="319dp"
+                android:layout_marginRight="319dp"
+                android:background="@drawable/add" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="39dp"
+                android:text="حسابات المستفيدين المعلقة"
+                android:textSize="24sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="151dp"
+            android:background="@drawable/rounded_corner3">
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="287dp"
+                android:layout_height="48dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="119dp"
+                android:layout_marginRight="119dp"
+                android:text="حسابات المستفيدين المبلغ عنها"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="306dp"
+                android:layout_marginLeft="306dp"
+                android:layout_marginTop="9dp"
+                android:background="@drawable/report" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="48dp"
+            android:background="@drawable/rounded_corner2">
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="19dp"
+                android:layout_marginRight="19dp"
+                android:layout_marginBottom="39dp"
+                android:text="حسابات المتبرعين المبلغ عنها"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="318dp"
+                android:layout_marginRight="318dp"
+                android:background="@drawable/report" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
