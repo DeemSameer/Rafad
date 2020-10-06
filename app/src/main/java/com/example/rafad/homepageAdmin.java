@@ -24,6 +24,7 @@ public class homepageAdmin extends AppCompatActivity {
     Button logout , profileAdmin;
     FirebaseAuth fAuth;
     List<benDataModel> arrayList=new ArrayList<>();
+    static int size;
     public static final String TAG = "TAG";
     ListView list;
 
@@ -80,11 +81,7 @@ public class homepageAdmin extends AppCompatActivity {
                     }
                 });
         ////////////////////////////////////////////////////////////////
-        /*
-        MyListAdapter adapter=new MyListAdapter(this, arrayList);
-        list=(ListView)findViewById(R.id.list);
-        list.setAdapter(adapter);
-        
-         */
+
     }
+
 }

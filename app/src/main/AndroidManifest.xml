@@ -11,10 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".adminMainProfile"></activity>
-        <activity android:name=".benChangePass" />
-        <activity android:name=".benEditProfile" />
-        <activity android:name=".BenMainProfile" />
+        <activity android:name=".homePageAdminBase" />
         <activity android:name=".changePasswordDon" />
         <activity android:name=".homepageDonator" />
         <activity android:name=".homepageAdmin" />
