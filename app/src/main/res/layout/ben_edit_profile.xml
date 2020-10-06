@@ -89,6 +89,7 @@
         android:layout_marginTop="200dp"
         android:layout_marginBottom="216dp"
         android:text="المعلومات الخاصة: "
+        android:textColor="#616668"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class homepageAdmin extends AppCompatActivity {
-    Button logout;
+    Button logout , profileAdmin;
     FirebaseAuth fAuth;
     List<benDataModel> arrayList=new ArrayList<>();
     public static final String TAG = "TAG";
@@ -33,6 +33,7 @@ public class homepageAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_homepage_admin);
 
         fAuth = FirebaseAuth.getInstance();
+        profileAdmin = findViewById(R.id.goAdminProfile);
 
 
         logout = findViewById(R.id.logoutButton);
@@ -45,6 +46,16 @@ public class homepageAdmin extends AppCompatActivity {
                 finish();
             }
         });
+
+
+        profileAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homepageAdmin.this, adminMainProfile.class));
+                finish();
+            }
+        });
+
 /////////////////////////////////////////////////DB////////////////////////////////////
         FirebaseFirestore db=FirebaseFirestore.getInstance();
         db.collection("beneficiaries")
