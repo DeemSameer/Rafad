@@ -68,12 +68,26 @@ public class adminMainProfile extends AppCompatActivity {
         saveChanges = findViewById(R.id.adminEdit);
 
 
+
+        DocumentReference documentReference1 = fStore.collection("admins").document(userId);
+        documentReference1.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                adminPhone.setText(value.getString("phoneNumber"));
+                adminFullName.setText(value.getString("userName"));
+                adminEmail.setText(value.getString("email"));
+
+            }
+        });
+
+
+
         StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).into(profileImageView);
-                Toast.makeText(adminMainProfile.this, "تم تحديث الصورة بنجاح", Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -107,6 +121,9 @@ public class adminMainProfile extends AppCompatActivity {
 
                 //extract the email to change it
                final String email2 = adminEmail.getText().toString();
+                final String name2=adminFullName.getText().toString();
+                final String phone2=adminPhone.getText().toString();
+
 
                 user.updateEmail(email2).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -121,15 +138,15 @@ public class adminMainProfile extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
 
-                                /*if(adminFullName.getText().toString().equals(fullName) && profileEmail.getText().toString().equals(email) && profilePhoneNumber.getText().toString().equals(phone)){
-                                    startActivity(new Intent(getApplicationContext(), mainProfile.class));
+                                if(adminFullName.getText().toString().equals(name2) && adminPhone.getText().toString().equals(phone2)){
+                                    startActivity(new Intent(getApplicationContext(), homepageAdmin.class));
                                     finish();
                                 }
 
-                                else {*/
+                                else {
                                     Toast.makeText(adminMainProfile.this, " تم تحديث الملف الشخصي بنجاح ", Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(getApplicationContext(), homepageAdmin.class));
-                                    finish();//}
+                                    finish();}
                             }
                         });
 
@@ -178,15 +195,7 @@ public class adminMainProfile extends AppCompatActivity {
 
 
 
-        DocumentReference documentReference1 = fStore.collection("admins").document(userId);
-        documentReference1.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                adminPhone.setText(value.getString("phoneNumber"));
-                adminFullName.setText(value.getString("userName"));
-                adminEmail.setText(value.getString("email"));
-            }
-        });
+
 
 
 
@@ -218,6 +227,7 @@ public class adminMainProfile extends AppCompatActivity {
                 //upload to firebase
                 uploadImageToFirebase(imageUri);
 
+
             }
         }
     }
@@ -231,6 +241,8 @@ public class adminMainProfile extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         Picasso.get().load(uri).into(profileImageView);
+                        Toast.makeText(adminMainProfile.this, "تم تحديث الصورة بنجاح", Toast.LENGTH_LONG).show();
+
                     }
                 });
 
