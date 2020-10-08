@@ -208,21 +208,24 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
 
+
     <EditText
         android:id="@+id/a2"
         android:layout_width="182dp"
         android:layout_height="38dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="160dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textColor="#474B4C"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.323"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
-
+        app:layout_constraintVertical_bias="0.632" />
 
     <TextView
         android:id="@+id/e2"
@@ -299,6 +302,7 @@
         android:id="@+id/ph2"
         android:layout_width="182dp"
         android:layout_height="38dp"
+        android:layout_marginBottom="100dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textColor="#474B4C"
@@ -308,7 +312,7 @@
         app:layout_constraintHorizontal_bias="0.323"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.541" />
+        app:layout_constraintVertical_bias="0.632" />
 
     <TextView
         android:id="@+id/textView16"
