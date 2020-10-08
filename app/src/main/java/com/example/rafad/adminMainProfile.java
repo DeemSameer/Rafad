@@ -177,7 +177,7 @@ public class adminMainProfile extends AppCompatActivity {
         backHomeIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(adminMainProfile.this, homepageAdmin.class));
+                startActivity(new Intent(adminMainProfile.this, homePageAdminBase.class));
                 finish();
 
             }
@@ -186,7 +186,7 @@ public class adminMainProfile extends AppCompatActivity {
         backHomArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(adminMainProfile.this, homepageAdmin.class));
+                startActivity(new Intent(adminMainProfile.this, homePageAdminBase.class));
                 finish();
 
             }

@@ -1,6 +1,7 @@
 package com.example.rafad;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +23,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 class MyListAdapter extends ArrayAdapter<benDataModel> {
     public static final String TAG = "TAG";
@@ -177,13 +180,27 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
             @Override
             public void onClick(View view) {
                 ///////////////////
-                FirebaseFirestore db=FirebaseFirestore.getInstance();
-                CollectionReference beneficiaries = db.collection("beneficiaries");
-                DocumentReference docRefB = beneficiaries.document(UID);
-                docRefB.update("flag", "Declined");
-                context.startActivity(new Intent(context, homepageAdmin.class));
-                Toast.makeText(getContext(),"لقد تم رفض المستفيد بنجاح",Toast.LENGTH_SHORT).show();
-                return;
+                new AlertDialog.Builder(getContext())
+
+                        .setTitle("رفض مستفيد")
+                        .setMessage("هل انت متأكد من رفض المستفيد؟")
+                        .setPositiveButton("رفض", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                CollectionReference beneficiaries = db.collection("beneficiaries");
+                                DocumentReference docRefB = beneficiaries.document(UID);
+                                docRefB.update("flag", "Declined");
+                                context.startActivity(new Intent(context, homepageAdmin.class));
+                                Toast.makeText(getContext(), "لقد تم رفض المستفيد بنجاح", Toast.LENGTH_SHORT).show();
+
+
+                                //dialog1.dismiss();
+                            }
+                        }).setNegativeButton("الغاء", null).show();
+                AlertDialog dialog1;
+
+
                 //////////////////
             }
         });

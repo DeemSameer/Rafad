@@ -18,6 +18,7 @@
         <activity android:name=".MainChat" />
         <activity android:name=".donProfile" />
         <activity android:name=".homePage" />
+        <activity android:name=".adminMainProfile" />
         <activity android:name=".forgetp" />
         <activity android:name=".signupDon" />
         <activity android:name=".signupBen" />

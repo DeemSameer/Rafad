@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -19,23 +20,28 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class homePageAdminBase extends AppCompatActivity {
 ProgressBar b1,b2,d1;
 TextView ta,ta1,ta2;
-Button up1, logout;
+Button up1;
 int Tsize,size;
+Button backHomeIcon;
+Button backHomArrow;
+    Button logout;
+    FirebaseAuth fAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_admin_base);
-
+        fAuth = FirebaseAuth.getInstance();
         up1=findViewById(R.id.button6);
+        backHomeIcon=findViewById(R.id.adminbHome);
+        backHomArrow=findViewById(R.id.button);
+
 
 
 
         b1=findViewById(R.id.progressBarBenAccounts);
         b2=findViewById(R.id.progressBarBenAccounts2);
         d1=findViewById(R.id.progressBarBenAccounts3);
-        logout = findViewById(R.id.logoutButton);
-
-
         //0
         b2.setProgress(0);
         d1.setProgress(0);
@@ -104,15 +110,34 @@ int Tsize,size;
                 finish();
             }
         });
+        backHomeIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homePageAdminBase.this, homePageAdminBase.class));
+                finish();
 
+            }
+        });
+
+        backHomArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homePageAdminBase.this, adminMainProfile.class));
+                finish();
+
+            }
+        });
+        logout = findViewById(R.id.logoutButton);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(homePageAdminBase.this, login.class);
-                startActivity(i);
+                fAuth.signOut();
+                startActivity(new Intent(homePageAdminBase.this, login.class));
                 finish();
             }
         });
+
+
 
 
 
