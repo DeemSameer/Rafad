@@ -5,5 +5,5 @@
     android:thickness="4dp"
     android:useLevel="true">
 <solid
-    android:color="@color/topBar"/>
+    android:color="#FFFFFF"/>
 </shape>
