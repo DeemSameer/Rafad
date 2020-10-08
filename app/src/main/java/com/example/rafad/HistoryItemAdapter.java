@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -28,9 +29,9 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
     public static final String TAG = "TAG";
     private final Activity context;
     private final List<postinfo> arrayList;
-    FirebaseAuth fAuth;
     StorageReference storageRef;
     FirebaseFirestore fStore;
+
 
     public HistoryItemAdapter(@NonNull Activity context, @NonNull List<postinfo> arrayList) {
         super(context, R.layout.activity_history_item_adapter, arrayList);
@@ -43,19 +44,25 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
 
     public android.view.View getView(int position, View view, ViewGroup parent) {
 
+        final String itemID=arrayList.get(position).itemID;
         LayoutInflater inflater=context.getLayoutInflater();
-        fAuth = FirebaseAuth.getInstance();
         View rowView=inflater.inflate(R.layout.activity_history_item_adapter, null,true);
-        //fStore=FirebaseFirestore.getInstance().getReference();
+        //fStore=FirebaseFirestore.getInstance();
         storageRef = FirebaseStorage.getInstance().getReference();
 
 
-        ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
 
-        storageRef.child("users/me/profile.png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+
+        TextView desText = (TextView) rowView.findViewById(R.id.des);
+        final ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
+        TextView catText = (TextView) rowView.findViewById(R.id.cat);
+
+
+        storageRef.child("item/"+itemID+"/"+arrayList.get(position).imageID).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 // Got the download URL for 'users/me/profile.png'
+              HisImage.setImageURI(uri);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -64,7 +71,9 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
             }
         });
 
+        desText.setText(arrayList.get(position).des);
 
+        catText.setText(arrayList.get(position).cat);
 
 
         return rowView;

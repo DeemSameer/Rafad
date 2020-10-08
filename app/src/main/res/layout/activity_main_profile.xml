@@ -205,15 +205,14 @@
         tools:visibility="invisible" />
 
     <ListView
-        android:id="@+id/postedlistview"
-        android:layout_width="336dp"
-        android:layout_height="332dp"
+        android:id="@+id/postedlist"
+        android:layout_width="361dp"
+        android:layout_height="385dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.453"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.731" />
+        app:layout_constraintVertical_bias="0.843" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

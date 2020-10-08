@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,12 +18,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -34,7 +27,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firestore.v1.Value;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -52,7 +44,6 @@ public class mainProfile extends AppCompatActivity {
 
     //////// for view list of items
     List<postinfo> arrayItem=new ArrayList<>();
-    List<String> arrayItemID= new ArrayList<>();
     public static final String TAG = "TAG";
     ListView listView;
     //////// above is for view list of items
@@ -81,8 +72,7 @@ public class mainProfile extends AppCompatActivity {
 
 
         //////// for view list of items
-        listView=(ListView)findViewById(R.id.postedlistview);
-        arrayItemID= (List<String>) storageReference.child("donators").child(userId).child("items");
+        listView=(ListView)findViewById(R.id.postedlist);
         //////// above is for view list of items
 
 
@@ -148,26 +138,12 @@ public class mainProfile extends AppCompatActivity {
         });
 
 
-        //////////////////// for list of items first try////////////////////////
-
-        for (int count=1;count<arrayItemID.size(); count++){
-            DocumentReference document = fStore.collection("item").document(arrayItemID.get(count));
-           // arrayItem.add(new postinfo((String)document.getId(), (String) document.get('Image'), (String)document.get("Description"),(String)document.get("Catogery") ));
-
-
-
-
-
-
-
-        }//////////////////// for list of items first try////////////////////////
-
-
 
         //////////////////// for list of items second try////////////////////////
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-            db.collection("item")
+
+       // FirebaseFirestore db = FirebaseFirestore.getInstance();
+        fStore.collection("item")
                     .whereEqualTo("User id", userId)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -176,12 +152,12 @@ public class mainProfile extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Log.d(TAG, document.getId() + " => " + document.getData());
-                                    arrayItem.add(new postinfo((String) document.getId(), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery") ));
+                                    arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery") ));
                                     Log.d(TAG, "SIZE item list => " + arrayItem.size());
                                 }
-                               // MyListAdapter adapter = new MyListAdapter(mainProfile.this, arrayItem);
-                                listView = (ListView) findViewById(R.id.list);
-                               // listView.setAdapter(adapter);
+                                HistoryItemAdapter adapter = new HistoryItemAdapter(mainProfile.this, arrayItem);
+                                listView = (ListView) findViewById(R.id.postedlist);
+                                listView.setAdapter(adapter);
                             } else {
                                 Log.d(TAG, "Error getting documents: ", task.getException());
                             }
