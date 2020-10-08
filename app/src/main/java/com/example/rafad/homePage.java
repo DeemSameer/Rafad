@@ -27,7 +27,7 @@ public class homePage extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homePage.this, donProfile.class));
+                startActivity(new Intent(homePage.this, BenMainProfile.class));
                 finish();
 
             }

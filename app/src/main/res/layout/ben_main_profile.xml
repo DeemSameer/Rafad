@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mainProfile">
+    tools:context=".BenMainProfile">
+
 
     <ImageView
 
@@ -41,12 +42,14 @@
         app:layout_constraintVertical_bias="0.0">
 
         <ImageView
-            android:id="@+id/profileImg"
+            android:id="@+id/profileImgben"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="TODO"
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription " />
+
+
 
     </androidx.cardview.widget.CardView>
 
@@ -61,46 +64,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/footer" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="600dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/userp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
-        app:layout_constraintStart_toStartOf="@+id/imageView8"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:visibility="visible" />
-
-    <TextView
-        android:id="@+id/fullname"
-        android:layout_width="154dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="188dp"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="13sp"
-        android:verticalScrollbarPosition="defaultPosition"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
-
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="102dp"
-        android:layout_height="19dp"
-        android:text="25 Posted items"
+        android:layout_width="120dp"
+        android:layout_height="21dp"
+        android:text="25 Requested items"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -121,24 +89,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.379" />
 
-    <TextView
-        android:id="@+id/email1"
-        android:layout_width="150dp"
-        android:layout_height="29dp"
-        android:textAlignment="center"
-        android:textColor="#D8D5D5"
-        android:textSize="11sp"
-        android:visibility="visible"
+    <Button
+        android:id="@+id/editBen"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:background="#00FFFFFF"
+        android:text="تعديل "
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.294"
-        tools:visibility="visible" />
+        app:layout_constraintVertical_bias="0.032" />
 
     <Button
-        android:id="@+id/backHome"
+        android:id="@+id/benBackHome"
         android:layout_width="29dp"
         android:layout_height="27dp"
         android:background="@drawable/arr"
@@ -147,61 +115,71 @@
         app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.036" />
-
-    <Button
-        android:id="@+id/bHome"
-        android:layout_width="37dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="600dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView8"
-        app:layout_constraintHorizontal_bias="0.133"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/edit"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginBottom="550dp"
-        android:background="#00FFFFFF"
-        android:fontFamily="sans-serif"
-        android:text="تعديل "
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.991"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.097" />
+        app:layout_constraintVertical_bias="0.041" />
 
     <TextView
-        android:id="@+id/phonenumber"
-        android:layout_width="0dp"
-        android:layout_height="19dp"
-        android:layout_marginTop="248dp"
-        android:textAllCaps="false"
-        android:visibility="invisible"
+        android:id="@+id/benName"
+        android:layout_width="156dp"
+        android:layout_height="31dp"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="invisible" />
+        app:layout_constraintVertical_bias="0.267" />
+
+    <TextView
+        android:id="@+id/benEmail"
+        android:layout_width="155dp"
+        android:layout_height="28dp"
+        android:textAlignment="center"
+        android:textColor="#E6E3E3"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.291" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/userp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.891"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.981" />
+
+    <Button
+        android:id="@+id/benHomeicon"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.988" />
+
+    <TextView
+        android:id="@+id/benPhone"
+        android:layout_width="58dp"
+        android:layout_height="19dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.327" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

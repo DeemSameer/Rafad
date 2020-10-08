@@ -19,7 +19,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class homePageAdminBase extends AppCompatActivity {
 ProgressBar b1,b2,d1;
 TextView ta,ta1,ta2;
-Button up1;
+Button up1, logout;
 int Tsize,size;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,9 @@ int Tsize,size;
         b1=findViewById(R.id.progressBarBenAccounts);
         b2=findViewById(R.id.progressBarBenAccounts2);
         d1=findViewById(R.id.progressBarBenAccounts3);
+        logout = findViewById(R.id.logoutButton);
+
+
         //0
         b2.setProgress(0);
         d1.setProgress(0);
@@ -97,6 +100,15 @@ int Tsize,size;
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(homePageAdminBase.this, homepageAdmin.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(homePageAdminBase.this, login.class);
                 startActivity(i);
                 finish();
             }
