@@ -1,5 +1,8 @@
 package com.example.rafad;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,20 +11,18 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
@@ -31,10 +32,13 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.lang.ref.Reference;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class postItem2 extends AppCompatActivity  {
+public class postItem2 extends AppCompatActivity {
 
     public static final String TAG = "TAG";
     FirebaseAuth fAuth;
@@ -47,26 +51,15 @@ public class postItem2 extends AppCompatActivity  {
     String idImage;
     String postRef;
     FirebaseFirestore fStore;
-    String cat;
+    Object cat;
     Spinner dropdown;
     String UID;
-    RadioGroup rg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_item2);
 
 
-        RadioGroup rg = (RadioGroup) findViewById(R.id.cato);
-        final String cat =
-                ((RadioButton)findViewById(rg.getCheckedRadioButtonId()))
-                        .getText().toString();
-
-        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                Toast.makeText(getBaseContext(), cat, Toast.LENGTH_SHORT).show();
-            }
-        });
         fAuth = FirebaseAuth.getInstance();
         postImage=findViewById(R.id.postImage);
         changePostImage=findViewById(R.id.chosepicture);
@@ -74,10 +67,27 @@ public class postItem2 extends AppCompatActivity  {
         descerption=findViewById(R.id.descrption);
         fStore=FirebaseFirestore.getInstance();
         share = findViewById(R.id.button3);
+        // Spinner element
+        Spinner spinner = (Spinner) findViewById(R.id.spinner1);
+
+        //spinner.setOnItemSelectedListener(this);
 
 
 
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Multiply");
+        categories.add("Divide");
+        categories.add("Subtract");
+        categories.add("Add");
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
 
         changePostImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,21 +100,20 @@ public class postItem2 extends AppCompatActivity  {
 
             }
         });
+
         share.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                if (imageUri != null)
-                    uploadImageToFirebase(imageUri);
-                else
-                {descerption.setError("الرجاء رفع الصوره");
-                    return;}
-                String des = descerption.getText().toString();
 
+                uploadImageToFirebase(imageUri);
+
+                String des = descerption.getText().toString();
+                String cat ="book";
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 itemID = database.getReference("item").push().getKey();
                 DocumentReference documentrefReference = fStore.collection("item").document(itemID);
                 //UID
-                String UID=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                UID=FirebaseAuth.getInstance().getCurrentUser().getUid();
                 //postRef=idImage;
 
                 if(TextUtils.isEmpty(des)){
@@ -112,15 +121,18 @@ public class postItem2 extends AppCompatActivity  {
                     return;
                 }
 
+               /* if(idImage.isEmpty()){
+                    Toast.makeText(postItem2.this, " الصورة مطلوبة " , Toast.LENGTH_LONG).show();
+                    return;
+                }*/
 
 
                 //store data
                 Map<String, Object> post = new HashMap<>();
-
-                post.put("Image", idImage);
-                post.put("Description", des);
-                post.put("Catogery", cat);
-                post.put("User id", UID);
+                post.put("image", idImage);
+                post.put("description", des);
+                post.put("cat", cat);
+                post.put("user id", UID);
 
                 //assign itemID to the person how post it
                 postRef=fStore.collection("item").document(itemID).getPath();
@@ -140,33 +152,17 @@ public class postItem2 extends AppCompatActivity  {
             }
         });
     }
-/*
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
 
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
 
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.radio_clothes:
-                if (checked)
-                    cat = ((RadioButton)findViewById(radio_clothes.getCheckedRadioButtonId()))
-                            .getText().toString();
-                    break;
-            case R.id.radio_device:
-                if (checked)
-                    // Ninjas rule
-                    break;
-            case R.id.radio_other:
-                if (checked)
-                    // Ninjas rule
-                    break;
-            case R.id.radio_tools:
-                if (checked)
-                    // Ninjas rule
-                    break;
-        }
-    }*/
+
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @androidx.annotation.Nullable Intent data){
@@ -176,7 +172,6 @@ public class postItem2 extends AppCompatActivity  {
             if (resultCode == Activity.RESULT_OK){
                 imageUri = data.getData();
                 postImage.setImageURI(imageUri);
-
                 //upload to firebase
                 //uploadImageToFirebase(imageUri);
 
