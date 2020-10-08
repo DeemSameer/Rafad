@@ -237,7 +237,7 @@ public class login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                Intent i = new Intent(login.this, homePageAdminBase.class);
+                                Intent i = new Intent(login.this, homepageAdmin.class);
                                 startActivity(i);
                                 finish();
                             }

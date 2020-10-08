@@ -138,15 +138,15 @@ public class adminMainProfile extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
 
-                                if(adminFullName.getText().toString().equals(name2) && adminPhone.getText().toString().equals(phone2)){
+                               /* if(adminFullName.getText().toString().equals(name2) && adminPhone.getText().toString().equals(phone2)){
                                     startActivity(new Intent(getApplicationContext(), homepageAdmin.class));
                                     finish();
                                 }
 
-                                else {
+                                else {*/
                                     Toast.makeText(adminMainProfile.this, " تم تحديث الملف الشخصي بنجاح ", Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(getApplicationContext(), homepageAdmin.class));
-                                    finish();}
+                                    finish();  //}
                             }
                         });
 

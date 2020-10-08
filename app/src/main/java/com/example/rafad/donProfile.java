@@ -35,7 +35,8 @@ public class donProfile extends AppCompatActivity {
 
     private static final int GALLERY_INTENT_CODE=1023;
     public static final String TAG = "TAG";
-    Button changeProfileIMG, cancell, saveBtn, changePassBtn;
+    TextView fullname , email , phone , pass;
+    Button changeProfileIMG, cancell, resetPassLocal, resendCode, saveBtn, changePassBtn;
     FirebaseAuth fAuth;
     FirebaseFirestore fstore;
     String userID;
@@ -93,6 +94,7 @@ public class donProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //extract what the user entr
+                //if (profileFullName.getText().toString().isEmpty() || profileEmail.getText().toString().isEmpty() || profilePhoneNumber.getText().toString().isEmpty()){
                 if (profileFullName.getText().toString().isEmpty()){
                     Toast.makeText(donProfile.this, " لا يمكن ترك الإسم فارغًا  ", Toast.LENGTH_LONG).show();
                     return;
@@ -117,6 +119,7 @@ public class donProfile extends AppCompatActivity {
                 }
 
 
+                //}
 
                 //extract the email to change it
                 final String email2 = profileEmail.getText().toString();
