@@ -79,6 +79,7 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
                             user.put("State",state);
                             docRefB.update(user);
                             context.startActivity(new Intent(context, homepageAdmin.class));
+                            Toast.makeText(getContext(),"لقد تم قبول المستفيد بنجاح",Toast.LENGTH_SHORT).show();
                             return;
                         }else{
                             //Toast.makeText(MyListAdapter.this, " الرجاء ادخال الحالة ", Toast.LENGTH_LONG).show();
@@ -181,6 +182,7 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
                 DocumentReference docRefB = beneficiaries.document(UID);
                 docRefB.update("flag", "Declined");
                 context.startActivity(new Intent(context, homepageAdmin.class));
+                Toast.makeText(getContext(),"لقد تم رفض المستفيد بنجاح",Toast.LENGTH_SHORT).show();
                 return;
                 //////////////////
             }
@@ -194,11 +196,17 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
         TextView subtitleText2 =  rowView.findViewById(R.id.Resd);
         TextView subtitleText3 =  rowView.findViewById(R.id.income);
 
+        String SecNum;
+        if(arrayList.get(position).getSecurityNumber().isEmpty())
+         SecNum= "لا يوجد";
+        else
+            SecNum= arrayList.get(position).getSecurityNumber();
+
         titleText.setText(arrayList.get(position).getUserName());
-        subtitleText.setText("رقم الجوال:"+arrayList.get(position).getPhoneNumber());
-        subtitleText1.setText("الهوية:"+arrayList.get(position).getSSN());
-        subtitleText2.setText("نوع السكن:"+arrayList.get(position).getTypeOfResidence());
-        subtitleText3.setText("الدخل:"+arrayList.get(position).getTotalIncome());
+        subtitleText.setText(arrayList.get(position).getPhoneNumber());
+        subtitleText1.setText("رقم الضمان الإجتماعي: "+SecNum);
+        subtitleText2.setText("نوع السكن: "+arrayList.get(position).getTypeOfResidence());
+        subtitleText3.setText("الدخل: "+arrayList.get(position).getTotalIncome());
 
         return rowView;
 

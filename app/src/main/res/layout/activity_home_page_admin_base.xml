@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/aa"
     tools:context=".homePageAdminBase">
 
     <Button
@@ -38,10 +39,10 @@
     <RelativeLayout
         android:id="@+id/relativeLayout2"
         android:layout_width="411dp"
-        android:layout_height="205dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_height="203dp"
+
+
+        android:layout_marginTop="364dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homepagetext">
 
@@ -97,7 +98,8 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="9dp"
             android:gravity="center"
-            android:text="نسبة حسابات المستفيدين المعلقة" />
+            android:text="نسبة حسابات المستفيدين المعلقة"
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/textView17"
@@ -110,7 +112,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="60dp"
             android:gravity="center"
-            android:text="نسبة حسابات المستفيدين المبلغ عنها" />
+            android:text="نسبة حسابات المستفيدين المبلغ عنها"
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/textView18"
@@ -123,7 +126,8 @@
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp"
             android:gravity="center"
-            android:text="نسبة حسابات المتبرعين المبلغ عنها" />
+            android:text="متوسط تقييم حسابات المتبرعين"
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/textProgres"
@@ -140,7 +144,8 @@
             android:layout_marginTop="29dp"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="30dp" />
+            android:layout_marginBottom="30dp"
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/TextProgres2"
@@ -152,7 +157,8 @@
             android:layout_marginTop="7dp"
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
-            android:text="tttt" />
+            android:text="tttt"
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/textProgres2"
@@ -164,122 +170,83 @@
             android:layout_marginTop="80dp"
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
-            android:text="tttt" />
+            android:text="tttt"
+            android:textColor="#FFFFFF" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="416dp"
-        android:layout_height="361dp"
-        android:background="@color/topBar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        android:layout_width="165dp"
+        android:layout_height="158dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/rounded_corner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
-        app:layout_constraintVertical_bias="0.184">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
-            android:id="@+id/up1"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="254dp"
-            android:background="@color/white">
+            android:layout_marginEnd="59dp"
+            android:layout_marginRight="59dp"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/add" />
 
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="9dp"
-                android:layout_marginEnd="319dp"
-                android:layout_marginRight="319dp"
-                android:background="@drawable/add" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button6"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginBottom="11dp"
+            android:gravity="center"
+            android:text="ادارة حسابات المستفيدين المعلقة"
+            android:textSize="20sp" />
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginEnd="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="39dp"
-                android:text="حسابات المستفيدين المعلقة"
-                android:textSize="24sp" />
+    <RelativeLayout
+        android:layout_width="165dp"
+        android:layout_height="158dp"
+        android:layout_marginStart="216dp"
+        android:layout_marginLeft="216dp"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/rounded_corner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
+        <Button
+            android:id="@+id/button66"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="151dp"
-            android:background="@color/white">
+            android:layout_marginEnd="55dp"
+            android:layout_marginRight="55dp"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/report" />
 
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="287dp"
-                android:layout_height="48dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="119dp"
-                android:layout_marginRight="119dp"
-                android:text="حسابات المستفيدين المبلغ عنها"
-                android:textSize="24sp" />
-
-            <Button
-                android:id="@+id/button7"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="315dp"
-                android:layout_marginLeft="315dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/report" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="48dp"
-            android:background="@color/white">
-
-            <TextView
-                android:id="@+id/textView20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="19dp"
-                android:layout_marginRight="19dp"
-                android:layout_marginBottom="39dp"
-                android:text="حسابات المتبرعين المبلغ عنها"
-                android:textSize="24sp" />
-
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="9dp"
-                android:layout_marginEnd="318dp"
-                android:layout_marginRight="318dp"
-                android:background="@drawable/report" />
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button66"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="11dp"
+            android:gravity="center"
+            android:text=" حسابات المستفيدين المبلغ عنها"
+            android:textSize="20sp" />
     </RelativeLayout>
 
     <Button
