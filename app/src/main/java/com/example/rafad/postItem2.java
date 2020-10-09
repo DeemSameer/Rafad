@@ -48,7 +48,7 @@ public class postItem2 extends AppCompatActivity  {
 
     public static final String TAG = "TAG";
     FirebaseAuth fAuth;
-    Button changePostImage,share;
+    Button changePostImage,share,cancel;
     ImageView postImage;
     StorageReference storageReference;
     EditText descerption;
@@ -81,7 +81,7 @@ public class postItem2 extends AppCompatActivity  {
         descerption=findViewById(R.id.descrption);
         fStore=FirebaseFirestore.getInstance();
         share = findViewById(R.id.button3);
-
+        cancel = findViewById(R.id.button4);
 
 
 
@@ -92,12 +92,16 @@ public class postItem2 extends AppCompatActivity  {
                 // I want to open gallery
                 Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(openGalleryIntent, 1000);
-
-
-
             }
         });
 
+        cancel.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                startActivity(new Intent(postItem2.this, homepageDonator.class));
+                finish();
+
+            }
+            });
         share.setOnClickListener(new View.OnClickListener() {
 
 
@@ -119,7 +123,7 @@ public class postItem2 extends AppCompatActivity  {
                                 }
                                 rg3 = (RadioButton) findViewById(R.id.radio_tools);
                                 if ((rg3.isChecked() )){
-                                    cat ="ادوات";
+                                    cat ="اثاث";
                                 }
                                 rg4 = (RadioButton) findViewById(R.id.radio_other);
                                 if ((rg4.isChecked() )){
