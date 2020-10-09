@@ -29,9 +29,10 @@ public class homepageDonator extends AppCompatActivity {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent i = new Intent(homepageDonator.this, postitem.class);
-                startActivity(new Intent(homepageDonator.this, postItem2.class));
+                //Intent i = new Intent(homepageDonator.this, postItem2.class);
+                startActivity(new Intent(homepageDonator.this, post3.class));
                 finish();
+
             }
         });
         profile1.setOnClickListener(new View.OnClickListener() {

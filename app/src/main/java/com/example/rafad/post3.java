@@ -13,22 +13,17 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -36,15 +31,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
-//import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
-import java.lang.ref.Reference;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class postItem2 extends AppCompatActivity  {
+public class post3 extends AppCompatActivity {
 
     public static final String TAG = "TAG";
     FirebaseAuth fAuth;
@@ -68,11 +59,7 @@ public class postItem2 extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_item2);
-
-
-
-
+        setContentView(R.layout.activity_post3);
 
         fAuth = FirebaseAuth.getInstance();
         postImage=findViewById(R.id.postImage);
@@ -102,7 +89,7 @@ public class postItem2 extends AppCompatActivity  {
 
 
             public void onClick(View view) {
-                new AlertDialog.Builder(postItem2.this)
+                new AlertDialog.Builder(post3.this)
 
                         .setTitle("نشر عنصر")
                         .setMessage("هل انت متأكد من نشر العنصر؟")
@@ -172,12 +159,12 @@ public class postItem2 extends AppCompatActivity  {
                                     }
                                 });
 
-                                startActivity(new Intent(postItem2.this, homepageDonator.class));
+                                startActivity(new Intent(post3.this, homepageDonator.class));
                                 finish();
 
 
 
-                                Toast.makeText(postItem2.this, "لقد تم النشر بنجاح", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(post3.this, "لقد تم النشر بنجاح", Toast.LENGTH_SHORT).show();
 
 
                                 //dialog1.dismiss();
@@ -189,34 +176,8 @@ public class postItem2 extends AppCompatActivity  {
 
             }
         });
+
     }
-/*
-
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.radio_clothes:
-                if (checked)
-                    cat = ((RadioButton)findViewById(radio_clothes.getCheckedRadioButtonId()))
-                            .getText().toString();
-                    break;
-            case R.id.radio_device:
-                if (checked)
-                    // Ninjas rule
-                    break;
-            case R.id.radio_other:
-                if (checked)
-                    // Ninjas rule
-                    break;
-            case R.id.radio_tools:
-                if (checked)
-                    // Ninjas rule
-                    break;
-        }
-    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @androidx.annotation.Nullable Intent data){
@@ -234,12 +195,13 @@ public class postItem2 extends AppCompatActivity  {
         }
     }
 
+
     private void uploadImageToFirebase(Uri imageUri) {
         //to upload image to firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         String newID = database.getReference("item").push().getKey();
         idImage="items/"+newID+"post.jpg";
-        final StorageReference fileRef = storageReference.child(idImage+"post.jpg");
+        final StorageReference fileRef = storageReference.child(idImage);
         fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -254,7 +216,7 @@ public class postItem2 extends AppCompatActivity  {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(postItem2.this, " فشل تغيير الصورة ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(post3.this, " فشل تغيير الصورة ", Toast.LENGTH_SHORT).show();
             }
         });
 
