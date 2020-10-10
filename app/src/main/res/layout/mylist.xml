@@ -57,7 +57,7 @@
                     android:layout_marginLeft="263dp"
                     android:layout_marginRight="50sp"
                     android:layout_marginBottom="13dp"
-                    android:background="@drawable/default_outlined_button_style"
+                    android:background="@drawable/new_button"
                     android:text="رفض"
                     android:textColor="#397A96"
                     android:textSize="18sp" />
@@ -73,7 +73,7 @@
                     android:layout_marginStart="324dp"
                     android:layout_marginLeft="324dp"
                     android:layout_marginBottom="13dp"
-                    android:background="#397A96"
+                    android:background="@drawable/new_button2"
                     android:gravity="center"
                     android:text="قبول"
                     android:textColor="#FFFFFF"
