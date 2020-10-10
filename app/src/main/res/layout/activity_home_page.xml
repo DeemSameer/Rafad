@@ -7,6 +7,18 @@
     android:background="@drawable/homepage"
     tools:context=".homePage">
 
+    <ListView
+        android:id="@+id/postedlistHomePage"
+        android:layout_width="338dp"
+        android:layout_height="532dp"
+        android:layout_marginBottom="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.794" />
+
     <Button
         android:id="@+id/logoutButton"
         android:layout_width="22dp"

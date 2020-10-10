@@ -6,33 +6,31 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firestore.v1.Value;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class mainProfile extends AppCompatActivity {
     Button back , homebutton, editbutton2;
@@ -43,6 +41,12 @@ public class mainProfile extends AppCompatActivity {
     ImageView profileImageView;
     TextView fullName , email , phone;
 
+
+    //////// for view list of items
+    List<postinfo> arrayItem=new ArrayList<>();
+    public static final String TAG = "TAG";
+    ListView listView;
+    //////// above is for view list of items
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,16 @@ public class mainProfile extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
+
+
+
+
+
+        //////// for view list of items
+        listView=(ListView)findViewById(R.id.postedlist);
+        //////// above is for view list of items
+
+
 
 
         StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"profile.jpg");
@@ -124,6 +138,35 @@ public class mainProfile extends AppCompatActivity {
         });
 
 
+
+        //////////////////// for list of items second try////////////////////////
+
+
+       // FirebaseFirestore db = FirebaseFirestore.getInstance();
+        fStore.collection("item")
+                    .whereEqualTo("User id", userId)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title") ));
+                                    Log.d(TAG, "SIZE item list => " + arrayItem.size());
+                                }
+                                HistoryItemAdapter adapter = new HistoryItemAdapter(mainProfile.this, arrayItem);
+                                listView = (ListView) findViewById(R.id.postedlist);
+                                listView.setAdapter(adapter);
+                            } else {
+                                Log.d(TAG, "Error getting documents: ", task.getException());
+                            }
+                        }
+                    });
+
+
+
+        //////////////////// for list of items second try////////////////////////
 
     }
 }
