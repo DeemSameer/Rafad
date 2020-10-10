@@ -34,8 +34,8 @@
 
     <TextView
         android:id="@+id/homepagetext"
-        android:layout_width="84dp"
-        android:layout_height="19dp"
+        android:layout_width="96dp"
+        android:layout_height="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="2dp"
@@ -55,9 +55,21 @@
         android:background="@drawable/userr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.926"
+        app:layout_constraintHorizontal_bias="0.783"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/ic_baseline_home_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.984" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

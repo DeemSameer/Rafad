@@ -52,9 +52,8 @@ public class benEditProfile extends AppCompatActivity {
         cancelBtn1 =findViewById(R.id.c1);
         changeBenPass =findViewById(R.id.changeBenPass);
 
-
-        user = fAuth.getCurrentUser();
         fAuth = FirebaseAuth.getInstance();
+        user = fAuth.getCurrentUser();
         fstore = FirebaseFirestore.getInstance();
         storageRefrence = FirebaseStorage.getInstance().getReference();
 
@@ -90,6 +89,18 @@ public class benEditProfile extends AppCompatActivity {
 
 
 
+        //pring data from mainProfile activity
+        Intent data1 = getIntent();
+        final String fullName1 = data1.getStringExtra("fullName");
+        final String email1 = data1.getStringExtra("email");
+        final String phone1 = data1.getStringExtra("phone");
+
+        profileEmailBEn.setText(email1);
+        profileFullNameBEn.setText(fullName1);
+        profilePhoneNumberBEn.setText(phone1);
+
+
+
 
         saveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,21 +132,21 @@ public class benEditProfile extends AppCompatActivity {
 
 
                 //extract the email to change it
-                final String email2 = profileEmailBEn.getText().toString();
-                user.updateEmail(email2).addOnSuccessListener(new OnSuccessListener<Void>() {
+                final String email22 = profileEmailBEn.getText().toString();
+                user.updateEmail(email22).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         DocumentReference docRef = fstore.collection("beneficiaries").document(user.getUid());
                         //put new data to firebase
                         Map<String,Object> edited = new HashMap<>();
-                        edited.put("email", email2);
+                        edited.put("email", email22);
                         edited.put("userName", profileFullNameBEn.getText().toString());
                         edited.put("phoneNumber", profilePhoneNumberBEn.getText().toString());
                         docRef.update(edited).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
 
-                                if(profileFullNameBEn.getText().toString().equals(fullName) && profileEmailBEn.getText().toString().equals(email) && profilePhoneNumberBEn.getText().toString().equals(phone)){
+                                if(profileFullNameBEn.getText().toString().equals(fullName1) && profileEmailBEn.getText().toString().equals(email1) && profilePhoneNumberBEn.getText().toString().equals(phone1)){
                                     startActivity(new Intent(benEditProfile.this, BenMainProfile.class));
                                     finish();
                                 }
@@ -147,7 +158,7 @@ public class benEditProfile extends AppCompatActivity {
                             }
                         });
 
-                        if (!email.equals(email2)){
+                        if (!email1.equals(email22)){
                             fAuth.getCurrentUser().sendEmailVerification();
 
                             Toast.makeText(benEditProfile.this, " تم تحديث البريد الإلكتروني بنجاح، يرجى اتباع الرابط المرسل لتفعيله ", Toast.LENGTH_LONG).show();

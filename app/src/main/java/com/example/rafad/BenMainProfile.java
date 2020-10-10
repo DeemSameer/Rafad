@@ -78,7 +78,7 @@ public class BenMainProfile extends AppCompatActivity {
         editBen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(),donProfile.class);
+                Intent i = new Intent(view.getContext(),benEditProfile.class);
                 //pass the data
                 i.putExtra("fullName",benName.getText().toString());
                 i.putExtra("email",benEmail.getText().toString());

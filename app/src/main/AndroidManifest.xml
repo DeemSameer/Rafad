@@ -24,6 +24,9 @@
         <activity android:name=".MainChat" />
         <activity android:name=".donProfile" />
         <activity android:name=".homePage" />
+        <activity android:name=".BenMainProfile"/>
+        <activity android:name=".benEditProfile"/>
+        <activity android:name=".benChangePass"/>
         <activity android:name=".forgetp" />
         <activity android:name=".signupDon" />
         <activity android:name=".signupBen" />
@@ -31,6 +34,7 @@
         <activity android:name=".mainProfile" />
         <activity android:name=".signUpBase" />
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

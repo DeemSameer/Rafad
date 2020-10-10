@@ -44,9 +44,9 @@ public class benChangePass extends AppCompatActivity {
         benE2 =findViewById(R.id.e2Ben);
 
         fStore= FirebaseFirestore.getInstance();
-        userId = fAuth.getCurrentUser().getUid();
-        fAuth = FirebaseAuth.getInstance();
 
+        fAuth = FirebaseAuth.getInstance();
+        userId = fAuth.getCurrentUser().getUid();
 
 
         backToProfile.setOnClickListener(new View.OnClickListener() {
