@@ -107,7 +107,7 @@
 
     <TextView
         android:id="@+id/benName"
-        android:layout_width="196dp"
+        android:layout_width="200dp"
         android:layout_height="23dp"
         android:gravity="center_horizontal"
         android:textAlignment="center"
@@ -117,15 +117,15 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.299"
-        tools:visibility="visible"/>
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/benEmail"
-        android:layout_width="197dp"
+        android:layout_width="200dp"
         android:layout_height="20dp"
         android:gravity="center_horizontal"
         android:textAlignment="center"
