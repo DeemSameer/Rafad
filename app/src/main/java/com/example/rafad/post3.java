@@ -39,7 +39,7 @@ public class post3 extends AppCompatActivity {
 
     public static final String TAG = "TAG";
     FirebaseAuth fAuth;
-    Button changePostImage,share;
+    Button changePostImage,share,cancel;
     ImageView postImage;
     StorageReference storageReference;
     EditText descerption;
@@ -55,6 +55,9 @@ public class post3 extends AppCompatActivity {
     RadioButton rg2;
     RadioButton rg3;
     RadioButton rg4;
+    String des;
+    String tit;
+    DocumentReference documentrefReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,7 @@ public class post3 extends AppCompatActivity {
         descerption=findViewById(R.id.descrption);
         fStore=FirebaseFirestore.getInstance();
         share = findViewById(R.id.button3);
+        cancel = findViewById(R.id.button4);
 
 
 
@@ -79,61 +83,79 @@ public class post3 extends AppCompatActivity {
                 // I want to open gallery
                 Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(openGalleryIntent, 1000);
+            }
+        });
 
-
+        cancel.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                startActivity(new Intent(post3.this, homepageDonator.class));
+                finish();
 
             }
         });
+
 
         share.setOnClickListener(new View.OnClickListener() {
 
 
             public void onClick(View view) {
-                new AlertDialog.Builder(post3.this)
 
+                rg1 = (RadioButton) findViewById(R.id.radio_device);
+                if ((rg1.isChecked() )){
+                    cat ="اجهزه";
+                }
+                rg2 = (RadioButton) findViewById(R.id.radio_clothes);
+                if ((rg2.isChecked() )){
+                    cat ="ملابس";
+                }
+                rg3 = (RadioButton) findViewById(R.id.radio_tools);
+                if ((rg3.isChecked() )){
+                    cat ="اثاث";
+                }
+                rg4 = (RadioButton) findViewById(R.id.radio_other);
+                if ((rg4.isChecked() )){
+                    cat ="غير ذالك";
+                }
+                if (imageUri != null)
+                    uploadImageToFirebase(imageUri);
+                else
+                {changePostImage.setError("الرجاء رفع الصوره");
+                    return;}
+                des = descerption.getText().toString();
+                EditText title=findViewById(R.id.title);
+                tit = descerption.getText().toString();
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                itemID = database.getReference("item").push().getKey();
+                documentrefReference = fStore.collection("item").document(itemID);
+                //UID
+                UID=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                //postRef=idImage;
+                if(TextUtils.isEmpty(tit)){
+                    title.setError(" العنوان مطلوب ");
+                    return;
+                }
+                if(tit.length() >20){
+                    title.setError(" العنوان يجب ان يكون اقل من 20 حرف ");
+                    return;
+                }
+                if(TextUtils.isEmpty(des)){
+                    descerption.setError(" الوصف مطلوب ");
+                    return;
+                }
+                if(des.length() >200){
+                    descerption.setError(" الوصف يجب ان يكون اقل من 200 حرف ");
+                    return;
+                }
+                if(cat ==null){
+                    rg1.setError("  الرجاء اختيار الفئة ");
+                    return;
+                }
+                new AlertDialog.Builder(post3.this)
                         .setTitle("نشر عنصر")
                         .setMessage("هل انت متأكد من نشر العنصر؟")
                         .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                rg1 = (RadioButton) findViewById(R.id.radio_device);
-                                if ((rg1.isChecked() )){
-                                    cat ="اجهزه";
-                                }
-                                rg2 = (RadioButton) findViewById(R.id.radio_clothes);
-                                if ((rg2.isChecked() )){
-                                    cat ="ملابس";
-                                }
-                                rg3 = (RadioButton) findViewById(R.id.radio_tools);
-                                if ((rg3.isChecked() )){
-                                    cat ="ادوات";
-                                }
-                                rg4 = (RadioButton) findViewById(R.id.radio_other);
-                                if ((rg4.isChecked() )){
-                                    cat ="غير ذالك";
-                                }
-                                if (imageUri != null)
-                                    uploadImageToFirebase(imageUri);
-                                else
-                                {descerption.setError("الرجاء رفع الصوره");
-                                    return;}
-                                String des = descerption.getText().toString();
-
-                                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                itemID = database.getReference("item").push().getKey();
-                                DocumentReference documentrefReference = fStore.collection("item").document(itemID);
-                                //UID
-                                String UID=FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                //postRef=idImage;
-
-                                if(TextUtils.isEmpty(des)){
-                                    descerption.setError(" الوصف مطلوب ");
-                                    return;
-                                }
-                                if(des.length() >200){
-                                    descerption.setError(" الوصف يجب ان يكون اقل من 200 حرف ");
-                                    return;
-                                }
 
 
 
@@ -142,6 +164,7 @@ public class post3 extends AppCompatActivity {
                                 Map<String, Object> post = new HashMap<>();
 
                                 post.put("Image", idImage);
+                                post.put("Title", tit);
                                 post.put("Description", des);
                                 post.put("Catogery", cat);
                                 post.put("User id", UID);
@@ -176,8 +199,8 @@ public class post3 extends AppCompatActivity {
 
             }
         });
-
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @androidx.annotation.Nullable Intent data){
@@ -194,7 +217,6 @@ public class post3 extends AppCompatActivity {
             }
         }
     }
-
 
     private void uploadImageToFirebase(Uri imageUri) {
         //to upload image to firebase
@@ -219,9 +241,6 @@ public class post3 extends AppCompatActivity {
                 Toast.makeText(post3.this, " فشل تغيير الصورة ", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
 
     }
 }

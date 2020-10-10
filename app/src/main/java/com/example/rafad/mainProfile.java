@@ -152,7 +152,7 @@ public class mainProfile extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Log.d(TAG, document.getId() + " => " + document.getData());
-                                    arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery") ));
+                                    arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title") ));
                                     Log.d(TAG, "SIZE item list => " + arrayItem.size());
                                 }
                                 HistoryItemAdapter adapter = new HistoryItemAdapter(mainProfile.this, arrayItem);
