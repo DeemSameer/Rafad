@@ -30,7 +30,7 @@ public class homepageDonator extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Intent i = new Intent(homepageDonator.this, postitem.class);
-                startActivity(new Intent(homepageDonator.this, post33.class));
+                startActivity(new Intent(homepageDonator.this, post3.class));
                 finish();
             }
         });
