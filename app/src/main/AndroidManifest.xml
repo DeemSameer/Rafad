@@ -12,8 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".post3"></activity>
-        <activity android:name=".HistoryItemAdapter"
+        <activity android:name=".ListViewAdaptorBen"
+            tools:ignore="Instantiatable" />
+        <activity android:name=".post3" />
+        <activity
+            android:name=".HistoryItemAdapter"
             tools:ignore="Instantiatable" />
         <activity android:name=".changePasswordDon" />
         <activity android:name=".homepageDonator" />

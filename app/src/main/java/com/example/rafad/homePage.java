@@ -79,7 +79,7 @@ public class homePage extends AppCompatActivity {
                                 arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title") ));
                                 Log.d(TAG, "SIZE item list => " + arrayItem.size());
                             }
-                            HistoryItemAdapter adapter = new HistoryItemAdapter(homePage.this, arrayItem);
+                            ListViewAdaptorBen adapter = new ListViewAdaptorBen(homePage.this, arrayItem);
                             listView = (ListView) findViewById(R.id.postedlistHomePage);
                             listView.setAdapter(adapter);
                         } else {
