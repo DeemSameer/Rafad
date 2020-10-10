@@ -123,7 +123,7 @@ public class post3 extends AppCompatActivity {
                     return;}
                 des = descerption.getText().toString();
                 EditText title=findViewById(R.id.title);
-                tit = descerption.getText().toString();
+                tit = title.getText().toString();
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 itemID = database.getReference("item").push().getKey();
                 documentrefReference = fStore.collection("item").document(itemID);
@@ -134,7 +134,7 @@ public class post3 extends AppCompatActivity {
                     title.setError(" العنوان مطلوب ");
                     return;
                 }
-                if(tit.length() >20){
+                if(tit.length() >=20){
                     title.setError(" العنوان يجب ان يكون اقل من 20 حرف ");
                     return;
                 }
@@ -142,7 +142,7 @@ public class post3 extends AppCompatActivity {
                     descerption.setError(" الوصف مطلوب ");
                     return;
                 }
-                if(des.length() >200){
+                if(des.length() >=200){
                     descerption.setError(" الوصف يجب ان يكون اقل من 200 حرف ");
                     return;
                 }
