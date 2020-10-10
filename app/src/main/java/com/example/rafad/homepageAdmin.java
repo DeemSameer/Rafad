@@ -24,6 +24,7 @@ public class homepageAdmin extends AppCompatActivity {
     Button logout;
     FirebaseAuth fAuth;
     List<benDataModel> arrayList=new ArrayList<>();
+    static int size;
     public static final String TAG = "TAG";
     ListView list;
 
@@ -35,16 +36,7 @@ public class homepageAdmin extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
 
 
-        logout = findViewById(R.id.logoutButton);
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fAuth.signOut();
-                startActivity(new Intent(homepageAdmin.this, login.class));
-                finish();
-            }
-        });
 /////////////////////////////////////////////////DB////////////////////////////////////
         FirebaseFirestore db=FirebaseFirestore.getInstance();
         db.collection("beneficiaries")
@@ -68,12 +60,19 @@ public class homepageAdmin extends AppCompatActivity {
                         }
                     }
                 });
+        Button button4 = (Button) findViewById(R.id.but);
+
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homepageAdmin.this, homePageAdminBase.class));
+                finish();
+            }
+        });
+
+
         ////////////////////////////////////////////////////////////////
-        /*
-        MyListAdapter adapter=new MyListAdapter(this, arrayList);
-        list=(ListView)findViewById(R.id.list);
-        list.setAdapter(adapter);
-        
-         */
+
     }
+
 }

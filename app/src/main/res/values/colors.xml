@@ -5,13 +5,14 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="statusBar"> #075E54</color>
     <color name="blueDark"> #128C7E</color>
-    <color name="topBar"> #128C7E</color>
+    <color name="topBar"> #C3FFDF</color>
     <color name="greenLight"> #25D366</color>
     <color name="blueLight"> #34B7F1</color>
     <color name="chatBgColor"> #DCF8C6</color>
     <color name="black"> #000</color>
     <color name="white"> #fff</color>
     <color name="buttonBG">#397A96</color>
+    <color name="base">#397A96</color>
 
 
 

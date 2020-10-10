@@ -1,0 +1,19 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"
+    >
+
+
+
+    // The desired corner radius. reduce it to keep it less rounded
+    <corners
+        android:color="#ffff"/>
+
+    <gradient
+        android:angle="45"
+        android:startColor="@color/blueLight"
+        android:endColor="@color/blueLight"
+
+
+        />
+
+</shape>

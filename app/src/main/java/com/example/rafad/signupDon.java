@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ArrayAdapter;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -20,6 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -33,6 +35,7 @@ public class signupDon extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
+    String[]CountryList={"المدينة المنورة","مكة المكرمة","الرياض","القصيم","الشرقية","عسير","تبوك","الجوف","الباحة","نجران","جازان","الحدود الشمالية","حائل"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,9 @@ public class signupDon extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
+        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line, CountryList);
+        final MaterialBetterSpinner betterSpinner=(MaterialBetterSpinner) findViewById(R.id.loca);
+        betterSpinner.setAdapter(arrayAdapter);
 
         Button button4 = (Button) findViewById(R.id.but3);
 
@@ -78,6 +84,7 @@ public class signupDon extends AppCompatActivity {
                 final String Password = SignUpPassword1.getText().toString();
                 final String Password2 = SignUpPassword2.getText().toString();
                 final String Phone = signUpPhone.getText().toString();
+                final String location=betterSpinner.getText().toString();
                 final String userName= UserName.getText().toString();
                 final String type= "Donator";
 

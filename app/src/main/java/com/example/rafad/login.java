@@ -101,6 +101,8 @@ public class login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
 
+
+
                             if(fAuth.getCurrentUser().isEmailVerified()){
                                 //UID
                                 String UID=FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -108,7 +110,7 @@ public class login extends AppCompatActivity {
                                 FirebaseFirestore db=FirebaseFirestore.getInstance();
                                 //1
                                 CollectionReference Admins = db.collection("admins");
-                                DocumentReference docRef = Admins.document(UID);
+                                final DocumentReference docRef = Admins.document(UID);
                                 docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                     @Override
                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -116,7 +118,7 @@ public class login extends AppCompatActivity {
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
                                                 Toast.makeText(login.this, " تم تسجيل دخولك بنجاح! ", Toast.LENGTH_LONG).show();
-                                                Intent i = new Intent(login.this, homepageAdmin.class);
+                                                Intent i = new Intent(login.this, homePageAdminBase.class);
                                                 startActivity(i);
                                                 finish();
                                             }
@@ -144,18 +146,36 @@ public class login extends AppCompatActivity {
                                 //End donator Checking - - - - - - - - - - -
                                 //Third collection - - - - - beneficiaries
                                 CollectionReference beneficiaries = db.collection("beneficiaries");
-                                DocumentReference docRefB = beneficiaries.document(UID);
+                                final DocumentReference docRefB = beneficiaries.document(UID);
                                 docRefB.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                     @Override
                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                         if (task.isSuccessful()) {
                                             DocumentSnapshot document = task.getResult();
+                                            Log.d(TAG, "iNTO TASK ");
+
                                             if (document.exists()) {
-                                                Toast.makeText(login.this, " تم تسجيل دخولك بنجاح! ", Toast.LENGTH_LONG).show();
-                                                Intent i = new Intent(login.this, homePage.class);
-                                                startActivity(i);
-                                                finish();
+                                                if (((String)document.get("flag")).equals("Admin")){
+                                                    Toast.makeText(login.this,"حسابك معلق,الجاء انتظار الموافقة",Toast.LENGTH_SHORT).show();
+                                                    return;
+
+                                                }
+                                                else if (((String)document.get("flag")).equals("Declined")){
+                                                    docRefB.delete();
+                                                    fAuth.getCurrentUser().delete();
+                                                    Log.d(TAG, "DELETED ");
+                                                    Toast.makeText(login.this, " لم يتم قبول الحساب يمكنك محاولة التسجيل مرة اخرى ", Toast.LENGTH_LONG).show();
+                                                    finish();
+                                                }
+                                                else if(((String)document.get("flag")).equals("Accepted")){
+                                                    Toast.makeText(login.this,"تم تسجيل الدخول بنجاح",Toast.LENGTH_SHORT).show();
+                                                    Intent i = new Intent(login.this, homePage.class);
+                                                    startActivity(i);
+                                                    finish();
+                                                }
                                             }
+
+
                                         }
                                     }
                                 });
@@ -244,17 +264,24 @@ public class login extends AppCompatActivity {
                 //End donator Checking - - - - - - - - - - -
                 //Third collection - - - - - beneficiaries
                 CollectionReference beneficiaries = db.collection("beneficiaries");
-                DocumentReference docRefB = beneficiaries.document(UID);
-                docRefD.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                final DocumentReference docRefB = beneficiaries.document(UID);
+                docRefB.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                Intent i = new Intent(login.this, homePage.class);
-                                startActivity(i);
-                                finish();
+                                if (((String)document.get("flag")).equals("Admin")){
+                                    Toast.makeText(login.this,"حسابك معلق,الجاء انتظار الموافقة",Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                                else{
+                                    Intent i = new Intent(login.this, homePage.class);
+                                    startActivity(i);
+                                    finish();
+                                }
                             }
+
                         }
                     }
                 });
