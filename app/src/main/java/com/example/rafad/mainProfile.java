@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class mainProfile extends AppCompatActivity {
-    Button back , homebutton, editbutton2;
+    Button back , homebutton, editbutton2,post;
     StorageReference storageReference;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -66,7 +66,7 @@ public class mainProfile extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
-
+post = findViewById(R.id.postItem);
 
 
 
@@ -108,7 +108,14 @@ public class mainProfile extends AppCompatActivity {
             }
         });
 
-
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Intent i = new Intent(homepageDonator.this, postitem.class);
+                startActivity(new Intent(mainProfile.this, post3.class));
+                finish();
+            }
+        });
 
 
         homebutton.setOnClickListener(new View.OnClickListener() {
