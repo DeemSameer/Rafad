@@ -33,6 +33,8 @@
         <activity android:name=".login" />
         <activity android:name=".mainProfile" />
         <activity android:name=".signUpBase" />
+        <activity android:name=".homePageAdminBase" />
+        <activity android:name=".adminMainProfile" />
         <activity android:name=".MainActivity">
 
             <intent-filter>

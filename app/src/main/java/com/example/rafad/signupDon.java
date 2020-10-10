@@ -137,7 +137,7 @@ public class signupDon extends AppCompatActivity {
                                     //user.put("type",type);
                                     user.put("email",email);
 
-                                    user.put("items",Arrays.asList("array for items"));
+                                   // user.put("items",Arrays.asList("array for items"));
                                     //check the add if it's success or not
                                     documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override

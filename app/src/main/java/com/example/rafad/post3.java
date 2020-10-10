@@ -170,9 +170,9 @@ public class post3 extends AppCompatActivity {
                                 post.put("User id", UID);
 
                                 //assign itemID to the person how post it
-                                postRef=fStore.collection("item").document(itemID).getPath();
+                              /*  postRef=fStore.collection("item").document(itemID).getPath();
                                 DocumentReference washingtonRef = fStore.collection("donators").document(UID);
-                                washingtonRef.update("items", FieldValue.arrayUnion(postRef));
+                                washingtonRef.update("items", FieldValue.arrayUnion(postRef));*/
 
                                 //check the add if it's success or not
                                 documentrefReference.set(post).addOnSuccessListener(new OnSuccessListener<Void>() {
