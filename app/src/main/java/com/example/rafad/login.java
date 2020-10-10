@@ -217,79 +217,8 @@ public class login extends AppCompatActivity {
 
             });
     }
-    @SuppressLint("MissingSuperCall")
-    @Override
-    protected void onStart() {
-        super.onStart();
-        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        //Check if the user already logged in  --> login automatically - Saving current user-
-        if (firebaseUser!=null) {
-            if(fAuth.getCurrentUser().isEmailVerified()) {
-                //UID
-                String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                //First collection - - - - - Admin
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                CollectionReference Admins = db.collection("admins");
-                DocumentReference docRef = Admins.document(UID);
-                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                Intent i = new Intent(login.this, homepageAdmin.class);
-                                startActivity(i);
-                                finish();
-                            }
-                        }
-                    }
-                });
-                //End Admin Checking - - - - - - - - - - -
-                //Second collection - - - - - donator
-                CollectionReference donators = db.collection("donators");
-                DocumentReference docRefD = donators.document(UID);
-                docRefD.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                Intent i = new Intent(login.this, homepageDonator.class);
-                                startActivity(i);
-                                finish();
-                            }
-                        }
-                    }
-                });
-                //End donator Checking - - - - - - - - - - -
-                //Third collection - - - - - beneficiaries
-                CollectionReference beneficiaries = db.collection("beneficiaries");
-                final DocumentReference docRefB = beneficiaries.document(UID);
-                docRefB.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                if (((String)document.get("flag")).equals("Admin")){
-                                    Toast.makeText(login.this,"حسابك معلق,الجاء انتظار الموافقة",Toast.LENGTH_SHORT).show();
-                                    finish();
-                                }
-                                else{
-                                    Intent i = new Intent(login.this, homePage.class);
-                                    startActivity(i);
-                                    finish();
-                                }
-                            }
 
-                        }
-                    }
-                });
-                //End beneficiaries Checking - - - - - - - - - - -
-            }//end verfiying
-        }//end if not null
-        //finish checking
-    }
+
 
 
 
