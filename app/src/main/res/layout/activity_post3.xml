@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/postImage"
-        android:layout_width="248dp"
-        android:layout_height="204dp"
+        android:layout_width="219dp"
+        android:layout_height="161dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
         android:layout_marginEnd="1dp"
@@ -18,10 +18,9 @@
         android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.253"
+        app:layout_constraintVertical_bias="0.239"
         app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
         tools:ignore="VectorDrawableCompat" />
 
@@ -39,6 +38,8 @@
         android:ems="20"
         android:hint="الوصف"
         android:inputType="textPersonName"
+        android:textColor="#535050"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -51,10 +52,11 @@
         android:id="@+id/button3"
         android:layout_width="88dp"
         android:layout_height="48dp"
+        android:layout_marginTop="24dp"
         android:background="#00FFFFFF"
         android:text="نشر"
         android:textColor="#397A96"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,30 +69,31 @@
         android:id="@+id/title"
         android:layout_width="130dp"
         android:layout_height="59dp"
-        android:layout_marginTop="336dp"
+        android:layout_marginTop="332dp"
         android:ems="20"
         android:hint="العنوان"
-
-
         android:inputType="textPersonName"
+        android:textColor="#535050"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintHorizontal_bias="0.224"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/chosepicture"
-        android:layout_width="110dp"
+        android:layout_width="95dp"
         android:layout_height="48dp"
         android:layout_marginTop="388dp"
         android:layout_marginBottom="11dp"
+        android:background="@drawable/default_outlined_button_style"
 
         android:text="اختر صورة"
         android:textColor="#397A96"
         android:textColorHighlight="#397A96"
         android:textColorLink="#397A96"
-        android:textSize="20sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/descrption"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,20 +102,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
+
     <Button
         android:id="@+id/button4"
         android:layout_width="88dp"
         android:layout_height="48dp"
+        android:layout_marginTop="24dp"
         android:background="#00FFFFFF"
         android:text="إلغاء"
         android:textColor="#397A96"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/textViewcat"
@@ -120,12 +124,12 @@
         android:layout_height="35dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="496dp"
+        android:layout_marginTop="508dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="الفئه"
+        android:text="الفئة"
         android:textColor="#397A96"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.785"
         app:layout_constraintStart_toStartOf="@+id/descrption"
@@ -151,10 +155,10 @@
         android:layout_marginLeft="220dp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewcat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.715"
+        app:layout_constraintHorizontal_bias="0.61"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.494">
+        app:layout_constraintVertical_bias="0.595">
 
 
         <RadioButton
@@ -175,7 +179,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="اجهزه"
+            android:text="أجهزة"
             app:layout_constraintBottom_toBottomOf="@+id/textViewcat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.825"
@@ -200,7 +204,7 @@
             android:id="@+id/radio_tools"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="اثاث"
+            android:text="أثاث"
             app:layout_constraintBottom_toBottomOf="@+id/textViewcat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.571"
