@@ -20,7 +20,7 @@
         app:cardCornerRadius="8dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="399dp"
             android:layout_height="150dp"
             android:background="@drawable/card1"
             android:orientation="vertical"
@@ -32,7 +32,7 @@
 
                 <TextView
                     android:id="@+id/Username"
-                    android:layout_width="124dp"
+                    android:layout_width="116dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
@@ -53,8 +53,8 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="bottom"
-                    android:layout_marginStart="263dp"
-                    android:layout_marginLeft="263dp"
+                    android:layout_marginStart="252dp"
+                    android:layout_marginLeft="252dp"
                     android:layout_marginRight="50sp"
                     android:layout_marginBottom="13dp"
                     android:background="@drawable/new_button"
@@ -70,8 +70,8 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="bottom"
-                    android:layout_marginStart="324dp"
-                    android:layout_marginLeft="324dp"
+                    android:layout_marginStart="313dp"
+                    android:layout_marginLeft="313dp"
                     android:layout_marginBottom="13dp"
                     android:background="@drawable/new_button2"
                     android:gravity="center"
@@ -93,6 +93,19 @@
                     android:textColor="#FFFFFF" />
 
                 <TextView
+                    android:id="@+id/income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="58dp"
+                    android:layout_marginRight="58dp"
+                    android:text="TextView"
+                    android:textColor="#616668" />
+
+                <TextView
                     android:id="@+id/ssn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -100,8 +113,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="62dp"
-                    android:layout_marginEnd="42dp"
-                    android:layout_marginRight="42dp"
+                    android:layout_marginEnd="55dp"
+                    android:layout_marginRight="55dp"
                     android:text="TextView"
                     android:textColor="#616668" />
 
@@ -113,21 +126,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="33dp"
-                    android:layout_marginEnd="43dp"
-                    android:layout_marginRight="43dp"
-                    android:text="TextView"
-                    android:textColor="#616668" />
-
-                <TextView
-                    android:id="@+id/income"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginEnd="45dp"
-                    android:layout_marginRight="45dp"
+                    android:layout_marginEnd="56dp"
+                    android:layout_marginRight="56dp"
                     android:text="TextView"
                     android:textColor="#616668" />
             </RelativeLayout>
