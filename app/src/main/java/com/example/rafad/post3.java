@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -57,6 +58,7 @@ public class post3 extends AppCompatActivity {
     RadioButton rg4;
     String des;
     String tit;
+    TextView category;
     DocumentReference documentrefReference;
 
     @Override
@@ -72,6 +74,7 @@ public class post3 extends AppCompatActivity {
         fStore=FirebaseFirestore.getInstance();
         share = findViewById(R.id.button3);
         cancel = findViewById(R.id.button4);
+        category=findViewById(R.id.textViewcat);
 
 
 
@@ -102,7 +105,7 @@ public class post3 extends AppCompatActivity {
 
                 rg1 = (RadioButton) findViewById(R.id.radio_device);
                 if ((rg1.isChecked() )){
-                    cat ="اجهزه";
+                    cat ="أجهزة";
                 }
                 rg2 = (RadioButton) findViewById(R.id.radio_clothes);
                 if ((rg2.isChecked() )){
@@ -110,16 +113,16 @@ public class post3 extends AppCompatActivity {
                 }
                 rg3 = (RadioButton) findViewById(R.id.radio_tools);
                 if ((rg3.isChecked() )){
-                    cat ="اثاث";
+                    cat ="أثاث";
                 }
                 rg4 = (RadioButton) findViewById(R.id.radio_other);
                 if ((rg4.isChecked() )){
-                    cat ="غير ذالك";
+                    cat ="غير ذلك";
                 }
                 if (imageUri != null)
                     uploadImageToFirebase(imageUri);
                 else
-                {changePostImage.setError("الرجاء رفع الصوره");
+                {changePostImage.setError("الرجاء رفع الصورة");
                     return;}
                 des = descerption.getText().toString();
                 EditText title=findViewById(R.id.title);
@@ -135,24 +138,24 @@ public class post3 extends AppCompatActivity {
                     return;
                 }
                 if(tit.length() >=20){
-                    title.setError(" العنوان يجب ان يكون اقل من 20 حرف ");
+                    title.setError(" العنوان يجب أن يكون أقل من 20 حرف ");
                     return;
                 }
                 if(TextUtils.isEmpty(des)){
                     descerption.setError(" الوصف مطلوب ");
                     return;
                 }
-                if(des.length() >=200){
-                    descerption.setError(" الوصف يجب ان يكون اقل من 200 حرف ");
+                if(des.length() >=300){
+                    descerption.setError(" الوصف يجب أن يكون أقل من 300 حرف ");
                     return;
                 }
                 if(cat ==null){
-                    rg1.setError("  الرجاء اختيار الفئة ");
+                    category.setError("  الرجاء اختيار الفئة ");
                     return;
                 }
                 new AlertDialog.Builder(post3.this)
-                        .setTitle("نشر عنصر")
-                        .setMessage("هل انت متأكد من نشر العنصر؟")
+                        .setTitle("نشر ")
+                        .setMessage("هل أنت متأكد من النشر؟")
                         .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -187,12 +190,12 @@ public class post3 extends AppCompatActivity {
 
 
 
-                                Toast.makeText(post3.this, "لقد تم النشر بنجاح", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(post3.this, " تم النشر بنجاح", Toast.LENGTH_SHORT).show();
 
 
                                 //dialog1.dismiss();
                             }
-                        }).setNegativeButton("الغاء", null).show();
+                        }).setNegativeButton("إلغاء", null).show();
                 AlertDialog dialog1;
 
 

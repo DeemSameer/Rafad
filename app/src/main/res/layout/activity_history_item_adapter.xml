@@ -5,51 +5,59 @@
     android:layout_width="match_parent"
 
     tools:context=".HistoryItemAdapter"
-    android:layout_height="250dp"
+    android:layout_height="450dp"
     android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="188dp"
+        android:layout_height="319dp"
         android:layout_weight="1">
 
         <ImageView
             android:id="@+id/imageView10"
-            android:layout_width="292dp"
-            android:layout_height="210dp"
+            android:layout_width="400dp"
+            android:layout_height="303dp"
             android:layout_weight="1"
             android:contentDescription="@string/todo"
             android:padding="5dp"
             tools:src="@tools:sample/avatars" />
 
 
-        <LinearLayout
-            android:layout_width="304dp"
-            android:layout_height="155dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/tit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Title"
-                android:textSize="27sp" />
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="190dp"
 
-            <TextView
-                android:id="@+id/cat"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:text="Catogery"
-                android:textSize="18sp" />
+        android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/des"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:text="Descerption" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tit"
+            android:layout_width="385dp"
+            android:layout_height="44dp"
+            android:text="Title"
+            android:textAlignment="inherit"
+            android:textColor="#397A96"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/cat"
+            android:layout_width="385dp"
+            android:layout_height="49dp"
+            android:text="Catogery"
+            android:textAlignment="textStart"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/des"
+            android:layout_width="385dp"
+            android:layout_height="78dp"
+            android:text="Descerption"
+            android:textAlignment="gravity"
+            android:textColor="#CB0C0C0C" />
+
+
 
     </LinearLayout>
 

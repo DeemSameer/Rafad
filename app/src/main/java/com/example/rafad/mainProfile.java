@@ -77,7 +77,7 @@ post = findViewById(R.id.postItem);
 
 
 
-
+        //profile pic
         StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override

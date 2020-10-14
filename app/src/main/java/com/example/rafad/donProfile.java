@@ -94,7 +94,6 @@ public class donProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //extract what the user entr
-                //if (profileFullName.getText().toString().isEmpty() || profileEmail.getText().toString().isEmpty() || profilePhoneNumber.getText().toString().isEmpty()){
                 if (profileFullName.getText().toString().isEmpty()){
                     Toast.makeText(donProfile.this, " لا يمكن ترك الإسم فارغًا  ", Toast.LENGTH_LONG).show();
                     return;
@@ -119,7 +118,6 @@ public class donProfile extends AppCompatActivity {
                 }
 
 
-                //}
 
                 //extract the email to change it
                 final String email2 = profileEmail.getText().toString();

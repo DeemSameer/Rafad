@@ -132,7 +132,22 @@
         app:layout_constraintVertical_bias="0.788"
         tools:ignore="MissingClass" />
 
-    <Button android:background="#397A96" android:layout_height="45dp" android:layout_width="120dp" android:id="@+id/button2" app:layout_constraintVertical_bias="0.869" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:textSize="18sp" android:textColor="#FFFFFF" android:text="إنشاء حساب " android:typeface="normal" android:fontFamily="sans-serif"/>
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="110dp"
+        android:layout_height="45dp"
+        android:background="#397A96"
+        android:fontFamily="sans-serif"
+        android:text="إنشاء حساب "
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.869" />
 
     <TextView android:layout_height="24dp" android:layout_width="139dp" android:id="@+id/textView6" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" android:textSize="19sp" android:textColor="#397A96" android:text="إنشاء حساب كمتبرع" app:layout_constraintBottom_toTopOf="@+id/signUpEmail" android:layout_marginBottom="24dp"/>
 
