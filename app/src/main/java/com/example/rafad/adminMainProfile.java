@@ -145,7 +145,7 @@ public class adminMainProfile extends AppCompatActivity {
 
                                 else {*/
                                     Toast.makeText(adminMainProfile.this, " تم تحديث الملف الشخصي بنجاح ", Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(getApplicationContext(), homepageAdmin.class));
+                                    startActivity(new Intent(getApplicationContext(), homePageAdminBase.class));
                                     finish();  //}
                             }
                         });

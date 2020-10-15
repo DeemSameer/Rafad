@@ -53,7 +53,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.789"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.444" />
@@ -72,10 +72,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.854"
+        app:layout_constraintHorizontal_bias="0.96"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.348" />
+        app:layout_constraintVertical_bias="0.35000002" />
 
     <Button
         android:id="@+id/button4"
@@ -104,19 +104,23 @@
         app:layout_constraintHorizontal_bias="0.846"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671" />
+        app:layout_constraintVertical_bias="0.658" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="221dp"
-        android:layout_height="225dp"
-        android:layout_marginTop="528dp"
-        android:background="#00FFFFFF"
+    <EditText
+        android:id="@+id/descrption"
+        android:layout_width="317dp"
+        android:layout_height="95dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="الوصف : "
+        android:inputType="textMultiLine"
+        android:textColor="#397A96"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.33"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/prof" />
+        app:layout_constraintVertical_bias="0.566" />
 
     <RadioGroup
         android:id="@+id/cato"
@@ -127,7 +131,7 @@
         app:layout_constraintHorizontal_bias="0.841"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.851">
+        app:layout_constraintVertical_bias="0.873">
 
 
         <RadioButton
@@ -183,20 +187,16 @@
             app:layout_constraintVertical_bias="0.795" />
     </RadioGroup>
 
-    <EditText
-        android:id="@+id/descrption"
-        android:layout_width="317dp"
-        android:layout_height="95dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="الوصف : "
-        android:inputType="textMultiLine"
-        android:textColor="#397A96"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="221dp"
+        android:layout_height="225dp"
+        android:layout_marginTop="408dp"
+        android:background="#00FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.559" />
+        app:srcCompat="@drawable/prof" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
