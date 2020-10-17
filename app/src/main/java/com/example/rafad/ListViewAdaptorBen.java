@@ -83,6 +83,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                 CollectionReference beneficiaries = db.collection("item");
                                 DocumentReference docRefB = beneficiaries.document(itemID);
                                 docRefB.update("isRequested", "Pending");
+                                context.startActivity(new Intent(context, homePage.class));
                                 Toast.makeText(getContext(), "لقد تم طلب العنصر بنجاح", Toast.LENGTH_SHORT).show();
 
 
