@@ -81,6 +81,7 @@ public class homepageDonator extends AppCompatActivity {
 
         // FirebaseFirestore db = FirebaseFirestore.getInstance();
         fStore.collection("item")
+                .whereEqualTo("isRequested", "no")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
