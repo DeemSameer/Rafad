@@ -4,6 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,11 +15,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -32,6 +40,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     StorageReference storageRef;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
+    Button request;
+
 
 
     public ListViewAdaptorBen(@NonNull Activity context, @NonNull List<postinfo> arrayList) {
@@ -43,6 +53,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
 
 
 
+
     public android.view.View getView(final int position, View view, ViewGroup parent) {
 
         final String itemID=arrayList.get(position).itemID;
@@ -51,15 +62,42 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         fStore=FirebaseFirestore.getInstance();
         storageRef = FirebaseStorage.getInstance().getReference();
         fAuth = FirebaseAuth.getInstance();
+        request=rowView.findViewById(R.id.button11);
+        final String UID=arrayList.get(position).getUID();
 
 
 
+        request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ///////////////////
+                new AlertDialog.Builder(getContext())
+
+                        .setTitle("طلب عنصر ")
+                        .setMessage("هل انت متأكد من طلب العنصر؟")
+                        .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                FirebaseFirestore db = FirebaseFirestore.getInstance()
+                                        ;
+                                CollectionReference beneficiaries = db.collection("item");
+                                DocumentReference docRefB = beneficiaries.document(itemID);
+                                docRefB.update("isRequested", "Pending");
+                                Toast.makeText(getContext(), "لقد تم طلب العنصر بنجاح", Toast.LENGTH_SHORT).show();
+
+
+                                //dialog1.dismiss();
+                            }
+                        }).setNegativeButton("الغاء", null).show();
+                AlertDialog dialog1;    }
+        });
 
 
         TextView desText = (TextView) rowView.findViewById(R.id.desAdabtorBen);
         TextView titText = (TextView) rowView.findViewById(R.id.titAdabtorBen);
         final ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
         TextView catText = (TextView) rowView.findViewById(R.id.catAdabtorBen);
+
 
 
 
@@ -75,9 +113,11 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         });
 
 
+
         desText.setText(arrayList.get(position).des);
         titText.setText(arrayList.get(position).tit);
         catText.setText(arrayList.get(position).cat);
+
         return rowView;
 
     }
