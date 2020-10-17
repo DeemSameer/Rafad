@@ -27,8 +27,7 @@ public class signUpBase extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                button2.setBackgroundColor(getResources().getColor(R.color.blueLight));
-                open_SignUpDon();
+
             }
         });
 

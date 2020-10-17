@@ -91,6 +91,8 @@ public class signupBen extends AppCompatActivity {
 
         signup_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+
                 final String email = signUpEmail.getText().toString().trim();
                 final String Password = SignUpPassword1.getText().toString();
                 final String Password2 = SignUpPassword2.getText().toString();

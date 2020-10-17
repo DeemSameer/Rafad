@@ -38,17 +38,6 @@
         app:layout_constraintVertical_bias="0.028" />
 
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="450dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="648dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="#ffff" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="32dp"
@@ -108,9 +97,9 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="34dp"
-            android:layout_marginLeft="34dp"
-            android:layout_marginTop="46dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="38dp"
             android:progressDrawable="@drawable/circle" />
 
         <ProgressBar
@@ -133,8 +122,8 @@
             android:layout_width="167dp"
             android:layout_height="30dp"
             android:layout_below="@+id/textView18"
-            android:layout_marginStart="74dp"
-            android:layout_marginLeft="74dp"
+            android:layout_marginStart="67dp"
+            android:layout_marginLeft="67dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="284dp"
             android:layout_marginRight="284dp"
@@ -148,8 +137,8 @@
             android:layout_below="@+id/progressBarBenAccounts"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginLeft="25dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
             android:layout_marginTop="9dp"
             android:gravity="center"
             android:text="نسبة حسابات المستفيدين المعلقة"
@@ -163,8 +152,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginRight="44dp"
             android:layout_marginBottom="60dp"
             android:gravity="center"
             android:text="نسبة حسابات المستفيدين المبلغ عنها"
@@ -179,8 +168,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginTop="38dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginEnd="53dp"
+            android:layout_marginRight="53dp"
             android:gravity="center"
             android:text="متوسط تقييم حسابات المتبرعين"
             android:textColor="#FFFFFF"
@@ -235,8 +224,8 @@
     <RelativeLayout
         android:layout_width="165dp"
         android:layout_height="158dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="136dp"
         android:background="@drawable/rounded_corner"
         app:layout_constraintStart_toStartOf="parent"
@@ -273,8 +262,8 @@
     <RelativeLayout
         android:layout_width="165dp"
         android:layout_height="158dp"
-        android:layout_marginStart="216dp"
-        android:layout_marginLeft="216dp"
+        android:layout_marginStart="192dp"
+        android:layout_marginLeft="192dp"
         android:layout_marginTop="136dp"
         android:background="@drawable/rounded_corner"
         app:layout_constraintStart_toStartOf="parent"
