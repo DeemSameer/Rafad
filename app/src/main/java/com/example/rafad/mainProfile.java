@@ -134,6 +134,7 @@ post = findViewById(R.id.postItem);
             @Override
             public void onClick(View view) {
 
+
                Intent i = new Intent(view.getContext(),donProfile.class);
                //pass the data
                 i.putExtra("fullName",fullName.getText().toString());

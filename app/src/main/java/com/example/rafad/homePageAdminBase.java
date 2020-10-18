@@ -84,7 +84,9 @@ Button backHomArrow;
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Tsize=Tsize+1;
+
                             }
+
                         }
                         else {
                         }
