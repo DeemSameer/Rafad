@@ -15,10 +15,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.List;
@@ -81,8 +83,25 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
 
                             user.put("State",state);
                             docRefB.update(user);
+
+                            //////////////////////////////////////////////////////
+
+                            docRefB.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                @Override
+                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    String email = documentSnapshot.getString("email");
+                                            //(String) docRefB.get("email");
+                                    String name = documentSnapshot.getString("userName");
+                                            //(String) docRefB.get("userName");
+                                    sendMail.sendMail(email, "تهانينا !  " , " أهلا بك عزيزنا  "+ name + " \n نرحب بك في تطبيق رَفَد ونود أن نخبرك بأنه تم قبول حسابك \n نتمنى لك تجربة مفيدة، دمت بود.  ");
+                                }
+                            });
+                            ////////////////////////////////////////////////////////
+
+
                             context.startActivity(new Intent(context, homepageAdmin.class));
                             Toast.makeText(getContext(),"لقد تم قبول المستفيد بنجاح",Toast.LENGTH_SHORT).show();
+
                             return;
                         }else{
                             //Toast.makeText(MyListAdapter.this, " الرجاء ادخال الحالة ", Toast.LENGTH_LONG).show();
@@ -183,26 +202,48 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
                 new AlertDialog.Builder(getContext())
 
                         .setTitle("رفض مستفيد")
-                        .setMessage("هل انت متأكد من رفض المستفيد؟")
+                        .setMessage("هل أنت متأكد من رفض المستفيد؟")
                         .setPositiveButton("رفض", new DialogInterface.OnClickListener() {
+
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                                 CollectionReference beneficiaries = db.collection("beneficiaries");
                                 DocumentReference docRefB = beneficiaries.document(UID);
+
                                 docRefB.update("flag", "Declined");
+
+                                //////////////////////////////////////////////////////
+
+                                docRefB.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                        String email = documentSnapshot.getString("email");
+                                        //(String) docRefB.get("email");
+                                        String name = documentSnapshot.getString("userName");
+                                        //(String) docRefB.get("userName");
+                                        sendMail.sendMail(email, "تم رفض الحساب !  " , " أهلا بك عزيزنا  "+ name + " \n يسعد تطبيق رَفَد بانضمامك لنا ولكن يؤسفنا إخبارك بأنه تم رفض حسابك لعدم استيفاء الشروط   \n  يمكنك إعادة التسجيل وإدخال معلومات صالحة\n\n يوّد تطبيق رَفَد أن يلقاك قريبًا، دمت بود .  ");
+                                    }
+                                });
+                                ////////////////////////////////////////////////////////
                                 context.startActivity(new Intent(context, homepageAdmin.class));
                                 Toast.makeText(getContext(), "لقد تم رفض المستفيد بنجاح", Toast.LENGTH_SHORT).show();
 
 
                                 //dialog1.dismiss();
+
                             }
-                        }).setNegativeButton("الغاء", null).show();
+                        }).setNegativeButton("إلغاء", null).show();
+
+
                 AlertDialog dialog1;
 
 
                 //////////////////
+
+
             }
+
         });
         ///end Disapprove///
 

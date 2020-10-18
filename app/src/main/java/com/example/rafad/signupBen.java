@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.se.omapi.Session;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -25,8 +26,11 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
+import java.net.Authenticator;
+import java.net.PasswordAuthentication;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 public class signupBen extends AppCompatActivity {
     public static final String TAG = "TAG";
@@ -38,13 +42,15 @@ public class signupBen extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userID;
     TextView textView1, type1;
+    String sEmail,sPassword;
+
     String[]CountryList={"المدينة المنورة","مكة المكرمة","الرياض","القصيم","الشرقية","عسير","تبوك","الجوف","الباحة","نجران","جازان","الحدود الشمالية","حائل"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_ben);
-
+        final String adminEmail = "nadafjj@gmail.com";
 
         signUpEmail = findViewById(R.id.signUpEmail);
         SignUpPassword1 = findViewById(R.id.SignUpPassword1);
@@ -201,11 +207,17 @@ public class signupBen extends AppCompatActivity {
                                         user.put("location",location);
 
 
+
+
                                         //check the add if it's success or not
                                         documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
-                                                Log.d(TAG, " تم انشاء الحساب " + userID);
+                                                Log.d(TAG, " تم إنشاء الحساب بنجاح " + userID);
+                                                //////////////////////////////////////////////////////
+                                                sendMail.sendMail("nadafjj@gmail.com", "حساب جديد" , " أهلا بك ديم! \n تم تسجيل حساب مستفيد جديد ينتظر منك تقييمه ");
+
+                                                ////////////////////////////////////////////////////////
                                             }
                                         });
                                         startActivity(new Intent(getApplicationContext(),login.class) );
