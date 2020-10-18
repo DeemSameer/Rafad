@@ -105,7 +105,7 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
                             return;
                         }else{
                             //Toast.makeText(MyListAdapter.this, " الرجاء ادخال الحالة ", Toast.LENGTH_LONG).show();
-                            popupclass.settext.setText("يرجى ادخال الحالة");
+                            popupclass.settext.setText("يرجى إدخال الحالة");
                         }
                         //////////////////
                     }
