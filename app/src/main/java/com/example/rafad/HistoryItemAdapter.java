@@ -39,7 +39,7 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
 
 
     public HistoryItemAdapter(@NonNull Activity context, @NonNull List<postinfo> arrayList) {
-        super(context, R.layout.activity_history_item_adapter, arrayList);
+        super(context, R.layout.activity_historyitemwithedit, arrayList);
         this.arrayList=arrayList;
         Log.d(TAG,  "SIZE ADAPTER His=> " +arrayList.size());
         this.context=context;
