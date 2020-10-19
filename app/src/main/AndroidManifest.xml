@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AdapterD"
-            tools:ignore="Instantiatable"></activity>
+            tools:ignore="Instantiatable"/>
         <activity
             android:name=".requests"
             android:label="@string/title_activity_requests"

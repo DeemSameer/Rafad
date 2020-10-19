@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
-    tools:context=".ListViewAdaptorBen"
+    tools:context=".AdapterD"
     android:layout_height="450dp"
     android:orientation="vertical"
     >
