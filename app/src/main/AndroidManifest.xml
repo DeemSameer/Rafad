@@ -12,23 +12,30 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListViewAdaptorBen"
+        <activity android:name=".AdapterD"
+            tools:ignore="Instantiatable"></activity>
+        <activity
+            android:name=".requests"
+            android:label="@string/title_activity_requests"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListViewAdaptorBen"
             tools:ignore="Instantiatable" />
         <activity android:name=".post3" />
         <activity
             android:name=".HistoryItemAdapter"
             tools:ignore="Instantiatable" />
         <activity android:name=".changePasswordDon" />
-        <activity android:name=".homePageAdminBase"/>
-        <activity android:name=".adminMainProfile"/>
+        <activity android:name=".homePageAdminBase" />
+        <activity android:name=".adminMainProfile" />
         <activity android:name=".homepageDonator" />
         <activity android:name=".homepageAdmin" />
         <activity android:name=".MainChat" />
-        <activity android:name="BenMainProfile"/>
+        <activity android:name=".BenMainProfile" />
         <activity android:name=".donProfile" />
         <activity android:name=".homePage" />
-        <activity android:name=".benEditProfile"/>
-        <activity android:name=".benChangePass"/>
+        <activity android:name=".benEditProfile" />
+        <activity android:name=".benChangePass" />
         <activity android:name=".forgetp" />
         <activity android:name=".signupDon" />
         <activity android:name=".signupBen" />
@@ -36,7 +43,6 @@
         <activity android:name=".mainProfile" />
         <activity android:name=".signUpBase" />
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

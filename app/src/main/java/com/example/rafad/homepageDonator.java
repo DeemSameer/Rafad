@@ -45,6 +45,7 @@ public class homepageDonator extends AppCompatActivity {
         logout = findViewById(R.id.logoutButton);
         profile1= findViewById(R.id.profileb);
         post= findViewById(R.id.postItem);
+        Button b=findViewById(R.id.button10);
 
         //////// for view list of items
         listView=(ListView)findViewById(R.id.postedlist);
@@ -76,6 +77,16 @@ public class homepageDonator extends AppCompatActivity {
                 finish();
             }
         });
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homepageDonator.this, requests.class));
+                finish();
+
+            }
+        });
+
+
 //////////////////// for list of items second try////////////////////////
 
 

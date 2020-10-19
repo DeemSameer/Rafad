@@ -172,6 +172,8 @@ public class post3 extends AppCompatActivity {
                                 post.put("Catogery", cat);
                                 post.put("User id", UID);
                                 post.put("isRequested", "no");
+                                post.put("benID", "");
+
 
                                 //assign itemID to the person how post it
                               /*  postRef=fStore.collection("item").document(itemID).getPath();

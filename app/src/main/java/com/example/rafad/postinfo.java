@@ -10,6 +10,7 @@ public class postinfo {
     String cat;
     String tit;
     String isRe;
+    String BID;
 
 
     public postinfo(String itemID1, String UID1, String imageUri1 , String des1 , String cat1, String tit1,String isRe){
@@ -20,6 +21,16 @@ public class postinfo {
         cat=cat1;
         tit=tit1;
         this.isRe=isRe;
+
+    }
+    public postinfo(String itemID1, String UID1, String imageUri1,String BID1,String tit){
+        itemID = itemID1;
+        UID=UID1;
+        imageID = imageUri1;
+        BID=BID1;
+        this.tit=tit;
+
+
 
     }
     public String getUID() {
