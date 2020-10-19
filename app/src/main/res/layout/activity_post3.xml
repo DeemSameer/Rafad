@@ -63,7 +63,6 @@
         android:layout_width="60dp"
         android:layout_height="36dp"
         android:background="@drawable/default_outlined_button_style"
-
         android:text="اختر صورة"
         android:textColor="#397A96"
         android:textColorHighlight="#397A96"

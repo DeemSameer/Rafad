@@ -47,7 +47,7 @@
             android:textSize="18sp" />
 
             <Button
-                android:id="@+id/profileb"
+                android:id="@+id/edit3"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/ic_baseline_edit_24"
@@ -65,7 +65,8 @@
             android:layout_height="49dp"
             android:text="Catogery"
             android:textAlignment="textStart"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:gravity="start" />
 
         <TextView
             android:id="@+id/des"

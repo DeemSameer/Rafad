@@ -49,10 +49,10 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
 
     public android.view.View getView(final int position, View view, ViewGroup parent) {
 
-        final String itemID=arrayList.get(position).itemID;
-        LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.activity_history_item_adapter, null,true);
-        fStore=FirebaseFirestore.getInstance();
+        final String itemID = arrayList.get(position).itemID;
+        LayoutInflater inflater = context.getLayoutInflater();
+        View rowView = inflater.inflate(R.layout.activity_historyitemwithedit, null,true);
+        fStore = FirebaseFirestore.getInstance();
         storageRef = FirebaseStorage.getInstance().getReference();
         fAuth = FirebaseAuth.getInstance();
 
@@ -62,7 +62,7 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
 
         TextView desText = (TextView) rowView.findViewById(R.id.des);
         TextView titText = (TextView) rowView.findViewById(R.id.tit);
-        final ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
+        final ImageView HisImage = (ImageView)rowView.findViewById(R.id.imageView10);
         TextView catText = (TextView) rowView.findViewById(R.id.cat);
 
 
