@@ -91,9 +91,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                 docRefB.update("isRequested", "Pending");
                                 context.startActivity(new Intent(context, homePage.class));
                                 docRefB.update("benID", UID1);
+                                arrayList.get(position).setBID(UID1);
                                 Toast.makeText(getContext(), "لقد تم طلب العنصر بنجاح", Toast.LENGTH_SHORT).show();
-
-
                                 //dialog1.dismiss();
                             }
                         }).setNegativeButton("الغاء", null).show();

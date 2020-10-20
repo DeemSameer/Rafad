@@ -32,8 +32,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AdapterD extends ArrayAdapter<postinfo> {
 
+public class AdapterD extends ArrayAdapter<postinfo> {
 
     public static final String TAG = "TAG";
     private final Activity context;
@@ -48,7 +48,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
 
 
     public AdapterD(@NonNull Activity context, @NonNull List<postinfo> arrayList) {
-        super(context, R.layout.activity_list_view_adaptor_ben, arrayList);
+        super(context, R.layout.activity_adapter_d, arrayList);
         this.arrayList=arrayList;
         Log.d(TAG,  "SIZE ADAPTER His=> " +arrayList.size());
         this.context=context;
@@ -60,15 +60,15 @@ public class AdapterD extends ArrayAdapter<postinfo> {
     public android.view.View getView(final int position, View view, ViewGroup parent) {
 
         LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.activity_list_view_adaptor_ben, null,true);
+        View rowView=inflater.inflate(R.layout.activity_adapter_d, null,true);
         fStore=FirebaseFirestore.getInstance();
         storageRef = FirebaseStorage.getInstance().getReference();
         fAuth = FirebaseAuth.getInstance();
 
 
+        TextView titText = (TextView) rowView.findViewById(R.id.name);
+        TextView titText2 = (TextView) rowView.findViewById(R.id.status);
 
-
-        TextView titText = (TextView) rowView.findViewById(R.id.tit);
         final ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
 
 
@@ -80,14 +80,16 @@ public class AdapterD extends ArrayAdapter<postinfo> {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).into(HisImage);
-                Log.d(TAG, "inter Adaptor Donater ");
+                Log.d(TAG, "inter Adaptor Donater");
 
             }
         });
 
 
 
-        //titText.setText(arrayList.get(position).tit);
+
+        titText.setText(arrayList.get(position).tit);
+
 
         return rowView;
 
