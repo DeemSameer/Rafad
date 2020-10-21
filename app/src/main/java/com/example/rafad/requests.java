@@ -13,6 +13,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +23,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class requests extends AppCompatActivity {
     FirebaseAuth fAuth;
@@ -73,34 +76,17 @@ public class requests extends AppCompatActivity {
 
 
 
-                                // To retreive name and state for ben
-                                ///////////////////////////////////////////////////
-                                DocumentReference docRef = fStore.collection("beneficiaries").document((String)document.get("benID"));
-                                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if (task.isSuccessful()) {
-                                            DocumentSnapshot document = task.getResult();
-                                            if (document.exists()) {
-                                                Log.d(TAG, "DocumentSnapshot data request: " + document.getData());
-                                                benN=document.getString("userName");
-                                                benS=document.getString("State");
-                                                Log.d(TAG, "benN data request: " + benN);
 
-                                            } else {
-                                                Log.d(TAG, "No such document");
-                                            }
-                                        } else {
-                                            Log.d(TAG, "get failed with ", task.getException());
-                                        }
-                                    }
-                                });
-                                //////////////////////////////////////////////////
 
 
                                 Log.d(TAG, "benN data after request: " + benN);
-                                arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"),(String) document.get("Title"), benN, benS,(String) document.get("isRequested"), (String) document.get("benID")));
-                                
+                                arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"),(String) document.get("Title"), (String) document.get("benN"), (String) document.get("benS"),(String) document.get("isRequested"), (String) document.get("benID")));
+
+
+
+
+
+
 
                                 Log.d(TAG, "SIZE item list request => " + arrayItem.size());
                             }

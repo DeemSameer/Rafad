@@ -173,6 +173,8 @@ public class post3 extends AppCompatActivity {
                                 post.put("User id", UID);
                                 post.put("isRequested", "no");
                                 post.put("benID", "123");
+                                post.put("benN", "Name");
+                                post.put("benS", "State");
 
 
                                 //assign itemID to the person how post it
