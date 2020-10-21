@@ -68,6 +68,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
 
         TextView titText = (TextView) rowView.findViewById(R.id.name);
         TextView titText2 = (TextView) rowView.findViewById(R.id.status);
+        TextView titText3 = (TextView) rowView.findViewById(R.id.name2);
 
         final ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
 
@@ -142,8 +143,9 @@ public class AdapterD extends ArrayAdapter<postinfo> {
 
 
 
-        titText.setText(arrayList.get(position).BN);
-        titText2.setText(arrayList.get(position).BS);
+        titText.setText("اسم المستفيد: "+arrayList.get(position).BN);
+        titText2.setText("درجة حالة المستفيد من 5: "+arrayList.get(position).BS);
+        titText3.setText("عنوان الطلب: "+arrayList.get(position).tit);
 
 
         return rowView;

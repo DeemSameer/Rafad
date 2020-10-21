@@ -1,5 +1,6 @@
 package com.example.rafad;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,6 +22,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -98,6 +100,15 @@ public class requests extends AppCompatActivity {
                         }
                     }
                 });
+        Button button4 = (Button) findViewById(R.id.but);
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(requests.this, homepageDonator.class));
+                finish();
+            }
+        });
+
 
     }
 }
