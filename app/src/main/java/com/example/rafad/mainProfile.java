@@ -145,7 +145,7 @@ post = findViewById(R.id.postItem);
             }
         });
 
-
+        //fStore.collection("item").document(UID)
 
         //////////////////// for list of items second try////////////////////////
 

@@ -29,12 +29,18 @@ public class requests extends AppCompatActivity {
     FirebaseFirestore fStore;
     List<postinfo> arrayItem=new ArrayList<>();
     ListView listView;
+    String benN;
+    String benS;
     String BenId;
-     String itemId;
-     Task<DocumentSnapshot> benN;
-     String benS;
+    String itemId;
+    String UID;
+    String imageUri;
+    String tit;
+    String isRe;
+
     public static final String TAG = "TAG";
     int postion;
+
 
 
     @Override
@@ -54,34 +60,54 @@ public class requests extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Log.d(TAG, document.getId() + " req=> " + document.getData());
+                                Log.d(TAG,  " (String)document.get(\"benID\") " + (String)document.get("benID"));
+
+                                itemId=(String) document.getId();
+                                UID=(String) document.get("User id");
+                                imageUri=(String) document.get("Image");
+                                tit=(String) document.get("Title");
+                                isRe=(String) document.get("isRequested");
                                 BenId=(String) document.get("benID");
-                                benN=fStore.collection("beneficiaries").document(BenId).get();
-                                Log.d(TAG,  "benN"+benN.getResult());
-                                arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"),(String) document.get("Title")));
-/*
-DocumentReference docRef = fStore.collection("beneficiaries").document((String)document.get("BenId"));
-docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-    @Override
-    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-        if (task.isSuccessful()) {
-            DocumentSnapshot document = task.getResult();
+                                Log.d(TAG, "isRe data request: " + isRe);
 
-            if (document.exists()) {
 
-                Log.d(TAG, "DocumentSnapshot data: " + document.getData());//Put your get here -- For ben account
-                arrayItem.set(arrayItem.get(position),arrayItem.get(poistioin).setBN((String) document.get("userName")));
-                arrayItem.set(arrayItem.get(position),arrayItem.get(poistioin).setBS((String) document.get("State")));
-            } else {
-                Log.d(TAG, "No such document");
-            }
-        } else {
-            Log.d(TAG, "get failed with ", task.getException());
-        }
-    }
-});
-*/
-                                Log.d(TAG, "SIZE item list1 => " + arrayItem.size());
+
+                                // To retreive name and state for ben
+                                ///////////////////////////////////////////////////
+                                DocumentReference docRef = fStore.collection("beneficiaries").document((String)document.get("benID"));
+                                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                        if (task.isSuccessful()) {
+                                            DocumentSnapshot document = task.getResult();
+                                            if (document.exists()) {
+                                                Log.d(TAG, "DocumentSnapshot data request: " + document.getData());
+                                                benN=document.getString("userName");
+                                                benS=document.getString("State");
+                                                Log.d(TAG, "benN data request: " + benN);
+
+                                            } else {
+                                                Log.d(TAG, "No such document");
+                                            }
+                                        } else {
+                                            Log.d(TAG, "get failed with ", task.getException());
+                                        }
+                                    }
+                                });
+                                //////////////////////////////////////////////////
+
+
+                                Log.d(TAG, "benN data after request: " + benN);
+                                arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"),(String) document.get("Title"), benN, benS,(String) document.get("isRequested"), (String) document.get("benID")));
+
+
+
+
+
+
+
+                                Log.d(TAG, "SIZE item list request => " + arrayItem.size());
                             }
                             AdapterD adapter = new AdapterD(requests.this, arrayItem);
                             listView = (ListView) findViewById(R.id.postedlistHomePage1);

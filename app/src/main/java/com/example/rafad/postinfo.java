@@ -31,8 +31,6 @@ public class postinfo {
         imageID = imageUri1;
         this.tit=tit;
 
-
-
     }
     public postinfo(String itemID1, String UID1, String imageUri1,String tit,String BN,String BS,String isRe,String BID){
         itemID = itemID1;

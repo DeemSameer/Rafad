@@ -80,7 +80,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).into(HisImage);
-                Log.d(TAG, "inter Adaptor Donater");
+                Log.d(TAG, "inter Adaptor D");
 
             }
         });
@@ -88,7 +88,8 @@ public class AdapterD extends ArrayAdapter<postinfo> {
 
 
 
-        titText.setText(arrayList.get(position).tit);
+        titText.setText(arrayList.get(position).BN);
+        titText2.setText(arrayList.get(position).BS);
 
 
         return rowView;
