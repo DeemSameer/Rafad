@@ -100,12 +100,7 @@ public class requests extends AppCompatActivity {
 
                                 Log.d(TAG, "benN data after request: " + benN);
                                 arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"),(String) document.get("Title"), benN, benS,(String) document.get("isRequested"), (String) document.get("benID")));
-
-
-
-
-
-
+                                
 
                                 Log.d(TAG, "SIZE item list request => " + arrayItem.size());
                             }

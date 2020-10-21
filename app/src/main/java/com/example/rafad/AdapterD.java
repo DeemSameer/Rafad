@@ -71,6 +71,58 @@ public class AdapterD extends ArrayAdapter<postinfo> {
 
         final ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
 
+        Button DisApprove=rowView.findViewById(R.id.button7);
+        DisApprove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ///////////////////
+                new AlertDialog.Builder(getContext())
+
+                        .setTitle("رفض الطلب")
+                        .setMessage("هل انت متأكد من رفض الطلب؟")
+                        .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                FirebaseFirestore db = FirebaseFirestore.getInstance()
+                                        ;
+                                final String itemID=arrayList.get(position).itemID;
+                                UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                CollectionReference beneficiaries = db.collection("item");
+                                DocumentReference docRefB = beneficiaries.document(itemID);
+                                docRefB.update("isRequested", "no");
+                                context.startActivity(new Intent(context, requests.class));
+                                Toast.makeText(getContext(), "لقد تم رفض الطلب بنجاح", Toast.LENGTH_SHORT).show();
+                                //dialog1.dismiss();
+                            }
+                        }).setNegativeButton("الغاء", null).show();
+                AlertDialog dialog1;    }
+        });
+        Button Approve=rowView.findViewById(R.id.button);
+        Approve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ///////////////////
+                new AlertDialog.Builder(getContext())
+
+                        .setTitle("قبول الطلب")
+                        .setMessage("هل انت متأكد من قبول الطلب؟")
+                        .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                FirebaseFirestore db = FirebaseFirestore.getInstance()
+                                        ;
+                                final String itemID=arrayList.get(position).itemID;
+                                UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                CollectionReference beneficiaries = db.collection("item");
+                                DocumentReference docRefB = beneficiaries.document(itemID);
+                                docRefB.update("isRequested", "yes");
+                                context.startActivity(new Intent(context, requests.class));
+                                Toast.makeText(getContext(), "لقد تم قبول الطلب بنجاح", Toast.LENGTH_SHORT).show();
+                                //dialog1.dismiss();
+                            }
+                        }).setNegativeButton("الغاء", null).show();
+                AlertDialog dialog1;    }
+        });
 
 
 
