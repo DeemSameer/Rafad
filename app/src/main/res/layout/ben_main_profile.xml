@@ -7,6 +7,17 @@
     tools:context=".BenMainProfile">
 
 
+    <ListView
+        android:id="@+id/benprofillist"
+        android:layout_width="365dp"
+        android:layout_height="292dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.824" />
+
     <ImageView
 
         app:srcCompat="@drawable/header"

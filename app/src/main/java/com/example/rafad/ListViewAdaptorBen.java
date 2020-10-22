@@ -20,16 +20,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
 
@@ -41,6 +47,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     Button request;
+    String UID1, benN, benS;
+
 
 
 
@@ -78,14 +86,46 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                         .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                FirebaseFirestore db = FirebaseFirestore.getInstance()
+                                final FirebaseFirestore db = FirebaseFirestore.getInstance()
                                         ;
-                                CollectionReference beneficiaries = db.collection("item");
-                                DocumentReference docRefB = beneficiaries.document(itemID);
-                                docRefB.update("isRequested", "Pending");
-                                context.startActivity(new Intent(context, homePage.class));
-                                Toast.makeText(getContext(), "لقد تم طلب العنصر بنجاح", Toast.LENGTH_SHORT).show();
 
+                                UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                // To retreive name and state for ben
+                                ///////////////////////////////////////////////////
+                                DocumentReference docRef = fStore.collection("beneficiaries").document(UID1);
+                                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                        if (task.isSuccessful()) {
+                                            DocumentSnapshot document = task.getResult();
+                                            if (document.exists()) {
+                                                Log.d(TAG, "DocumentSnapshot data ListViewAdaptorBen: " + document.getData());
+                                                benN=document.getString("userName");
+                                                benS=document.getString("State");
+                                                Log.d(TAG, "benN data ListViewAdaptorBen: " + benN);
+
+
+
+                                                Log.d(TAG, "benN data after ListViewAdaptorBen: " + benN);
+                                                CollectionReference beneficiaries = db.collection("item");
+                                                DocumentReference docRefB = beneficiaries.document(itemID);
+                                                docRefB.update("isRequested", "Pending");
+                                                context.startActivity(new Intent(context, homePage.class));
+                                                docRefB.update("benID", UID1);
+                                                docRefB.update("benN", benN);
+                                                docRefB.update("benS", benS);
+                                                arrayList.get(position).setBID(UID1);
+                                                Toast.makeText(getContext(), "لقد تم طلب العنصر بنجاح", Toast.LENGTH_SHORT).show();
+
+                                            } else {
+                                                Log.d(TAG, "No such document");
+                                            }
+                                        } else {
+                                            Log.d(TAG, "get failed with ", task.getException());
+                                        }
+                                    }
+                                });
+                                //////////////////////////////////////////////////
 
                                 //dialog1.dismiss();
                             }

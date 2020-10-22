@@ -163,7 +163,7 @@ public class post3 extends AppCompatActivity {
 
 
 
-                                Date currentTime = Calendar.getInstance().getTime();
+
                                 //store data
                                 Map<String, Object> post = new HashMap<>();
 
@@ -173,7 +173,7 @@ public class post3 extends AppCompatActivity {
                                 post.put("Catogery", cat);
                                 post.put("User id", UID);
                                 post.put("isRequested", "no");
-                                post.put("Date", currentTime);
+
                                 //assign itemID to the person how post it
                               /*  postRef=fStore.collection("item").document(itemID).getPath();
                                 DocumentReference washingtonRef = fStore.collection("donators").document(UID);

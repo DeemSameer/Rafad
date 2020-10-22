@@ -33,14 +33,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class mainProfile extends AppCompatActivity {
-    Button back , homebutton, editbutton2,post ;
+    Button back , homebutton, editbutton2,post;
     StorageReference storageReference;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userId ;
     ImageView profileImageView;
     TextView fullName , email , phone;
-     Adapter2 adapter;
+
 
     //////// for view list of items
     List<postinfo> arrayItem=new ArrayList<>();
@@ -143,18 +143,8 @@ post = findViewById(R.id.postItem);
 
             }
         });
-/*
-        del.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               /* StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-                StorageReference p = adapter.storageRef;
-                adapter.profileRef.delete();
-            fStore.collection("item").document(adapter.itemID).delete();*/
-               /* Intent i = new Intent(view.getContext(),donProfile.class);
-                startActivity(i);
-            }
-        });*/
+
+
 
         //////////////////// for list of items second try////////////////////////
 
@@ -172,7 +162,7 @@ post = findViewById(R.id.postItem);
                                     arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ));
                                     Log.d(TAG, "SIZE item list => " + arrayItem.size());
                                 }
-                                 adapter = new Adapter2(mainProfile.this, arrayItem);
+                                HistoryItemAdapter adapter = new HistoryItemAdapter(mainProfile.this, arrayItem);
                                 listView = (ListView) findViewById(R.id.postedlist);
                                 listView.setAdapter(adapter);
                             } else {

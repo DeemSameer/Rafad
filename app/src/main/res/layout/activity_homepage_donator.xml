@@ -9,8 +9,8 @@
 
     <ListView
         android:id="@+id/postedlistDonaterHome"
-        android:layout_width="436dp"
-        android:layout_height="446dp"
+        android:layout_width="360dp"
+        android:layout_height="451dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.475"

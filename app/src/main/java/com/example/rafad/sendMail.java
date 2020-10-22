@@ -48,7 +48,7 @@ public class sendMail {
             message.setFrom(new InternetAddress(myAccount));
             message.setRecipient(Message.RecipientType.TO,new InternetAddress(recepient));//You can change TO
             message.setSubject(MailSubject);
-            message.setText(MailLetter);
+            message.setContent(MailLetter,"text/html; charset=utf-8");
         }
         catch (Exception ex){
             Log.d(TAG, "ERRRROR 2 :" + ex.toString());

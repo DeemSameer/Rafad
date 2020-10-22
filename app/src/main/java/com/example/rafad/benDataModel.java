@@ -20,6 +20,11 @@ public class benDataModel {
         this.SSN = SSN;
         this.securityNumber = securityNumber;
     }
+    public benDataModel(String UID,String userName) {
+        this.UID = UID;
+        this.userName = userName;
+
+    }
 
     public String getUID() {
         return UID;
