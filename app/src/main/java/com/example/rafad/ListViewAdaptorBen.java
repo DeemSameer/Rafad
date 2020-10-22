@@ -86,8 +86,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                         .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                final FirebaseFirestore db = FirebaseFirestore.getInstance()
-                                        ;
+                                final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
                                 UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
                                 // To retreive name and state for ben

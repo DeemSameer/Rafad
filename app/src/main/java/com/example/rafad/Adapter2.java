@@ -19,9 +19,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -92,10 +97,28 @@ public class Adapter2 extends ArrayAdapter<postinfo> {
         del.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                profileRef.delete();
-            fStore.collection("item").document(itemID).delete();
+               /* */
+                ///////////////////
+                new AlertDialog.Builder(getContext())
 
-        }
+                        .setTitle("حذف عنصر ")
+                        .setMessage("هل انت متأكد من حذف العنصر؟")
+                        .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                profileRef.delete();
+                                fStore.collection("item").document(itemID).delete();
+                                context.startActivity(new Intent(context, mainProfile.class));
+                                                Toast.makeText(getContext(), "لقد تم حذف العنصر بنجاح", Toast.LENGTH_SHORT).show();
+                                                
+                                    }
+                                }).setNegativeButton("الغاء", null).show();
+                                //////////////////////////////////////////////////
+
+                
+                AlertDialog dialog1;
+
+            }
         });
         return rowView;
     }
