@@ -120,7 +120,7 @@ public class homepageDonator extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Query p =  fStore.collection("item").whereEqualTo("Catogery", "أجهزه")
+                Query p =  fStore.collection("item").whereEqualTo("Catogery", "أجهزة")
                         .whereEqualTo("isRequested", "no" );
 
                 p.get()
@@ -144,34 +144,7 @@ public class homepageDonator extends AppCompatActivity {
 
             }
         });
-        device.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Query p =  fStore.collection("item").whereEqualTo("Catogery", "أجهزه")
-                        .whereEqualTo("isRequested", "no" );
-
-                p.get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    for (QueryDocumentSnapshot document : task.getResult()) {
-                                        Log.d(TAG, document.getId() + " => " + document.getData());
-                                        arrayItemD.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ));
-                                        Log.d(TAG, "SIZE item list => " + arrayItemD.size());
-                                    }
-                                    HistoryItemAdapter adapter = new HistoryItemAdapter(homepageDonator.this, arrayItemD);
-                                    listView = (ListView) findViewById(R.id.postedlistDonaterHome);
-                                    listView.setAdapter(adapter);
-                                } else {
-                                    Log.d(TAG, "Error getting documents: ", task.getException());
-                                }
-                            }
-                        });
-
-            }
-        });
+  
         all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
