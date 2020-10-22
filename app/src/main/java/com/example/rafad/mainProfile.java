@@ -134,7 +134,6 @@ post = findViewById(R.id.postItem);
             @Override
             public void onClick(View view) {
 
-
                Intent i = new Intent(view.getContext(),donProfile.class);
                //pass the data
                 i.putExtra("fullName",fullName.getText().toString());
@@ -145,7 +144,7 @@ post = findViewById(R.id.postItem);
             }
         });
 
-        //fStore.collection("item").document(UID)
+
 
         //////////////////// for list of items second try////////////////////////
 
@@ -163,7 +162,7 @@ post = findViewById(R.id.postItem);
                                     arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ));
                                     Log.d(TAG, "SIZE item list => " + arrayItem.size());
                                 }
-                                HistoryItemAdapter adapter = new HistoryItemAdapter(mainProfile.this, arrayItem);
+                                Adapter2 adapter = new Adapter2(mainProfile.this, arrayItem);
                                 listView = (ListView) findViewById(R.id.postedlist);
                                 listView.setAdapter(adapter);
                             } else {

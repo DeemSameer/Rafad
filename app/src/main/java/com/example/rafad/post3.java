@@ -33,9 +33,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
+import java.util.Calendar;
 public class post3 extends AppCompatActivity {
 
     public static final String TAG = "TAG";
@@ -172,10 +173,6 @@ public class post3 extends AppCompatActivity {
                                 post.put("Catogery", cat);
                                 post.put("User id", UID);
                                 post.put("isRequested", "no");
-                                post.put("benID", "123");
-                                post.put("benN", "Name");
-                                post.put("benS", "State");
-
 
                                 //assign itemID to the person how post it
                               /*  postRef=fStore.collection("item").document(itemID).getPath();

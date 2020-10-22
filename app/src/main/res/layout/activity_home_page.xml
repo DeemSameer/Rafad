@@ -18,7 +18,69 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
         app:layout_constraintVertical_bias="0.794" />
+    <Button
+        android:id="@+id/all1"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:background="#00FFFFFF"
+        android:text="الجميع"
+        android:textColor="#397A96"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
 
+    <Button
+        android:id="@+id/device1"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:background="#00FFFFFF"
+        android:text="اجهزه"
+        android:textColor="#397A96"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.696"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <Button
+        android:id="@+id/clothes1"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:background="#00FFFFFF"
+        android:text="ملابس"
+        android:textColor="#397A96"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <Button
+        android:id="@+id/furniture"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:background="#00FFFFFF"
+        android:text="اثاث"
+        android:textColor="#397A96"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.399"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
     <Button
         android:id="@+id/logoutButton"
         android:layout_width="22dp"
