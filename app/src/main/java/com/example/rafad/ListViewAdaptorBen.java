@@ -114,7 +114,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                 docRefB.update("benN", benN);
                                                 docRefB.update("benS", benS);
                                                 arrayList.get(position).setBID(UID1);
-                                                Toast.makeText(getContext(), "لقد تم طلب العنصر بنجاح", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(getContext(), " تم الطلب بنجاح", Toast.LENGTH_SHORT).show();
 
                                             } else {
                                                 Log.d(TAG, "No such document");
