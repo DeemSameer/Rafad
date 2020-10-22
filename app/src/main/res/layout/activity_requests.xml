@@ -20,40 +20,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.073" />
-    <TextView
-        android:id="@+id/homepagetext2"
-        android:layout_width="417dp"
-        android:layout_height="23dp"
-        android:background="#66397A96"
-        android:gravity="center"
-        android:textColor="#4C4D4E"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="@id/postedlistHomePage1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.088"
-        tools:ignore="HardcodedText" />
 
     <ListView
         android:id="@+id/postedlistHomePage1"
-        android:layout_width="425dp"
-        android:layout_height="666dp"
-        android:background="#66397A96"
+        android:layout_width="417dp"
+        android:layout_height="572dp"
+        android:background="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homepagetext2">
+        app:layout_constraintStart_toStartOf="parent">
 
 
     </ListView>
 
     <TextView
         android:id="@+id/textView23"
-        android:layout_width="141dp"
-        android:layout_height="19dp"
-        android:fontFamily="casual"
+        android:layout_width="169dp"
+        android:layout_height="24dp"
+        android:fontFamily="@font/tajawalmedium2"
         android:text="طلبات المستفيدين المعلقة:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

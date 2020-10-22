@@ -15,12 +15,13 @@
         android:layout_marginEnd="2dp"
         android:autofillHints=""
         android:ems="10"
+        android:fontFamily="@font/tajawalmedium2"
         android:hint="رقم الجوال  مثال: (0500000000) "
         android:inputType="phone"
         android:textAlignment="textEnd"
         android:textColor="#717171"
-        android:textSize="12dp"
 
+        android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.402"
@@ -38,6 +39,7 @@
         android:layout_marginEnd="2dp"
         android:autofillHints=""
         android:ems="10"
+        android:fontFamily="@font/tajawalmedium2"
         android:hint="رقم الضمان الإجتماعي-يمكن تركه"
         android:inputType="number|phone"
         android:textAlignment="textEnd"
@@ -60,6 +62,7 @@
         android:layout_marginEnd="2dp"
         android:autofillHints=""
         android:ems="10"
+        android:fontFamily="@font/tajawalmedium2"
         android:hint="الدخل الشهري"
         android:inputType="number|phone"
         android:textAlignment="textEnd"
@@ -78,6 +81,7 @@
         android:layout_width="146dp"
         android:layout_height="47dp"
         android:layout_marginTop="38dp"
+        android:fontFamily="@font/tajawalmedium2"
         android:hint="اختر المنطقة"
         android:textColor="#717171"
         android:textSize="12dp"
@@ -86,9 +90,9 @@
         app:layout_constraintHorizontal_bias="0.211"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+
+
         app:layout_constraintVertical_bias="0.716"
-
-
         tools:ignore="MissingClass" />
 
     <EditText
@@ -101,6 +105,7 @@
         android:layout_marginRight="2dp"
         android:autofillHints=""
         android:ems="10"
+        android:fontFamily="@font/tajawalmedium2"
         android:hint="الإسم الكامل"
         android:inputType="textPersonName"
         android:textAlignment="viewEnd"
@@ -122,6 +127,7 @@
         android:layout_marginEnd="2dp"
         android:autofillHints=""
         android:ems="10"
+        android:fontFamily="@font/tajawalmedium2"
         android:hint="كلمة المرور"
         android:inputType="textPassword"
         android:textAlignment="textEnd"
@@ -143,6 +149,7 @@
         android:layout_marginEnd="2dp"
         android:autofillHints=""
         android:ems="10"
+        android:fontFamily="@font/tajawalmedium2"
         android:hint="تأكيد كلمة المرور"
         android:inputType="textPassword"
         android:textAlignment="textEnd"
@@ -166,6 +173,7 @@
         android:layout_marginRight="2dp"
         android:autofillHints=""
         android:ems="10"
+        android:fontFamily="@font/tajawalmedium2"
         android:hint="البريد الالكتروني"
         android:inputType="textPersonName"
         android:textAlignment="viewEnd"
@@ -197,6 +205,7 @@
             android:id="@+id/radioButton4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/tajawalmedium2"
             android:layoutDirection="rtl"
             android:text="إيجار"
             android:textColor="#717171"
@@ -206,6 +215,7 @@
             android:id="@+id/radioButton3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/tajawalmedium2"
             android:layoutDirection="rtl"
             android:text="مُلك"
             android:textColor="#717171"
@@ -220,6 +230,7 @@
         android:layout_marginEnd="2dp"
         android:autofillHints=""
         android:ems="10"
+        android:fontFamily="@font/tajawalmedium2"
         android:hint="رقم الهوية الوطنية"
         android:inputType="number|phone"
         android:textAlignment="textEnd"
@@ -235,22 +246,24 @@
 
     <TextView
         android:id="@+id/type"
-        android:layout_width="66dp"
-        android:layout_height="18dp"
+        android:layout_width="69dp"
+        android:layout_height="23dp"
+        android:fontFamily="@font/tajawalmedium2"
         android:text="نوع السكن:"
         android:textColor="#397A96"
         android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.817"
+        app:layout_constraintHorizontal_bias="0.827"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802" />
+        app:layout_constraintVertical_bias="0.81" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="175dp"
-        android:layout_height="16dp"
+        android:layout_width="201dp"
+        android:layout_height="22dp"
+        android:fontFamily="@font/tajawalmedium2"
         android:text="هل تملك حسابا بالفعل؟ تسجيل الدخول"
         android:textColor="#397A96"
         android:textSize="12dp"
@@ -258,14 +271,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.959" />
+        app:layout_constraintVertical_bias="0.977" />
 
     <Button
         android:id="@+id/signup_button"
-        android:layout_width="110dp"
-        android:layout_height="45dp"
+        android:layout_width="121dp"
+        android:layout_height="44dp"
         android:background="#397A96"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/tajawalmedium2"
         android:text="إنشاء حساب"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
@@ -273,18 +286,20 @@
         android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.919" />
 
     <TextView
         android:id="@+id/textView7"
-        android:layout_width="153dp"
-        android:layout_height="24dp"
+        android:layout_width="211dp"
+        android:layout_height="31dp"
+        android:fontFamily="@font/tajawalmedium2"
         android:text="إنشاء حساب كمستفيد"
         android:textColor="#397A96"
         android:textSize="19sp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/signUpEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -34,6 +34,7 @@
             android:id="@+id/titAdabtorBen"
             android:layout_width="340dp"
             android:layout_height="44dp"
+            android:fontFamily="@font/tajawalmedium2"
             android:text="Title"
             android:textAlignment="inherit"
             android:textColor="#397A96"
@@ -43,6 +44,7 @@
             android:id="@+id/catAdabtorBen"
             android:layout_width="340dp"
             android:layout_height="49dp"
+            android:fontFamily="@font/tajawalmedium2"
             android:gravity="start"
             android:text="Catogery"
             android:textAlignment="textStart"
@@ -52,6 +54,7 @@
             android:id="@+id/desAdabtorBen"
             android:layout_width="355dp"
             android:layout_height="75dp"
+            android:fontFamily="@font/tajawalmedium2"
             android:text="Descerption"
             android:textAlignment="gravity"
             android:textColor="#CB0C0C0C" />
@@ -62,6 +65,7 @@
             android:layout_height="20dp"
             android:layout_weight="1"
             android:background="@drawable/new_button"
+            android:fontFamily="@font/tajawalmedium2"
             android:gravity="center"
             android:text="طلب"
             android:textColor="#CC397A96" />

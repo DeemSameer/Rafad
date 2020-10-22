@@ -54,13 +54,14 @@
 
     <TextView
         android:id="@+id/textView23"
-        android:layout_width="141dp"
-        android:layout_height="19dp"
+        android:layout_width="183dp"
+        android:layout_height="27dp"
+        android:fontFamily="@font/tajawalmedium2"
         android:text="حسابات المستفيدين المعلقة:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.036" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
