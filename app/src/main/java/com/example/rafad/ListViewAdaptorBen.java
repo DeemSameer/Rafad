@@ -81,8 +81,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                 ///////////////////
                 new AlertDialog.Builder(getContext())
 
-                        .setTitle("طلب عنصر ")
-                        .setMessage("هل انت متأكد من طلب العنصر؟")
+                        .setMessage("هل انت متأكد من الطلب؟")
                         .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
