@@ -81,8 +81,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                 ///////////////////
                 new AlertDialog.Builder(getContext())
 
-                        .setTitle("طلب عنصر ")
-                        .setMessage("هل انت متأكد من طلب العنصر؟")
+                        .setMessage("هل انت متأكد من الطلب؟")
                         .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -114,7 +113,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                 docRefB.update("benN", benN);
                                                 docRefB.update("benS", benS);
                                                 arrayList.get(position).setBID(UID1);
-                                                Toast.makeText(getContext(), "لقد تم طلب العنصر بنجاح", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(getContext(), " تم الطلب بنجاح", Toast.LENGTH_SHORT).show();
 
                                             } else {
                                                 Log.d(TAG, "No such document");
