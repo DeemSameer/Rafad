@@ -204,7 +204,7 @@ public class homePage extends AppCompatActivity {
                             listView.setAdapter(adapter);
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
-                        }//this comment
+                        }//this comment 2
                     }
                 });
 
