@@ -33,6 +33,7 @@ public class homePage extends AppCompatActivity {
     List<postinfo> arrayItemD=new ArrayList<>();
     List<postinfo> arrayItemF=new ArrayList<>();
     List<postinfo> arrayItemA=new ArrayList<>();
+
     public static final String TAG = "TAG";
     ListView listView;
     //////// above is for view list of items
@@ -41,7 +42,10 @@ public class homePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-
+        clothes = findViewById(R.id.clothes1);
+        furniture = findViewById(R.id.furniture);
+        device = findViewById(R.id.device1);
+        all = findViewById(R.id.all1);
         fAuth = FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
 
@@ -73,7 +77,7 @@ public class homePage extends AppCompatActivity {
         clothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clothes.setPaintFlags(clothes.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
                 Query p =  fStore.collection("item").whereEqualTo("Catogery", "ملابس")
                         .whereEqualTo("isRequested", "no" );
 
@@ -98,6 +102,7 @@ public class homePage extends AppCompatActivity {
 
             }
         });
+
         furniture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
