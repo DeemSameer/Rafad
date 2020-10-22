@@ -28,18 +28,20 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
+public class Adapter2 extends ArrayAdapter<postinfo> {
 
     public static final String TAG = "TAG";
     private final Activity context;
-    private final List<postinfo> arrayList;
+     final List<postinfo> arrayList;
     StorageReference storageRef;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
+    String itemID;
+    Button del;
+    StorageReference profileRef;
 
-
-    public HistoryItemAdapter(@NonNull Activity context, @NonNull List<postinfo> arrayList) {
-        super(context, R.layout.activity_history_item_adapter, arrayList);
+    public Adapter2(@NonNull Activity context, @NonNull List<postinfo> arrayList) {
+        super(context, R.layout.activity_historyitemwithedit, arrayList);
         this.arrayList=arrayList;
         Log.d(TAG,  "SIZE ADAPTER His=> " +arrayList.size());
         this.context=context;
@@ -49,9 +51,9 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
 
     public android.view.View getView(final int position, View view, ViewGroup parent) {
 
-        final String itemID = arrayList.get(position).itemID;
+        itemID = arrayList.get(position).itemID;
         LayoutInflater inflater = context.getLayoutInflater();
-        View rowView = inflater.inflate(R.layout.activity_history_item_adapter, null,true);
+        View rowView = inflater.inflate(R.layout.activity_historyitemwithedit, null,true);
         fStore = FirebaseFirestore.getInstance();
         storageRef = FirebaseStorage.getInstance().getReference();
         fAuth = FirebaseAuth.getInstance();
@@ -64,11 +66,11 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
         TextView titText = (TextView) rowView.findViewById(R.id.tit);
         final ImageView HisImage = (ImageView)rowView.findViewById(R.id.imageView10);
         TextView catText = (TextView) rowView.findViewById(R.id.cat);
+        del = rowView.findViewById(R.id.delete);
 
 
 
-
-        StorageReference profileRef = storageRef.child(arrayList.get(position).imageID);
+         profileRef = storageRef.child(arrayList.get(position).imageID);
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -82,8 +84,18 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
         desText.setText(arrayList.get(position).des);
         titText.setText(arrayList.get(position).tit);
         catText.setText(arrayList.get(position).cat);
-        return rowView;
 
+
+        del.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                profileRef.delete();
+            fStore.collection("item").document(itemID).delete();
+
+            }
+        });
+
+        return rowView;
     }
 
 

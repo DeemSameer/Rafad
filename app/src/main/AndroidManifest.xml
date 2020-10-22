@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Adapter2"></activity>
         <activity
             android:name=".ListViewAdaptorBen"
             tools:ignore="Instantiatable" />

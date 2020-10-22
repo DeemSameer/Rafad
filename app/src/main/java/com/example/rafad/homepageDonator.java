@@ -57,7 +57,7 @@ public class homepageDonator extends AppCompatActivity {
         post= findViewById(R.id.postItem);
 
         //////// for view list of items
-        listView=(ListView)findViewById(R.id.postedlist);
+        listView=(ListView)findViewById(R.id.postedlistDonaterHome);
         //////// above is for view list of items
 
         clothes.setOnClickListener(new View.OnClickListener() {
