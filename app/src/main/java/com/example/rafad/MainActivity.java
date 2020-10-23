@@ -2,6 +2,7 @@ package com.example.rafad;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,7 +20,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-Timer timer ;
+    public static final String TAG = "TAG";
+    Timer timer ;
 
 
 
@@ -27,7 +29,6 @@ Timer timer ;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
