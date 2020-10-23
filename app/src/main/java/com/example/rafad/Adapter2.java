@@ -40,7 +40,7 @@ public class Adapter2 extends ArrayAdapter<postinfo> {
 
     public static final String TAG = "TAG";
     private final Activity context;
-     final List<postinfo> arrayList;
+    final List<postinfo> arrayList;
     StorageReference storageRef;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
@@ -78,7 +78,7 @@ public class Adapter2 extends ArrayAdapter<postinfo> {
 
 
 
-         profileRef = storageRef.child(arrayList.get(position).imageID);
+        profileRef = storageRef.child(arrayList.get(position).imageID);
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -97,25 +97,25 @@ public class Adapter2 extends ArrayAdapter<postinfo> {
         del.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* */
+                /* */
                 ///////////////////
                 new AlertDialog.Builder(getContext())
 
-                        .setTitle("حذف عنصر ")
-                        .setMessage("هل انت متأكد من حذف العنصر؟")
+                        .setTitle("حذف")
+                        .setMessage("هل انت متأكد من الحذف؟")
                         .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 profileRef.delete();
                                 fStore.collection("item").document(itemID).delete();
                                 context.startActivity(new Intent(context, mainProfile.class));
-                                                Toast.makeText(getContext(), "لقد تم حذف العنصر بنجاح", Toast.LENGTH_SHORT).show();
-                                                
-                                    }
-                                }).setNegativeButton("الغاء", null).show();
-                                //////////////////////////////////////////////////
+                                Toast.makeText(getContext(), " تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
 
-                
+                            }
+                        }).setNegativeButton("الغاء", null).show();
+                //////////////////////////////////////////////////
+
+
                 AlertDialog dialog1;
 
             }
