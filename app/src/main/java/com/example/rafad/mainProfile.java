@@ -62,6 +62,7 @@ public class mainProfile extends AppCompatActivity {
         email = findViewById(R.id.email1);
         storageReference = FirebaseStorage.getInstance().getReference();
         profileImageView = findViewById(R.id.profileImg);
+        Button b=findViewById(R.id.button13);
 
         fAuth = FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
@@ -128,7 +129,14 @@ post = findViewById(R.id.postItem);
         });
 
 
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mainProfile.this, requests.class));
+                finish();
 
+            }
+        });
 
         editbutton2.setOnClickListener(new View.OnClickListener() {
             @Override
