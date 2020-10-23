@@ -81,6 +81,7 @@
         android:layout_width="88dp"
         android:layout_height="48dp"
         android:background="#00FFFFFF"
+        android:fontFamily="@font/tajawalmedium2"
         android:text="تعديل "
         android:textColor="#FFFFFF"
         android:textSize="16sp"
@@ -106,8 +107,9 @@
 
     <TextView
         android:id="@+id/benName"
-        android:layout_width="220dp"
-        android:layout_height="23dp"
+        android:layout_width="221dp"
+        android:layout_height="28dp"
+        android:fontFamily="@font/tajawalmedium2"
         android:gravity="center_horizontal"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -123,8 +125,9 @@
 
     <TextView
         android:id="@+id/benEmail"
-        android:layout_width="220dp"
-        android:layout_height="20dp"
+        android:layout_width="221dp"
+        android:layout_height="30dp"
+        android:fontFamily="@font/tajawalmedium2"
         android:gravity="center_horizontal"
         android:textAlignment="center"
         android:textColor="#D8D5D5"

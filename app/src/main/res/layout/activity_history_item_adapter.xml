@@ -36,6 +36,7 @@
             android:id="@+id/tit"
             android:layout_width="385dp"
             android:layout_height="44dp"
+            android:fontFamily="@font/tajawalmedium2"
             android:text="Title"
             android:textAlignment="inherit"
             android:textColor="#397A96"
@@ -45,6 +46,7 @@
             android:id="@+id/cat"
             android:layout_width="385dp"
             android:layout_height="49dp"
+            android:fontFamily="@font/tajawalmedium2"
             android:text="Catogery"
             android:textAlignment="textStart"
             android:textSize="12sp" />
@@ -53,6 +55,7 @@
             android:id="@+id/des"
             android:layout_width="385dp"
             android:layout_height="78dp"
+            android:fontFamily="@font/tajawalmedium2"
             android:text="Descerption"
             android:textAlignment="gravity"
             android:textColor="#CB0C0C0C" />

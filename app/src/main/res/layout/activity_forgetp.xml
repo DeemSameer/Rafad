@@ -28,6 +28,7 @@
         android:layout_width="210dp"
         android:layout_height="45dp"
         android:ems="10"
+        android:fontFamily="@font/tajawalmedium2"
         android:hint="أدخل بريدك الألكتروني"
         android:inputType="textPersonName"
         android:textColor="#717171"
@@ -41,10 +42,10 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="97dp"
-        android:layout_height="46dp"
+        android:layout_width="105dp"
+        android:layout_height="50dp"
         android:background="#397A96"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/tajawalmedium2"
         android:text="إعادة تعيين"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
