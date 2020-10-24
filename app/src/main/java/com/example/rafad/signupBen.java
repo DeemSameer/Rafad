@@ -543,7 +543,7 @@ public class signupBen extends AppCompatActivity {
 
 
                                                 //////////////////////////////////////////////////////
-                                                sendMail.sendMail("nadafjj@gmail.com", "لقد انضم مستفيد جديد !" , "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+                                                sendMail.sendMail("deemsameer.ds@gmail.com", "لقد انضم مستفيد جديد !" , "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                                                         "\n" +
                                                         "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:v=\"urn:schemas-microsoft-com:vml\">\n" +
                                                         "<head>\n" +
