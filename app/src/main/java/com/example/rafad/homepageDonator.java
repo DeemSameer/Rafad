@@ -3,9 +3,11 @@ package com.example.rafad;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -23,6 +25,9 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 import android.graphics.Paint;
+import android.widget.TextView;
+import android.widget.Toast;
+
 public class homepageDonator extends AppCompatActivity {
     Button logout ,profile1, post , clothes , furniture,device,all;
     FirebaseAuth fAuth;
@@ -36,6 +41,7 @@ public class homepageDonator extends AppCompatActivity {
     List<postinfo> arrayItemA=new ArrayList<>();
     public static final String TAG = "TAG";
     ListView listView;
+    TextView empty;
     //////// above is for view list of items
 
 
@@ -56,7 +62,7 @@ public class homepageDonator extends AppCompatActivity {
         profile1= findViewById(R.id.profileb);
         post= findViewById(R.id.postItem);
         Button b=findViewById(R.id.button10);
-
+         empty = findViewById(R.id.homepagetext22);
         //////// for view list of items
         listView=(ListView)findViewById(R.id.postedlistDonaterHome);
         //////// above is for view list of items
@@ -78,6 +84,14 @@ public class homepageDonator extends AppCompatActivity {
                                         arrayItemC.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),""));
                                         Log.d(TAG, "SIZE item list => " + arrayItemC.size());
                                     }
+                                    if (arrayItemC.size()==0)
+                                    {
+                                        Toast toast= Toast.makeText(getApplicationContext(),
+                                                "عذراً لا يوجد بيانات للعرض", Toast.LENGTH_SHORT);
+                                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 50, 50);
+                                        toast.show();
+                                    }
+
                                     HistoryItemAdapter adapter = new HistoryItemAdapter(homepageDonator.this, arrayItemC);
                                     listView = (ListView) findViewById(R.id.postedlistDonaterHome);
                                     listView.setAdapter(adapter);
@@ -105,6 +119,13 @@ public class homepageDonator extends AppCompatActivity {
                                         Log.d(TAG, document.getId() + " => " + document.getData());
                                         arrayItemF.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),""));
                                         Log.d(TAG, "SIZE item list => " + arrayItemF.size());
+                                    }
+                                    if (arrayItemF.size()==0)
+                                    {
+                                        Toast toast= Toast.makeText(getApplicationContext(),
+                                                "عذراً لا يوجد بيانات للعرض", Toast.LENGTH_SHORT);
+                                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 50, 50);
+                                        toast.show();
                                     }
                                     HistoryItemAdapter adapter = new HistoryItemAdapter(homepageDonator.this, arrayItemF);
                                     listView = (ListView) findViewById(R.id.postedlistDonaterHome);
@@ -134,6 +155,13 @@ public class homepageDonator extends AppCompatActivity {
                                         arrayItemD.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),""));
                                         Log.d(TAG, "SIZE item list => " + arrayItemD.size());
                                     }
+                                    if (arrayItemD.size()==0)
+                                       {
+                                           Toast toast= Toast.makeText(getApplicationContext(),
+                                                   "عذراً لا يوجد بيانات للعرض", Toast.LENGTH_SHORT);
+                                           toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 50, 50);
+                                           toast.show();
+                                       }
                                     HistoryItemAdapter adapter = new HistoryItemAdapter(homepageDonator.this, arrayItemD);
                                     listView = (ListView) findViewById(R.id.postedlistDonaterHome);
                                     listView.setAdapter(adapter);
@@ -162,6 +190,13 @@ public class homepageDonator extends AppCompatActivity {
                                         Log.d(TAG, document.getId() + " => " + document.getData());
                                         arrayItemA.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),""));
                                         Log.d(TAG, "SIZE item list => " + arrayItemA.size());
+                                    }
+                                    if (arrayItemA.size()==0)
+                                    {
+                                        Toast toast= Toast.makeText(getApplicationContext(),
+                                                "عذراً لا يوجد بيانات للعرض", Toast.LENGTH_SHORT);
+                                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 50, 50);
+                                        toast.show();
                                     }
                                     HistoryItemAdapter adapter = new HistoryItemAdapter(homepageDonator.this, arrayItemA);
                                     listView = (ListView) findViewById(R.id.postedlistDonaterHome);

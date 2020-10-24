@@ -67,7 +67,6 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
         TextView date = (TextView) rowView.findViewById(R.id.date);
 
 
-
         StorageReference profileRef = storageRef.child(arrayList.get(position).imageID);
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
