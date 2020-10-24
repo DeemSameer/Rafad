@@ -34,7 +34,7 @@
                 android:id="@+id/tit"
                 android:layout_width="175dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/advent_pro_thin"
+                android:fontFamily="@font/tajawalmedium2"
                 android:text="Title"
                 android:textColor="#397A96"
                 android:textSize="18sp" />
@@ -43,7 +43,7 @@
                 android:id="@+id/cat"
                 android:layout_width="175dp"
                 android:layout_height="46dp"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/tajawalmedium2"
                 android:gravity="start"
                 android:text="Catogery"
                 android:textAlignment="textStart"
@@ -53,7 +53,7 @@
                 android:id="@+id/des"
                 android:layout_width="175dp"
                 android:layout_height="140dp"
-                android:fontFamily="@font/amatic_sc"
+                android:fontFamily="@font/tajawalmedium2"
                 android:text="Descerption"
                 android:textAlignment="gravity"
                 android:textColor="#CB0C0C0C" />

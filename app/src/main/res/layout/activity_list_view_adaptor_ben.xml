@@ -32,7 +32,7 @@
 
         <TextView
             android:id="@+id/titAdabtorBen"
-            android:layout_width="340dp"
+            android:layout_width="335dp"
             android:layout_height="44dp"
             android:fontFamily="@font/tajawalmedium2"
             android:text="Title"
@@ -42,7 +42,7 @@
 
         <TextView
             android:id="@+id/catAdabtorBen"
-            android:layout_width="340dp"
+            android:layout_width="335dp"
             android:layout_height="49dp"
             android:fontFamily="@font/tajawalmedium2"
             android:gravity="start"
@@ -52,7 +52,7 @@
 
         <TextView
             android:id="@+id/desAdabtorBen"
-            android:layout_width="355dp"
+            android:layout_width="335dp"
             android:layout_height="75dp"
             android:fontFamily="@font/tajawalmedium2"
             android:text="Descerption"
