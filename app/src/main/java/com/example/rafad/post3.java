@@ -33,8 +33,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Calendar;
 public class post3 extends AppCompatActivity {
@@ -162,12 +164,13 @@ public class post3 extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
 
 
-
+                                String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
                                 //store data
                                 Map<String, Object> post = new HashMap<>();
 
                                 post.put("Image", idImage);
+                                post.put("Date", currentDate);
                                 post.put("Title", tit);
                                 post.put("Description", des);
                                 post.put("Catogery", cat);

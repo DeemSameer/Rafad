@@ -13,9 +13,9 @@ public class postinfo {
     String BID;
     String BN;
     String BS;
+    String date;
 
-
-    public postinfo(String itemID1, String UID1, String imageUri1 , String des1 , String cat1, String tit1,String isRe){
+    public postinfo(String itemID1, String UID1, String imageUri1 , String des1 , String cat1, String tit1,String isRe ,String date1,String dummy){
         itemID = itemID1;
         UID=UID1;
         imageID = imageUri1;
@@ -23,7 +23,7 @@ public class postinfo {
         cat=cat1;
         tit=tit1;
         this.isRe=isRe;
-
+        date =date1;
     }
     public postinfo(String itemID1, String UID1, String imageUri1,String tit){
         itemID = itemID1;

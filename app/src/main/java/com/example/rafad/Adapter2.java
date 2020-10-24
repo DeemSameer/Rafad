@@ -75,6 +75,7 @@ public class Adapter2 extends ArrayAdapter<postinfo> {
         final ImageView HisImage = (ImageView)rowView.findViewById(R.id.imageView10);
         TextView catText = (TextView) rowView.findViewById(R.id.cat);
         del = rowView.findViewById(R.id.delete);
+        TextView date = (TextView) rowView.findViewById(R.id.date);
 
 
 
@@ -92,7 +93,7 @@ public class Adapter2 extends ArrayAdapter<postinfo> {
         desText.setText(arrayList.get(position).des);
         titText.setText(arrayList.get(position).tit);
         catText.setText(arrayList.get(position).cat);
-
+        date.setText(arrayList.get(position).date);
 
         del.setOnClickListener(new View.OnClickListener() {
             @Override
