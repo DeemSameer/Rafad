@@ -24,6 +24,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,7 +47,7 @@ public class requests extends AppCompatActivity {
     String isRe;
     Button back;
     Button homebutton;
-
+    TextView empty;
 
 
 
@@ -64,6 +67,7 @@ public class requests extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.postedlistHomePage1);
         back=findViewById(R.id.button5);
         homebutton=findViewById(R.id.bHome);
+        empty = findViewById(R.id.homepagetext23);
         fStore= FirebaseFirestore.getInstance();
         fStore.collection("item")
                 .whereEqualTo("isRequested", "Pending")
@@ -101,6 +105,15 @@ public class requests extends AppCompatActivity {
 
 
                                 Log.d(TAG, "SIZE item list request => " + arrayItem.size());
+                            }
+                            if (arrayItem.size()==0)
+                            {
+                                //Toast.makeText(requests.this, "This is my Toast message!",
+                                      //  Toast.LENGTH_LONG).show();
+                                empty.setText("لا يوجد بيانات للعرض");
+                            }
+                            else{
+                                empty.setText("");
                             }
                             AdapterD adapter = new AdapterD(requests.this, arrayItem);
                             listView = (ListView) findViewById(R.id.postedlistHomePage1);
