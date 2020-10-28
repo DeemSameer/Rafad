@@ -119,6 +119,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                                 final String itemID=arrayList.get(position).itemID;
                                 UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
+
                                 CollectionReference beneficiaries = db.collection("item");
                                 DocumentReference docRefB = beneficiaries.document(itemID);
                                 docRefB.update("isRequested", "yes");
@@ -136,7 +137,9 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                             if (document.exists()) {
                                                 Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                                                 String benID= (String)document.get("benID");
-                                DocumentReference docRef2=fStore.collection("beneficiaries").document(benID);//.get("User id")
+                                                final String ItemName=(String)document.get("Title");//name
+
+                                                DocumentReference docRef2=fStore.collection("beneficiaries").document(benID);//.get("User id")
                                 docRef2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                     @Override
                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -145,6 +148,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                             if (document.exists()) {
                                                 Log.d(TAG, "DocumentSnapshot data: Ben - - " + document.getData());
                                                 String benMail= (String)document.get("email");
+                                                final String benName= (String)document.get("userName");
                                                 sendMail.sendMail(benMail, "لقد تم قبول طلبك!", "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                                                         "\n" +
                                                         "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:v=\"urn:schemas-microsoft-com:vml\">\n" +
@@ -314,9 +318,11 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                                         "<div style=\"color:#5f9fbe;font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;\">\n" +
                                                         "<div style=\"font-size: 12px; line-height: 1.2; color: #5f9fbe; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px;\">\n" +
                                                         "<p style=\"font-size: 14px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 17px; margin: 0;\"> </p>\n" +
-                                                        "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><strong><span style=\"font-size: 28px;\">مرحبًا</span></strong></span></p>\n" +
+                                                        "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><strong><span style=\"font-size: 28px;\">" +"مرحبًا "+benName+
+                                                        "</span></strong></span></p>\n" +
                                                         "<p style=\"font-size: 14px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 17px; margin: 0;\"> </p>\n" +
-                                                        "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><span style=\"font-size: 28px;\"> يسعدنا اخبارك بقبول طلبكم</span></span></p>\n" +
+                                                        "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><span style=\"font-size: 28px;\"> " +"يسعدنا اخبارك بقبول طلبكم لـ("+ItemName+")"+
+                                                        "</span></span></p>\n" +
                                                         "<p style=\"font-size: 14px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 17px; margin: 0;\"> </p>\n" +
                                                         "<p style=\"font-size: 22px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 26px; margin: 0;\"><span style=\"font-size: 22px;\">نرجو الدخول للتطبيق للتواصل واستلام المنتج</span></p>\n" +
                                                         "<p style=\"font-size: 22px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 26px; margin: 0;\"><span style=\"font-size: 22px;\">دمت بود</span></p>\n" +

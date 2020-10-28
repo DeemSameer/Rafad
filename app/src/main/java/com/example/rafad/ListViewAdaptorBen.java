@@ -124,8 +124,13 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                             DocumentSnapshot document = task.getResult();
                                                             if (document.exists()) {
                                                                 Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                                                String donatorID= (String)document.get("User id");
+                                                                final String donatorID= (String)document.get("User id");
 
+
+
+
+
+                                                                final String ItemName=(String)document.get("Title");
 
                                                                 //// get the mail with thaat ID
                                                                 DocumentReference docRef2=fStore.collection("donators").document(donatorID);//.get("User id")
@@ -137,6 +142,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                                             if (document.exists()) {
                                                                                 Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                                                                                 String donatorMail= (String)document.get("email");
+                                                                                final String BenName=(String)document.get("userName");//Donator name
+
                                                                                 sendMail.sendMail(donatorMail, "لقد تم طلب المنتج الخاص بك", "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                                                                                         "\n" +
                                                                                         "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:v=\"urn:schemas-microsoft-com:vml\">\n" +
@@ -306,11 +313,12 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                                                         "<div style=\"color:#5f9fbe;font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;\">\n" +
                                                                                         "<div style=\"font-size: 12px; line-height: 1.2; color: #5f9fbe; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px;\">\n" +
                                                                                         "<p style=\"font-size: 14px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 17px; margin: 0;\"> </p>\n" +
-                                                                                        "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><strong><span style=\"font-size: 28px;\">مرحبًا</span></strong></span></p>\n" +
+                                                                                        "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><strong><span style=\"font-size: 28px;\">" + "مرحبًا " + BenName +
+                                                                                        "</span></strong></span></p>\n" +
                                                                                         "<p style=\"font-size: 14px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 17px; margin: 0;\"> </p>\n" +
-                                                                                        "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><span style=\"font-size: 28px;\"> يسعدنا اخبارك بطلب المنتج المعروض لديكم</span></span></p>\n" +
+                                                                                        "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><span style=\"font-size: 28px;\">"+"يسعدنا اخباركم بطلب منتجكم ("+ItemName+")" +"</span></span></p>\n" +
                                                                                         "<p style=\"font-size: 14px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 17px; margin: 0;\"> </p>\n" +
-                                                                                        "<p style=\"font-size: 22px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 26px; margin: 0;\"><span style=\"font-size: 22px;\">نرجو الدخول للتطبيق والنظر في امر المستفيد</span></p>\n" +
+                                                                                        "<p style=\"font-size: 22px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 26px; margin: 0;\"><span style=\"font-size: 22px;\">نرجو الدخول للتطبيق والنظر في قبول الطلب</span></p>\n" +
                                                                                         "<p style=\"font-size: 22px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 26px; margin: 0;\"><span style=\"font-size: 22px;\">دمت بود</span></p>\n" +
                                                                                         "</div>\n" +
                                                                                         "</div>\n" +
@@ -441,6 +449,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                                                         "<!--[if (IE)]></div><![endif]-->\n" +
                                                                                         "</body>\n" +
                                                                                         "</html>");
+
+
 
                                                                             }
                                                                         }
