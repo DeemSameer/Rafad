@@ -259,7 +259,9 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
                                             "<!--[if mso]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Tahoma, sans-serif\"><![endif]-->\n" +
                                             "<div style=\"color:#5f9fbe;font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;\">\n" +
                                             "<div style=\"font-size: 12px; line-height: 1.2; color: #5f9fbe; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px;\">\n" +
-                                            "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><strong><span style=\"font-size: 26px;\">مرحبًا عزيزنا المستفيد   </span></strong></span><br/></p>\n" +
+                                            "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><strong><span style=\"font-size: 28px;\">" + "مرحبًا عزيزنا المستفيد " + name +
+                                            "</span></strong></span></p>\n" +
+
                                             "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><span style=\"font-size: 24px;\">تم قبول حسابك، يسعدنا أن تكون جزءًا من عائلة رَفَد</span></span><br/><br/>\n\n<span style=\"font-size: 22px;\">نتمنى لك تجربة ممتعة، دمت بود   </span></p>\n" +
                                             "</div>\n" +
                                             "</div>\n" +
@@ -409,82 +411,6 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
                 ///end approve///
 
 
-/*
-                //Fullstar
-                popupclass.FullStar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        FirebaseFirestore db=FirebaseFirestore.getInstance();
-                        CollectionReference beneficiaries = db.collection("beneficiaries");
-                        DocumentReference docRefB = beneficiaries.document(UID);
-                        Map<String, Object> user = new HashMap<>();
-                        user.put("State","1");
-                        docRefB.update(user);
-                        check=true;
-                    }
-                });
-
-                //
-                //Fullstar1
-                popupclass.fullStar1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        FirebaseFirestore db=FirebaseFirestore.getInstance();
-                        CollectionReference beneficiaries = db.collection("beneficiaries");
-                        DocumentReference docRefB = beneficiaries.document(UID);
-                        Map<String, Object> user = new HashMap<>();
-                        user.put("State","2");
-                        docRefB.update(user);
-                        check=true;
-                    }
-                });
-
-                //
-                //Fullstar2
-                popupclass.fullStar2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        FirebaseFirestore db=FirebaseFirestore.getInstance();
-                        CollectionReference beneficiaries = db.collection("beneficiaries");
-                        DocumentReference docRefB = beneficiaries.document(UID);
-                        Map<String, Object> user = new HashMap<>();
-                        user.put("State","3");
-                        docRefB.update(user);
-                        check=true;
-                    }
-                });
-
-                //
-                //Fullstar3
-                popupclass.fullStar3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        FirebaseFirestore db=FirebaseFirestore.getInstance();
-                        CollectionReference beneficiaries = db.collection("beneficiaries");
-                        DocumentReference docRefB = beneficiaries.document(UID);
-                        Map<String, Object> user = new HashMap<>();
-                        user.put("State","4");
-                        docRefB.update(user);
-                        check=true;
-                    }
-                });
-
-                //
-                //Fullstar4
-                popupclass.fullStar4.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        FirebaseFirestore db=FirebaseFirestore.getInstance();
-                        CollectionReference beneficiaries = db.collection("beneficiaries");
-                        DocumentReference docRefB = beneficiaries.document(UID);
-                        Map<String, Object> user = new HashMap<>();
-                        user.put("State","5");
-                        docRefB.update(user);
-                        check=true;
-                    }
-                });
-*/
-                //
 
 
             }
@@ -515,9 +441,8 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
                                     @Override
                                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                                         String email = documentSnapshot.getString("email");
-                                        //(String) docRefB.get("email");
                                         String name = documentSnapshot.getString("userName");
-                                        //(String) docRefB.get("userName");
+
                                         sendMail.sendMail(email, "تم رفض الحساب !  " ,  "  <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                                                 "\n" +
                                                 "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:v=\"urn:schemas-microsoft-com:vml\">\n" +
@@ -687,7 +612,9 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
                                                 "<div style=\"color:#5f9fbe;font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;\">\n" +
                                                 "<div style=\"font-size: 12px; line-height: 1.2; color: #5f9fbe; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px;\">\n" +
                                                 "<p style=\"font-size: 14px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 17px; margin: 0;\"> </p>\n" +
-                                                "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><strong><span style=\"font-size: 26px;\"> مرحبًا عزيزنا المستفيد </span></strong></span></p>\n" +
+                                                "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><strong><span style=\"font-size: 28px;\">" + "مرحبًا عزيزنا المستفيد " + name +
+                                                "</span></strong></span></p>\n" +
+
                                                 "<p style=\"font-size: 14px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 17px; margin: 0;\"> </p>\n" +
                                                 "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 24px;\"><span style=\"font-size: 24px;\">نسعد في تطبيق رَفَد بانضمامك لنا ولكن يؤسفنا إخبارك </span></span></p>\n" +
                                                 "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 24px;\"><span style=\"font-size: 24px;\">بأنه تم رفض حسابك لعدم استيفاء الشروط</span></span></p>\n" +
