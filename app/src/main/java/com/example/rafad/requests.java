@@ -42,6 +42,14 @@ public class requests extends AppCompatActivity {
     String imageUri;
     String tit;
     String isRe;
+    Button back;
+    Button homebutton;
+
+
+
+
+
+
 
     public static final String TAG = "TAG";
     int postion;
@@ -54,6 +62,8 @@ public class requests extends AppCompatActivity {
         setContentView(R.layout.activity_requests);
         fAuth = FirebaseAuth.getInstance();
         listView = (ListView) findViewById(R.id.postedlistHomePage1);
+        back=findViewById(R.id.button5);
+        homebutton=findViewById(R.id.bHome);
         fStore= FirebaseFirestore.getInstance();
         fStore.collection("item")
                 .whereEqualTo("isRequested", "Pending")
@@ -97,18 +107,26 @@ public class requests extends AppCompatActivity {
                             listView.setAdapter(adapter);
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
+                       }
                     }
                 });
-        Button button4 = (Button) findViewById(R.id.but);
-        button4.setOnClickListener(new View.OnClickListener() {
+    
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Intent i = new Intent(homepageDonator.this, postitem.class);
+                startActivity(new Intent(requests.this, mainProfile.class));
+                finish();
+            }
+        });
+        homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(requests.this, homepageDonator.class));
                 finish();
+
             }
         });
-
-
     }
 }

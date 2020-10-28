@@ -99,6 +99,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 docRefB.update("nenS", "state");
                                 context.startActivity(new Intent(context, requests.class));
                                 Toast.makeText(getContext(), "لقد تم رفض الطلب بنجاح", Toast.LENGTH_SHORT).show();
+
                                 //dialog1.dismiss();
                             }
                         }).setNegativeButton("الغاء", null).show();
@@ -124,6 +125,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 docRefB.update("isRequested", "yes");
                                 context.startActivity(new Intent(context, requests.class));
                                 Toast.makeText(getContext(), "لقد تم قبول الطلب بنجاح", Toast.LENGTH_SHORT).show();
+
 
                                 //SEND EMAIL TO THE BENFICARY
 
