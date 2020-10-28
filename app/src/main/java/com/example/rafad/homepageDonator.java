@@ -62,7 +62,7 @@ public class homepageDonator extends AppCompatActivity {
         profile1= findViewById(R.id.profileb);
         post= findViewById(R.id.postItem);
         Button b=findViewById(R.id.button10);
-         empty = findViewById(R.id.homepagetext22);
+         empty = findViewById(R.id.homepagetext);
         //////// for view list of items
         listView=(ListView)findViewById(R.id.postedlistDonaterHome);
         //////// above is for view list of items
@@ -86,10 +86,10 @@ public class homepageDonator extends AppCompatActivity {
                                     }
                                     if (arrayItemC.size()==0)
                                     {
-                                        Toast toast= Toast.makeText(getApplicationContext(),
-                                                "عذراً لا يوجد بيانات للعرض", Toast.LENGTH_SHORT);
-                                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 50, 50);
-                                        toast.show();
+                                        empty.setText("لا يوجد بيانات للعرض");
+                                    }
+                                    else{
+                                        empty.setText("");
                                     }
 
                                     HistoryItemAdapter adapter = new HistoryItemAdapter(homepageDonator.this, arrayItemC);
@@ -122,10 +122,10 @@ public class homepageDonator extends AppCompatActivity {
                                     }
                                     if (arrayItemF.size()==0)
                                     {
-                                        Toast toast= Toast.makeText(getApplicationContext(),
-                                                "عذراً لا يوجد بيانات للعرض", Toast.LENGTH_SHORT);
-                                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 50, 50);
-                                        toast.show();
+                                        empty.setText("لا يوجد بيانات للعرض");
+                                    }
+                                    else{
+                                        empty.setText("");
                                     }
                                     HistoryItemAdapter adapter = new HistoryItemAdapter(homepageDonator.this, arrayItemF);
                                     listView = (ListView) findViewById(R.id.postedlistDonaterHome);
@@ -157,11 +157,11 @@ public class homepageDonator extends AppCompatActivity {
                                     }
                                     if (arrayItemD.size()==0)
                                        {
-                                           Toast toast= Toast.makeText(getApplicationContext(),
-                                                   "عذراً لا يوجد بيانات للعرض", Toast.LENGTH_SHORT);
-                                           toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 50, 50);
-                                           toast.show();
+                                           empty.setText("لا يوجد بيانات للعرض");
                                        }
+                                    else{
+                                        empty.setText("");
+                                    }
                                     HistoryItemAdapter adapter = new HistoryItemAdapter(homepageDonator.this, arrayItemD);
                                     listView = (ListView) findViewById(R.id.postedlistDonaterHome);
                                     listView.setAdapter(adapter);
@@ -193,10 +193,10 @@ public class homepageDonator extends AppCompatActivity {
                                     }
                                     if (arrayItemA.size()==0)
                                     {
-                                        Toast toast= Toast.makeText(getApplicationContext(),
-                                                "عذراً لا يوجد بيانات للعرض", Toast.LENGTH_SHORT);
-                                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 50, 50);
-                                        toast.show();
+                                        empty.setText("لا يوجد بيانات للعرض");
+                                    }
+                                    else{
+                                        empty.setText("");
                                     }
                                     HistoryItemAdapter adapter = new HistoryItemAdapter(homepageDonator.this, arrayItemA);
                                     listView = (ListView) findViewById(R.id.postedlistDonaterHome);
