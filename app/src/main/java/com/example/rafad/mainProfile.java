@@ -160,6 +160,7 @@ post = findViewById(R.id.postItem);
        // FirebaseFirestore db = FirebaseFirestore.getInstance();
         fStore.collection("item")
                     .whereEqualTo("User id", userId)
+                    .whereEqualTo("isRequested", "no")
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
