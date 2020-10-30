@@ -19,6 +19,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import sdk.chat.core.session.ChatSDK;
+
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "TAG";
     Timer timer ;
@@ -28,18 +30,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent (MainActivity.this, login.class);
+                Intent intent = new Intent (MainActivity.this, MainChat.class);
                 startActivity(intent);
                 finish();
             }
         },3000 );
-
-
 
 
 
