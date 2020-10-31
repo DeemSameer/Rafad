@@ -524,7 +524,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         TextView titText = (TextView) rowView.findViewById(R.id.titAdabtorBen);
         final ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
         TextView catText = (TextView) rowView.findViewById(R.id.catAdabtorBen);
-
+        TextView date = (TextView) rowView.findViewById(R.id.date);
 
 
 

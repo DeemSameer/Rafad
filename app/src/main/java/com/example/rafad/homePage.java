@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,7 +29,7 @@ public class homePage extends AppCompatActivity {
     Button logout, profile, clothes , furniture,device,all;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-
+TextView empty;
     //////// for view list of items
     List<postinfo> arrayItem=new ArrayList<>();
     List<postinfo> arrayItemC=new ArrayList<>();
@@ -50,7 +51,7 @@ public class homePage extends AppCompatActivity {
         all = findViewById(R.id.all1);
         fAuth = FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
-
+        empty = findViewById(R.id.homepagetext2);
         logout=findViewById(R.id.logoutButton);
         profile= findViewById(R.id.profileb);
         //////// for view list of items
@@ -95,11 +96,11 @@ public class homePage extends AppCompatActivity {
                                     }
                                     if (arrayItemC.size()==0)
                                     {
-                                        Toast toast= Toast.makeText(getApplicationContext(),
-                                                "عذراً لا يوجد بيانات للعرض", Toast.LENGTH_SHORT);
-                                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 50, 50);
-                                        toast.show();
-                                    }
+                                            empty.setText("لا يوجد بيانات للعرض");
+                                        }
+                                        else{
+                                            empty.setText("");
+                                        }
                                     ListViewAdaptorBen adapter = new ListViewAdaptorBen(homePage.this, arrayItemC);
                                     listView = (ListView) findViewById(R.id.postedlistHomePage);
                                     listView.setAdapter(adapter);
@@ -131,10 +132,10 @@ public class homePage extends AppCompatActivity {
                                     }
                                     if (arrayItemF.size()==0)
                                     {
-                                        Toast toast= Toast.makeText(getApplicationContext(),
-                                                "عذراً لا يوجد بيانات للعرض", Toast.LENGTH_SHORT);
-                                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 50, 50);
-                                        toast.show();
+                                        empty.setText("لا يوجد بيانات للعرض");
+                                    }
+                                    else{
+                                        empty.setText("");
                                     }
                                     ListViewAdaptorBen adapter = new ListViewAdaptorBen(homePage.this, arrayItemF);
                                     listView = (ListView) findViewById(R.id.postedlistHomePage);
@@ -166,10 +167,10 @@ public class homePage extends AppCompatActivity {
                                     }
                                     if (arrayItemD.size()==0)
                                     {
-                                        Toast toast= Toast.makeText(getApplicationContext(),
-                                                "عذراً لا يوجد بيانات للعرض", Toast.LENGTH_SHORT);
-                                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 50, 50);
-                                        toast.show();
+                                        empty.setText("لا يوجد بيانات للعرض");
+                                    }
+                                    else{
+                                        empty.setText("");
                                     }
                                     ListViewAdaptorBen adapter = new ListViewAdaptorBen(homePage.this, arrayItemD);
                                     listView = (ListView) findViewById(R.id.postedlistHomePage);
@@ -202,10 +203,10 @@ public class homePage extends AppCompatActivity {
                                     }
                                     if (arrayItemA.size()==0)
                                     {
-                                        Toast toast= Toast.makeText(getApplicationContext(),
-                                                "عذراً لا يوجد بيانات للعرض", Toast.LENGTH_SHORT);
-                                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 50, 50);
-                                        toast.show();
+                                        empty.setText("لا يوجد بيانات للعرض");
+                                    }
+                                    else{
+                                        empty.setText("");
                                     }
                                     ListViewAdaptorBen adapter = new ListViewAdaptorBen(homePage.this, arrayItemA);
                                     listView = (ListView) findViewById(R.id.postedlistHomePage);
