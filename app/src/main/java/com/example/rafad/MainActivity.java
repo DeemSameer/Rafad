@@ -8,10 +8,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.cometchat.pro.core.AppSettings;
+/*import com.cometchat.pro.core.AppSettings;
 import com.cometchat.pro.core.CometChat;
 import com.cometchat.pro.exceptions.CometChatException;
-import com.example.rafad.utils.constants;
+import com.example.rafad.utils.constants;*/
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -44,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
         },3000 );
 
 
-        initCometChat();
+       // initCometChat();
 
     }
 
-    private void initCometChat() {
+   /*private void initCometChat() {
 
         /*String appID = "APP_ID"; // Replace with your App ID*/
-        String region = "us"; // Replace with your App Region ("eu" or "us")
+       /* String region = "us"; // Replace with your App Region ("eu" or "us")
         AppSettings appSettings=new AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region).build();
 
         CometChat.init(this, constants.App_ID, appSettings, new CometChat.CallbackListener<String>() {
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                // Log.d(TAG, "Initialization failed with exception: " + e.getMessage());
             }
         });
-    }
+    }*/
 
 
 
