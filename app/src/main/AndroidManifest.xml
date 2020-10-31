@@ -12,8 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdapterD"
-            tools:ignore="Instantiatable"/>
+        <activity android:name=".notification.Token"></activity>
+        <activity
+            android:name=".AdapterD"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".requests"
             android:label="@string/title_activity_requests"

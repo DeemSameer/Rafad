@@ -2,6 +2,7 @@ package com.example.rafad;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -20,7 +21,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -35,7 +42,16 @@ import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
+import com.example.rafad.notification.APIService;
+import com.example.rafad.notification.Client;
+import com.example.rafad.notification.Data;
+import com.example.rafad.notification.MyResponse;
+import com.example.rafad.notification.NotificationSender;
+import com.example.rafad.notification.Token;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +67,9 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     FirebaseAuth fAuth;
     Button request;
     String UID1, benN, benS;
+    private final String Title = "لقد تم طلب سلعتك!";
+    private final String Message="تم طلب سلعتك من احد المستفيدين";
+    private APIService apiService;
 
 
 
@@ -68,6 +87,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     public android.view.View getView(final int position, View view, ViewGroup parent) {
 
         final String itemID=arrayList.get(position).itemID;
+        final String dID=arrayList.get(position).UID;
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.activity_list_view_adaptor_ben, null,true);
         fStore=FirebaseFirestore.getInstance();
@@ -75,12 +95,16 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         fAuth = FirebaseAuth.getInstance();
         request=rowView.findViewById(R.id.button11);
         final String UID=arrayList.get(position).getUID();
+        apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
 
 
 
         request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
                 ///////////////////
                 new AlertDialog.Builder(getContext())
 
@@ -90,6 +114,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 final FirebaseFirestore db = FirebaseFirestore.getInstance();
                                 UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
+
                                 // To retreive name and state for ben
                                 ///////////////////////////////////////////////////
                                 DocumentReference docRef = fStore.collection("beneficiaries").document(UID1);
@@ -477,10 +502,24 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                 //dialog1.dismiss();
                             }
                         }).setNegativeButton("الغاء", null).show();
-                AlertDialog dialog1;    }
+                AlertDialog dialog1;
+            //Notification
+
+                FirebaseDatabase.getInstance().getReference().child("Tokens").child(dID.toString().trim()).child("token").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String usertoken=dataSnapshot.getValue(String.class);
+                        sendNotifications(usertoken, Title.toString().trim(),Message.toString().trim());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
         });
-
-
+        UpdateToken();
         TextView desText = (TextView) rowView.findViewById(R.id.desAdabtorBen);
         TextView titText = (TextView) rowView.findViewById(R.id.titAdabtorBen);
         final ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
@@ -501,7 +540,6 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         });
 
 
-
         desText.setText(arrayList.get(position).des);
         titText.setText(arrayList.get(position).tit);
         catText.setText(arrayList.get(position).cat);
@@ -509,4 +547,34 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         return rowView;
 
     }
+
+
+
+
+    private void UpdateToken(){
+        FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        String refreshToken= FirebaseInstanceId.getInstance().getToken();
+        Token token= new Token(refreshToken);
+        FirebaseDatabase.getInstance().getReference("Tokens").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
+    }
+    public void sendNotifications(String usertoken, String title, String message) {
+        Data data = new Data(title, message);
+        NotificationSender sender = new NotificationSender(data, usertoken);
+        apiService.sendNotifcation(sender).enqueue(new Callback<MyResponse>() {
+            @Override
+            public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                if (response.code() == 200) {
+                    if (response.body().success != 1) {
+                        Toast.makeText(getContext(), "Failed ", Toast.LENGTH_LONG);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MyResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
 }
