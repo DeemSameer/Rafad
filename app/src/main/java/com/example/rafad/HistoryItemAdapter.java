@@ -81,9 +81,26 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
         desText.setText(arrayList.get(position).des);
         titText.setText(arrayList.get(position).tit);
         catText.setText(arrayList.get(position).cat);
-        date.setText(arrayList.get(position).date);
+        date.setText(replaceArabicNumbers(arrayList.get(position).date));
         return rowView;
 
+    }
+    private String replaceArabicNumbers(CharSequence original) {
+        if (original != null) {
+            return original.toString().replaceAll("١","1")
+                    .replaceAll("٢","2")
+                    .replaceAll("٣","3")
+                    .replaceAll("٣","3")
+                    .replaceAll("٤","4")
+                    .replaceAll("٥","5")
+                    .replaceAll("٦","6")
+                    .replaceAll("٧","7")
+                    .replaceAll("٨","8")
+                    .replaceAll("٨","9")
+                    .replaceAll("٠","0");
+        }
+
+        return null;
     }
 
 
