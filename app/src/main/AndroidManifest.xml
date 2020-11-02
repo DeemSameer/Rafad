@@ -12,8 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdapterD"
-            tools:ignore="Instantiatable"/>
+        <activity android:name=".BassAppLicChat"></activity>
+        <activity
+            android:name=".AdapterD"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".requests"
             android:label="@string/title_activity_requests"
@@ -53,6 +55,16 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <uses-permission
+            android:name="android.permission.INTERNET"
+            tools:ignore="WrongManifestParent" /> <!-- READ/WRITE_EXTERNAL_STORAGE permissions are required to upload or download files from/into external storage. -->
+        <uses-permission
+            android:name="android.permission.READ_EXTERNAL_STORAGE"
+            tools:ignore="WrongManifestParent" />
+        <uses-permission
+            android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+            tools:ignore="WrongManifestParent" />
     </application>
 
 </manifest>
