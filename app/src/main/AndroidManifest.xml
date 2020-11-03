@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".chatTutorial"></activity>
+        <activity android:name=".bar"></activity>
+        <activity android:name=".mainChat22_" />
+        <activity android:name=".chat" />
+        <activity android:name=".chatTutorial" />
         <activity
             android:name=".AdapterD"
             tools:ignore="Instantiatable" />
