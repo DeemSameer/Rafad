@@ -1,12 +1,10 @@
 package com.example.rafad.notification;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Token extends AppCompatActivity {
+public class Token {
     private String token;
-
     public Token(String token) {
         this.token = token;
     }

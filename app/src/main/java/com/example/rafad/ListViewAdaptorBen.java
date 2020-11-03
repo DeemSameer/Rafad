@@ -505,7 +505,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                 AlertDialog dialog1;
             //Notification
 
-                FirebaseDatabase.getInstance().getReference().child("Tokens").child(dID.toString().trim()).child("token").addListenerForSingleValueEvent(new ValueEventListener() {
+                FirebaseDatabase.getInstance().getReference().child("Tokens").child(arrayList.get(position).UID.toString().trim()).child("token").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         String usertoken=dataSnapshot.getValue(String.class);
