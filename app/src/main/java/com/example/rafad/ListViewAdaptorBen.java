@@ -554,8 +554,10 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     private void UpdateToken(){
         FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         String refreshToken= FirebaseInstanceId.getInstance().getToken();
+        //here error
         Token token= new Token(refreshToken);
         FirebaseDatabase.getInstance().getReference("Tokens").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
+        //
     }
     public void sendNotifications(String usertoken, String title, String message) {
         Data data = new Data(title, message);
