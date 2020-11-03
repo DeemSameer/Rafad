@@ -1,15 +1,12 @@
 package com.example.rafad;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,10 +28,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
-import android.app.Activity;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
 
 
 public class AdapterD extends ArrayAdapter<postinfo> {
@@ -70,7 +65,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
         fAuth = FirebaseAuth.getInstance();
 
 
-        TextView titText = (TextView) rowView.findViewById(R.id.name);
+        TextView titText = (TextView) rowView.findViewById(R.id.Username);
         TextView titText2 = (TextView) rowView.findViewById(R.id.status);
         TextView titText3 = (TextView) rowView.findViewById(R.id.name2);
 
