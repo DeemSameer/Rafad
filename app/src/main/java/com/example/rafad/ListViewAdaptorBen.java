@@ -27,13 +27,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
+import com.onesignal.OneSignal;
+
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONException;
@@ -41,10 +36,6 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -89,42 +80,48 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     Button request;
     String UID1, benN, benS;
     private final String Title = "لقد تم طلب سلعتك!";
-    private final String Message="تم طلب سلعتك من احد المستفيدين";
-    RequestQueue mRequestQue;
-    private String URL="https://fcm.googleapis.com/fcm/send";
+    private final String Message = "تم طلب سلعتك من احد المستفيدين";
+    private String URL = "https://fcm.googleapis.com/fcm/send";
 
 
     public ListViewAdaptorBen(@NonNull Activity context, @NonNull List<postinfo> arrayList) {
         super(context, R.layout.activity_list_view_adaptor_ben, arrayList);
-        this.arrayList=arrayList;
-        Log.d(TAG,  "SIZE ADAPTER His=> " +arrayList.size());
-        this.context=context;
+        this.arrayList = arrayList;
+        Log.d(TAG, "SIZE ADAPTER His=> " + arrayList.size());
+        this.context = context;
 
     }
 
 
 
 
+
+
+
     public android.view.View getView(final int position, View view, ViewGroup parent) {
 
-        final String itemID=arrayList.get(position).itemID;
-        final String dID=arrayList.get(position).UID;
-        LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.activity_list_view_adaptor_ben, null,true);
-        fStore=FirebaseFirestore.getInstance();
+        final String itemID = arrayList.get(position).itemID;
+        final String dID = arrayList.get(position).UID;
+        LayoutInflater inflater = context.getLayoutInflater();
+        View rowView = inflater.inflate(R.layout.activity_list_view_adaptor_ben, null, true);
+        fStore = FirebaseFirestore.getInstance();
         storageRef = FirebaseStorage.getInstance().getReference();
         fAuth = FirebaseAuth.getInstance();
-        request=rowView.findViewById(R.id.button11);
-        final String UID=arrayList.get(position).getUID();
-        mRequestQue= Volley.newRequestQueue(getContext());
-        FirebaseMessaging.getInstance().subscribeToTopic(dID);
+        request = rowView.findViewById(R.id.button11);
+        final String UID = arrayList.get(position).getUID();
+        FirebaseMessaging.getInstance().subscribeToTopic("news");
 
+        // Logging set to help debug issues, remove before releasing your app.
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
 
-
+        // OneSignal Initialization
+        OneSignal.startInit(getContext())
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
         request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
 
                 ///////////////////
@@ -135,7 +132,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 final FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                UID1 = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                                 // To retreive name and state for ben
                                 ///////////////////////////////////////////////////
@@ -147,8 +144,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
                                                 Log.d(TAG, "DocumentSnapshot data ListViewAdaptorBen: " + document.getData());
-                                                benN=document.getString("userName");
-                                                benS=document.getString("State");
+                                                benN = document.getString("userName");
+                                                benS = document.getString("State");
                                                 Log.d(TAG, "benN data ListViewAdaptorBen: " + benN);
                                                 Log.d(TAG, "benN data after ListViewAdaptorBen: " + benN);
                                                 CollectionReference beneficiaries = db.collection("item");
@@ -163,33 +160,30 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
 
 
                                                 //SENDING MAIL TO THE DONATOR
-                                                DocumentReference docRef=fStore.collection("item").document(itemID);//.get("User id")
+                                                DocumentReference docRef = fStore.collection("item").document(itemID);//.get("User id")
                                                 docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                        if (task.isSuccessful()){
+                                                        if (task.isSuccessful()) {
                                                             DocumentSnapshot document = task.getResult();
                                                             if (document.exists()) {
                                                                 Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                                                final String donatorID= (String)document.get("User id");
+                                                                final String donatorID = (String) document.get("User id");
 
 
-
-
-
-                                                                final String ItemName=(String)document.get("Title");
+                                                                final String ItemName = (String) document.get("Title");
 
                                                                 //// get the mail with thaat ID
-                                                                DocumentReference docRef2=fStore.collection("donators").document(donatorID);//.get("User id")
+                                                                DocumentReference docRef2 = fStore.collection("donators").document(donatorID);//.get("User id")
                                                                 docRef2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                                                     @Override
                                                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                                        if (task.isSuccessful()){
+                                                                        if (task.isSuccessful()) {
                                                                             DocumentSnapshot document = task.getResult();
                                                                             if (document.exists()) {
                                                                                 Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                                                                String donatorMail= (String)document.get("email");
-                                                                                final String BenName=(String)document.get("userName");//Donator name
+                                                                                String donatorMail = (String) document.get("email");
+                                                                                final String BenName = (String) document.get("userName");//Donator name
 
                                                                                 sendMail.sendMail(donatorMail, "لقد تم طلب المنتج الخاص بك", "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                                                                                         "\n" +
@@ -363,7 +357,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                                                         "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><strong><span style=\"font-size: 28px;\">" + "مرحبًا " + BenName +
                                                                                         "</span></strong></span></p>\n" +
                                                                                         "<p style=\"font-size: 14px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 17px; margin: 0;\"> </p>\n" +
-                                                                                        "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><span style=\"font-size: 28px;\">"+"يسعدنا اخباركم بطلب منتجكم ("+ItemName+")" +"</span></span></p>\n" +
+                                                                                        "<p style=\"font-size: 28px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 34px; margin: 0;\"><span style=\"font-size: 28px;\"><span style=\"font-size: 28px;\">" + "يسعدنا اخباركم بطلب منتجكم (" + ItemName + ")" + "</span></span></p>\n" +
                                                                                         "<p style=\"font-size: 14px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 17px; margin: 0;\"> </p>\n" +
                                                                                         "<p style=\"font-size: 22px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 26px; margin: 0;\"><span style=\"font-size: 22px;\">نرجو الدخول للتطبيق والنظر في قبول الطلب</span></p>\n" +
                                                                                         "<p style=\"font-size: 22px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 26px; margin: 0;\"><span style=\"font-size: 22px;\">دمت بود</span></p>\n" +
@@ -498,7 +492,6 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                                                         "</html>");
 
 
-
                                                                             }
                                                                         }
                                                                     }
@@ -525,18 +518,15 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                             }
                         }).setNegativeButton("الغاء", null).show();
                 AlertDialog dialog1;
-            //Notification
+                //Notification
 
-                sendNotifications();
             }
         });
         TextView desText = (TextView) rowView.findViewById(R.id.desAdabtorBen);
         TextView titText = (TextView) rowView.findViewById(R.id.titAdabtorBen);
-        final ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
+        final ImageView HisImage = (ImageView) rowView.findViewById(R.id.imageView10);
         TextView catText = (TextView) rowView.findViewById(R.id.catAdabtorBen);
         TextView date = (TextView) rowView.findViewById(R.id.date);
-
-
 
 
         StorageReference profileRef = storageRef.child(arrayList.get(position).imageID);
@@ -559,49 +549,4 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     }
 
 
-
-
-
-    public void sendNotifications() {
-        JSONObject json = new JSONObject();
-        try {
-            json.put("to","/topics/"+"news");
-        JSONObject notificationObj = new JSONObject();
-        notificationObj.put("title","any title");
-        notificationObj.put("body","any body");
-        JSONObject extraData = new JSONObject();
-        extraData.put("brandId","puma");
-        extraData.put("category","Shoes");
-        json.put("notification",notificationObj);
-        json.put("data",extraData);
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL,
-                    json,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-
-                            Log.d("MUR", "onResponse: ");
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.d("MUR", "onError: "+error.networkResponse);
-                }
-            }
-            ){
-
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    Map<String,String> header = new HashMap<>();
-                    header.put("content-type","application/json");
-                    header.put("authorization","key=AAAASHhf-4g:APA91bElnQGsg11GMeJiUpQv6HgswP2qKMKLsjRyo8UJzDuQNgpB0uO_pICz4QOlHVxKy-xWRV2pngAsWAAPO8TdwwsOrW_Bh02CjpI5G0GBT_R3o57tjUxkWcg3T9FjnHZu69Aq5y64");
-                    return header;
-                }
-            };
-            mRequestQue.add(request);
-
-    } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-    }}
+}
