@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
+import com.example.rafad.Fragment.chatFragment;
 import com.example.rafad.Model.user;
 import com.google.common.collect.Table;
 import com.google.firebase.auth.FirebaseAuth;
@@ -79,6 +80,7 @@ public class mainChat22_ extends AppCompatActivity {
         ViewPager viewPager=findViewById(R.id.view_pager);
 
         ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager());
+        //viewPagerAdapter.addFragment(new chatFragment(),"chats");
 
     }
 
@@ -121,5 +123,7 @@ public class mainChat22_ extends AppCompatActivity {
         public CharSequence getPageTitle(int position){
             return titles.get(position);
         }
+
+
     }
 }

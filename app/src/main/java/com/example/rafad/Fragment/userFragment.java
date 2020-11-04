@@ -1,4 +1,4 @@
-  package com.example.rafad.Fragment;
+ package com.example.rafad.Fragment;
 
 import android.os.Bundle;
 
@@ -11,13 +11,14 @@ import android.view.ViewGroup;
 import com.example.rafad.R;
 
 
-public class chatFragment extends Fragment {
+public class userFragment extends Fragment {
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                              Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chat, container, false);
+        return inflater.inflate(R.layout.fragment_user, container, false);
     }
 }
