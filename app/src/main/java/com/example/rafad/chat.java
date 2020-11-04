@@ -14,18 +14,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class chat extends AppCompatActivity {
 
-    CircleImageView profile_image;
-    TextView username;
 
-    FirebaseUser fuser;
-    DatabaseReference reference;
-    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chat);
 
-        Toolbar toolbar= findViewById();
+
     }
 }
