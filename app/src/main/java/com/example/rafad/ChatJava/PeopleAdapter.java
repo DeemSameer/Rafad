@@ -59,12 +59,16 @@ public class PeopleAdapter extends ArrayAdapter<PeopleModel> {
         TextView datetext =  rowView.findViewById(R.id.datetext);
         final ImageView profileImageViewChat = (ImageView)rowView.findViewById(R.id.imageView9);
 
+        Log.d(TAG, "before1 People Adapter");
 
-        StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"profile.jpg");
+        StorageReference profileRef = storageReference.child("users/"+arrayList.get(position).getUID()+"profile.jpg");
+        Log.d(TAG, "before12 People Adapter"+profileRef);
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).into(profileImageViewChat);
+                Log.d(TAG, "interrrrrr People Adapter");
+
             }
         });
 

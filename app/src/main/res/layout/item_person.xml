@@ -25,8 +25,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="196dp"
-            android:layout_marginRight="196dp"
+            android:layout_marginEnd="150dp"
+            android:layout_marginRight="150dp"
             android:textAppearance="@style/Base.TextAppearance.AppCompat"
             android:textSize="25sp"
             tools:text="Reso Coder" />
@@ -70,17 +70,41 @@
             android:layout_marginRight="16dp"
             android:text="TextView" />
 
-        <ImageView
-            android:id="@+id/imageView9"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
             android:layout_width="65dp"
-            android:layout_height="57dp"
+            android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="6dp"
-            android:layout_marginLeft="6dp"
-            android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/ic_baseline_add_a_photo_24" />
+
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="333dp"
+            android:layout_marginRight="333dp"
+            app:cardCornerRadius="60dp"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="54dp"
+                android:layout_height="51dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="TODO"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/userp" />
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
