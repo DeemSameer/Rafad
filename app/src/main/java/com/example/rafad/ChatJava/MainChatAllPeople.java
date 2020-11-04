@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.provider.Contacts;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -78,11 +79,11 @@ public class MainChatAllPeople extends AppCompatActivity {
                                 String lastMsg;
                                 String date;
                                 String time;
-                                Log.d(TAG, snapshot.child("Message").child("lastMessage").child("content").getValue() +" VALUVALULOOL" +name);
-                                if (snapshot.child("Message").child("lastMessage").child("content").getValue()!=null){
-                                 lastMsg=snapshot.child("Message").child("lastMessage").child("content").getValue().toString();
-                                 date=snapshot.child("Message").child("lastMessage").child("date").getValue().toString();
-                                 time=snapshot.child("Message").child("lastMessage").child("time").getValue().toString();}
+                                Log.d(TAG, snapshot.child("Messages").child("lastMessage").child("content").getValue() +" VALUVALULOOL" +name);
+                                if (snapshot.child("Messages").child("lastMessage").child("content").getValue()!=null){
+                                 lastMsg=snapshot.child("Messages").child("lastMessage").child("content").getValue().toString();
+                                 date=snapshot.child("Messages").child("lastMessage").child("date").getValue().toString();
+                                 time=snapshot.child("Messages").child("lastMessage").child("time").getValue().toString();}
                                 else{
                                     lastMsg=" ";
                                      date= " ";
