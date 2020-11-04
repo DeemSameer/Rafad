@@ -21,6 +21,30 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -42,16 +66,13 @@ import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
-import com.example.rafad.notification.APIService;
-import com.example.rafad.notification.Client;
-import com.example.rafad.notification.Data;
-import com.example.rafad.notification.MyResponse;
-import com.example.rafad.notification.NotificationSender;
-import com.example.rafad.notification.Token;
+
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,9 +90,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     String UID1, benN, benS;
     private final String Title = "لقد تم طلب سلعتك!";
     private final String Message="تم طلب سلعتك من احد المستفيدين";
-    private APIService apiService;
-
-
+    RequestQueue mRequestQue;
+    private String URL="https://fcm.googleapis.com/fcm/send";
 
 
     public ListViewAdaptorBen(@NonNull Activity context, @NonNull List<postinfo> arrayList) {
@@ -79,6 +99,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         this.arrayList=arrayList;
         Log.d(TAG,  "SIZE ADAPTER His=> " +arrayList.size());
         this.context=context;
+
     }
 
 
@@ -95,7 +116,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         fAuth = FirebaseAuth.getInstance();
         request=rowView.findViewById(R.id.button11);
         final String UID=arrayList.get(position).getUID();
-        apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
+        mRequestQue= Volley.newRequestQueue(getContext());
+        FirebaseMessaging.getInstance().subscribeToTopic(dID);
 
 
 
@@ -505,21 +527,9 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                 AlertDialog dialog1;
             //Notification
 
-                FirebaseDatabase.getInstance().getReference().child("Tokens").child(arrayList.get(position).UID.toString().trim()).child("token").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String usertoken=dataSnapshot.getValue(String.class);
-                        sendNotifications(usertoken, Title.toString().trim(),Message.toString().trim());
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                sendNotifications();
             }
         });
-        UpdateToken();
         TextView desText = (TextView) rowView.findViewById(R.id.desAdabtorBen);
         TextView titText = (TextView) rowView.findViewById(R.id.titAdabtorBen);
         final ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
@@ -551,32 +561,47 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
 
 
 
-    private void UpdateToken(){
-        FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        String refreshToken= FirebaseInstanceId.getInstance().getToken();
-        //here error
-        Token token= new Token(refreshToken);
-        FirebaseDatabase.getInstance().getReference("Tokens").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
-        //
-    }
-    public void sendNotifications(String usertoken, String title, String message) {
-        Data data = new Data(title, message);
-        NotificationSender sender = new NotificationSender(data, usertoken);
-        apiService.sendNotifcation(sender).enqueue(new Callback<MyResponse>() {
-            @Override
-            public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
-                if (response.code() == 200) {
-                    if (response.body().success != 1) {
-                        Toast.makeText(getContext(), "Failed ", Toast.LENGTH_LONG);
-                    }
+
+    public void sendNotifications() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("to","/topics/"+"news");
+        JSONObject notificationObj = new JSONObject();
+        notificationObj.put("title","any title");
+        notificationObj.put("body","any body");
+        JSONObject extraData = new JSONObject();
+        extraData.put("brandId","puma");
+        extraData.put("category","Shoes");
+        json.put("notification",notificationObj);
+        json.put("data",extraData);
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL,
+                    json,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+
+                            Log.d("MUR", "onResponse: ");
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d("MUR", "onError: "+error.networkResponse);
                 }
             }
+            ){
 
-            @Override
-            public void onFailure(Call<MyResponse> call, Throwable t) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String,String> header = new HashMap<>();
+                    header.put("content-type","application/json");
+                    header.put("authorization","key=AAAASHhf-4g:APA91bElnQGsg11GMeJiUpQv6HgswP2qKMKLsjRyo8UJzDuQNgpB0uO_pICz4QOlHVxKy-xWRV2pngAsWAAPO8TdwwsOrW_Bh02CjpI5G0GBT_R3o57tjUxkWcg3T9FjnHZu69Aq5y64");
+                    return header;
+                }
+            };
+            mRequestQue.add(request);
 
-            }
-        });
-    }
+    } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-}
+    }}
