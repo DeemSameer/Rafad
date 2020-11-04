@@ -12,7 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChatJava.PeopleAdapter"></activity>
+        <activity android:name=".ChatJava.MessageActivity"></activity>
+        <activity android:name=".ChatJava.ChatAdapter" />
+        <activity android:name=".ChatJava.ChatList" />
+        <activity android:name=".ChatJava.ChatToolabar" />
+        <activity android:name=".ChatJava.PeopleAdapter$chatToolbar" />
+        <activity android:name=".ChatJava.MainChatActivity" />
+        <activity android:name=".ChatJava.adapterChat" />
+        <activity android:name=".ChatJava.PeopleAdapter" />
         <activity android:name=".ChatJava.MainChatAllPeople" />
         <activity android:name=".Chat.MainChat" />
         <activity android:name=".notification.Token" />

@@ -3,6 +3,7 @@ package com.example.rafad.ChatJava;
 
 import android.app.Activity;
 import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rafad.R;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -74,6 +76,12 @@ public class PeopleAdapter extends ArrayAdapter<PeopleModel> {
 }
 
 
+    public static class chatToolbar extends AppCompatActivity {
 
-
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.chat_toolbar);
+        }
+    }
 }
