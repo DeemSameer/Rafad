@@ -36,7 +36,8 @@ public class MainChatAllPeople extends AppCompatActivity {
     List<PeopleModel> arrayList=new ArrayList<>();
     PeopleAdapter adapter;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    final DatabaseReference ref = database.getReference("Deem/People");//we can put the path on it like "server/saving-data/fireblog/posts"
+    String UserId="Deem";
+    final DatabaseReference ref = database.getReference(UserId+"/People");//we can put the path on it like "server/saving-data/fireblog/posts"
     ListView recyclerViewPeople;
     ArrayAdapter arrayAdapter;
 
@@ -60,6 +61,7 @@ public class MainChatAllPeople extends AppCompatActivity {
                     Log.d(TAG, key+" Hello from the another world");
                     //Retrieve the name of that ID,
                     FirebaseFirestore db=FirebaseFirestore.getInstance();
+                    //Collection path SHOULD CHANGE
                     db.collection("donators").document(key).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -80,7 +82,7 @@ public class MainChatAllPeople extends AppCompatActivity {
 
 
                                 //setting adapter array
-                                arrayList.add(new PeopleModel(name, lastMsg, time, date, UID, "String pic"));
+                                arrayList.add(new PeopleModel(name, lastMsg, time, date, UID));
                                 adapter.notifyDataSetChanged();
 
                             }//End Existing

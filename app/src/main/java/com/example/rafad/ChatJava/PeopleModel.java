@@ -7,13 +7,12 @@ public class PeopleModel {
     private String date;
     private String UID;
 
-    public PeopleModel(String name, String lastMsg, String time, String date, String UID, String pic) {
+    public PeopleModel(String name, String lastMsg, String time, String date, String UID) {
         this.name = name;
         this.lastMsg = lastMsg;
         this.time = time;
         this.date = date;
         this.UID = UID;
-        this.pic = pic;
     }
 
     public String getUID() {
@@ -56,14 +55,5 @@ public class PeopleModel {
         this.date = date;
     }
 
-    public String getPic() {
-        return pic;
-    }
-
-    public void setPic(String pic) {
-        this.pic = pic;
-    }
-
-    String pic;
 
 }
