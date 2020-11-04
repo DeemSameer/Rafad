@@ -519,7 +519,6 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                 });
             }
         });
-        UpdateToken();
         TextView desText = (TextView) rowView.findViewById(R.id.desAdabtorBen);
         TextView titText = (TextView) rowView.findViewById(R.id.titAdabtorBen);
         final ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
@@ -551,14 +550,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
 
 
 
-    private void UpdateToken(){
-        FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        String refreshToken= FirebaseInstanceId.getInstance().getToken();
-        //here error
-        Token token= new Token(refreshToken);
-        FirebaseDatabase.getInstance().getReference("Tokens").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
-        //
-    }
+
     public void sendNotifications(String usertoken, String title, String message) {
         Data data = new Data(title, message);
         NotificationSender sender = new NotificationSender(data, usertoken);

@@ -27,7 +27,7 @@ public class signUpBase extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                open_SignUpDon();
             }
         });
 

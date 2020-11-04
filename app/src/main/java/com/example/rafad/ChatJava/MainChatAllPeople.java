@@ -15,6 +15,7 @@ import com.example.rafad.benDataModel;
 import com.example.rafad.homepageAdmin;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,7 +37,7 @@ public class MainChatAllPeople extends AppCompatActivity {
     List<PeopleModel> arrayList=new ArrayList<>();
     PeopleAdapter adapter;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    String UserId="Deem";
+    String UserId= FirebaseAuth.getInstance().getCurrentUser().getUid();
     final DatabaseReference ref = database.getReference(UserId+"/People");//we can put the path on it like "server/saving-data/fireblog/posts"
     ListView recyclerViewPeople;
     ArrayAdapter arrayAdapter;
@@ -74,10 +75,10 @@ public class MainChatAllPeople extends AppCompatActivity {
                                 /// End retrieve person info
 
                                 //Start retrieve from real DB LastMsg + time
-                                Log.d(TAG, snapshot.child("lastMessage").child("content").getValue() +" VALUVALULOOL" +name);
-                                String lastMsg=snapshot.child("lastMessage").child("content").getValue().toString();
-                                String date=snapshot.child("lastMessage").child("date").getValue().toString();
-                                String time=snapshot.child("lastMessage").child("time").getValue().toString();
+                                Log.d(TAG, snapshot.child("Message").child("lastMessage").child("content").getValue() +" VALUVALULOOL" +name);
+                                String lastMsg=snapshot.child("Message").child("lastMessage").child("content").getValue().toString();
+                                String date=snapshot.child("Message").child("lastMessage").child("date").getValue().toString();
+                                String time=snapshot.child("Message").child("lastMessage").child("time").getValue().toString();
                                 //end retrieve
 
 

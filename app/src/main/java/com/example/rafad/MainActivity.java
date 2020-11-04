@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent (MainActivity.this, MainChatAllPeople.class);
+                Intent intent = new Intent (MainActivity.this, login.class);
                 startActivity(intent);
                 finish();
             }

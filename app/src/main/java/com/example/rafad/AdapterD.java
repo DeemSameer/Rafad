@@ -17,10 +17,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.rafad.ChatJava.Message;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -29,7 +32,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class AdapterD extends ArrayAdapter<postinfo> {
@@ -133,7 +138,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
                                                 Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                                String benID= (String)document.get("benID");
+                                                final String benID= (String)document.get("benID");
                                                 final String ItemName=(String)document.get("Title");//name
 
                                                 DocumentReference docRef2=fStore.collection("beneficiaries").document(benID);//.get("User id")
@@ -452,6 +457,35 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                                         "<!--[if (IE)]></div><![endif]-->\n" +
                                                         "</body>\n" +
                                                         "</html>");
+
+
+                                                //************************************************************************************//
+                                                //Start adding them to each other chat
+                                                //**Adding the benficary to the donator chat**/
+                                                final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                                DatabaseReference ref = database.getReference(FirebaseAuth.getInstance().getCurrentUser().getUid()+"/People/"+benID);
+                                                DatabaseReference usersRef =ref.child("Messages");
+                                                Map<String, Message> People = new HashMap<>();
+                                                People.put("fMsg0", new Message(" ", " ", " "));
+                                                People.put("lastMessage", new Message(" ", " ", " "));
+                                                usersRef.setValue(People);
+
+                                                //**End**//
+
+                                                //**Adding the donator to the benficary chat**/
+                                                final FirebaseDatabase database0 = FirebaseDatabase.getInstance();
+                                                DatabaseReference ref0 = database0.getReference(benID +"/People/"+FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                                DatabaseReference usersRef0 = ref0.child("Messages");
+                                                Map<String, Message> People0 = new HashMap<>();
+                                                People0.put("fMsg0", new Message(" ", " ", " "));
+                                                People0.put("lastMessage", new Message(" ", " ", " "));
+                                                usersRef0.setValue(People0);
+
+                                                //**End**//
+
+                                                //End adding them to each other chat
+                                                //************************************************************************************//
+
 
                                             }
                                         }
