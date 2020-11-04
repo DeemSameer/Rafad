@@ -73,11 +73,15 @@ public class PeopleAdapter extends ArrayAdapter<PeopleModel> {
         Log.d(TAG, "PeopleAdapter ");
         TextView titleText =  rowView.findViewById(R.id.Username);
         TextView subtitleText =  rowView.findViewById(R.id.lastMessage);
+        TextView timetext =  rowView.findViewById(R.id.timetext);
+        TextView datetext =  rowView.findViewById(R.id.datetext);
 
 
 
         titleText.setText(arrayList.get(position).getName());
         subtitleText.setText(arrayList.get(position).getLastMsg());
+        timetext.setText(arrayList.get(position).getTime());
+        datetext.setText(arrayList.get(position).getDate());
         return rowView;
 }
 
