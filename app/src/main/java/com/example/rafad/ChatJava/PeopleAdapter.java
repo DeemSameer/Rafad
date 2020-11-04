@@ -2,25 +2,7 @@ package com.example.rafad.ChatJava;
 
 
 import android.app.Activity;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-
-import androidx.annotation.NonNull;
-
-import com.example.rafad.R;
-import com.example.rafad.benDataModel;
-import com.example.rafad.homepageAdmin;
-import com.example.rafad.popUpClass;
-import com.example.rafad.sendMail;
-import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.List;
-
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,26 +11,23 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import com.google.android.gms.tasks.OnCompleteListener;
+
+import com.example.rafad.R;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import java.util.HashMap;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
-import java.util.Map;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 
 
 public class PeopleAdapter extends ArrayAdapter<PeopleModel> {
 
+
+    StorageReference storageReference;
     public static final String TAG = "TAG";
     private final Activity context;
     private final List<PeopleModel> arrayList;
@@ -64,6 +43,7 @@ public class PeopleAdapter extends ArrayAdapter<PeopleModel> {
     public View getView(int position,View view,ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
         fAuth = FirebaseAuth.getInstance();
+        storageReference = FirebaseStorage.getInstance().getReference();
         View rowView=inflater.inflate(R.layout.item_person, null,true);
 
         Button button=rowView.findViewById(R.id.button);
@@ -75,8 +55,16 @@ public class PeopleAdapter extends ArrayAdapter<PeopleModel> {
         TextView subtitleText =  rowView.findViewById(R.id.lastMessage);
         TextView timetext =  rowView.findViewById(R.id.timetext);
         TextView datetext =  rowView.findViewById(R.id.datetext);
+        final ImageView profileImageViewChat = (ImageView)rowView.findViewById(R.id.imageView9);
 
 
+        StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profileImageViewChat);
+            }
+        });
 
         titleText.setText(arrayList.get(position).getName());
         subtitleText.setText(arrayList.get(position).getLastMsg());
