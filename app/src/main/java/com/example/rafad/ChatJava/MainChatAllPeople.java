@@ -1,24 +1,22 @@
 package com.example.rafad.ChatJava;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Contacts;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.rafad.R;
-import com.example.rafad.benDataModel;
-import com.example.rafad.homepageAdmin;
+import com.example.rafad.homePage;
 import com.example.rafad.login;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,15 +24,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class MainChatAllPeople extends AppCompatActivity {
 
+    Button toHome;
     private static final String TAG=null ;
     List<PeopleModel> arrayList=new ArrayList<>();
     PeopleAdapter adapter;
@@ -45,6 +41,7 @@ public class MainChatAllPeople extends AppCompatActivity {
     ArrayAdapter arrayAdapter;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +50,15 @@ public class MainChatAllPeople extends AppCompatActivity {
         recyclerViewPeople =(ListView)findViewById(R.id.allPeople);
         adapter=new PeopleAdapter(MainChatAllPeople.this, arrayList);
         recyclerViewPeople.setAdapter(adapter);
+        toHome = findViewById(R.id.bHome2);
 
+        toHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainChatAllPeople.this, homePage.class));
+                finish();
+            }
+        });
 
         //Listener
         ref.addValueEventListener(new ValueEventListener() {
@@ -106,6 +111,7 @@ public class MainChatAllPeople extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
 
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 arrayAdapter.notifyDataSetChanged();
@@ -114,6 +120,9 @@ public class MainChatAllPeople extends AppCompatActivity {
         //End Listener
 
     }
+
+
+
 
     private void getUsers(){
 
