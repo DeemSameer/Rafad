@@ -149,7 +149,7 @@ public class login extends AppCompatActivity {
                                             if (document.exists()) {
                                                 Toast.makeText(login.this, " تم تسجيل دخولك بنجاح! ", Toast.LENGTH_LONG).show();
                                                 Intent i = new Intent(login.this, homepageDonator.class);
-                                                type="donators";
+                                                type="beneficiaries";
                                                 startActivity(i);
                                                 finish();
                                             }
@@ -183,7 +183,7 @@ public class login extends AppCompatActivity {
                                                 else if(((String)document.get("flag")).equals("Accepted")){
                                                     Toast.makeText(login.this,"تم تسجيل الدخول بنجاح",Toast.LENGTH_SHORT).show();
                                                     Intent i = new Intent(login.this, homePage.class);
-                                                    type="beneficiaries";
+                                                    type="donators";
                                                     startActivity(i);
                                                     finish();
                                                 }
