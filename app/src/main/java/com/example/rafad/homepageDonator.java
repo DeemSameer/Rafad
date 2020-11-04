@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.rafad.ChatJava.MainChatAllPeople;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,7 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class homepageDonator extends AppCompatActivity {
-    Button logout ,profile1, post , clothes , furniture,device,all;
+    Button logout ,profile1, post , clothes , furniture,device,all,chat;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 
@@ -63,6 +64,7 @@ public class homepageDonator extends AppCompatActivity {
         post= findViewById(R.id.postItem);
         Button b=findViewById(R.id.button10);
          empty = findViewById(R.id.homepagetext);
+         chat = findViewById(R.id.button12);
         //////// for view list of items
         listView=(ListView)findViewById(R.id.postedlistDonaterHome);
         //////// above is for view list of items
@@ -242,6 +244,16 @@ public class homepageDonator extends AppCompatActivity {
 
             }
         });
+
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homepageDonator.this, MainChatAllPeople.class));
+                finish();
+            }
+        });
+
+
 
 
 //////////////////// for list of items second try////////////////////////

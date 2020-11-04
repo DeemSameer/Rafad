@@ -63,7 +63,7 @@ public class MainChatAllPeople extends AppCompatActivity {
                     //Retrieve the name of that ID,
                     FirebaseFirestore db=FirebaseFirestore.getInstance();
                     //Collection path SHOULD CHANGE
-                    db.collection("donators").document(key).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    db.collection("beneficiaries").document(key).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             DocumentSnapshot document = task.getResult();
@@ -75,10 +75,19 @@ public class MainChatAllPeople extends AppCompatActivity {
                                 /// End retrieve person info
 
                                 //Start retrieve from real DB LastMsg + time
+                                String lastMsg;
+                                String date;
+                                String time;
                                 Log.d(TAG, snapshot.child("Message").child("lastMessage").child("content").getValue() +" VALUVALULOOL" +name);
-                                String lastMsg=snapshot.child("Message").child("lastMessage").child("content").getValue().toString();
-                                String date=snapshot.child("Message").child("lastMessage").child("date").getValue().toString();
-                                String time=snapshot.child("Message").child("lastMessage").child("time").getValue().toString();
+                                if (snapshot.child("Message").child("lastMessage").child("content").getValue()!=null){
+                                 lastMsg=snapshot.child("Message").child("lastMessage").child("content").getValue().toString();
+                                 date=snapshot.child("Message").child("lastMessage").child("date").getValue().toString();
+                                 time=snapshot.child("Message").child("lastMessage").child("time").getValue().toString();}
+                                else{
+                                    lastMsg=" ";
+                                     date= " ";
+                                     time=" ";
+                                }
                                 //end retrieve
 
 
