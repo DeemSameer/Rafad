@@ -1,11 +1,7 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.se.omapi.Session;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -13,9 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,11 +25,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 public class signupBen extends AppCompatActivity {
     public static final String TAG = "TAG";
@@ -206,6 +201,7 @@ public class signupBen extends AppCompatActivity {
                                         user.put("typeOfResidence", typeOfResidence);
                                         user.put("securityNumber", Number);///check ittt -----
                                         user.put("location",location);
+                                        user.put("Type","beneficiary");
 
 
 

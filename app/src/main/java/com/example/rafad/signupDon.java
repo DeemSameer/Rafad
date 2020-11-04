@@ -1,18 +1,18 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ArrayAdapter;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -23,7 +23,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -86,7 +85,7 @@ public class signupDon extends AppCompatActivity {
                 final String Phone = signUpPhone.getText().toString();
                 final String location=betterSpinner.getText().toString();
                 final String userName= UserName.getText().toString();
-                final String type= "Donator";
+                final String Type= "donator";
 
 
                 if(TextUtils.isEmpty(email)){
@@ -134,7 +133,7 @@ public class signupDon extends AppCompatActivity {
                                     Map<String,Object> user= new HashMap<>();
                                     user.put("phoneNumber", Phone);
                                     user.put("userName", userName);
-                                    //user.put("type",type);
+                                    user.put("type",Type);
                                     user.put("email",email);
 
                                    // user.put("items",Arrays.asList("array for items"));
