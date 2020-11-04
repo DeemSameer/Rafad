@@ -30,10 +30,21 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class login extends AppCompatActivity {
     public static final String TAG = "TAG";
     EditText lEmail, lpassword;
-    Button lLogin,lSignup;
+    Button lLogin;
+
+    public static String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    Button lSignup;
     FirebaseAuth fAuth;
     TextView textView1;
     FirebaseUser firebaseUser;
+    static String type;
 
 
     @Override
@@ -119,6 +130,7 @@ public class login extends AppCompatActivity {
                                             if (document.exists()) {
                                                 Toast.makeText(login.this, " تم تسجيل دخولك بنجاح! ", Toast.LENGTH_LONG).show();
                                                 Intent i = new Intent(login.this, homePageAdminBase.class);
+                                                type="admins";
                                                 startActivity(i);
                                                 finish();
                                             }
@@ -137,6 +149,7 @@ public class login extends AppCompatActivity {
                                             if (document.exists()) {
                                                 Toast.makeText(login.this, " تم تسجيل دخولك بنجاح! ", Toast.LENGTH_LONG).show();
                                                 Intent i = new Intent(login.this, homepageDonator.class);
+                                                type="donators";
                                                 startActivity(i);
                                                 finish();
                                             }
@@ -170,6 +183,7 @@ public class login extends AppCompatActivity {
                                                 else if(((String)document.get("flag")).equals("Accepted")){
                                                     Toast.makeText(login.this,"تم تسجيل الدخول بنجاح",Toast.LENGTH_SHORT).show();
                                                     Intent i = new Intent(login.this, homePage.class);
+                                                    type="beneficiaries";
                                                     startActivity(i);
                                                     finish();
                                                 }

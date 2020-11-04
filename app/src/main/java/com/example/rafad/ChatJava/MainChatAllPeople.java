@@ -14,6 +14,7 @@ import android.widget.ListView;
 import com.example.rafad.R;
 import com.example.rafad.benDataModel;
 import com.example.rafad.homepageAdmin;
+import com.example.rafad.login;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -64,7 +65,7 @@ public class MainChatAllPeople extends AppCompatActivity {
                     //Retrieve the name of that ID,
                     FirebaseFirestore db=FirebaseFirestore.getInstance();
                     //Collection path SHOULD CHANGE
-                    db.collection("beneficiaries").document(key).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    db.collection(login.getType()).document(key).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             DocumentSnapshot document = task.getResult();
