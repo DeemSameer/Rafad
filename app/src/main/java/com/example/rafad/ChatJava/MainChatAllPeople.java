@@ -71,6 +71,7 @@ public class MainChatAllPeople extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+                adapter.clear();//To clear data and retrive again -- I did not test it yet -_-
                 for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     final String key = snapshot.getKey();
                     Log.d(TAG, key + " Hello from the another world");

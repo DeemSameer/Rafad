@@ -465,8 +465,8 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                                 final FirebaseDatabase database = FirebaseDatabase.getInstance();
                                                 DatabaseReference ref = database.getReference(FirebaseAuth.getInstance().getCurrentUser().getUid()+"/People/"+benID);
                                                 DatabaseReference usersRef =ref.child("Messages");
-                                                Map<String, Message> People = new HashMap<>();
-                                                People.put("fMsg", new Message(" ", " ", " "));
+                                                Map<String, String> People = new HashMap<>();
+                                                People.put("state", "accepted");
                                                 usersRef.setValue(People);
 
                                                 //**End**//
@@ -475,8 +475,8 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                                 final FirebaseDatabase database0 = FirebaseDatabase.getInstance();
                                                 DatabaseReference ref0 = database0.getReference(benID +"/People/"+FirebaseAuth.getInstance().getCurrentUser().getUid());
                                                 DatabaseReference usersRef0 = ref0.child("Messages");
-                                                Map<String, Message> People0 = new HashMap<>();
-                                                People0.put("fMsg", new Message(" ", " ", " "));
+                                                Map<String, String> People0 = new HashMap<>();
+                                                People0.put("state", "accepted");
                                                 usersRef0.setValue(People0);
 
                                                 //**End**//
