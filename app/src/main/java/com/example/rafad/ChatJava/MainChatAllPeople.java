@@ -4,19 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
 import com.example.rafad.R;
-import com.example.rafad.homePage;
 import com.example.rafad.homepageDonator;
 import com.example.rafad.login;
+import com.example.rafad.mainProfile;
+import com.example.rafad.post3;
+import com.example.rafad.requests;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,16 +28,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.xwray.groupie.Item;
-import com.xwray.groupie.OnItemClickListener;
-import com.xwray.groupie.kotlinandroidextensions.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainChatAllPeople extends AppCompatActivity {
     static int Position;
-    Button toHome;
+    Button toHome, toPost, tolist, toProfile;
     private static final String TAG=null ;
     List<PeopleModel> arrayList=new ArrayList<>();
     PeopleAdapter adapter;
@@ -45,6 +43,7 @@ public class MainChatAllPeople extends AppCompatActivity {
     final DatabaseReference ref = database.getReference(UserId+"/People");//we can put the path on it like "server/saving-data/fireblog/posts"
     ListView recyclerViewPeople;
     ArrayAdapter arrayAdapter;
+    TextView empty;
 
 
 
@@ -57,15 +56,41 @@ public class MainChatAllPeople extends AppCompatActivity {
         adapter = new PeopleAdapter(MainChatAllPeople.this, arrayList);
         recyclerViewPeople.setAdapter(adapter);
         toHome = findViewById(R.id.bHome2);
+        empty = findViewById(R.id.chatText3);
+        toPost = findViewById(R.id.chatPostItem);
+        tolist = findViewById(R.id.button16);
+        toProfile = findViewById(R.id.FromChatToProfileButton);
 
 
         toHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainChatAllPeople.this, homePage.class));
+                startActivity(new Intent(MainChatAllPeople.this, homepageDonator.class));
                 finish();
             }
         });
+        toPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainChatAllPeople.this, post3.class));
+                finish();
+            }
+        });
+        tolist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainChatAllPeople.this, requests.class));
+                finish();
+            }
+        });
+        toProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainChatAllPeople.this, mainProfile.class));
+                finish();
+            }
+        });
+
 
         //Listener
         ref.addValueEventListener(new ValueEventListener() {
@@ -119,6 +144,15 @@ public class MainChatAllPeople extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 //OnclickListener
 
+                if (arrayList.size()==0)
+                {
+                    //Toast.makeText(requests.this, "This is my Toast message!",
+                    //  Toast.LENGTH_LONG).show();
+                    empty.setText("لا يوجد شخص للمحادثة");
+                }
+                else{
+                    empty.setText("");
+                }
 
             }
 
