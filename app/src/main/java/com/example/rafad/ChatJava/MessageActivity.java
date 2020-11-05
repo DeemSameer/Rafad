@@ -30,6 +30,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -109,15 +111,28 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     private void sendMessage(String sender, String receiver, String message){
+        //Get time and date //
+        //date
+        Calendar calendar=Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
+        String date=simpleDateFormat.format(calendar.getTime());
+        //end date
+        //time
+        Calendar calendar1=Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat1=new SimpleDateFormat("h:mm a");
+        String time=simpleDateFormat1.format(calendar1.getTime());
+        //end time
+        //End getting time and date //
+
 
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
         HashMap<String,Object> hashMap=new HashMap<>();
-        hashMap.put("fmsg", new Message(message,"1212","11:00"));
+        hashMap.put("fmsg", new Message(message,date,time));
         reference.child(sender).child("People").child(receiver).child("Messages").push().setValue(hashMap);
         //***************************************************************************//
         DatabaseReference reference2= FirebaseDatabase.getInstance().getReference();
         HashMap<String,Object> hashMap2=new HashMap<>();
-        hashMap2.put("tmsg", new Message(message,"1212","11:00"));
+        hashMap2.put("tmsg", new Message(message,date,time));
         reference2.child(receiver).child("People").child(sender).child("Messages").push().setValue(hashMap2);
 
     }
