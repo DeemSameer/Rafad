@@ -125,6 +125,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                 UID1 = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 LoggedIn_User_Email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
+                OneSignal.sendTag("User_ID",UID1);
 
                 ///////////////////
                 new AlertDialog.Builder(getContext())
@@ -613,9 +614,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                     String send_email;
 
                     //This is a Simple Logic to Send Notification different Device Programmatically....
-                    String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
-                    OneSignal.sendTag("User_ID",LoggedIn_User_Email);
-                    send_email=LoggedIn_User_Email;
+
+                    send_email=UID1;
                     /*
                     if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
                         send_email = "user2@gmail.com";
@@ -633,11 +633,11 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                         con.setDoInput(true);
 
                         con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-                        con.setRequestProperty("Authorization", "Basic YTUzMWE2M2UtMTZiYy00M2FhLWEyMjItYWQ5YWI1MDgzM2U2");
+                        con.setRequestProperty("Authorization", "Basic ZjdkOGRmN2QtMjA4ZS00ZWIyLWE4ZGUtYjliOWRiYWJjNzZi");
                         con.setRequestMethod("POST");
 
                         String strJsonBody = "{"
-                                + "\"app_id\": \"0523d5af-d75a-4916-a8dd-3e9109e0f10b\","
+                                + "\"app_id\": \"0ae2cf10-3cae-442f-b817-aa89d565548a\","
 
                                 + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
 
