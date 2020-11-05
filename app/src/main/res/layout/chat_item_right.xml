@@ -4,25 +4,26 @@
     android:layout_width="match_parent"
     android:padding="8dp"
     android:layout_height="wrap_content">
-    
+
     <RelativeLayout
+        android:id="@+id/Message_right"
         android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_height="wrap_content">
+        android:layout_alignParentRight="true">
 
         <TextView
+            android:id="@+id/show_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_right"
-            android:text="hi"
-            android:id="@+id/show_message"
             android:layout_alignParentEnd="true"
-            android:textSize="16sp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/background_right"
             android:fontFamily="@font/tajawalmedium2"
-            android:textColor="#e6e6e6"
             android:padding="8dp"
-            android:layout_alignParentRight="true" />
+            android:text="hi"
+            android:textColor="#e6e6e6"
+            android:textSize="16sp" />
     </RelativeLayout>
 
 </RelativeLayout>

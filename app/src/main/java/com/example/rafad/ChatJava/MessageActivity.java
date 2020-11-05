@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rafad.R;
 import com.example.rafad.homepageDonator;
@@ -31,6 +33,7 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -46,17 +49,26 @@ public class MessageActivity extends AppCompatActivity {
     static String receivername;
     StorageReference storageReference;
 
+    // RecyclerView.Adapter<MessageAdapter.ViewHolder>
+     RecyclerView recyclerView;
+     RecyclerView.Adapter mAdapter;
+     RecyclerView.LayoutManager layoutManager;
+    //
 
 
     FirebaseUser fuser;
     DatabaseReference reference;
     Intent intent;
     private String TAG;
+    ArrayList<Chat> arrayList=new ArrayList<Chat>(); ;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
         setContentView(R.layout.message_activity);
         storageReference = FirebaseStorage.getInstance().getReference();
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -74,6 +86,12 @@ public class MessageActivity extends AppCompatActivity {
          username=findViewById(R.id.username);
          btn_send=findViewById(R.id.btn_send);
          text_send=findViewById(R.id.text_send);
+        //recyclerView
+        recyclerView=(RecyclerView)findViewById(R.id.recycler_view);//recycler_view
+        layoutManager=new LinearLayoutManager(this);
+        Log.d(TAG, "recyclerView  "+recyclerView);
+        recyclerView.setLayoutManager(layoutManager);
+        //end recyclerView
         Log.d(TAG, "receiverUID  "+receiverUID);
 
         StorageReference profileRef = storageReference.child("users/" + receiverUID + "profile.jpg");
@@ -135,6 +153,13 @@ public class MessageActivity extends AppCompatActivity {
         hashMap2.put("tmsg", new Message(message,date,time));
         reference2.child(receiver).child("People").child(sender).child("Messages").push().setValue(hashMap2);
 
+
+        //Display it in chat*************
+        arrayList.add(new Chat(message));
+        MessageAdapter messageAdapter=new MessageAdapter(MessageActivity.this,arrayList);
+        recyclerView.setAdapter(messageAdapter);
+        //End display it*************
+
     }
 
 
@@ -145,4 +170,10 @@ public static void callMe(String UID,String name){
     receivername=name;
 }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //Retrieve old data + displaying them on the chat
+
+    }
 }
