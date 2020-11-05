@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -11,8 +12,10 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.rafad.R;
 import com.example.rafad.homePage;
+import com.example.rafad.homepageDonator;
 import com.example.rafad.login;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,12 +27,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.xwray.groupie.Item;
+import com.xwray.groupie.OnItemClickListener;
+import com.xwray.groupie.kotlinandroidextensions.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainChatAllPeople extends AppCompatActivity {
-
+    static int Position;
     Button toHome;
     private static final String TAG=null ;
     List<PeopleModel> arrayList=new ArrayList<>();
@@ -47,10 +53,11 @@ public class MainChatAllPeople extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_chat_all_people);
 
-        recyclerViewPeople =(ListView)findViewById(R.id.allPeople);
-        adapter=new PeopleAdapter(MainChatAllPeople.this, arrayList);
+        recyclerViewPeople = (ListView) findViewById(R.id.allPeople);
+        adapter = new PeopleAdapter(MainChatAllPeople.this, arrayList);
         recyclerViewPeople.setAdapter(adapter);
         toHome = findViewById(R.id.bHome2);
+
 
         toHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,11 +71,11 @@ public class MainChatAllPeople extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                for (final DataSnapshot snapshot: dataSnapshot.getChildren()){
+                for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     final String key = snapshot.getKey();
-                    Log.d(TAG, key+" Hello from the another world");
+                    Log.d(TAG, key + " Hello from the another world");
                     //Retrieve the name of that ID,
-                    FirebaseFirestore db=FirebaseFirestore.getInstance();
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
                     //Collection path SHOULD CHANGE
                     db.collection(login.getType()).document(key).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
@@ -77,23 +84,23 @@ public class MainChatAllPeople extends AppCompatActivity {
                             if (document.exists()) {
                                 String name = document.get("userName").toString();
                                 String UID = document.getId();
-                                Log.d(TAG, name+" nameUser");
-                                Log.d(TAG, UID+" UIDUSER");
+                                Log.d(TAG, name + " nameUser");
+                                Log.d(TAG, UID + " UIDUSER");
                                 /// End retrieve person info
 
                                 //Start retrieve from real DB LastMsg + time
                                 String lastMsg;
                                 String date;
                                 String time;
-                                Log.d(TAG, snapshot.child("Messages").child("lastMessage").child("content").getValue() +" VALUVALULOOL" +name);
-                                if (snapshot.child("Messages").child("lastMessage").child("content").getValue()!=null){
-                                 lastMsg=snapshot.child("Messages").child("lastMessage").child("content").getValue().toString();
-                                 date=snapshot.child("Messages").child("lastMessage").child("date").getValue().toString();
-                                 time=snapshot.child("Messages").child("lastMessage").child("time").getValue().toString();}
-                                else{
-                                    lastMsg=" ";
-                                     date= " ";
-                                     time=" ";
+                                Log.d(TAG, snapshot.child("Messages").child("lastMessage").child("content").getValue() + " VALUVALULOOL" + name);
+                                if (snapshot.child("Messages").child("lastMessage").child("content").getValue() != null) {
+                                    lastMsg = snapshot.child("Messages").child("lastMessage").child("content").getValue().toString();
+                                    date = snapshot.child("Messages").child("lastMessage").child("date").getValue().toString();
+                                    time = snapshot.child("Messages").child("lastMessage").child("time").getValue().toString();
+                                } else {
+                                    lastMsg = " ";
+                                    date = " ";
+                                    time = " ";
                                 }
                                 //end retrieve
 
@@ -109,6 +116,9 @@ public class MainChatAllPeople extends AppCompatActivity {
 
                 }
                 adapter.notifyDataSetChanged();
+                //OnclickListener
+
+
             }
 
 
@@ -122,10 +132,21 @@ public class MainChatAllPeople extends AppCompatActivity {
     }
 
 
-
-
     private void getUsers(){
 
     }
+
+    /*
+                              recyclerViewPeople.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                        Position =i;
+                                        Log.d(TAG, "Position  "+ i);
+                                        Intent intent = new Intent(MainChatAllPeople.this, MessageActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                });
+     */
 
 }
