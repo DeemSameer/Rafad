@@ -5,6 +5,7 @@ public class Chat {
     private String sender;
     private String receiver;
     private String message;
+    int type;
 
     public Chat(String sender, String receiver, String message){
 
@@ -12,8 +13,9 @@ public class Chat {
         this.receiver=receiver;
         this.message=message;
     }
-    public Chat(String message){
+    public Chat(String message,int type){
         this.message=message;
+        this.type=type;
     }
 
     public Chat(){}

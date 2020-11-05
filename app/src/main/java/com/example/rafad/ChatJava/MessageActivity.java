@@ -155,7 +155,7 @@ public class MessageActivity extends AppCompatActivity {
 
 
         //Display it in chat*************
-        arrayList.add(new Chat(message));
+        arrayList.add(new Chat(message,0));
         MessageAdapter messageAdapter=new MessageAdapter(MessageActivity.this,arrayList);
         recyclerView.setAdapter(messageAdapter);
         //End display it*************

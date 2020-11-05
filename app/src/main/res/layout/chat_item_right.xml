@@ -21,7 +21,6 @@
             android:background="@drawable/background_right"
             android:fontFamily="@font/tajawalmedium2"
             android:padding="8dp"
-            android:text="hi"
             android:textColor="#e6e6e6"
             android:textSize="16sp" />
     </RelativeLayout>
