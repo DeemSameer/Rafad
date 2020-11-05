@@ -13,11 +13,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rafad.R;
-import com.example.rafad.homepageDonator;
-import com.example.rafad.login;
-import com.firebase.ui.auth.data.model.User;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,8 +30,10 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -45,6 +46,10 @@ public class MessageActivity extends AppCompatActivity {
     static String receiverUID;
     static String receivername;
     StorageReference storageReference;
+
+    MessageAdapter messageAdapter;
+    List<Chat> mchat;
+    RecyclerView recyclerView;
 
 
 
@@ -69,6 +74,13 @@ public class MessageActivity extends AppCompatActivity {
                   finish();
              }
          });
+
+         recyclerView=findViewById(R.id.recycler_view);
+         recyclerView.setHasFixedSize(true);
+         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
+         linearLayoutManager.setStackFromEnd(true);
+         recyclerView.setLayoutManager(linearLayoutManager);
+
 
          profile_image=findViewById(R.id.profile_image);
          username=findViewById(R.id.username);
@@ -135,6 +147,8 @@ public class MessageActivity extends AppCompatActivity {
         hashMap2.put("tmsg", new Message(message,date,time));
         reference2.child(receiver).child("People").child(sender).child("Messages").push().setValue(hashMap2);
 
+        //readMessages(fuser.getUid, userid); //هذا السطر كان حاطه في نهاية ميثود onDataChange
+
     }
 
 
@@ -143,6 +157,31 @@ public class MessageActivity extends AppCompatActivity {
 public static void callMe(String UID,String name){
      receiverUID = UID;
     receivername=name;
+}
+
+private void readMessages(final String myid, final String userid){
+        mchat=new ArrayList<>();
+        reference = FirebaseDatabase.getInstance().getReference("chats") ;//هنا بنحتاج نعدل زي داتابيسنا
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mchat.clear();
+                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    Chat chat=snapshot.getValue(Chat.class);
+                    if(chat.getReceiver().equals(myid)&& chat.getSender().equals(userid) ||
+                     chat.getReceiver().equals(userid) && chat.getSender().equals(myid)){
+                        mchat.add(chat);
+                    }
+                    messageAdapter= new MessageAdapter(MessageActivity.this,mchat);
+                    recyclerView.setAdapter(messageAdapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 }
 
 }
