@@ -44,13 +44,14 @@ import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
+/*
 import com.example.rafad.notification.APIService;
 import com.example.rafad.notification.Client;
 import com.example.rafad.notification.Data;
 import com.example.rafad.notification.MyResponse;
 import com.example.rafad.notification.NotificationSender;
 import com.example.rafad.notification.Token;
-
+*/
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -78,7 +79,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     String UID1, benN, benS;
     private final String Title = "لقد تم طلب سلعتك!";
     private final String Message="تم طلب سلعتك من احد المستفيدين";
-    private APIService apiService;
+   // private APIService apiService;
     String LoggedIn_User_Email;
 
 
@@ -113,7 +114,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         fAuth = FirebaseAuth.getInstance();
         request=rowView.findViewById(R.id.button11);
         final String UID=arrayList.get(position).getUID();
-        apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
+        //apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
 
 
 
@@ -530,7 +531,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         String usertoken=dataSnapshot.getValue(String.class);
-                        sendNotifications(usertoken, Title.toString().trim(),Message.toString().trim());
+                       /// sendNotifications(usertoken, Title.toString().trim(),Message.toString().trim());
                     }
 
                     @Override
@@ -540,7 +541,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                 });
             }
         });
-        UpdateToken();
+       // UpdateToken();
         TextView desText = (TextView) rowView.findViewById(R.id.desAdabtorBen);
         TextView titText = (TextView) rowView.findViewById(R.id.titAdabtorBen);
         final ImageView HisImage = (ImageView)rowView.findViewById(R.id.imageView10);
@@ -568,7 +569,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
 
     }
 
-
+/*
 
 
     private void UpdateToken(){
@@ -598,7 +599,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
             }
         });
     }
-
+*/
     private void sendNotification()
     {
         AsyncTask.execute(new Runnable() {
