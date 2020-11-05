@@ -13,11 +13,6 @@ android {
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        manifestPlaceholders = [
-                onesignal_app_id: '0ae2cf10-3cae-442f-b817-aa89d565548a',
-                // Project number pulled from dashboard, local value is ignored.
-                onesignal_google_project_number: 'REMOTE'
-        ]
     }
 
     buildTypes {
@@ -32,19 +27,7 @@ repositories {
     google()
     jcenter()
 }
-buildscript {
-    repositories {
-        maven { url 'https://plugins.gradle.org/m2/'}
-    }
-    dependencies {
-        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.9, 0.99.99]'
-    }
-}
-apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 
-repositories {
-    maven { url 'https://maven.google.com' }
-}
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
@@ -66,7 +49,7 @@ dependencies {
     implementation files('libs\\activation.jar')
     implementation files('libs\\additionnal.jar')
     implementation files('libs\\javax.mail.jar')
-    implementation 'com.weiwangcn.betterspinner:library-material:1.1.0'
+    compile 'com.weiwangcn.betterspinner:library-material:1.1.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
@@ -81,10 +64,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:20.1.2'
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.onesignal:OneSignal:[3.15.4, 3.99.99]'
+
     implementation files('libs\\activation.jar')
     implementation files('libs\\additionnal.jar')
     implementation files('libs\\javax.mail.jar')
-
 }
 apply plugin: 'com.google.gms.google-services'
