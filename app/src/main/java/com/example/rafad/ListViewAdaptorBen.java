@@ -10,7 +10,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,9 +54,16 @@ import com.example.rafad.notification.Token;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
+
+import com.onesignal.OneSignal;
 
 public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
 
@@ -70,7 +79,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     private final String Title = "لقد تم طلب سلعتك!";
     private final String Message="تم طلب سلعتك من احد المستفيدين";
     private APIService apiService;
-
+    String LoggedIn_User_Email;
 
 
 
@@ -79,6 +88,15 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         this.arrayList=arrayList;
         Log.d(TAG,  "SIZE ADAPTER His=> " +arrayList.size());
         this.context=context;
+
+        // Logging set to help debug issues, remove before releasing your app.
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
+
+        // OneSignal Initialization
+        OneSignal.startInit(context)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
     }
 
 
@@ -103,6 +121,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
             @Override
             public void onClick(View view) {
 
+                UID1 = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                LoggedIn_User_Email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
 
                 ///////////////////
@@ -113,7 +133,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 final FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
+
 
                                 // To retreive name and state for ben
                                 ///////////////////////////////////////////////////
@@ -138,7 +158,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                 docRefB.update("benS", benS);
                                                 arrayList.get(position).setBID(UID1);
                                                 Toast.makeText(getContext(), " تم الطلب بنجاح", Toast.LENGTH_SHORT).show();
-
+                                                sendNotification();
 
                                                 //SENDING MAIL TO THE DONATOR
                                                 DocumentReference docRef=fStore.collection("item").document(itemID);//.get("User id")
@@ -505,6 +525,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                 AlertDialog dialog1;
             //Notification
 
+
                 FirebaseDatabase.getInstance().getReference().child("Tokens").child(arrayList.get(position).UID.toString().trim()).child("token").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -522,10 +543,9 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         UpdateToken();
         TextView desText = (TextView) rowView.findViewById(R.id.desAdabtorBen);
         TextView titText = (TextView) rowView.findViewById(R.id.titAdabtorBen);
-        final ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
+        final ImageView HisImage = (ImageView)rowView.findViewById(R.id.imageView10);
         TextView catText = (TextView) rowView.findViewById(R.id.catAdabtorBen);
         TextView date = (TextView) rowView.findViewById(R.id.date);
-
 
 
 
@@ -579,4 +599,80 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         });
     }
 
+    private void sendNotification()
+    {
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                int SDK_INT = android.os.Build.VERSION.SDK_INT;
+                if (SDK_INT > 8) {
+                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                            .permitAll().build();
+                    StrictMode.setThreadPolicy(policy);
+                    String send_email;
+
+                    //This is a Simple Logic to Send Notification different Device Programmatically....
+                    String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                    OneSignal.sendTag("User_ID",LoggedIn_User_Email);
+                    send_email=LoggedIn_User_Email;
+                    /*
+                    if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
+                        send_email = "user2@gmail.com";
+                    } else {
+                        send_email = "user1@gmail.com";
+                    }*/
+
+                    try {
+                        String jsonResponse;
+
+                        URL url = new URL("https://onesignal.com/api/v1/notifications");
+                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                        con.setUseCaches(false);
+                        con.setDoOutput(true);
+                        con.setDoInput(true);
+
+                        con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                        con.setRequestProperty("Authorization", "Basic YTUzMWE2M2UtMTZiYy00M2FhLWEyMjItYWQ5YWI1MDgzM2U2");
+                        con.setRequestMethod("POST");
+
+                        String strJsonBody = "{"
+                                + "\"app_id\": \"0523d5af-d75a-4916-a8dd-3e9109e0f10b\","
+
+                                + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
+
+                                + "\"data\": {\"foo\": \"bar\"},"
+                                + "\"contents\": {\"en\": \"English Message\"}"
+                                + "}";
+
+
+                        System.out.println("strJsonBody:\n" + strJsonBody);
+
+                        byte[] sendBytes = strJsonBody.getBytes("UTF-8");
+                        con.setFixedLengthStreamingMode(sendBytes.length);
+
+                        OutputStream outputStream = con.getOutputStream();
+                        outputStream.write(sendBytes);
+
+                        int httpResponse = con.getResponseCode();
+                        System.out.println("httpResponse: " + httpResponse);
+
+                        if (httpResponse >= HttpURLConnection.HTTP_OK
+                                && httpResponse < HttpURLConnection.HTTP_BAD_REQUEST) {
+                            Scanner scanner = new Scanner(con.getInputStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        } else {
+                            Scanner scanner = new Scanner(con.getErrorStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        }
+                        System.out.println("jsonResponse:\n" + jsonResponse);
+
+                    } catch (Throwable t) {
+                        t.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
 }
