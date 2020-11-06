@@ -15,6 +15,7 @@
         android:layout_marginTop="1dp"
         android:layout_marginEnd="179dp"
         android:layout_marginRight="179dp"
+        android:background="@drawable/datebg1"
         android:text="TextView" />
 
     <RelativeLayout
@@ -36,6 +37,8 @@
             android:padding="8dp"
             android:textColor="#e6e6e6"
             android:textSize="16sp" />
+
+
 
     </RelativeLayout>
 
