@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -15,20 +14,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rafad.R;
-import com.example.rafad.homepageDonator;
-import com.example.rafad.login;
-import com.firebase.ui.auth.data.model.User;
+import com.example.rafad.chtNotifications.Data;
+import com.example.rafad.chtNotifications.MyResponse;
+import com.example.rafad.chtNotifications.Sender;
+import com.example.rafad.notification.Client;
+import com.example.rafad.notification.Token;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -41,6 +40,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MessageActivity extends AppCompatActivity {
 
@@ -55,12 +57,15 @@ public class MessageActivity extends AppCompatActivity {
     List<Chat> arrayList=new ArrayList<>();
     MessageAdapter adapter;
     ListView recyclerViewChat;
+    APIService apiService;
+
+    boolean notify = false;
 
 
 
 
     String fuser= FirebaseAuth.getInstance().getCurrentUser().getUid();
-    DatabaseReference reference;
+   // DatabaseReference reference;
     Intent intent;
     private String TAG;
 
@@ -83,6 +88,11 @@ public class MessageActivity extends AppCompatActivity {
                   finish();
              }
          });
+
+         ////////////////////////////////////////////////
+        apiService= Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
+        ////////////////////////////////////////////////
+
 
 
 
@@ -159,9 +169,38 @@ public class MessageActivity extends AppCompatActivity {
 
 
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+        final String msg= text_send.getText().toString();
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference(fuser);/////هل هذا الرفرنس صحيح ؟؟
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                PeopleModel peopleModel=dataSnapshot.getValue(PeopleModel.class);
+                if (notify) {
+                    sendNotification(receiver, peopleModel.getName(), msg);
+                }
+               notify=false;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                notify=true;
                 String msg=text_send.getText().toString();
                 if(!msg.equals("")){
                     sendMessage(fuser, receiverUID, msg);
@@ -171,7 +210,52 @@ public class MessageActivity extends AppCompatActivity {
                 text_send.setText("");
             }
         });
+
+
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    private void sendNotification (String receiver, final String username, final String message){
+
+        DatabaseReference tokens= FirebaseDatabase.getInstance().getReference();
+        Query query=tokens.orderByKey().equalTo(receiver);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                   Token token = snapshot.getValue(Token.class);
+                    Data data= new Data(fuser, R.mipmap.ic_launcher, username+": "+message,"New Message",
+                            userid);
+
+                    Sender sender = new Sender(data, token.getToken());
+
+                    apiService.sendNotification(sender)
+                            .enqueue(new Callback<MyResponse>() {
+                                @Override
+                                public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                                    if (response.code()==200){
+                                        if (response.body().success!=1){
+                                            Toast.makeText(MessageActivity.this, "فشل!", Toast.LENGTH_SHORT ).show();
+
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<MyResponse> call, Throwable t) {
+
+                                }
+                            });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     private void sendMessage(String sender, String receiver, String message){
         //Get time and date //

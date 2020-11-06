@@ -165,8 +165,9 @@ public class MainChatAllPeople extends AppCompatActivity {
         //End Listener
 
 
-        /////////////////////
+        //////////////////////////////////////////
         updateToken((FirebaseInstanceId.getInstance().getToken()));
+        //////////////////////////////////////////
 
 
     }
@@ -180,6 +181,7 @@ public class MainChatAllPeople extends AppCompatActivity {
         Token token1= new Token(token);
         reference.child(fuser).setValue(token1);
     }
+    //////////////////////////////////////////
 
 
 
