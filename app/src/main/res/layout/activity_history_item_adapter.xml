@@ -41,7 +41,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/time"
+                android:id="@+id/date"
                 android:layout_width="66dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
