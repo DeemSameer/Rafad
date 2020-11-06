@@ -109,6 +109,18 @@
                 app:srcCompat="@drawable/userp" />
         </androidx.cardview.widget.CardView>
 
+        <TextView
+            android:id="@+id/unread"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="244dp"
+            android:layout_marginRight="244dp"
+            android:text="TextView" />
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

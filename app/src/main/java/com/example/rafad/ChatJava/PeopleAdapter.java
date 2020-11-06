@@ -62,6 +62,9 @@ public class PeopleAdapter extends ArrayAdapter<PeopleModel> {
         TextView subtitleText = rowView.findViewById(R.id.lastMessage);
         TextView timetext = rowView.findViewById(R.id.timetext);
         TextView datetext = rowView.findViewById(R.id.datetext);
+        TextView unread = rowView.findViewById(R.id.unread);
+
+
         final ImageView profileImageViewChat = (ImageView) rowView.findViewById(R.id.imageView9);
 
         Log.d(TAG, "before1 People Adapter");
@@ -81,6 +84,8 @@ public class PeopleAdapter extends ArrayAdapter<PeopleModel> {
         subtitleText.setText(arrayList.get(position).getLastMsg());
         timetext.setText(arrayList.get(position).getTime());
         datetext.setText(arrayList.get(position).getDate());
+        unread.setText("");
+
 
 
         rowView.setOnClickListener(new View.OnClickListener() {
