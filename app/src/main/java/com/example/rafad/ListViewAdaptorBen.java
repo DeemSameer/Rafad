@@ -135,7 +135,6 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
 
                 UID1 = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                OneSignal.sendTag("User_ID",UID1);
 
                 ///////////////////
                 new AlertDialog.Builder(getContext())
@@ -538,18 +537,6 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
             //Notification
 
 
-                FirebaseDatabase.getInstance().getReference().child("Tokens").child(arrayList.get(position).UID.toString().trim()).child("token").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String usertoken=dataSnapshot.getValue(String.class);
-                       /// sendNotifications(usertoken, Title.toString().trim(),Message.toString().trim());
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
             }
         });
        // UpdateToken();
@@ -624,8 +611,9 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                     String send_email;
 
                     //This is a Simple Logic to Send Notification different Device Programmatically....
-
-                    send_email=UID1;
+                    String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                    OneSignal.sendTag("User_ID",LoggedIn_User_Email);
+                    send_email="arob2604@gmail.com";
                     /*
                     if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
                         send_email = "user2@gmail.com";
@@ -643,11 +631,11 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                         con.setDoInput(true);
 
                         con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-                        con.setRequestProperty("Authorization", "Basic ZjdkOGRmN2QtMjA4ZS00ZWIyLWE4ZGUtYjliOWRiYWJjNzZi");
+                        con.setRequestProperty("Authorization", "Basic NTVjOWIxNmYtYjI0YS00NjU0LWE1YmEtYjM5YTM2OWQxZjIx");
                         con.setRequestMethod("POST");
 
                         String strJsonBody = "{"
-                                + "\"app_id\": \"0ae2cf10-3cae-442f-b817-aa89d565548a\","
+                                + "\"app_id\": \"c12cdbbf-7bd8-4c4f-b5ba-df37e6cc2d36\","
 
                                 + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
 
