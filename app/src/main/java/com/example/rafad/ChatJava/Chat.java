@@ -4,6 +4,25 @@ public class Chat {
 
     private String sender;
     private String receiver;
+    private String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    private String time;
     private String message;
     int type;
 
@@ -13,8 +32,10 @@ public class Chat {
         this.receiver=receiver;
         this.message=message;
     }
-    public Chat(String message,int type){
+    public Chat(String message,String time,String date,int type){
         this.message=message;
+        this.time=time;
+        this.date=date;
         this.type=type;
     }
 

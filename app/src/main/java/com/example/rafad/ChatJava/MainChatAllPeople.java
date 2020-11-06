@@ -42,7 +42,6 @@ public class MainChatAllPeople extends AppCompatActivity {
     String UserId= FirebaseAuth.getInstance().getCurrentUser().getUid();
     final DatabaseReference ref = database.getReference(UserId+"/People");//we can put the path on it like "server/saving-data/fireblog/posts"
     ListView recyclerViewPeople;
-    ArrayAdapter arrayAdapter;
     TextView empty;
 
 
@@ -159,7 +158,6 @@ public class MainChatAllPeople extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                arrayAdapter.notifyDataSetChanged();
             }
         });
         //End Listener

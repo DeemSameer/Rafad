@@ -5,8 +5,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +38,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -49,18 +52,17 @@ public class MessageActivity extends AppCompatActivity {
     static String receivername;
     StorageReference storageReference;
 
-    // RecyclerView.Adapter<MessageAdapter.ViewHolder>
-     RecyclerView recyclerView;
-     RecyclerView.Adapter mAdapter;
-     RecyclerView.LayoutManager layoutManager;
-    //
+    List<Chat> arrayList=new ArrayList<>();
+    MessageAdapter adapter;
+    ListView recyclerViewChat;
 
 
-    FirebaseUser fuser;
+
+
+    String fuser= FirebaseAuth.getInstance().getCurrentUser().getUid();
     DatabaseReference reference;
     Intent intent;
     private String TAG;
-    ArrayList<Chat> arrayList=new ArrayList<Chat>(); ;
 
 
     @Override
@@ -82,16 +84,14 @@ public class MessageActivity extends AppCompatActivity {
              }
          });
 
+
+
          profile_image=findViewById(R.id.profile_image);
          username=findViewById(R.id.username);
          btn_send=findViewById(R.id.btn_send);
          text_send=findViewById(R.id.text_send);
-        //recyclerView
-        recyclerView=(RecyclerView)findViewById(R.id.recycler_view);//recycler_view
-        layoutManager=new LinearLayoutManager(this);
-        Log.d(TAG, "recyclerView  "+recyclerView);
-        recyclerView.setLayoutManager(layoutManager);
-        //end recyclerView
+
+
         Log.d(TAG, "receiverUID  "+receiverUID);
 
         StorageReference profileRef = storageReference.child("users/" + receiverUID + "profile.jpg");
@@ -108,24 +108,69 @@ public class MessageActivity extends AppCompatActivity {
         username.setText(receivername);
 
 
-        fuser= FirebaseAuth.getInstance().getCurrentUser();
-
-         btn_send.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 String msg=text_send.getText().toString();
-                  if(!msg.equals("")){
-                      sendMessage(fuser.getUid(), receiverUID, msg);
-                  }else{
-                      Toast.makeText(MessageActivity.this,  "لا يمكنك إسال رسالة فارغة " , Toast.LENGTH_LONG).show();
-                  }
-                  text_send.setText("");
-             }
-         });
 
 
 
 
+
+        recyclerViewChat = (ListView) findViewById(R.id.allChats);
+        adapter = new MessageAdapter(MessageActivity.this, arrayList);
+        recyclerViewChat.setAdapter(adapter);
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference ref = database.getReference(fuser+"/People/"+receiverUID+"/Messages");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                arrayList.clear();
+                adapter.clear();
+                String date="";
+                for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Log.d(TAG, "MMMMMMMMMMMMMMM " + snapshot.getValue().toString());
+                    //Log.d(TAG, "MMMMMMMMMMMMMMM "+snapshot.getValue().toString().substring(0,snapshot.getValue().toString().indexOf("=")-1));
+
+                    if (snapshot.child("fmsg").getValue() != null) {
+                        Log.d(TAG, "MMMMMMMMMMMMMMM message " + snapshot.child("fmsg").child("content").getValue().toString());
+                        if (date.equals(snapshot.child("fmsg").child("date").getValue().toString()))
+                            arrayList.add(new Chat(snapshot.child("fmsg").child("content").getValue().toString(),snapshot.child("fmsg").child("time").getValue().toString(),snapshot.child("fmsg").child("date").getValue().toString(), 0));
+                        else {
+                            date=snapshot.child("fmsg").child("date").getValue().toString();
+                            arrayList.add(new Chat(snapshot.child("fmsg").child("content").getValue().toString(), snapshot.child("fmsg").child("time").getValue().toString(), snapshot.child("fmsg").child("date").getValue().toString(), 21));
+                        }
+                        adapter.notifyDataSetChanged();
+                    } else if (snapshot.child("tmsg").getValue() != null) {
+                        Log.d(TAG, "MMMMMMMMMMMMMMM message " + snapshot.child("tmsg").child("content").getValue().toString());
+                        if (date.equals(snapshot.child("tmsg").child("date").getValue().toString()))
+                        arrayList.add(new Chat(snapshot.child("tmsg").child("content").getValue().toString(),snapshot.child("tmsg").child("time").getValue().toString(),snapshot.child("tmsg").child("date").getValue().toString(), 1));
+                        else {
+                            date=snapshot.child("tmsg").child("date").getValue().toString();
+                            arrayList.add(new Chat(snapshot.child("tmsg").child("content").getValue().toString(), snapshot.child("tmsg").child("time").getValue().toString(), snapshot.child("tmsg").child("date").getValue().toString(), 22));
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+        btn_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String msg=text_send.getText().toString();
+                if(!msg.equals("")){
+                    sendMessage(fuser, receiverUID, msg);
+                }else{
+                    Toast.makeText(MessageActivity.this,  "لا يمكنك إسال رسالة فارغة " , Toast.LENGTH_LONG).show();
+                }
+                text_send.setText("");
+            }
+        });
     }
 
     private void sendMessage(String sender, String receiver, String message){
@@ -152,13 +197,6 @@ public class MessageActivity extends AppCompatActivity {
         HashMap<String,Object> hashMap2=new HashMap<>();
         hashMap2.put("tmsg", new Message(message,date,time));
         reference2.child(receiver).child("People").child(sender).child("Messages").push().setValue(hashMap2);
-
-
-        //Display it in chat*************
-        arrayList.add(new Chat(message,0));
-        MessageAdapter messageAdapter=new MessageAdapter(MessageActivity.this,arrayList);
-        recyclerView.setAdapter(messageAdapter);
-        //End display it*************
 
     }
 

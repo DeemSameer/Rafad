@@ -5,23 +5,38 @@
     android:padding="8dp"
     android:layout_height="wrap_content">
 
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="179dp"
+        android:layout_marginRight="179dp"
+        android:text="TextView" />
 
     <RelativeLayout
         android:id="@+id/Message_right"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="2dp">
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp">
 
         <TextView
             android:id="@+id/show_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/background_left"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/background_right"
             android:fontFamily="@font/tajawalmedium2"
             android:padding="8dp"
+            android:textColor="#e6e6e6"
             android:textSize="16sp" />
+
     </RelativeLayout>
 
     <TextView
@@ -31,11 +46,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="314dp"
+        android:layout_marginRight="314dp"
         android:text="TextView"
         android:textSize="8sp" />
-
 
 </RelativeLayout>
