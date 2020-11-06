@@ -14,8 +14,9 @@ public class postinfo {
     String BN;
     String BS;
     String date;
+    String Demail;
 
-    public postinfo(String itemID1, String UID1, String imageUri1 , String des1 , String cat1, String tit1,String isRe ,String date1,String dummy){
+    public postinfo(String itemID1, String UID1, String imageUri1 , String des1 , String cat1, String tit1,String isRe ,String date1,String dummy,String Demail){
         itemID = itemID1;
         UID=UID1;
         imageID = imageUri1;
@@ -24,6 +25,7 @@ public class postinfo {
         tit=tit1;
         this.isRe=isRe;
         date =date1;
+        this.Demail=Demail;
     }
     public postinfo(String itemID1, String UID1, String imageUri1,String tit){
         itemID = itemID1;
@@ -47,6 +49,9 @@ public class postinfo {
     }
     public String getUID() {
         return UID;
+    }
+    public String getDemail() {
+        return Demail;
     }
 
     public void setBS(String BS) {

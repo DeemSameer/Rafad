@@ -81,6 +81,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     private final String Message="تم طلب سلعتك من احد المستفيدين";
    // private APIService apiService;
     String LoggedIn_User_Email;
+     static String Demail;
 
 
 
@@ -116,6 +117,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         fAuth = FirebaseAuth.getInstance();
         request=rowView.findViewById(R.id.button11);
         final String UID=arrayList.get(position).getUID();
+        Demail= arrayList.get(position).getDemail();
+
         //apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
         // Logging set to help debug issues, remove before releasing your app.
         OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
@@ -613,7 +616,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                     //This is a Simple Logic to Send Notification different Device Programmatically....
                     String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
                     OneSignal.sendTag("User_ID",LoggedIn_User_Email);
-                    send_email="arob2604@gmail.com";
+                    send_email=Demail;
                     /*
                     if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
                         send_email = "user2@gmail.com";
@@ -640,7 +643,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                 + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
 
                                 + "\"data\": {\"foo\": \"bar\"},"
-                                + "\"contents\": {\"en\": \"English Message\"}"
+                                + "\"contents\": {\"en\": \"تلقيت طلب جديد!\"}"
                                 + "}";
 
 
