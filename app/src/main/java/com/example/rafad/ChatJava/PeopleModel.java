@@ -6,6 +6,7 @@ public class PeopleModel {
     private String time;
     private String date;
     private String UID;
+    int unread;
 
     public PeopleModel(String name, String lastMsg, String time, String date, String UID) {
         this.name = name;

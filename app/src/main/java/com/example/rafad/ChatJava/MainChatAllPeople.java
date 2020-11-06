@@ -1,9 +1,11 @@
 package com.example.rafad.ChatJava;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.rafad.R;
 import com.example.rafad.homepageDonator;
@@ -29,7 +32,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class MainChatAllPeople extends AppCompatActivity {
@@ -107,18 +112,84 @@ public class MainChatAllPeople extends AppCompatActivity {
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                String name = document.get("userName").toString();
-                                String UID = document.getId();
+                                final String name = document.get("userName").toString();
+                                final String UID = document.getId();
                                 Log.d(TAG, name + " nameUser");
-                                Log.d(TAG, UID + " UIDUSER");
-                                /// End retrieve person info
+
 
                                 //Start retrieve from real DB LastMsg + time
+
+
+
+
+                                final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                final DatabaseReference ref = database.getReference(UserId+"/People/"+key+"/Messages");
+                                ref.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        String msg = "";
+                                        String t="";
+                                        String d="";
+                                        if (arrayList.size()==0)
+                                        {
+                                            //Toast.makeText(requests.this, "This is my Toast message!",
+                                            //  Toast.LENGTH_LONG).show();
+                                            empty.setText("لا يوجد شخص للمحادثة");
+                                        }
+                                        else{
+                                            empty.setText("");
+                                        }
+                                        for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                            Log.d(TAG, "MMMMMMMMMMMMMMM " + snapshot.getValue().toString());
+
+
+
+                                            if (snapshot.child("fmsg").getValue() != null) {
+                                                Log.d(TAG, "MMMMMMMMMMMMMMM message " + snapshot.child("fmsg").child("content").getValue().toString());
+                                                msg=snapshot.child("fmsg").child("content").getValue().toString();
+                                                t=snapshot.child("fmsg").child("time").getValue().toString();
+                                                d=snapshot.child("fmsg").child("date").getValue().toString();
+                                                Calendar calendar=Calendar.getInstance();
+                                                SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
+                                                String Today=simpleDateFormat.format(calendar.getTime());
+                                                if (Today.equals(d))
+                                                   d="اليوم";
+                                                adapter.notifyDataSetChanged();
+                                            } else if (snapshot.child("tmsg").getValue() != null) {
+                                                Log.d(TAG, "MMMMMMMMMMMMMMM message " + snapshot.child("tmsg").child("content").getValue().toString());
+                                                msg=snapshot.child("tmsg").child("content").getValue().toString();
+                                                t=snapshot.child("tmsg").child("time").getValue().toString();
+                                                d=snapshot.child("tmsg").child("date").getValue().toString();
+
+                                                Calendar calendar=Calendar.getInstance();
+
+                                                SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
+                                                String Today=simpleDateFormat.format(calendar.getTime());
+                                                if (Today.equals(d))
+                                                    d="اليوم";
+
+                                                adapter.notifyDataSetChanged();
+                                            }
+
+                                        }
+                                        //setting adapter array
+                                        arrayList.add(new PeopleModel(name, msg, t, d, UID));
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
+
+
+                                //
                                 String lastMsg;
                                 String date;
                                 String time;
                                 Log.d(TAG, snapshot.child("Messages").child("lastMessage").child("content").getValue() + " VALUVALULOOL" + name);
-                                if (snapshot.child("Messages").child("lastMessage").child("content").getValue() != null) {
+                                /*if (snapshot.child("Messages").child("lastMessage").child("content").getValue() != null) {
                                     lastMsg = snapshot.child("Messages").child("lastMessage").child("content").getValue().toString();
                                     date = snapshot.child("Messages").child("lastMessage").child("date").getValue().toString();
                                     time = snapshot.child("Messages").child("lastMessage").child("time").getValue().toString();
@@ -126,13 +197,11 @@ public class MainChatAllPeople extends AppCompatActivity {
                                     lastMsg = " ";
                                     date = " ";
                                     time = " ";
-                                }
+                                }*/
                                 //end retrieve
 
 
-                                //setting adapter array
-                                arrayList.add(new PeopleModel(name, lastMsg, time, date, UID));
-                                adapter.notifyDataSetChanged();
+
 
                             }//End Existing
                         }
@@ -143,15 +212,7 @@ public class MainChatAllPeople extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 //OnclickListener
 
-                if (arrayList.size()==0)
-                {
-                    //Toast.makeText(requests.this, "This is my Toast message!",
-                    //  Toast.LENGTH_LONG).show();
-                    empty.setText("لا يوجد شخص للمحادثة");
-                }
-                else{
-                    empty.setText("");
-                }
+
 
             }
 

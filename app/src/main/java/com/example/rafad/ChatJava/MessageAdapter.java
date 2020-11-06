@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -59,7 +61,14 @@ public class MessageAdapter extends ArrayAdapter<Chat> {
         TextView time = rowView.findViewById(R.id.time);
         if (haveDate){
             TextView date = rowView.findViewById(R.id.date);
-            date.setText(arrayList.get(position).getDate());
+            //Today ?
+            Calendar calendar=Calendar.getInstance();
+            SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
+            String Today=simpleDateFormat.format(calendar.getTime());
+            if (Today.equals(arrayList.get(position).getDate()))
+            date.setText("اليوم");
+            else
+                date.setText(arrayList.get(position).getDate());
         }
         haveDate=false;
 
