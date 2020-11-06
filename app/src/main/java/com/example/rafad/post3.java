@@ -63,7 +63,7 @@ public class post3 extends AppCompatActivity {
     String tit;
     TextView category;
     DocumentReference documentrefReference;
-
+    String LoggedIn_User_Email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +78,7 @@ public class post3 extends AppCompatActivity {
         share = findViewById(R.id.button3);
         cancel = findViewById(R.id.button4);
         category=findViewById(R.id.textViewcat);
+         LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
 
 
@@ -176,6 +177,8 @@ public class post3 extends AppCompatActivity {
                                 post.put("Catogery", cat);
                                 post.put("User id", UID);
                                 post.put("isRequested", "no");
+                                post.put("Demail",LoggedIn_User_Email);;
+
 
                                 //assign itemID to the person how post it
                               /*  postRef=fStore.collection("item").document(itemID).getPath();
