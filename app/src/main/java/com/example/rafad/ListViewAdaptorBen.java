@@ -90,7 +90,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         Log.d(TAG,  "SIZE ADAPTER His=> " +arrayList.size());
         this.context=context;
 
-        // Logging set to help debug issues, remove before releasing your app.
+// Logging set to help debug issues, remove before releasing your app.
         OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
 
         // OneSignal Initialization
@@ -98,6 +98,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .init();
+        String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        OneSignal.sendTag("User_ID",LoggedIn_User_Email);
     }
 
 
@@ -115,7 +117,16 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         request=rowView.findViewById(R.id.button11);
         final String UID=arrayList.get(position).getUID();
         //apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
+        // Logging set to help debug issues, remove before releasing your app.
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
 
+        // OneSignal Initialization
+        OneSignal.startInit(context)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
+        String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        OneSignal.sendTag("User_ID",LoggedIn_User_Email);
 
 
         request.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +134,6 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
             public void onClick(View view) {
 
                 UID1 = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                LoggedIn_User_Email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
 
                 ///////////////////

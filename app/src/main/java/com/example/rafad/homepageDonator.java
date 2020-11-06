@@ -21,6 +21,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.StorageReference;
+import com.onesignal.OneSignal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +67,17 @@ public class homepageDonator extends AppCompatActivity {
         //////// for view list of items
         listView=(ListView)findViewById(R.id.postedlistDonaterHome);
         //////// above is for view list of items
+        // Logging set to help debug issues, remove before releasing your app.
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
 
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
+
+        String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        OneSignal.sendTag("User_ID",LoggedIn_User_Email);
         clothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
