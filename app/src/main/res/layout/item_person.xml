@@ -25,12 +25,13 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="100dp"
-            android:layout_marginRight="221dp"
+            android:layout_marginRight="100dp"
             android:textAppearance="@style/Base.TextAppearance.AppCompat"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="#4D4D4D"
             tools:text="Reso Coder" />
 
         <TextView
@@ -40,9 +41,9 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="108dp"
-            android:layout_marginRight="231dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="104dp"
+            android:layout_marginRight="104dp"
+            android:layout_marginBottom="7dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
@@ -99,8 +100,8 @@
 
             <ImageView
                 android:id="@+id/imageView9"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="-4dp"
                 android:layout_marginLeft="00dp"
                 android:layout_marginTop="-2dp"

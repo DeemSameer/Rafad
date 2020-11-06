@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -13,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rafad.R;
+import com.example.rafad.chtNotifications.Token;
 import com.example.rafad.homepageDonator;
 import com.example.rafad.login;
 import com.example.rafad.mainProfile;
@@ -28,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,7 @@ public class MainChatAllPeople extends AppCompatActivity {
     final DatabaseReference ref = database.getReference(UserId+"/People");//we can put the path on it like "server/saving-data/fireblog/posts"
     ListView recyclerViewPeople;
     TextView empty;
+    String fuser;
 
 
 
@@ -162,7 +164,28 @@ public class MainChatAllPeople extends AppCompatActivity {
         });
         //End Listener
 
+
+        /////////////////////
+        updateToken((FirebaseInstanceId.getInstance().getToken()));
+
+
     }
+
+/////////////////////////////////////////////////////////////////////////////////////////////(chat fragment)
+
+    private void updateToken(String token){
+        fuser= FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Tokens");
+        Token token1= new Token(token);
+        reference.child(fuser).setValue(token1);
+    }
+
+
+
+
+
+
 
 
     private void getUsers(){
