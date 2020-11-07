@@ -29,7 +29,7 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
     StorageReference storageRef;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
-    String UID1;
+    String st;
 
     public AdabterBenReq(@NonNull Activity context, @NonNull List<postinfo> arrayList) {
         super(context, R.layout.activity_adapter_d, arrayList);
@@ -72,10 +72,21 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
         });
 
 
+        if(arrayList.get(position).isRe.equals("no"))
+        { st="مرفوض";}
+        if (arrayList.get(position).isRe.equals("Pending"))
+        { st="قيد الانتظار";}
+        if (arrayList.get(position).isRe.equals("yes")) {
+            st = "مقبول";
+        }
 
 
-        titText.setText("اسم المستفيد: "+arrayList.get(position).BN);
-        titText2.setText("درجة حالة المستفيد من 5: "+arrayList.get(position).BS);
+        Log.d(TAG, "arrayList.get(position).isRe"+arrayList.get(position).isRe);
+
+
+
+        titText.setText("اسم المتبرع: "+arrayList.get(position).BN);
+        titText2.setText(" حالة الطلب: "+st);
         tit.setText("عنوان الطلب: "+arrayList.get(position).tit);
 
 

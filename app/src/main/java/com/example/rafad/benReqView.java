@@ -1,7 +1,9 @@
 package com.example.rafad;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -36,7 +38,7 @@ public class benReqView extends AppCompatActivity {
     String tit;
     String isRe;
     Button back;
-    Button homebutton;
+    Button homebutton, toPro;
     TextView empty;
     public static final String TAG = "TAG";
 
@@ -48,6 +50,7 @@ public class benReqView extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         listView = (ListView) findViewById(R.id.benReqListView);
         back=findViewById(R.id.benReqback);
+        toPro=findViewById(R.id.benReqToprofile);
         homebutton=findViewById(R.id.benReqToHomeicon);
         empty = findViewById(R.id.benReqEmpty);
         fStore= FirebaseFirestore.getInstance();
@@ -58,7 +61,6 @@ public class benReqView extends AppCompatActivity {
 
 
         fStore.collection("item")
-                .whereEqualTo("isRequested", "Pending")
                 .whereEqualTo("benID",FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -96,9 +98,6 @@ public class benReqView extends AppCompatActivity {
                                                 donN=FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
                                                 Log.d(TAG, "donnN data after request:3 " + donN);*/
 
-                                                Log.d(TAG, "donnN data after request: " + donN);
-                                                Log.d(TAG, "donnN data after request:1 " + (String) document1.get("donN"));
-                                                arrayItem.add(new postinfo((String) document1.getId(), (String) document1.get("User id"), (String) document1.get("Image"),(String) document1.get("Title"), (String) document1.get("donN"), (String) document1.get("benS"),(String) document1.get("isRequested"), (String) document1.get("benID")));
 
 
 
@@ -115,7 +114,11 @@ public class benReqView extends AppCompatActivity {
                                 });
 
 
-
+                                Log.d(TAG, "donnN data after request: " + donN);
+                                Log.d(TAG, "donnN data after request:1 " + (String) document1.get("donN"));
+                                arrayItem.add(new postinfo((String) document1.getId(), (String) document1.get("User id"), (String) document1.get("Image"),(String) document1.get("Title"), (String) document1.get("donN"), (String) document1.get("benS"),(String) document1.get("isRequested"), (String) document1.get("benID")));
+                                Log.d(TAG, "donnN data after request:isRequested " + (String) document1.get("isRequested"));
+                                Log.d(TAG, "donnN data after request:1 " + (String) document1.get("donN"));
 
 
 
@@ -141,6 +144,31 @@ public class benReqView extends AppCompatActivity {
                         }
                     }
                 });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Intent i = new Intent(homepageDonator.this, postitem.class);
+                startActivity(new Intent(benReqView.this, homepageDonator.class));
+                finish();
+            }
+        });
+        homebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(benReqView.this, homepageDonator.class));
+                finish();
+
+            }
+        });
+        toPro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(benReqView.this, BenMainProfile.class));
+                finish();
+
+            }
+        });
 
 
     }
