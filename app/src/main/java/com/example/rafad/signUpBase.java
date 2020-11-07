@@ -32,6 +32,7 @@ public class signUpBase extends AppCompatActivity {
         });
 
 
+
         Button button4 = (Button) findViewById(R.id.but);
 
         button4.setOnClickListener(new View.OnClickListener() {

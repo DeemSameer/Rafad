@@ -1,12 +1,18 @@
 package com.example.rafad;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +20,16 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -28,20 +38,33 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
+/*
 import com.example.rafad.notification.APIService;
 import com.example.rafad.notification.Client;
 import com.example.rafad.notification.Data;
 import com.example.rafad.notification.MyResponse;
 import com.example.rafad.notification.NotificationSender;
-
+import com.example.rafad.notification.Token;
+*/
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+import com.onesignal.OneSignal;
 
 public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
 
@@ -56,8 +79,9 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     String UID1, benN, benS;
     private final String Title = "لقد تم طلب سلعتك!";
     private final String Message="تم طلب سلعتك من احد المستفيدين";
-    private APIService apiService;
-
+   // private APIService apiService;
+    String LoggedIn_User_Email;
+     static String Demail;
 
 
 
@@ -66,6 +90,17 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         this.arrayList=arrayList;
         Log.d(TAG,  "SIZE ADAPTER His=> " +arrayList.size());
         this.context=context;
+
+// Logging set to help debug issues, remove before releasing your app.
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
+
+        // OneSignal Initialization
+        OneSignal.startInit(context)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
+        String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        OneSignal.sendTag("User_ID",LoggedIn_User_Email);
     }
 
 
@@ -82,14 +117,26 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         fAuth = FirebaseAuth.getInstance();
         request=rowView.findViewById(R.id.button11);
         final String UID=arrayList.get(position).getUID();
-        apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
+        Demail= arrayList.get(position).getDemail();
 
+        //apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
+        // Logging set to help debug issues, remove before releasing your app.
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
+
+        // OneSignal Initialization
+        OneSignal.startInit(context)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
+        String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        OneSignal.sendTag("User_ID",LoggedIn_User_Email);
 
 
         request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                UID1 = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 
                 ///////////////////
@@ -100,7 +147,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 final FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
+
 
                                 // To retreive name and state for ben
                                 ///////////////////////////////////////////////////
@@ -125,7 +172,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                 docRefB.update("benS", benS);
                                                 arrayList.get(position).setBID(UID1);
                                                 Toast.makeText(getContext(), " تم الطلب بنجاح", Toast.LENGTH_SHORT).show();
-
+                                                sendNotification();
 
                                                 //SENDING MAIL TO THE DONATOR
                                                 DocumentReference docRef=fStore.collection("item").document(itemID);//.get("User id")
@@ -492,26 +539,15 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                 AlertDialog dialog1;
             //Notification
 
-                FirebaseDatabase.getInstance().getReference().child("Tokens").child(dID.toString().trim()).child("token").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String usertoken=dataSnapshot.getValue(String.class);
-                        sendNotifications(usertoken, Title.toString().trim(),Message.toString().trim());
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
             }
         });
+       // UpdateToken();
         TextView desText = (TextView) rowView.findViewById(R.id.desAdabtorBen);
         TextView titText = (TextView) rowView.findViewById(R.id.titAdabtorBen);
-        final ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
+        final ImageView HisImage = (ImageView)rowView.findViewById(R.id.imageView10);
         TextView catText = (TextView) rowView.findViewById(R.id.catAdabtorBen);
         TextView date = (TextView) rowView.findViewById(R.id.date);
-
 
 
 
@@ -534,10 +570,17 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
 
     }
 
+/*
 
 
-
-
+    private void UpdateToken(){
+        FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        String refreshToken= FirebaseInstanceId.getInstance().getToken();
+        //here error
+        Token token= new Token(refreshToken);
+        FirebaseDatabase.getInstance().getReference("Tokens").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
+        //
+    }
     public void sendNotifications(String usertoken, String title, String message) {
         Data data = new Data(title, message);
         NotificationSender sender = new NotificationSender(data, usertoken);
@@ -557,5 +600,81 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
             }
         });
     }
+*/
+    private void sendNotification()
+    {
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                int SDK_INT = android.os.Build.VERSION.SDK_INT;
+                if (SDK_INT > 8) {
+                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                            .permitAll().build();
+                    StrictMode.setThreadPolicy(policy);
+                    String send_email;
 
+                    //This is a Simple Logic to Send Notification different Device Programmatically....
+                    String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                    OneSignal.sendTag("User_ID",LoggedIn_User_Email);
+                    send_email=Demail;
+                    /*
+                    if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
+                        send_email = "user2@gmail.com";
+                    } else {
+                        send_email = "user1@gmail.com";
+                    }*/
+
+                    try {
+                        String jsonResponse;
+
+                        URL url = new URL("https://onesignal.com/api/v1/notifications");
+                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                        con.setUseCaches(false);
+                        con.setDoOutput(true);
+                        con.setDoInput(true);
+
+                        con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                        con.setRequestProperty("Authorization", "Basic NTVjOWIxNmYtYjI0YS00NjU0LWE1YmEtYjM5YTM2OWQxZjIx");
+                        con.setRequestMethod("POST");
+
+                        String strJsonBody = "{"
+                                + "\"app_id\": \"c12cdbbf-7bd8-4c4f-b5ba-df37e6cc2d36\","
+
+                                + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
+
+                                + "\"data\": {\"foo\": \"bar\"},"
+                                + "\"contents\": {\"en\": \"تلقيت طلب جديد!\"}"
+                                + "}";
+
+
+                        System.out.println("strJsonBody:\n" + strJsonBody);
+
+                        byte[] sendBytes = strJsonBody.getBytes("UTF-8");
+                        con.setFixedLengthStreamingMode(sendBytes.length);
+
+                        OutputStream outputStream = con.getOutputStream();
+                        outputStream.write(sendBytes);
+
+                        int httpResponse = con.getResponseCode();
+                        System.out.println("httpResponse: " + httpResponse);
+
+                        if (httpResponse >= HttpURLConnection.HTTP_OK
+                                && httpResponse < HttpURLConnection.HTTP_BAD_REQUEST) {
+                            Scanner scanner = new Scanner(con.getInputStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        } else {
+                            Scanner scanner = new Scanner(con.getErrorStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        }
+                        System.out.println("jsonResponse:\n" + jsonResponse);
+
+                    } catch (Throwable t) {
+                        t.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
 }

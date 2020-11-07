@@ -12,11 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChatJava.MessageActivity"></activity>
-        <activity android:name=".ChatJava.PeopleAdapter"
-            tools:ignore="Instantiatable" />
-        <activity android:name=".ChatJava.MainChatAllPeople" />
-        <activity android:name=".notification.Token" />
+        <activity android:name=".notification.Token"></activity>
         <activity
             android:name=".AdapterD"
             tools:ignore="Instantiatable" />
@@ -36,6 +32,7 @@
         <activity android:name=".adminMainProfile" />
         <activity android:name=".homepageDonator" />
         <activity android:name=".homepageAdmin" />
+        <activity android:name=".MainChat" />
         <activity android:name=".BenMainProfile" />
         <activity android:name=".donProfile" />
         <activity android:name=".homePage" />
