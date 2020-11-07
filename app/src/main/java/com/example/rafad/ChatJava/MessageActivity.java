@@ -2,7 +2,9 @@ package com.example.rafad.ChatJava;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -34,13 +36,19 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+//import com.onesignal.OneSignal;
+
 
 public class MessageActivity extends AppCompatActivity {
 
@@ -114,7 +122,9 @@ public class MessageActivity extends AppCompatActivity {
         username.setText(receivername);
 
 
+        //Notification
 
+        //End notify
 
 
 
@@ -203,6 +213,8 @@ public class MessageActivity extends AppCompatActivity {
         HashMap<String,Object> hashMap2=new HashMap<>();
         hashMap2.put("tmsg", new Message(message,date,time));
         reference2.child(receiver).child("People").child(sender).child("Messages").push().setValue(hashMap2);
+        //***************************//
+        //sendNotification(message);//Add the name of the one who send it
         updateUnread();
 
     }
@@ -252,4 +264,6 @@ public static void callMe(String UID,String name){
         final DatabaseReference ref = database.getReference(fuser+"/People/"+ receiverUID+"/Messages/unread");
         ref.setValue("0");
     }
+
+
 }
