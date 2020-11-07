@@ -68,7 +68,6 @@ import com.onesignal.OneSignal;
 
 public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
 
-
     public static final String TAG = "TAG";
     private final Activity context;
     private final List<postinfo> arrayList;
@@ -78,8 +77,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     Button request;
     String UID1, benN, benS;
     private final String Title = "لقد تم طلب سلعتك!";
-    private final String Message="تم طلب سلعتك من احد المستفيدين";
-   // private APIService apiService;
+    private final String Message ="تم طلب سلعتك من احد المستفيدين";
+    // private APIService apiService;
     String LoggedIn_User_Email;
      static String Demail;
 
@@ -184,11 +183,6 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                             if (document.exists()) {
                                                                 Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                                                                 final String donatorID= (String)document.get("User id");
-
-
-
-
-
                                                                 final String ItemName=(String)document.get("Title");
 
                                                                 //// get the mail with thaat ID
@@ -509,8 +503,6 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                                                         "</body>\n" +
                                                                                         "</html>");
 
-
-
                                                                             }
                                                                         }
                                                                     }
@@ -571,9 +563,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     }
 
 /*
-
-
-    private void UpdateToken(){
+private void UpdateToken(){
         FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         String refreshToken= FirebaseInstanceId.getInstance().getToken();
         //here error
@@ -622,8 +612,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                         send_email = "user2@gmail.com";
                     } else {
                         send_email = "user1@gmail.com";
-                    }*/
-
+                    }
+                    */
                     try {
                         String jsonResponse;
 

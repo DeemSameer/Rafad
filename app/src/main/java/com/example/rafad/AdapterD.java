@@ -97,7 +97,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 docRefB.update("isRequested", "no");
                                 docRefB.update("benN", "name");
                                 docRefB.update("nenS", "state");
-                                context.startActivity(new Intent(context, requests.class));
+                                context.startActivity(new Intent(context, don_3view.class));
                                 Toast.makeText(getContext(), "لقد تم رفض الطلب بنجاح", Toast.LENGTH_SHORT).show();
 
                                 //dialog1.dismiss();
@@ -124,7 +124,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 CollectionReference beneficiaries = db.collection("item");
                                 DocumentReference docRefB = beneficiaries.document(itemID);
                                 docRefB.update("isRequested", "yes");
-                                context.startActivity(new Intent(context, requests.class));
+                                context.startActivity(new Intent(context, don_3view.class));
                                 Toast.makeText(getContext(), "لقد تم قبول الطلب بنجاح", Toast.LENGTH_SHORT).show();
 
 
