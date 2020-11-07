@@ -162,6 +162,7 @@ public class MainChatAllPeople extends AppCompatActivity {
                                     if (document.exists()) {
                                         final String name = document.get("userName").toString();
                                         final String UID = document.getId();
+                                        final String mail=document.get("email").toString();
                                         Log.d(TAG, name + " nameUser");
 
 
@@ -233,7 +234,7 @@ public class MainChatAllPeople extends AppCompatActivity {
                                                             Log.d(TAG, "unreadunread 2 " + unread);
 
                                                         }
-                                                        arrayList.add(new PeopleModel(name, finalMsg, finalT, finalD, UID, unread));
+                                                        arrayList.add(new PeopleModel(name, finalMsg, finalT, finalD, UID, unread,mail));
                                                         adapter.notifyDataSetChanged();
                                                     }
 

@@ -4,12 +4,10 @@ package com.example.rafad.ChatJava;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,7 +25,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
-import com.xwray.groupie.kotlinandroidextensions.ViewHolder;
 
 import java.util.List;
 
@@ -109,7 +106,7 @@ public class PeopleAdapter extends ArrayAdapter<PeopleModel> {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "Entered  ");
-                MessageActivity.callMe(arrayList.get(position).getUID(),arrayList.get(position).getName());
+                MessageActivity.callMe(arrayList.get(position).getUID(),arrayList.get(position).getName(),arrayList.get(position).mail);
                 context.startActivity(new Intent(context, MessageActivity.class));
             }
         });
