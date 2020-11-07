@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".requests">
+    tools:context=".benReqView">
+
     <Button
-        android:id="@+id/but"
+        android:id="@+id/benReqback"
         android:layout_width="25dp"
         android:layout_height="22dp"
         android:layout_marginStart="8dp"
@@ -22,7 +23,7 @@
         app:layout_constraintVertical_bias="0.073" />
 
     <TextView
-        android:id="@+id/homepagetext23"
+        android:id="@+id/benReqEmpty"
         android:layout_width="150dp"
         android:layout_height="23dp"
         android:layout_marginStart="20dp"
@@ -40,7 +41,7 @@
         app:layout_constraintVertical_bias="0.075" />
 
     <ListView
-        android:id="@+id/postedlistHomePage1"
+        android:id="@+id/benReqListView"
         android:layout_width="417dp"
         android:layout_height="550dp"
         android:background="#ffffff"
@@ -57,89 +58,61 @@
         android:layout_width="169dp"
         android:layout_height="24dp"
         android:fontFamily="@font/tajawalmedium2"
-        android:text="طلبات المستفيدين المعلقة:"
+        android:text="طلباتي المعلقة:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022" />
+
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="414dp"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/footer" />
+    android:id="@+id/imageView8"
+    android:layout_width="414dp"
+    android:layout_height="60dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="1.0"
+    app:srcCompat="@drawable/footer" />
+
 
     <Button
-        android:id="@+id/button13"
+        android:id="@+id/benReqToprofile"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/userr"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
+
+    <Button
+        android:id="@+id/benReqToHomeicon"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.237"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.988" />
+
+
+    <Button
+        android:id="@+id/benReq"
         android:layout_width="39dp"
         android:layout_height="40dp"
         android:background="@drawable/request"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.981" />
 
-    <Button
-        android:id="@+id/postItem"
-        android:layout_width="56dp"
-        android:layout_height="68dp"
-        android:background="@drawable/savebtn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
-    <Button
-        android:id="@+id/bHome"
-        android:layout_width="37dp"
-        android:layout_height="37dp"
-        android:background="@drawable/home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView8"
-        app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.988" />
-    <Button
-        android:id="@+id/button12"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/chat2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.717"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="600dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/userr"
-        android:shadowColor="#3A6580"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.739"
-        app:layout_constraintStart_toStartOf="@+id/imageView8"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.966"
-        tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

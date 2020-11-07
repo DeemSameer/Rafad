@@ -2,9 +2,12 @@ package com.example.rafad.ChatJava;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -14,35 +17,37 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rafad.R;
-import com.example.rafad.chtNotifications.Data;
-import com.example.rafad.chtNotifications.MyResponse;
-import com.example.rafad.chtNotifications.Sender;
-import com.example.rafad.notification.Client;
-import com.example.rafad.notification.Token;
+import com.example.rafad.homepageDonator;
+import com.example.rafad.login;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.onesignal.OneSignal;
+
 
 public class MessageActivity extends AppCompatActivity {
 
@@ -53,19 +58,17 @@ public class MessageActivity extends AppCompatActivity {
     static String receiverUID;
     static String receivername;
     StorageReference storageReference;
+    static String senderMail;
 
     List<Chat> arrayList=new ArrayList<>();
     MessageAdapter adapter;
     ListView recyclerViewChat;
-    APIService apiService;
-
-    boolean notify = false;
 
 
 
 
     String fuser= FirebaseAuth.getInstance().getCurrentUser().getUid();
-   // DatabaseReference reference;
+    DatabaseReference reference;
     Intent intent;
     private String TAG;
 
@@ -85,14 +88,15 @@ public class MessageActivity extends AppCompatActivity {
          toolbar.setNavigationOnClickListener(new View.OnClickListener(){
              @Override
              public void onClick(View view){
+                 final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                 final DatabaseReference ref = database.getReference(fuser+"/People/"+ receiverUID+"/Messages/unread");
+                 ref.setValue("0");
+                 Intent i = new Intent(MessageActivity.this, MainChatAllPeople.class);
+                 startActivity(i);
                   finish();
+
              }
          });
-
-         ////////////////////////////////////////////////
-        apiService= Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
-        ////////////////////////////////////////////////
-
 
 
 
@@ -118,7 +122,18 @@ public class MessageActivity extends AppCompatActivity {
         username.setText(receivername);
 
 
+        //Notification
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
 
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
+
+        String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        OneSignal.sendTag("User_ID",LoggedIn_User_Email);
+        //End notify
 
 
 
@@ -169,38 +184,9 @@ public class MessageActivity extends AppCompatActivity {
 
 
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-        final String msg= text_send.getText().toString();
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference(fuser);/////هل هذا الرفرنس صحيح ؟؟
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                PeopleModel peopleModel=dataSnapshot.getValue(PeopleModel.class);
-                if (notify) {
-                    sendNotification(receiver, peopleModel.getName(), msg);
-                }
-               notify=false;
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                notify=true;
                 String msg=text_send.getText().toString();
                 if(!msg.equals("")){
                     sendMessage(fuser, receiverUID, msg);
@@ -210,52 +196,7 @@ public class MessageActivity extends AppCompatActivity {
                 text_send.setText("");
             }
         });
-
-
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    private void sendNotification (String receiver, final String username, final String message){
-
-        DatabaseReference tokens= FirebaseDatabase.getInstance().getReference();
-        Query query=tokens.orderByKey().equalTo(receiver);
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-                   Token token = snapshot.getValue(Token.class);
-                    Data data= new Data(fuser, R.mipmap.ic_launcher, username+": "+message,"New Message",
-                            userid);
-
-                    Sender sender = new Sender(data, token.getToken());
-
-                    apiService.sendNotification(sender)
-                            .enqueue(new Callback<MyResponse>() {
-                                @Override
-                                public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
-                                    if (response.code()==200){
-                                        if (response.body().success!=1){
-                                            Toast.makeText(MessageActivity.this, "فشل!", Toast.LENGTH_SHORT ).show();
-
-                                        }
-                                    }
-                                }
-
-                                @Override
-                                public void onFailure(Call<MyResponse> call, Throwable t) {
-
-                                }
-                            });
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     private void sendMessage(String sender, String receiver, String message){
         //Get time and date //
@@ -281,15 +222,19 @@ public class MessageActivity extends AppCompatActivity {
         HashMap<String,Object> hashMap2=new HashMap<>();
         hashMap2.put("tmsg", new Message(message,date,time));
         reference2.child(receiver).child("People").child(sender).child("Messages").push().setValue(hashMap2);
+        //***************************//
+        sendNotification(message,senderMail);//Add the name of the one who send it
+        updateUnread();
 
     }
 
 
 
 
-public static void callMe(String UID,String name){
+public static void callMe(String UID,String name, String sm){
      receiverUID = UID;
     receivername=name;
+    senderMail=sm;
 }
 
     @Override
@@ -298,4 +243,114 @@ public static void callMe(String UID,String name){
         //Retrieve old data + displaying them on the chat
 
     }
+
+    public void updateUnread(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference ref = database.getReference(receiverUID+"/People/"+fuser+"/Messages/unread");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            int unread;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue()!=null){
+                Log.d(TAG, "dataSnapshot::::  "+dataSnapshot.getValue().toString());
+                unread=Integer. parseInt(dataSnapshot.getValue().toString());
+                unread+=1;
+                ref.setValue(""+unread+"");}
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // ...
+            }
+        });
+    }
+
+
+//enter the chat and leave - Delete notification
+    @Override
+    protected void onStop() {
+        super.onStop();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference ref = database.getReference(fuser+"/People/"+ receiverUID+"/Messages/unread");
+        ref.setValue("0");
+    }
+
+
+    private void sendNotification(final String message, final String senderMail)
+    {
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                int SDK_INT = android.os.Build.VERSION.SDK_INT;
+                if (SDK_INT > 8) {
+                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                            .permitAll().build();
+                    StrictMode.setThreadPolicy(policy);
+                    String send_email;
+
+                    //This is a Simple Logic to Send Notification different Device Programmatically....
+                    String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                    OneSignal.sendTag("User_ID",FirebaseAuth.getInstance().getCurrentUser().getEmail());//sender email
+                    send_email=senderMail;//reciever email
+                    /*
+                    if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
+                        send_email = "user2@gmail.com";
+                    } else {
+                        send_email = "user1@gmail.com";
+                    }*/
+
+                    try {
+                        String jsonResponse;
+
+                        URL url = new URL("https://onesignal.com/api/v1/notifications");
+                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                        con.setUseCaches(false);
+                        con.setDoOutput(true);
+                        con.setDoInput(true);
+
+                        con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                        con.setRequestProperty("Authorization", "Basic NTVjOWIxNmYtYjI0YS00NjU0LWE1YmEtYjM5YTM2OWQxZjIx");
+                        con.setRequestMethod("POST");
+
+                        String strJsonBody = "{"
+                                + "\"app_id\": \"c12cdbbf-7bd8-4c4f-b5ba-df37e6cc2d36\","
+
+                                + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
+
+                                + "\"data\": {\"foo\": \"bar\"},"
+                                + "\"contents\": {\"en\": \""+message+"\"}"
+                                + "}";
+
+
+                        System.out.println("strJsonBody:\n" + strJsonBody);
+
+                        byte[] sendBytes = strJsonBody.getBytes("UTF-8");
+                        con.setFixedLengthStreamingMode(sendBytes.length);
+
+                        OutputStream outputStream = con.getOutputStream();
+                        outputStream.write(sendBytes);
+
+                        int httpResponse = con.getResponseCode();
+                        System.out.println("httpResponse: " + httpResponse);
+
+                        if (httpResponse >= HttpURLConnection.HTTP_OK
+                                && httpResponse < HttpURLConnection.HTTP_BAD_REQUEST) {
+                            Scanner scanner = new Scanner(con.getInputStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        } else {
+                            Scanner scanner = new Scanner(con.getErrorStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        }
+                        System.out.println("jsonResponse:\n" + jsonResponse);
+
+                    } catch (Throwable t) {
+                        t.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
 }

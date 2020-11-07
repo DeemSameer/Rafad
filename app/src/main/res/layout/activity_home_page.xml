@@ -148,7 +148,7 @@
         app:layout_constraintVertical_bias="0.977" />
 
     <Button
-        android:id="@+id/chatBen"
+        android:id="@+id/button14"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@drawable/chat2"
@@ -159,7 +159,7 @@
         app:layout_constraintVertical_bias="0.977" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/bHome2"
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/ic_baseline_home_24"
@@ -169,5 +169,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976" />
+
+    <Button
+        android:id="@+id/benHomeToReq"
+        android:layout_width="39dp"
+        android:layout_height="40dp"
+        android:background="@drawable/request"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.981" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
