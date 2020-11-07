@@ -3,11 +3,9 @@ package com.example.rafad;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -16,18 +14,15 @@ import com.example.rafad.ChatJava.MainChatAllPeople;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
 import android.graphics.Paint;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class homepageDonator extends AppCompatActivity {
     Button logout ,profile1, post , clothes , furniture,device,all,chat;
@@ -60,7 +55,7 @@ public class homepageDonator extends AppCompatActivity {
 
 
         logout = findViewById(R.id.logoutButton);
-        profile1= findViewById(R.id.profileb);
+        profile1= findViewById(R.id.FromChatToProfileButton);
         post= findViewById(R.id.postItem);
         Button b=findViewById(R.id.button10);
          empty = findViewById(R.id.homepagetext);

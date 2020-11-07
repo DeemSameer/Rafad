@@ -6,14 +6,15 @@ public class PeopleModel {
     private String time;
     private String date;
     private String UID;
-    int unread;
+    String unread;
 
-    public PeopleModel(String name, String lastMsg, String time, String date, String UID) {
+    public PeopleModel(String name, String lastMsg, String time, String date, String UID, String unread) {
         this.name = name;
         this.lastMsg = lastMsg;
         this.time = time;
         this.date = date;
         this.UID = UID;
+        this.unread=unread;
     }
 
     public String getUID() {

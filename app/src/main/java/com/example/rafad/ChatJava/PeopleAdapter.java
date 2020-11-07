@@ -18,6 +18,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.rafad.R;
@@ -29,6 +30,8 @@ import com.squareup.picasso.Picasso;
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder;
 
 import java.util.List;
+
+import static com.example.rafad.R.*;
 
 
 public class PeopleAdapter extends ArrayAdapter<PeopleModel> {
@@ -42,7 +45,7 @@ public class PeopleAdapter extends ArrayAdapter<PeopleModel> {
     boolean check = false;
 
     public PeopleAdapter(@NonNull Activity context, @NonNull List<PeopleModel> arrayList) {
-        super(context, R.layout.item_person, arrayList);
+        super(context, layout.item_person, arrayList);
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -51,21 +54,21 @@ public class PeopleAdapter extends ArrayAdapter<PeopleModel> {
         LayoutInflater inflater = context.getLayoutInflater();
         fAuth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
-        View rowView = inflater.inflate(R.layout.item_person, null, true);
+        View rowView = inflater.inflate(layout.item_person, null, true);
 
-        Button button = rowView.findViewById(R.id.button);
+        Button button = rowView.findViewById(id.button);
 
         final String UID = arrayList.get(position).getUID();
         //First accept
         Log.d(TAG, "PeopleAdapter ");
-        TextView titleText = rowView.findViewById(R.id.Username);
-        TextView subtitleText = rowView.findViewById(R.id.lastMessage);
-        TextView timetext = rowView.findViewById(R.id.timetext);
-        TextView datetext = rowView.findViewById(R.id.datetext);
-        TextView unread = rowView.findViewById(R.id.unread);
+        TextView titleText = rowView.findViewById(id.Username);
+        TextView subtitleText = rowView.findViewById(id.lastMessage);
+        TextView timetext = rowView.findViewById(id.timetext);
+        TextView datetext = rowView.findViewById(id.datetext);
+        TextView unread = rowView.findViewById(id.unread);
 
 
-        final ImageView profileImageViewChat = (ImageView) rowView.findViewById(R.id.imageView9);
+        final ImageView profileImageViewChat = (ImageView) rowView.findViewById(id.imageView9);
 
         Log.d(TAG, "before1 People Adapter");
 
@@ -84,8 +87,22 @@ public class PeopleAdapter extends ArrayAdapter<PeopleModel> {
         subtitleText.setText(arrayList.get(position).getLastMsg());
         timetext.setText(arrayList.get(position).getTime());
         datetext.setText(arrayList.get(position).getDate());
-        unread.setText("");
 
+        if (arrayList.get(position).unread!=null) {
+            if (arrayList.get(position).unread.equals("0")) {
+                Log.d(TAG, "Entered arrayList unreadd ");
+                unread.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.white_circle_drawable2));
+                unread.setText("");
+            } else {
+                Log.d(TAG, "Entered arrayList unreadd 2 " + arrayList.get(position).unread);
+                unread.setText(arrayList.get(position).unread);
+            }
+
+        }
+        else{
+            unread.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.white_circle_drawable2));
+            unread.setText("");
+        }
 
 
         rowView.setOnClickListener(new View.OnClickListener() {

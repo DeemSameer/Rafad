@@ -136,7 +136,7 @@
 
 
     <Button
-        android:id="@+id/profileb"
+        android:id="@+id/FromChatToProfileButton"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@drawable/userr"
@@ -148,7 +148,7 @@
         app:layout_constraintVertical_bias="0.977" />
 
     <Button
-        android:id="@+id/chatBen"
+        android:id="@+id/button14"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@drawable/chat2"
@@ -159,7 +159,7 @@
         app:layout_constraintVertical_bias="0.977" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/bHome2"
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/ic_baseline_home_24"

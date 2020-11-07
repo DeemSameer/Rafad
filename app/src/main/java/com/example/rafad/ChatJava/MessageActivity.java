@@ -80,7 +80,13 @@ public class MessageActivity extends AppCompatActivity {
          toolbar.setNavigationOnClickListener(new View.OnClickListener(){
              @Override
              public void onClick(View view){
+                 final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                 final DatabaseReference ref = database.getReference(fuser+"/People/"+ receiverUID+"/Messages/unread");
+                 ref.setValue("0");
+                 Intent i = new Intent(MessageActivity.this, MainChatAllPeople.class);
+                 startActivity(i);
                   finish();
+
              }
          });
 
@@ -197,6 +203,7 @@ public class MessageActivity extends AppCompatActivity {
         HashMap<String,Object> hashMap2=new HashMap<>();
         hashMap2.put("tmsg", new Message(message,date,time));
         reference2.child(receiver).child("People").child(sender).child("Messages").push().setValue(hashMap2);
+        updateUnread();
 
     }
 
@@ -213,5 +220,36 @@ public static void callMe(String UID,String name){
         super.onStart();
         //Retrieve old data + displaying them on the chat
 
+    }
+
+    public void updateUnread(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference ref = database.getReference(receiverUID+"/People/"+fuser+"/Messages/unread");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            int unread;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue()!=null){
+                Log.d(TAG, "dataSnapshot::::  "+dataSnapshot.getValue().toString());
+                unread=Integer. parseInt(dataSnapshot.getValue().toString());
+                unread+=1;
+                ref.setValue(""+unread+"");}
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // ...
+            }
+        });
+    }
+
+
+//enter the chat and leave - Delete notification
+    @Override
+    protected void onStop() {
+        super.onStop();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference ref = database.getReference(fuser+"/People/"+ receiverUID+"/Messages/unread");
+        ref.setValue("0");
     }
 }

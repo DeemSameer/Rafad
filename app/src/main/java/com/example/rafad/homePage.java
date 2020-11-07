@@ -51,8 +51,8 @@ TextView empty;
         fStore= FirebaseFirestore.getInstance();
         empty = findViewById(R.id.homepagetext2);
         logout=findViewById(R.id.logoutButton);
-        profile= findViewById(R.id.profileb);
-        chatBen=findViewById(R.id.chatBen);
+        profile= findViewById(R.id.FromChatToProfileButton);
+        chatBen=findViewById(R.id.button14);
         //////// for view list of items
         listView=(ListView)findViewById(R.id.postedlist);
         //////// above is for view list of items
