@@ -1,15 +1,10 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +14,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,10 +28,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
-import android.app.Activity;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
 
 
 public class AdapterD extends ArrayAdapter<postinfo> {
@@ -96,7 +91,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 DocumentReference docRefB = beneficiaries.document(itemID);
                                 docRefB.update("isRequested", "no");
                                 docRefB.update("benN", "name");
-                                docRefB.update("nenS", "state");
+                                docRefB.update("benS", "state");
                                 context.startActivity(new Intent(context, requests.class));
                                 Toast.makeText(getContext(), "لقد تم رفض الطلب بنجاح", Toast.LENGTH_SHORT).show();
 

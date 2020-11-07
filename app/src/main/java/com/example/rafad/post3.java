@@ -1,8 +1,5 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -21,12 +18,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -38,7 +37,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Calendar;
+
 public class post3 extends AppCompatActivity {
 
     public static final String TAG = "TAG";
@@ -177,8 +176,6 @@ public class post3 extends AppCompatActivity {
                                 post.put("Catogery", cat);
                                 post.put("User id", UID);
                                 post.put("isRequested", "no");
-                                post.put("Demail",LoggedIn_User_Email);;
-
 
                                 //assign itemID to the person how post it
                               /*  postRef=fStore.collection("item").document(itemID).getPath();
