@@ -14,8 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -81,44 +79,11 @@ public class benReqView extends AppCompatActivity {
                                 Log.d(TAG, "isRe data request: " + isRe);
 
 
-                                DocumentReference docRef=fStore.collection("donators").document(UID);//.get("User id")
-                                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if (task.isSuccessful()){
-                                            DocumentSnapshot document = task.getResult();
-                                            if (document.exists()) {
-                                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                                 donN= (String)document.get("userName");
-                                                /*FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                                CollectionReference beneficiaries = db.collection("item");
-                                                DocumentReference docRefB = beneficiaries.document(itemId);
-                                                docRefB.update("donN", donN);
-                                                Log.d(TAG, "donnN data after request:0 " + donN);
-                                                donN=FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
-                                                Log.d(TAG, "donnN data after request:3 " + donN);*/
-
-
-
-
-
-
-
-                                            }
-
-                                        }
-
-                                    }
-
-
-                                });
-
 
                                 Log.d(TAG, "donnN data after request: " + donN);
-                                Log.d(TAG, "donnN data after request:1 " + (String) document1.get("donN"));
+
                                 arrayItem.add(new postinfo((String) document1.getId(), (String) document1.get("User id"), (String) document1.get("Image"),(String) document1.get("Title"), (String) document1.get("donN"), (String) document1.get("benS"),(String) document1.get("isRequested"), (String) document1.get("benID")));
-                                Log.d(TAG, "donnN data after request:isRequested " + (String) document1.get("isRequested"));
-                                Log.d(TAG, "donnN data after request:1 " + (String) document1.get("donN"));
+                                
 
 
 

@@ -21,11 +21,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -164,7 +167,19 @@ public class post3 extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
 
 
-                                String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+
+
+                                DocumentReference docRef=fStore.collection("donators").document(UID);//.get("User id")
+                                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                        if (task.isSuccessful()){
+                                            DocumentSnapshot document = task.getResult();
+                                            if (document.exists()) {
+                                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                                                String donN= (String)document.get("userName");
+                                                Log.d(TAG, "donN in post"+donN);
+                                                String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
                                 //store data
                                 Map<String, Object> post = new HashMap<>();
@@ -176,6 +191,7 @@ public class post3 extends AppCompatActivity {
                                 post.put("Catogery", cat);
                                 post.put("User id", UID);
                                 post.put("isRequested", "no");
+                                post.put("donN", donN );
 
                                 //assign itemID to the person how post it
                               /*  postRef=fStore.collection("item").document(itemID).getPath();
@@ -188,6 +204,14 @@ public class post3 extends AppCompatActivity {
                                     public void onSuccess(Void aVoid) {
                                         Log.d(TAG, "posted successfully " + itemID);
                                     }
+                                });
+                                            }
+
+                                        }
+
+                                    }
+
+
                                 });
 
                                 startActivity(new Intent(post3.this, homepageDonator.class));

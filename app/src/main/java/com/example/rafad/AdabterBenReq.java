@@ -81,8 +81,6 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
         }
 
 
-        Log.d(TAG, "arrayList.get(position).isRe"+arrayList.get(position).isRe);
-
 
 
         titText.setText("اسم المتبرع: "+arrayList.get(position).BN);
