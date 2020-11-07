@@ -9,7 +9,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,11 +32,17 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.onesignal.OneSignal;
 import com.squareup.picasso.Picasso;
 import android.app.Activity;
+
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 
 public class AdapterD extends ArrayAdapter<postinfo> {
@@ -47,6 +55,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
     FirebaseAuth fAuth;
     Button request;
     String UID1;
+    static String Bemail;
 
 
 
@@ -56,6 +65,16 @@ public class AdapterD extends ArrayAdapter<postinfo> {
         this.arrayList=arrayList;
         Log.d(TAG,  "SIZE ADAPTER His=> " +arrayList.size());
         this.context=context;
+        // Logging set to help debug issues, remove before releasing your app.
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
+
+        // OneSignal Initialization
+        OneSignal.startInit(context)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
+        String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        OneSignal.sendTag("User_ID",LoggedIn_User_Email);
     }
 
 
@@ -91,6 +110,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 FirebaseFirestore db = FirebaseFirestore.getInstance()
                                         ;
                                 final String itemID=arrayList.get(position).itemID;
+                                Bemail=arrayList.get(position).Bemail;
                                 UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
                                 CollectionReference beneficiaries = db.collection("item");
                                 DocumentReference docRefB = beneficiaries.document(itemID);
@@ -99,6 +119,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 docRefB.update("nenS", "state");
                                 context.startActivity(new Intent(context, requests.class));
                                 Toast.makeText(getContext(), "لقد تم رفض الطلب بنجاح", Toast.LENGTH_SHORT).show();
+                                sendNotification1();
 
                                 //dialog1.dismiss();
                             }
@@ -119,6 +140,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                                 final String itemID=arrayList.get(position).itemID;
+                                Bemail=arrayList.get(position).Bemail;
                                 UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                                 CollectionReference beneficiaries = db.collection("item");
@@ -126,6 +148,8 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 docRefB.update("isRequested", "yes");
                                 context.startActivity(new Intent(context, requests.class));
                                 Toast.makeText(getContext(), "لقد تم قبول الطلب بنجاح", Toast.LENGTH_SHORT).show();
+                                sendNotification2();
+
 
 
                                 //SEND EMAIL TO THE BENFICARY
@@ -499,5 +523,157 @@ public class AdapterD extends ArrayAdapter<postinfo> {
 
         return rowView;
 
+    }
+    private void sendNotification1()
+    {
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                int SDK_INT = android.os.Build.VERSION.SDK_INT;
+                if (SDK_INT > 8) {
+                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                            .permitAll().build();
+                    StrictMode.setThreadPolicy(policy);
+                    String send_email;
+
+                    //This is a Simple Logic to Send Notification different Device Programmatically....
+                    String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                    OneSignal.sendTag("User_ID",LoggedIn_User_Email);
+                    send_email=Bemail;
+                    /*
+                    if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
+                        send_email = "user2@gmail.com";
+                    } else {
+                        send_email = "user1@gmail.com";
+                    }*/
+
+                    try {
+                        String jsonResponse;
+
+                        URL url = new URL("https://onesignal.com/api/v1/notifications");
+                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                        con.setUseCaches(false);
+                        con.setDoOutput(true);
+                        con.setDoInput(true);
+
+                        con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                        con.setRequestProperty("Authorization", "Basic NTVjOWIxNmYtYjI0YS00NjU0LWE1YmEtYjM5YTM2OWQxZjIx");
+                        con.setRequestMethod("POST");
+
+                        String strJsonBody = "{"
+                                + "\"app_id\": \"c12cdbbf-7bd8-4c4f-b5ba-df37e6cc2d36\","
+
+                                + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
+
+                                + "\"data\": {\"foo\": \"bar\"},"
+                                + "\"contents\": {\"en\": \"تلقيت طلب جديد!\"}"
+                                + "}";
+
+
+                        System.out.println("strJsonBody:\n" + strJsonBody);
+
+                        byte[] sendBytes = strJsonBody.getBytes("UTF-8");
+                        con.setFixedLengthStreamingMode(sendBytes.length);
+
+                        OutputStream outputStream = con.getOutputStream();
+                        outputStream.write(sendBytes);
+
+                        int httpResponse = con.getResponseCode();
+                        System.out.println("httpResponse: " + httpResponse);
+
+                        if (httpResponse >= HttpURLConnection.HTTP_OK
+                                && httpResponse < HttpURLConnection.HTTP_BAD_REQUEST) {
+                            Scanner scanner = new Scanner(con.getInputStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        } else {
+                            Scanner scanner = new Scanner(con.getErrorStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        }
+                        System.out.println("jsonResponse:\n" + jsonResponse);
+
+                    } catch (Throwable t) {
+                        t.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+    private void sendNotification2()
+    {
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                int SDK_INT = android.os.Build.VERSION.SDK_INT;
+                if (SDK_INT > 8) {
+                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                            .permitAll().build();
+                    StrictMode.setThreadPolicy(policy);
+                    String send_email;
+
+                    //This is a Simple Logic to Send Notification different Device Programmatically....
+                    String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                    OneSignal.sendTag("User_ID",LoggedIn_User_Email);
+                    send_email=Bemail;
+                    /*
+                    if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
+                        send_email = "user2@gmail.com";
+                    } else {
+                        send_email = "user1@gmail.com";
+                    }*/
+
+                    try {
+                        String jsonResponse;
+
+                        URL url = new URL("https://onesignal.com/api/v1/notifications");
+                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                        con.setUseCaches(false);
+                        con.setDoOutput(true);
+                        con.setDoInput(true);
+
+                        con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                        con.setRequestProperty("Authorization", "Basic NTVjOWIxNmYtYjI0YS00NjU0LWE1YmEtYjM5YTM2OWQxZjIx");
+                        con.setRequestMethod("POST");
+
+                        String strJsonBody = "{"
+                                + "\"app_id\": \"c12cdbbf-7bd8-4c4f-b5ba-df37e6cc2d36\","
+
+                                + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
+
+                                + "\"data\": {\"foo\": \"bar\"},"
+                                + "\"contents\": {\"en\": \"تلقيت طلب جديد!\"}"
+                                + "}";
+
+
+                        System.out.println("strJsonBody:\n" + strJsonBody);
+
+                        byte[] sendBytes = strJsonBody.getBytes("UTF-8");
+                        con.setFixedLengthStreamingMode(sendBytes.length);
+
+                        OutputStream outputStream = con.getOutputStream();
+                        outputStream.write(sendBytes);
+
+                        int httpResponse = con.getResponseCode();
+                        System.out.println("httpResponse: " + httpResponse);
+
+                        if (httpResponse >= HttpURLConnection.HTTP_OK
+                                && httpResponse < HttpURLConnection.HTTP_BAD_REQUEST) {
+                            Scanner scanner = new Scanner(con.getInputStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        } else {
+                            Scanner scanner = new Scanner(con.getErrorStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        }
+                        System.out.println("jsonResponse:\n" + jsonResponse);
+
+                    } catch (Throwable t) {
+                        t.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 }

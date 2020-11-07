@@ -76,7 +76,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     Button request;
-    String UID1, benN, benS;
+    String UID1, benN, benS,benE;
     private final String Title = "لقد تم طلب سلعتك!";
     private final String Message="تم طلب سلعتك من احد المستفيدين";
    // private APIService apiService;
@@ -118,7 +118,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         request=rowView.findViewById(R.id.button11);
         final String UID=arrayList.get(position).getUID();
         Demail= arrayList.get(position).getDemail();
-
+        benE=FirebaseAuth.getInstance().getCurrentUser().getEmail();
         //apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
         // Logging set to help debug issues, remove before releasing your app.
         OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
@@ -170,7 +170,9 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                 docRefB.update("benID", UID1);
                                                 docRefB.update("benN", benN);
                                                 docRefB.update("benS", benS);
+                                                docRefB.update("benE", benE);
                                                 arrayList.get(position).setBID(UID1);
+                                                arrayList.get(position).setBem(benE);
                                                 Toast.makeText(getContext(), " تم الطلب بنجاح", Toast.LENGTH_SHORT).show();
                                                 sendNotification();
 
