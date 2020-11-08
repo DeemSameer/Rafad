@@ -1,13 +1,9 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.se.omapi.Session;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -15,9 +11,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,13 +29,10 @@ import com.onesignal.OneSignal;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.io.OutputStream;
-import java.net.Authenticator;
 import java.net.HttpURLConnection;
-import java.net.PasswordAuthentication;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import java.util.Scanner;
 
 public class signupBen extends AppCompatActivity {
@@ -216,7 +211,7 @@ public class signupBen extends AppCompatActivity {
                                         Map<String, Object> user = new HashMap<>();
                                         user.put("phoneNumber", Phone);
                                         user.put("userName", userName2);
-                                        //user.put("type", type);
+                                        user.put("type", type);
                                         user.put("email", email);
                                         user.put("SSN", signUpssn2);
                                         user.put("TotalIncome", signUpTotalincome2);
@@ -953,7 +948,7 @@ public class signupBen extends AppCompatActivity {
                         con.setFixedLengthStreamingMode(sendBytes.length);
 
                         OutputStream outputStream = con.getOutputStream();
-                        outputStream.write(sendBytes);
+                        ((OutputStream) outputStream).write(sendBytes);
 
                         int httpResponse = con.getResponseCode();
                         System.out.println("httpResponse: " + httpResponse);

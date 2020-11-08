@@ -1,9 +1,5 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +9,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -34,7 +34,7 @@ import java.util.List;
 
 public class BenMainProfile extends AppCompatActivity {
 
-    Button backHomeicon , backHomeArrow;
+    Button backHomeicon , backHomeArrow, toReq;
     StorageReference storageReference;
     FirebaseAuth fAuth;
     ImageView profileImageViewben;
@@ -55,6 +55,7 @@ public class BenMainProfile extends AppCompatActivity {
         setContentView(R.layout.ben_main_profile);
 
         backHomeArrow = findViewById(R.id.benBackHome);
+        toReq = findViewById(R.id.benProfilToReq);
         backHomeicon = findViewById(R.id.benHomeicon);
         storageReference = FirebaseStorage.getInstance().getReference();
         profileImageViewben =findViewById(R.id.profileImgben);
@@ -128,6 +129,14 @@ public class BenMainProfile extends AppCompatActivity {
             }
         });
 
+
+        toReq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BenMainProfile.this, benReqView.class));
+                finish();
+            }
+        });
         //////////////////// for list of items second try////////////////////////
 
 

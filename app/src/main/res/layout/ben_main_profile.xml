@@ -77,6 +77,18 @@
         app:srcCompat="@drawable/footer" />
 
     <Button
+        android:id="@+id/benProfilToReq"
+        android:layout_width="39dp"
+        android:layout_height="40dp"
+        android:background="@drawable/request"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.981" />
+
+    <Button
         android:id="@+id/editBen"
         android:layout_width="88dp"
         android:layout_height="48dp"
