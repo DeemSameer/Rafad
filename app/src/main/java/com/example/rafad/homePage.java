@@ -1,18 +1,15 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class homePage extends AppCompatActivity {
-    Button logout, profile, clothes , furniture,device,all;
+    Button logout, profile, clothes , furniture,device,all, chat;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 TextView empty;
@@ -54,6 +51,7 @@ TextView empty;
         empty = findViewById(R.id.homepagetext2);
         logout=findViewById(R.id.logoutButton);
         profile= findViewById(R.id.profileb);
+       
         //////// for view list of items
         listView=(ListView)findViewById(R.id.postedlist);
         //////// above is for view list of items
@@ -67,6 +65,8 @@ TextView empty;
             }
         });
 
+
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,6 +75,8 @@ TextView empty;
             finish();
         }
     });
+
+
 
 
         clothes.setOnClickListener(new View.OnClickListener() {

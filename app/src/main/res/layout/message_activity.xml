@@ -17,7 +17,7 @@
         android:id="@+id/toolbar"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:background="#99A59B">
+        android:background="#397A96">
 
 
 
@@ -51,23 +51,24 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/text_send"
+            android:layout_width="354dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
             android:layout_toLeftOf="@+id/btn_send"
             android:background="#fff"
-            android:hint="أكتب رسالة.."
             android:fontFamily="@font/tajawalmedium2"
-            android:layout_centerVertical="true"/>
+            android:hint="أكتب رسالة.." />
 
         <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
             android:id="@+id/btn_send"
-            android:background="@drawable/send"
+            android:layout_width="37dp"
+            android:layout_height="38dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginLeft="-4dp" />
+            android:layout_marginLeft="-4dp"
+            android:background="@drawable/ic_baseline_send_24" />
 
     </RelativeLayout>
 

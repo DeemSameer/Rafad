@@ -27,7 +27,7 @@ public class postinfo {
         date =date1;
         this.Demail=Demail;
     }
-    public postinfo(String itemID1, String UID1, String imageUri1,String tit){
+    public postinfo(String id, String user_id, String image, String description, String catogery, String itemID1, String UID1, String imageUri1, String tit){
         itemID = itemID1;
         UID=UID1;
         imageID = imageUri1;
