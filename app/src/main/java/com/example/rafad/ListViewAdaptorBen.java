@@ -608,7 +608,8 @@ private void UpdateToken(){
                     //This is a Simple Logic to Send Notification different Device Programmatically....
                     String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
                     OneSignal.sendTag("User_ID",LoggedIn_User_Email);
-                    send_email=Demail;
+                    //send_email=Demail;
+                    send_email="arob2604@gmail.com";
                     /*
                     if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
                         send_email = "user2@gmail.com";

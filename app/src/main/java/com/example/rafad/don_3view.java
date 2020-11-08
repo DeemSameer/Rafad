@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +36,7 @@ public class don_3view extends AppCompatActivity {
     String imageUri;
     String tit;
     String isRe;
-    Button back;
+    Button back,homebutton , logout ,profile1, post;
  Activity context;
     public static final String TAG = "TAG";
     StorageReference storageRef;
@@ -53,6 +54,11 @@ public class don_3view extends AppCompatActivity {
         all = findViewById(R.id.all_don);
         req = findViewById(R.id.req_don);
         done = findViewById(R.id.done_don);
+        back=findViewById(R.id.button5);
+        homebutton=findViewById(R.id.bHome);
+        logout = findViewById(R.id.logoutButton);
+        profile1= findViewById(R.id.profileb);
+        post= findViewById(R.id.postItem);
                 empty = findViewById(R.id.homepagetext);
         fStore= FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
@@ -193,5 +199,39 @@ public class don_3view extends AppCompatActivity {
         });
 
 
+
+        homebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(don_3view.this, homepageDonator.class));
+                finish();
+
+            }
+        });
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Intent i = new Intent(homepageDonator.this, postitem.class);
+                startActivity(new Intent(don_3view.this, post3.class));
+                finish();
+            }
+        });
+        profile1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(don_3view.this, mainProfile.class));
+                finish();
+
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fAuth.signOut();
+                startActivity(new Intent(don_3view.this, login.class));
+                finish();
+            }
+        });
     }
 }

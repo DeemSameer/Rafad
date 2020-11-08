@@ -31,7 +31,9 @@
         <activity
             android:name=".HistoryItemAdapter"
             tools:ignore="Instantiatable" />
+
         <activity android:name=".changePasswordDon" />
+        <activity android:name=".don_3view"/>
         <activity android:name=".homePageAdminBase" />
         <activity android:name=".adminMainProfile" />
         <activity android:name=".homepageDonator" />
@@ -49,6 +51,7 @@
         <activity android:name=".mainProfile" />
         <activity android:name=".signUpBase" />
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
