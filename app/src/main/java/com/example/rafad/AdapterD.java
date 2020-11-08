@@ -115,7 +115,6 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                         ;
                                 final String itemID=arrayList.get(position).itemID;
                                 bemail=arrayList.get(position).Bemail;
-
                                 UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
                                 CollectionReference beneficiaries = db.collection("item");
                                 DocumentReference docRefB = beneficiaries.document(itemID);
@@ -620,6 +619,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                     //This is a Simple Logic to Send Notification different Device Programmatically....
                     String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
                     OneSignal.sendTag("User_ID",LoggedIn_User_Email);
+
                     send_email=bemail;
                     /*
                     if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {

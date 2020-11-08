@@ -192,6 +192,7 @@ public class post3 extends AppCompatActivity {
                                 post.put("User id", UID);
                                 post.put("isRequested", "no");
                                 post.put("donN", donN );
+                                post.put("donE", LoggedIn_User_Email);
 
                                 //assign itemID to the person how post it
                               /*  postRef=fStore.collection("item").document(itemID).getPath();

@@ -86,8 +86,8 @@ public class signupBen extends AppCompatActivity {
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .init();
-        String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        OneSignal.sendTag("User_ID",LoggedIn_User_Email);
+//        String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
+      //  OneSignal.sendTag("User_ID",LoggedIn_User_Email);
 
         Button button4 = (Button) findViewById(R.id.but2);
 
