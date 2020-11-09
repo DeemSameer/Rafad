@@ -23,7 +23,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.rafad.R;
 import com.example.rafad.homepageDonator;
 import com.example.rafad.login;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +33,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -198,7 +202,7 @@ public class MessageActivity extends AppCompatActivity {
         });
     }
 
-    private void sendMessage(String sender, String receiver, String message){
+    private void sendMessage(String sender, String receiver, final String message){
         //Get time and date //
         //date
         Calendar calendar=Calendar.getInstance();
@@ -223,7 +227,26 @@ public class MessageActivity extends AppCompatActivity {
         hashMap2.put("tmsg", new Message(message,date,time));
         reference2.child(receiver).child("People").child(sender).child("Messages").push().setValue(hashMap2);
         //***************************//
-        sendNotification(message,senderMail);//Add the name of the one who send it
+        //get the name of the sender//
+        String doc=null;
+        if (login.getType()=="beneficiaries")
+            doc="donators";
+        else
+            doc="beneficiaries";
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        if (doc!=null)
+        db.collection(doc).document(fuser).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    final String name = document.get("userName").toString();
+                    sendNotification(name+": "+message);//Add the name of the one who send it
+
+                }
+            }
+        });
+
         updateUnread();
 
     }
@@ -276,7 +299,7 @@ public static void callMe(String UID,String name, String sm){
     }
 
 
-    private void sendNotification(final String message, final String senderMail)
+    private void sendNotification(final String message)
     {
         AsyncTask.execute(new Runnable() {
             @Override
