@@ -255,10 +255,11 @@ public class homepageDonator extends AppCompatActivity {
                 finish();
             }
         });
+        // Atheer change this from request to don_3view
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homepageDonator.this, requests.class));
+                startActivity(new Intent(homepageDonator.this, don_3view.class));
                 finish();
 
             }

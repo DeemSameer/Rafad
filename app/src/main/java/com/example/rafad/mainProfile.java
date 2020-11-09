@@ -132,7 +132,7 @@ post = findViewById(R.id.postItem);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(mainProfile.this, requests.class));
+                startActivity(new Intent(mainProfile.this, don_3view.class));
                 finish();
 
             }

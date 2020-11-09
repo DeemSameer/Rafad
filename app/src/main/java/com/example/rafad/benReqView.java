@@ -83,7 +83,7 @@ public class benReqView extends AppCompatActivity {
                                 Log.d(TAG, "donnN data after request: " + donN);
 
                                 arrayItem.add(new postinfo((String) document1.getId(), (String) document1.get("User id"), (String) document1.get("Image"),(String) document1.get("Title"), (String) document1.get("donN"), (String) document1.get("benS"),(String) document1.get("isRequested"), (String) document1.get("benID")));
-                                
+
 
 
 
@@ -114,14 +114,14 @@ public class benReqView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Intent i = new Intent(homepageDonator.this, postitem.class);
-                startActivity(new Intent(benReqView.this, homepageDonator.class));
+                startActivity(new Intent(benReqView.this, homePage.class));
                 finish();
             }
         });
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(benReqView.this, homepageDonator.class));
+                startActivity(new Intent(benReqView.this, homePage.class));
                 finish();
 
             }

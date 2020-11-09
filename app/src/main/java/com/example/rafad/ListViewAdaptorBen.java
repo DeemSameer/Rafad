@@ -68,7 +68,6 @@ import com.onesignal.OneSignal;
 
 public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
 
-
     public static final String TAG = "TAG";
     private final Activity context;
     private final List<postinfo> arrayList;
@@ -76,10 +75,10 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     Button request;
-    String UID1, benN, benS;
+    String UID1, benN, benS,benE;
     private final String Title = "لقد تم طلب سلعتك!";
-    private final String Message="تم طلب سلعتك من احد المستفيدين";
-   // private APIService apiService;
+    private final String Message ="تم طلب سلعتك من احد المستفيدين";
+    // private APIService apiService;
     String LoggedIn_User_Email;
      static String Demail;
 
@@ -118,7 +117,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         request=rowView.findViewById(R.id.button11);
         final String UID=arrayList.get(position).getUID();
         Demail= arrayList.get(position).getDemail();
-
+        benE=FirebaseAuth.getInstance().getCurrentUser().getEmail();
         //apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
         // Logging set to help debug issues, remove before releasing your app.
         OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
@@ -170,7 +169,9 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                 docRefB.update("benID", UID1);
                                                 docRefB.update("benN", benN);
                                                 docRefB.update("benS", benS);
+                                                docRefB.update("benE", benE);
                                                 arrayList.get(position).setBID(UID1);
+                                                arrayList.get(position).setBem(benE);
                                                 Toast.makeText(getContext(), " تم الطلب بنجاح", Toast.LENGTH_SHORT).show();
                                                 sendNotification();
 
@@ -184,11 +185,6 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                             if (document.exists()) {
                                                                 Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                                                                 final String donatorID= (String)document.get("User id");
-
-
-
-
-
                                                                 final String ItemName=(String)document.get("Title");
 
                                                                 //// get the mail with thaat ID
@@ -509,8 +505,6 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                                                         "</body>\n" +
                                                                                         "</html>");
 
-
-
                                                                             }
                                                                         }
                                                                     }
@@ -571,9 +565,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     }
 
 /*
-
-
-    private void UpdateToken(){
+private void UpdateToken(){
         FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         String refreshToken= FirebaseInstanceId.getInstance().getToken();
         //here error
@@ -616,14 +608,15 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                     //This is a Simple Logic to Send Notification different Device Programmatically....
                     String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
                     OneSignal.sendTag("User_ID",LoggedIn_User_Email);
-                    send_email=Demail;
+                    //send_email=Demail;
+                    send_email="arob2604@gmail.com";
                     /*
                     if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
                         send_email = "user2@gmail.com";
                     } else {
                         send_email = "user1@gmail.com";
-                    }*/
-
+                    }
+                    */
                     try {
                         String jsonResponse;
 

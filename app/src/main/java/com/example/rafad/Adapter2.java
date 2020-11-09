@@ -99,7 +99,7 @@ public class Adapter2 extends ArrayAdapter<postinfo> {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 profileRef.delete();
                                 fStore.collection("item").document(itemID).delete();
-                                context.startActivity(new Intent(context, mainProfile.class));
+                                context.startActivity(new Intent(context, don_3view.class));
                                 Toast.makeText(getContext(), " تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
 
                             }
