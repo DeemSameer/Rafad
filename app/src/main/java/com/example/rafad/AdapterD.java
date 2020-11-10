@@ -615,11 +615,9 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                             .permitAll().build();
                     StrictMode.setThreadPolicy(policy);
                     String send_email;
-
                     //This is a Simple Logic to Send Notification different Device Programmatically....
                     String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
                     OneSignal.sendTag("User_ID",LoggedIn_User_Email);
-
                     send_email="may.a.alfahad@gmail.com";
                     /*
                     if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
