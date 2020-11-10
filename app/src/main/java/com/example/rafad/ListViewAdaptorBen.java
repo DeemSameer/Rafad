@@ -116,7 +116,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         fAuth = FirebaseAuth.getInstance();
         request=rowView.findViewById(R.id.button11);
         final String UID=arrayList.get(position).getUID();
-        Demail= arrayList.get(position).Demail;
+        Demail = arrayList.get(position).Demail;
         Log.d(TAG, "&&&&&&&&&&&&&&&&&&&&&&&&&&&& " + Demail);
 
         benE=FirebaseAuth.getInstance().getCurrentUser().getEmail();
