@@ -45,7 +45,7 @@ public class homepageAdmin extends AppCompatActivity {
                 .init();
 
         String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        OneSignal.sendTag("User_ID",LoggedIn_User_Email);
+        OneSignal.sendTag("User_ID","deemsameer.ds@gmail.com");
 
 
 

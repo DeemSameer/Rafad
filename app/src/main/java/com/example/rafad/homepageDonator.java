@@ -36,11 +36,11 @@ public class homepageDonator extends AppCompatActivity {
     FirebaseFirestore fStore;
 
     //////// for view list of items
-    List<postinfo> arrayItem=new ArrayList<>();
-    List<postinfo> arrayItemC=new ArrayList<>();
-    List<postinfo> arrayItemD=new ArrayList<>();
-    List<postinfo> arrayItemF=new ArrayList<>();
-    List<postinfo> arrayItemA=new ArrayList<>();
+    List<postinfo> arrayItem;
+    List<postinfo> arrayItemC;
+    List<postinfo> arrayItemD;
+    List<postinfo> arrayItemF;
+    List<postinfo> arrayItemA;
     public static final String TAG = "TAG";
     ListView listView;
     TextView empty;
@@ -83,6 +83,7 @@ public class homepageDonator extends AppCompatActivity {
         clothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                arrayItemC =new ArrayList<>();
                 clothes.setPaintFlags(clothes.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                 Query p =  fStore.collection("item").whereEqualTo("Catogery", "ملابس")
                         .whereEqualTo("isRequested", "no" );
@@ -119,7 +120,7 @@ public class homepageDonator extends AppCompatActivity {
         furniture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                arrayItemF =new ArrayList<>();
                 Query p =  fStore.collection("item").whereEqualTo("Catogery", "أثاث")
                         .whereEqualTo("isRequested", "no" );
 
@@ -154,7 +155,7 @@ public class homepageDonator extends AppCompatActivity {
         device.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                arrayItemD =new ArrayList<>();
                 Query p =  fStore.collection("item").whereEqualTo("Catogery", "أجهزة")
                         .whereEqualTo("isRequested", "no" );
 
@@ -190,7 +191,7 @@ public class homepageDonator extends AppCompatActivity {
         all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                arrayItemA=new ArrayList<>();
                 Query p =  fStore.collection("item")
                         .whereEqualTo("isRequested", "no" );
 
@@ -268,7 +269,7 @@ public class homepageDonator extends AppCompatActivity {
 
 //////////////////// for list of items second try////////////////////////
 
-
+        arrayItem =new ArrayList<>();
         // FirebaseFirestore db = FirebaseFirestore.getInstance();
         fStore.collection("item")
                 .whereEqualTo("isRequested", "no")

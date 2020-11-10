@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +23,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -29,14 +36,23 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+import com.onesignal.OneSignal;
 
 
 public class AdapterD extends ArrayAdapter<postinfo> {
 
     public static final String TAG = "TAG";
     private final Activity context;
-    private final List<postinfo> arrayList;
+    private List<postinfo> arrayList=new ArrayList<>();
     StorageReference storageRef;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
@@ -75,7 +91,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
         fAuth = FirebaseAuth.getInstance();
 
 
-        TextView titText = (TextView) rowView.findViewById(R.id.name);
+        TextView titText = (TextView) rowView.findViewById(R.id.name2);
         TextView titText2 = (TextView) rowView.findViewById(R.id.status);
         TextView titText3 = (TextView) rowView.findViewById(R.id.name2);
 
@@ -105,7 +121,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 FirebaseFirestore db = FirebaseFirestore.getInstance()
                                         ;
                                 final String itemID=arrayList.get(position).itemID;
-                                bemail=arrayList.get(position).Bemail;
+                                String bemail=arrayList.get(position).Bemail;
                                 UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
                                 CollectionReference beneficiaries = db.collection("item");
                                 DocumentReference docRefB = beneficiaries.document(itemID);
@@ -135,7 +151,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                                 final String itemID=arrayList.get(position).itemID;
-                                bemail=arrayList.get(position).Bemail;
+                                String bemail=arrayList.get(position).Bemail;
 
                                 UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -157,7 +173,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
                                                 Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                                String benID= (String)document.get("benID");
+                                                final String benID= (String)document.get("benID");
                                                 final String ItemName=(String)document.get("Title");//name
 
                                                 DocumentReference docRef2=fStore.collection("beneficiaries").document(benID);//.get("User id")

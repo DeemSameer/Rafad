@@ -920,7 +920,6 @@ public class signupBen extends AppCompatActivity {
                     } else {
                         send_email = "user1@gmail.com";
                     }*/
-
                     try {
                         String jsonResponse;
 

@@ -116,7 +116,9 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         fAuth = FirebaseAuth.getInstance();
         request=rowView.findViewById(R.id.button11);
         final String UID=arrayList.get(position).getUID();
-        Demail= arrayList.get(position).getDemail();
+        Demail= arrayList.get(position).Demail;
+        Log.d(TAG, "&&&&&&&&&&&&&&&&&&&&&&&&&&&& " + Demail);
+
         benE=FirebaseAuth.getInstance().getCurrentUser().getEmail();
         //apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
         // Logging set to help debug issues, remove before releasing your app.
@@ -608,8 +610,8 @@ private void UpdateToken(){
                     //This is a Simple Logic to Send Notification different Device Programmatically....
                     String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
                     OneSignal.sendTag("User_ID",LoggedIn_User_Email);
-                    //send_email=Demail;
-                    send_email="arob2604@gmail.com";
+                    send_email=Demail;
+                    //send_email="arob2604@gmail.com";
                     /*
                     if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
                         send_email = "user2@gmail.com";
