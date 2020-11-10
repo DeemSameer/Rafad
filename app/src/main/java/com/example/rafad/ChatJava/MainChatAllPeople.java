@@ -137,11 +137,10 @@ public class MainChatAllPeople extends AppCompatActivity {
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-
                     adapter.clear();//To clear data and retrive again -- I did not test it yet -_-
                     for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         final String key = snapshot.getKey();
-                        Log.d(TAG, key + " Hello from the another world");
+                        Log.d(TAG, dataSnapshot.getValue() + " Hello from the another world");
                         //Retrieve the name of that ID,
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
                         //Collection path SHOULD CHANGE
@@ -155,31 +154,25 @@ public class MainChatAllPeople extends AppCompatActivity {
                                         final String UID = document.getId();
                                         final String mail=document.get("email").toString();
                                         Log.d(TAG, name + " nameUser");
-
-
-                                        //Start retrieve from real DB LastMsg + time
-
-
                                         final FirebaseDatabase database = FirebaseDatabase.getInstance();
                                         final DatabaseReference ref = database.getReference(UserId + "/People/" + key + "/Messages");
-                                        ref.addValueEventListener(new ValueEventListener() {
+                                        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                adapter.clear();
+                                                //startActivity(new Intent(getApplicationContext(), MainChatAllPeople.class));
                                                 String msg = "";
                                                 String t = "";
                                                 String d = "";
                                                 String unread = "";
 
-
-
-
                                                 for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                                    Log.d(TAG, "MMMMMMMMMMMMMMM " + snapshot.getValue().toString());
-
 
                                                     if (snapshot.child("fmsg").getValue() != null) {
                                                         Log.d(TAG, "MMMMMMMMMMMMMMM message " + snapshot.child("fmsg").child("content").getValue().toString());
                                                         msg = snapshot.child("fmsg").child("content").getValue().toString();
+                                                        Log.d(TAG, "fmsg " + msg);
                                                         t = snapshot.child("fmsg").child("time").getValue().toString();
                                                         d = snapshot.child("fmsg").child("date").getValue().toString();
                                                         Calendar calendar = Calendar.getInstance();
@@ -187,8 +180,7 @@ public class MainChatAllPeople extends AppCompatActivity {
                                                         String Today = simpleDateFormat.format(calendar.getTime());
                                                         if (Today.equals(d))
                                                             d = "اليوم";
-                                                        adapter.notifyDataSetChanged();
-                                                    } else if (snapshot.child("tmsg").getValue() != null) {
+                                                   } else if (snapshot.child("tmsg").getValue() != null) {
                                                         Log.d(TAG, "MMMMMMMMMMMMMMM message " + snapshot.child("tmsg").child("content").getValue().toString());
                                                         msg = snapshot.child("tmsg").child("content").getValue().toString();
                                                         t = snapshot.child("tmsg").child("time").getValue().toString();
@@ -201,7 +193,6 @@ public class MainChatAllPeople extends AppCompatActivity {
                                                         if (Today.equals(d))
                                                             d = "اليوم";
 
-                                                        adapter.notifyDataSetChanged();
                                                     }
 
                                                 }
@@ -236,6 +227,7 @@ public class MainChatAllPeople extends AppCompatActivity {
                                                 });
 
                                                 //end
+                                                adapter.clear();
 
                                             }
 
@@ -250,7 +242,7 @@ public class MainChatAllPeople extends AppCompatActivity {
                                         String lastMsg;
                                         String date;
                                         String time;
-                                        Log.d(TAG, snapshot.child("Messages").child("lastMessage").child("content").getValue() + " VALUVALULOOL" + name);
+                                        Log.d(TAG, snapshot.child("Messages").getValue() + " VALUVALULOOL" + name);
                                 /*if (snapshot.child("Messages").child("lastMessage").child("content").getValue() != null) {
                                     lastMsg = snapshot.child("Messages").child("lastMessage").child("content").getValue().toString();
                                     date = snapshot.child("Messages").child("lastMessage").child("date").getValue().toString();
@@ -300,6 +292,7 @@ public class MainChatAllPeople extends AppCompatActivity {
 
     }
 
+    
 
 
     /*
