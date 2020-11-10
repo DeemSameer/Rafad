@@ -34,6 +34,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.onesignal.OneSignal;
 import com.squareup.picasso.Picasso;
 
 import java.io.OutputStream;
@@ -44,8 +45,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-
-import com.onesignal.OneSignal;
 
 
 public class AdapterD extends ArrayAdapter<postinfo> {
@@ -152,6 +151,8 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                                 final String itemID=arrayList.get(position).itemID;
                                 bemail=arrayList.get(position).Bemail;
+
+                                Log.d(TAG, "benE data after request: " + bemail);
 
                                 UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
 

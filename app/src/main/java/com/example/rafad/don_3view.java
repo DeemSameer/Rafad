@@ -1,17 +1,16 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -130,8 +129,8 @@ public class don_3view extends AppCompatActivity {
 
 
 
-                                        Log.d(TAG, "benN data after request: " + benN);
-                                        arrayItem2.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"),(String) document.get("Title"), (String) document.get("benN"), (String) document.get("benS"),(String) document.get("isRequested"), (String) document.get("benID")));
+                                        Log.d(TAG, "benE data after request: " + (String) document.get("benE"));
+                                        arrayItem2.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"),(String) document.get("Title"), (String) document.get("benN"), (String) document.get("benS"),(String) document.get("isRequested"), (String) document.get("benID"), (String) document.get("benE")));
 
 
 
