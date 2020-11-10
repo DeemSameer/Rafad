@@ -7,6 +7,18 @@
     tools:context=".benReqView">
 
     <Button
+        android:id="@+id/button15"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/chat2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
+
+    <Button
         android:id="@+id/benReqback"
         android:layout_width="25dp"
         android:layout_height="22dp"
@@ -43,7 +55,7 @@
     <ListView
         android:id="@+id/benReqListView"
         android:layout_width="417dp"
-        android:layout_height="550dp"
+        android:layout_height="600dp"
         android:background="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,10 +67,10 @@
 
     <TextView
         android:id="@+id/textView23"
-        android:layout_width="169dp"
-        android:layout_height="24dp"
+        android:layout_width="128dp"
+        android:layout_height="19dp"
         android:fontFamily="@font/tajawalmedium2"
-        android:text="طلباتي المعلقة:"
+        android:text="حالة الطلبات"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +109,7 @@
         android:background="@drawable/home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.237"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.988" />
@@ -110,7 +122,7 @@
         android:background="@drawable/request"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.981" />

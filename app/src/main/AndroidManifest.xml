@@ -29,6 +29,7 @@
             tools:ignore="Instantiatable" />
 
         <activity android:name=".changePasswordDon" />
+        <activity android:name=".benReqView" />
         <activity android:name=".don_3view"/>
         <activity android:name=".homePageAdminBase" />
         <activity android:name=".adminMainProfile" />

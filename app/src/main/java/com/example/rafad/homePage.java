@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class homePage extends AppCompatActivity {
-    Button logout, profile, clothes , furniture,device,all;
+    Button logout, profile, clothes , furniture,device,all,toReq;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 TextView empty;
@@ -51,6 +51,7 @@ TextView empty;
         empty = findViewById(R.id.homepagetext2);
         logout=findViewById(R.id.logoutButton);
         profile= findViewById(R.id.profileb);
+        toReq = findViewById(R.id.benHomeToReq);
         //////// for view list of items
         listView=(ListView)findViewById(R.id.postedlist);
         //////// above is for view list of items
@@ -72,6 +73,14 @@ TextView empty;
             finish();
         }
     });
+
+        toReq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homePage.this, benReqView.class));
+                finish();
+            }
+        });
 
 
         clothes.setOnClickListener(new View.OnClickListener() {
