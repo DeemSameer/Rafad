@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.rafad.ChatJava.MainChatAllPeople;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,7 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class homepageDonator extends AppCompatActivity {
-    Button logout ,profile1, post , clothes , furniture,device,all;
+    Button logout ,profile1, post , clothes , furniture,device,all,Chat;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 
@@ -57,6 +58,7 @@ public class homepageDonator extends AppCompatActivity {
         furniture = findViewById(R.id.furniture);
         device = findViewById(R.id.device1);
         all = findViewById(R.id.all1);
+        Chat= findViewById(R.id.button12);
 
 
         logout = findViewById(R.id.logoutButton);
@@ -236,6 +238,14 @@ public class homepageDonator extends AppCompatActivity {
 
             }
         });
+        Chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homepageDonator.this, MainChatAllPeople.class));
+                finish();
+
+            }
+        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -245,10 +255,11 @@ public class homepageDonator extends AppCompatActivity {
                 finish();
             }
         });
+        // Atheer change this from request to don_3view
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homepageDonator.this, requests.class));
+                startActivity(new Intent(homepageDonator.this, don_3view.class));
                 finish();
 
             }

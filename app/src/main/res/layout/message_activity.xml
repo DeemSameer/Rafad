@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e6e6e6e6"
+    tools:context=".ChatJava.MessageActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bar_layout"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="#397A96">
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/username"
+        android:textSize="18sp"
+        android:layout_marginLeft="25dp"
+        android:textColor="#fff"
+        android:layout_marginStart="200dp"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/profile_image"
+            android:layout_marginLeft="25dp"/>
+
+
+    </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:id="@+id/bottom"
+        android:background="#fff"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/text_send"
+            android:layout_width="354dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/btn_send"
+            android:background="#fff"
+            android:fontFamily="@font/tajawalmedium2"
+            android:hint="أكتب رسالة.." />
+
+        <ImageButton
+
+            android:id="@+id/btn_send"
+            android:layout_width="37dp"
+            android:layout_height="38dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="-4dp"
+            android:background="@drawable/ic_baseline_send_24" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/allChats"
+        android:layout_width="wrap_content"
+        android:layout_height="618dp"
+        android:layout_above="@+id/bottom"
+        android:layout_below="@+id/bar_layout"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginLeft="-2dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="3dp"
+        android:divider="#00000000"
+        android:listSelector="@android:color/transparent"
+        android:transcriptMode="alwaysScroll"
+        android:stackFromBottom="true" />
+
+
+</RelativeLayout>
+
+

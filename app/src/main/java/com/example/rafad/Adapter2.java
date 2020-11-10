@@ -2,13 +2,11 @@ package com.example.rafad;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -19,19 +17,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.bumptech.glide.Glide;
-import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -109,7 +99,7 @@ public class Adapter2 extends ArrayAdapter<postinfo> {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 profileRef.delete();
                                 fStore.collection("item").document(itemID).delete();
-                                context.startActivity(new Intent(context, mainProfile.class));
+                                context.startActivity(new Intent(context, don_3view.class));
                                 Toast.makeText(getContext(), " تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
 
                             }

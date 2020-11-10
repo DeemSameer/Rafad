@@ -14,10 +14,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
+import com.example.rafad.ChatJava.Message;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -394,8 +398,6 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
                                             "</html>   ");
                                 }
                             });
-                            ////////////////////////////////////////////////////////
-
 
                             context.startActivity(new Intent(context, homepageAdmin.class));
                             Toast.makeText(getContext(),"لقد تم قبول المستفيد بنجاح",Toast.LENGTH_SHORT).show();

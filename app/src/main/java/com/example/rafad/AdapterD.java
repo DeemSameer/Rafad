@@ -5,8 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,14 +27,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.onesignal.OneSignal;
 import com.squareup.picasso.Picasso;
 
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.List;
-import java.util.Scanner;
 
 
 public class AdapterD extends ArrayAdapter<postinfo> {
@@ -49,8 +42,6 @@ public class AdapterD extends ArrayAdapter<postinfo> {
     FirebaseAuth fAuth;
     Button request;
     String UID1;
-    static String bemail;
-
 
 
 
@@ -121,7 +112,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 docRefB.update("isRequested", "no");
                                 docRefB.update("benN", "name");
                                 docRefB.update("benS", "state");
-                                context.startActivity(new Intent(context, requests.class));
+                                context.startActivity(new Intent(context, don_3view.class));
                                 Toast.makeText(getContext(), "لقد تم رفض الطلب بنجاح", Toast.LENGTH_SHORT).show();
                                 sendNot1();
 
@@ -151,7 +142,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 CollectionReference beneficiaries = db.collection("item");
                                 DocumentReference docRefB = beneficiaries.document(itemID);
                                 docRefB.update("isRequested", "yes");
-                                context.startActivity(new Intent(context, requests.class));
+                                context.startActivity(new Intent(context, don_3view.class));
                                 Toast.makeText(getContext(), "لقد تم قبول الطلب بنجاح", Toast.LENGTH_SHORT).show();
                                 sendNot2();
 
@@ -485,6 +476,70 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                                         "<!--[if (IE)]></div><![endif]-->\n" +
                                                         "</body>\n" +
                                                         "</html>");
+
+
+                                                //************************************************************************************//
+                                                //Start adding them to each other chat
+                                                //**Adding the benficary to the donator chat**/
+                                                final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                                DatabaseReference ref = database.getReference(FirebaseAuth.getInstance().getCurrentUser().getUid()+"/People/"+benID);
+                                                final DatabaseReference usersRef =ref.child("Messages");
+                                                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                        if (dataSnapshot.getValue()==null){
+                                                            Map<String, String> People = new HashMap<>();
+                                                            People.put("state", "accepted");
+                                                            People.put("unread", "0");
+                                                            usersRef.setValue(People);
+                                                        }
+
+                                                    }
+
+                                                    @Override
+                                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                                        Map<String, String> People = new HashMap<>();
+                                                        People.put("state", "accepted");
+                                                        People.put("unread", "0");
+                                                        usersRef.setValue(People);
+                                                    }
+                                                    });
+
+
+
+
+                                                //**End**//
+
+                                                //**Adding the donator to the benficary chat**/
+                                                final FirebaseDatabase database0 = FirebaseDatabase.getInstance();
+                                                DatabaseReference ref0 = database0.getReference(benID +"/People/"+FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                                final DatabaseReference usersRef0 = ref0.child("Messages");
+                                                ref0.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                        if (dataSnapshot.getValue()==null){
+                                                            Map<String, String> People = new HashMap<>();
+                                                            People.put("state", "accepted");
+                                                            People.put("unread", "0");
+                                                            usersRef0.setValue(People);
+                                                        }
+
+                                                    }
+
+                                                    @Override
+                                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                                        Map<String, String> People = new HashMap<>();
+                                                        People.put("state", "accepted");
+                                                        People.put("unread", "0");
+                                                        usersRef0.setValue(People);
+                                                    }
+                                                });
+
+                                                //**End**//
+
+                                                //End adding them to each other chat
+                                                //************************************************************************************//
+
 
                                             }
                                         }

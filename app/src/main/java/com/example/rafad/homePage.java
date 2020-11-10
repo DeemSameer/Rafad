@@ -1,15 +1,18 @@
 package com.example.rafad;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class homePage extends AppCompatActivity {
-    Button logout, profile, clothes , furniture,device,all, benReq;
+    Button logout, profile, clothes , furniture,device,all;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 TextView empty;
@@ -51,7 +54,6 @@ TextView empty;
         empty = findViewById(R.id.homepagetext2);
         logout=findViewById(R.id.logoutButton);
         profile= findViewById(R.id.profileb);
-        benReq=findViewById(R.id.benHomeToReq);
         //////// for view list of items
         listView=(ListView)findViewById(R.id.postedlist);
         //////// above is for view list of items
@@ -74,15 +76,6 @@ TextView empty;
         }
     });
 
-        benReq.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(homePage.this, benReqView.class));
-                finish();
-
-            }
-        });
-
 
         clothes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +91,7 @@ TextView empty;
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         Log.d(TAG, document.getId() + " => " + document.getData());
-                                        arrayItemC.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested"),(String) document.get("Date"),"",(String) document.get("Demail") ));
+                                        arrayItemC.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested"),(String) document.get("Date"),"" ));
                                         Log.d(TAG, "SIZE item list => " + arrayItemC.size());
                                     }
                                     if (arrayItemC.size()==0)
@@ -134,7 +127,7 @@ TextView empty;
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         Log.d(TAG, document.getId() + " => " + document.getData());
-                                        arrayItemF.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),"",(String) document.get("Demail")));
+                                        arrayItemF.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),""));
                                         Log.d(TAG, "SIZE item list => " + arrayItemF.size());
                                     }
                                     if (arrayItemF.size()==0)
@@ -169,7 +162,7 @@ TextView empty;
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         Log.d(TAG, document.getId() + " => " + document.getData());
-                                        arrayItemD.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),"",(String) document.get("Demail")));
+                                        arrayItemD.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),""));
                                         Log.d(TAG, "SIZE item list => " + arrayItemD.size());
                                     }
                                     if (arrayItemD.size()==0)
@@ -205,7 +198,7 @@ TextView empty;
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         Log.d(TAG, document.getId() + " => " + document.getData());
-                                        arrayItemA.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),"",(String) document.get("Demail")));
+                                        arrayItemA.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),""));
                                         Log.d(TAG, "SIZE item list => " + arrayItemA.size());
                                     }
                                     if (arrayItemA.size()==0)
@@ -239,7 +232,7 @@ TextView empty;
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title") ,(String) document.get("isRequested") ,(String) document.get("Date"),"",(String) document.get("Demail")));
+                                arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title") ,(String) document.get("isRequested") ,(String) document.get("Date"),""));
                                 Log.d(TAG, "SIZE item list => " + arrayItem.size());
                             }
                             ListViewAdaptorBen adapter = new ListViewAdaptorBen(homePage.this, arrayItem);

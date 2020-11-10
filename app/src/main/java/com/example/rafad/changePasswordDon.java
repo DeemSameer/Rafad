@@ -2,12 +2,10 @@ package com.example.rafad;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,8 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -46,7 +42,7 @@ public class changePasswordDon extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         Done = findViewById(R.id.saveNewPass);
         backToProfile = findViewById(R.id.backtoProfilDon);
-        n = findViewById(R.id.name);
+        n = findViewById(R.id.Username);
         e =findViewById(R.id.email22);
         e2 =findViewById(R.id.e2);
         ph = findViewById(R.id.phoneno);

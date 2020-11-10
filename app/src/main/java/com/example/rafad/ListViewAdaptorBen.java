@@ -68,7 +68,6 @@ import com.onesignal.OneSignal;
 
 public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
 
-
     public static final String TAG = "TAG";
     private final Activity context;
     private final List<postinfo> arrayList;
@@ -78,8 +77,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     Button request;
     String UID1, benN, benS,benE;
     private final String Title = "لقد تم طلب سلعتك!";
-    private final String Message="تم طلب سلعتك من احد المستفيدين";
-   // private APIService apiService;
+    private final String Message ="تم طلب سلعتك من احد المستفيدين";
+    // private APIService apiService;
     String LoggedIn_User_Email;
      static String Demail;
 
@@ -186,11 +185,6 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                             if (document.exists()) {
                                                                 Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                                                                 final String donatorID= (String)document.get("User id");
-
-
-
-
-
                                                                 final String ItemName=(String)document.get("Title");
 
                                                                 //// get the mail with thaat ID
@@ -511,8 +505,6 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                                                                                         "</body>\n" +
                                                                                         "</html>");
 
-
-
                                                                             }
                                                                         }
                                                                     }
@@ -573,9 +565,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     }
 
 /*
-
-
-    private void UpdateToken(){
+private void UpdateToken(){
         FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         String refreshToken= FirebaseInstanceId.getInstance().getToken();
         //here error
@@ -618,14 +608,15 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
                     //This is a Simple Logic to Send Notification different Device Programmatically....
                     String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
                     OneSignal.sendTag("User_ID",LoggedIn_User_Email);
-                    send_email=Demail;
+                    //send_email=Demail;
+                    send_email="arob2604@gmail.com";
                     /*
                     if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
                         send_email = "user2@gmail.com";
                     } else {
                         send_email = "user1@gmail.com";
-                    }*/
-
+                    }
+                    */
                     try {
                         String jsonResponse;
 
