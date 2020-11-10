@@ -1,21 +1,15 @@
 package com.example.rafad.ChatJava;
 
-import android.app.ActionBar;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.example.rafad.BenMainProfile;
 import com.example.rafad.R;
@@ -36,14 +30,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Scanner;
 
 public class MainChatAllPeople extends AppCompatActivity {
     static int Position;
@@ -65,6 +55,7 @@ public class MainChatAllPeople extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //PUT CASSES (Donator, Ben)
+        if (login.getType() != null)
         if (login.getType().equals("beneficiaries")) {
             setContentView(R.layout.activity_main_chat_all_people);
             recyclerViewPeople = (ListView) findViewById(R.id.allPeople);

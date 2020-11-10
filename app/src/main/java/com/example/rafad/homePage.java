@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.rafad.ChatJava.MainChatAllPeople;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class homePage extends AppCompatActivity {
-    Button logout, profile, clothes , furniture,device,all, chat;
+    Button logout, profile, clothes , furniture,device,all, chatbtn;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 TextView empty;
@@ -62,6 +63,16 @@ TextView empty;
                 startActivity(new Intent(homePage.this, BenMainProfile.class));
                 finish();
 
+            }
+        });
+
+
+        chatbtn=findViewById(R.id.chatbtn);
+        chatbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homePage.this, MainChatAllPeople.class));
+                finish();
             }
         });
 

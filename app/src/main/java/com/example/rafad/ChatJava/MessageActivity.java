@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -17,15 +16,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rafad.R;
-import com.example.rafad.homepageDonator;
-import com.example.rafad.login;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.onesignal.OneSignal;
 import com.squareup.picasso.Picasso;
 
 import java.io.OutputStream;
@@ -46,7 +41,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import com.onesignal.OneSignal;
 
 
 public class MessageActivity extends AppCompatActivity {
@@ -108,16 +102,21 @@ public class MessageActivity extends AppCompatActivity {
 
         Log.d(TAG, "receiverUID  "+receiverUID);
 
-        StorageReference profileRef = storageReference.child("users/" + receiverUID + "profile.jpg");
-        Log.d(TAG, "before12 People Adapter" + profileRef);
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profile_image);
+        try {
+
+            StorageReference profileRef = storageReference.child("users/" + receiverUID + "profile.jpg");
+            Log.d(TAG, "before12 People Adapter" + profileRef);
+            profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri).into(profile_image);
                     Log.d(TAG, "interrrrrr Message Activity");
 
-            }
-        });
+                }
+            });
+        }catch (Exception e){
+
+        }
 
         username.setText(receivername);
 
