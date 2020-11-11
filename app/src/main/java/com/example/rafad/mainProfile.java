@@ -1,30 +1,25 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.rafad.ChatJava.MainChatAllPeople;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -33,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class mainProfile extends AppCompatActivity {
-    Button back , homebutton, editbutton2,post;
+    Button back , homebutton, editbutton2,post,buttonchat;
     StorageReference storageReference;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -67,6 +62,7 @@ public class mainProfile extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
+        buttonchat=findViewById(R.id.buttonchat);
 post = findViewById(R.id.postItem);
 
 
@@ -104,6 +100,15 @@ post = findViewById(R.id.postItem);
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(mainProfile.this, homepageDonator.class));
+                finish();
+
+            }
+        });
+
+        buttonchat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mainProfile.this, MainChatAllPeople.class));
                 finish();
 
             }

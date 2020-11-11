@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.rafad.ChatJava.MainChatAllPeople;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -34,7 +35,7 @@ import java.util.List;
 
 public class BenMainProfile extends AppCompatActivity {
 
-    Button backHomeicon , backHomeArrow;
+    Button backHomeicon , backHomeArrow, button8,benProfilToReq;
     StorageReference storageReference;
     FirebaseAuth fAuth;
     ImageView profileImageViewben;
@@ -62,10 +63,12 @@ public class BenMainProfile extends AppCompatActivity {
         benName = findViewById(R.id.benName);
         benPhone = findViewById(R.id.benPhone);
         editBen = findViewById(R.id.editBen);
+        button8=findViewById(R.id.button8);
 
         fAuth = FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
+        benProfilToReq=findViewById(R.id.benProfilToReq);
 
 
         //////// for view list of items
@@ -109,7 +112,13 @@ public class BenMainProfile extends AppCompatActivity {
 
 
 
-
+        button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BenMainProfile.this, MainChatAllPeople.class));
+                finish();
+            }
+        });
 
         backHomeicon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +133,14 @@ public class BenMainProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(BenMainProfile.this, homePage.class));
+                finish();
+            }
+        });
+
+        benProfilToReq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BenMainProfile.this, benReqView.class));
                 finish();
             }
         });

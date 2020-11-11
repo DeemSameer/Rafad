@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rafad.BenMainProfile;
 import com.example.rafad.R;
+import com.example.rafad.benReqView;
 import com.example.rafad.homePage;
 import com.example.rafad.homepageDonator;
 import com.example.rafad.login;
@@ -119,8 +120,8 @@ public class MainChatAllPeople extends AppCompatActivity {
                 tolist.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        // startActivity(new Intent(MainChatAllPeople.this, requests.class));///CHHHANGGGE
-                        //   finish();
+                        startActivity(new Intent(MainChatAllPeople.this, benReqView.class));///CHHHANGGGE
+                        finish();
                     }
                 });
                 toProfile.setOnClickListener(new View.OnClickListener() {

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.rafad.ChatJava.MainChatAllPeople;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class don_3view extends AppCompatActivity {
-    Button all,req,done;
+    Button all,req,done,buttonChat222;
     TextView empty;
     String benN;
     String benS;
@@ -65,6 +66,7 @@ public class don_3view extends AppCompatActivity {
         fStore= FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
        boldTypeface = Typeface.defaultFromStyle(Typeface.BOLD);
+        buttonChat222=findViewById(R.id.buttonChat222);
 
 
         all.setOnClickListener(new View.OnClickListener() {
@@ -246,6 +248,14 @@ public class don_3view extends AppCompatActivity {
             public void onClick(View view) {
                 fAuth.signOut();
                 startActivity(new Intent(don_3view.this, login.class));
+                finish();
+            }
+        });
+
+        buttonChat222.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(don_3view.this, MainChatAllPeople.class));
                 finish();
             }
         });
