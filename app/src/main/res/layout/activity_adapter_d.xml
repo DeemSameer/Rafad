@@ -28,7 +28,7 @@
         android:padding="12dp">
 
         <RelativeLayout
-            android:layout_width="367dp"
+            android:layout_width="345dp"
             android:layout_height="130dp"
             android:background="@drawable/new_button">
 
@@ -40,9 +40,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="bottom"
-                android:layout_marginStart="233dp"
+                android:layout_marginStart="203dp"
                 android:layout_marginLeft="233dp"
-                android:layout_marginRight="50sp"
+                android:layout_marginRight="0sp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/new_button"
                 android:fontFamily="@font/tajawalmedium2"
@@ -58,7 +58,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="bottom"
-                android:layout_marginStart="301dp"
+                android:layout_marginStart="275dp"
                 android:layout_marginLeft="301dp"
                 android:layout_marginBottom="14dp"
                 android:background="@drawable/new_button2"
@@ -79,7 +79,6 @@
                 android:layout_marginEnd="54dp"
                 android:layout_marginRight="54dp"
                 android:fontFamily="@font/tajawalmedium2"
-                android:text="TextView"
                 android:textColor="#616668" />
 
             <TextView
@@ -89,8 +88,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="54dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="44dp"
                 android:layout_marginRight="54dp"
                 android:fontFamily="@font/tajawalmedium2"
                 android:text="TextView"
@@ -113,8 +112,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="68dp"
-                android:layout_marginEnd="57dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="44dp"
                 android:layout_marginRight="57dp"
                 android:fontFamily="@font/tajawalmedium2"
                 android:text="TextView"
