@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/tajawalmedium2"
-                android:text="10/10/2020"
+
                 android:textAlignment="inherit"
                 android:textColor="#397A96"
                 android:textSize="12sp" />
