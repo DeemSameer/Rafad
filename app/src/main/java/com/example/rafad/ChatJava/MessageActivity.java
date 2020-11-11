@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -17,26 +16,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rafad.R;
-import com.example.rafad.homepageDonator;
-import com.example.rafad.login;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.onesignal.OneSignal;
 import com.squareup.picasso.Picasso;
 
 import java.io.OutputStream;
@@ -50,7 +41,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import com.onesignal.OneSignal;
 
 
 public class MessageActivity extends AppCompatActivity {
@@ -86,42 +76,47 @@ public class MessageActivity extends AppCompatActivity {
         setContentView(R.layout.message_activity);
         storageReference = FirebaseStorage.getInstance().getReference();
         Toolbar toolbar = findViewById(R.id.toolbar);
-         setSupportActionBar(toolbar);
-         getSupportActionBar().setTitle("");
-         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-         toolbar.setNavigationOnClickListener(new View.OnClickListener(){
-             @Override
-             public void onClick(View view){
-                 final FirebaseDatabase database = FirebaseDatabase.getInstance();
-                 final DatabaseReference ref = database.getReference(fuser+"/People/"+ receiverUID+"/Messages/unread");
-                 ref.setValue("0");
-                 Intent i = new Intent(MessageActivity.this, MainChatAllPeople.class);
-                 startActivity(i);
-                  finish();
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                final DatabaseReference ref = database.getReference(fuser+"/People/"+ receiverUID+"/Messages/unread");
+                ref.setValue("0");
+                Intent i = new Intent(MessageActivity.this, MainChatAllPeople.class);
+                startActivity(i);
+                finish();
 
-             }
-         });
+            }
+        });
 
 
 
-         profile_image=findViewById(R.id.profile_image);
-         username=findViewById(R.id.username);
-         btn_send=findViewById(R.id.btn_send);
-         text_send=findViewById(R.id.text_send);
+        profile_image=findViewById(R.id.profile_image);
+        username=findViewById(R.id.username);
+        btn_send=findViewById(R.id.btn_send);
+        text_send=findViewById(R.id.text_send);
 
 
         Log.d(TAG, "receiverUID  "+receiverUID);
 
-        StorageReference profileRef = storageReference.child("users/" + receiverUID + "profile.jpg");
-        Log.d(TAG, "before12 People Adapter" + profileRef);
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profile_image);
+        try {
+
+            StorageReference profileRef = storageReference.child("users/" + receiverUID + "profile.jpg");
+            Log.d(TAG, "before12 People Adapter" + profileRef);
+            profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri).into(profile_image);
                     Log.d(TAG, "interrrrrr Message Activity");
 
-            }
-        });
+                }
+            });
+        }catch (Exception e){
+
+        }
 
         username.setText(receivername);
 
@@ -170,7 +165,7 @@ public class MessageActivity extends AppCompatActivity {
                     } else if (snapshot.child("tmsg").getValue() != null) {
                         Log.d(TAG, "MMMMMMMMMMMMMMM message " + snapshot.child("tmsg").child("content").getValue().toString());
                         if (date.equals(snapshot.child("tmsg").child("date").getValue().toString()))
-                        arrayList.add(new Chat(snapshot.child("tmsg").child("content").getValue().toString(),snapshot.child("tmsg").child("time").getValue().toString(),snapshot.child("tmsg").child("date").getValue().toString(), 1));
+                            arrayList.add(new Chat(snapshot.child("tmsg").child("content").getValue().toString(),snapshot.child("tmsg").child("time").getValue().toString(),snapshot.child("tmsg").child("date").getValue().toString(), 1));
                         else {
                             date=snapshot.child("tmsg").child("date").getValue().toString();
                             arrayList.add(new Chat(snapshot.child("tmsg").child("content").getValue().toString(), snapshot.child("tmsg").child("time").getValue().toString(), snapshot.child("tmsg").child("date").getValue().toString(), 22));
@@ -221,31 +216,14 @@ public class MessageActivity extends AppCompatActivity {
         HashMap<String,Object> hashMap=new HashMap<>();
         hashMap.put("fmsg", new Message(message,date,time));
         reference.child(sender).child("People").child(receiver).child("Messages").push().setValue(hashMap);
-        //***************************************************************************//
+        //*************************//
         DatabaseReference reference2= FirebaseDatabase.getInstance().getReference();
         HashMap<String,Object> hashMap2=new HashMap<>();
         hashMap2.put("tmsg", new Message(message,date,time));
         reference2.child(receiver).child("People").child(sender).child("Messages").push().setValue(hashMap2);
-        //***************************//
-        //get the name of the sender//
-        String doc=null;
-        if (login.getType()=="beneficiaries")
-            doc="donators";
-        else
-            doc="beneficiaries";
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        if (doc!=null)
-        db.collection(doc).document(fuser).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                DocumentSnapshot document = task.getResult();
-                if (document.exists()) {
-                    final String name = document.get("userName").toString();
-                    sendNotification(name+": "+message);//Add the name of the one who send it
-
-                }
-            }
-        });
+        //*********//
+        //***//
+        sendNotification(message,senderMail);//Add the name of the one who send it
 
         updateUnread();
 
@@ -254,11 +232,11 @@ public class MessageActivity extends AppCompatActivity {
 
 
 
-public static void callMe(String UID,String name, String sm){
-     receiverUID = UID;
-    receivername=name;
-    senderMail=sm;
-}
+    public static void callMe(String UID,String name, String sm){
+        receiverUID = UID;
+        receivername=name;
+        senderMail=sm;
+    }
 
     @Override
     protected void onStart() {
@@ -275,10 +253,10 @@ public static void callMe(String UID,String name, String sm){
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue()!=null){
-                Log.d(TAG, "dataSnapshot::::  "+dataSnapshot.getValue().toString());
-                unread=Integer. parseInt(dataSnapshot.getValue().toString());
-                unread+=1;
-                ref.setValue(""+unread+"");}
+                    Log.d(TAG, "dataSnapshot::::  "+dataSnapshot.getValue().toString());
+                    unread=Integer. parseInt(dataSnapshot.getValue().toString());
+                    unread+=1;
+                    ref.setValue(""+unread+"");}
             }
 
             @Override
@@ -289,7 +267,7 @@ public static void callMe(String UID,String name, String sm){
     }
 
 
-//enter the chat and leave - Delete notification
+    //enter the chat and leave - Delete notification
     @Override
     protected void onStop() {
         super.onStop();
@@ -299,7 +277,7 @@ public static void callMe(String UID,String name, String sm){
     }
 
 
-    private void sendNotification(final String message)
+    private void sendNotification(final String message, final String senderMail)
     {
         AsyncTask.execute(new Runnable() {
             @Override

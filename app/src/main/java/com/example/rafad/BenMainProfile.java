@@ -34,7 +34,7 @@ import java.util.List;
 
 public class BenMainProfile extends AppCompatActivity {
 
-    Button backHomeicon , backHomeArrow, toReq;
+    Button backHomeicon , backHomeArrow;
     StorageReference storageReference;
     FirebaseAuth fAuth;
     ImageView profileImageViewben;
@@ -55,7 +55,6 @@ public class BenMainProfile extends AppCompatActivity {
         setContentView(R.layout.ben_main_profile);
 
         backHomeArrow = findViewById(R.id.benBackHome);
-        toReq = findViewById(R.id.benProfilToReq);
         backHomeicon = findViewById(R.id.benHomeicon);
         storageReference = FirebaseStorage.getInstance().getReference();
         profileImageViewben =findViewById(R.id.profileImgben);
@@ -129,14 +128,6 @@ public class BenMainProfile extends AppCompatActivity {
             }
         });
 
-
-        toReq.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(BenMainProfile.this, benReqView.class));
-                finish();
-            }
-        });
         //////////////////// for list of items second try////////////////////////
 
 
