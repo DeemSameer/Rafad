@@ -81,7 +81,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.google.firebase:firebase-messaging:21.0.0'
     implementation 'com.onesignal:OneSignal:3.15.4'
-
+    implementation 'com.yinglan.shadowimageview:shadowimageview:1.0.4'
     implementation files('libs\\activation.jar')
     implementation files('libs\\additionnal.jar')
     implementation files('libs\\javax.mail.jar')

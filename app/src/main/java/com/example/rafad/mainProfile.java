@@ -155,7 +155,7 @@ post = findViewById(R.id.postItem);
 
 
         //////////////////// for list of items second try////////////////////////
-
+/*
 
        // FirebaseFirestore db = FirebaseFirestore.getInstance();
         fStore.collection("item")
@@ -180,7 +180,7 @@ post = findViewById(R.id.postItem);
                         }
                     });
 
-
+*/
 
         //////////////////// for list of items second try////////////////////////
 

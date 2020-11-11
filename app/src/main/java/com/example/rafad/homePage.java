@@ -3,6 +3,7 @@ package com.example.rafad;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -86,7 +87,10 @@ TextView empty;
         clothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 Query p =  fStore.collection("item").whereEqualTo("Catogery", "ملابس")
                         .whereEqualTo("isRequested", "no" );
 
@@ -122,7 +126,10 @@ TextView empty;
         furniture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 Query p =  fStore.collection("item").whereEqualTo("Catogery", "أثاث")
                         .whereEqualTo("isRequested", "no" );
 
@@ -157,7 +164,10 @@ TextView empty;
         device.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 Query p =  fStore.collection("item").whereEqualTo("Catogery", "أجهزة")
                         .whereEqualTo("isRequested", "no" );
 
@@ -193,7 +203,10 @@ TextView empty;
         all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
                 Query p =  fStore.collection("item")
                         .whereEqualTo("isRequested", "no" );
 
@@ -227,6 +240,7 @@ TextView empty;
         });
         //////////////////// for list of items second try////////////////////////
 
+        all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
 
         // FirebaseFirestore db = FirebaseFirestore.getInstance();
         fStore.collection("item")
