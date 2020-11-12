@@ -113,7 +113,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                 new AlertDialog.Builder(getContext())
 
                         .setTitle("رفض الطلب")
-                        .setMessage("هل انت متأكد من رفض الطلب؟")
+                        .setMessage("هل أنت متأكد من رفض الطلب؟")
                         .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -133,7 +133,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
 
                                 //dialog1.dismiss();
                             }
-                        }).setNegativeButton("الغاء", null).show();
+                        }).setNegativeButton("إلغاء", null).show();
                 AlertDialog dialog1;    }
         });
         Button Approve=rowView.findViewById(R.id.button);
@@ -144,7 +144,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                 new AlertDialog.Builder(getContext())
 
                         .setTitle("قبول الطلب")
-                        .setMessage("هل انت متأكد من قبول الطلب؟")
+                        .setMessage("هل أنت متأكد من قبول الطلب؟")
                         .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -572,7 +572,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
 
                                 //dialog1.dismiss();
                             }
-                        }).setNegativeButton("الغاء", null).show();
+                        }).setNegativeButton("إلغاء", null).show();
                 AlertDialog dialog1;    }
         });
 
@@ -593,8 +593,8 @@ public class AdapterD extends ArrayAdapter<postinfo> {
 
 
         titText.setText("اسم المستفيد: "+arrayList.get(position).BN);
-        titText2.setText("درجة حالة المستفيد من 5: "+arrayList.get(position).BS);
-        titText3.setText("عنوان الطلب: "+arrayList.get(position).tit);
+        titText2.setText(" حالة المستفيد من 5 : "+arrayList.get(position).BS);
+        titText3.setText("عنوان الطلب : "+arrayList.get(position).tit);
 
 
         return rowView;
