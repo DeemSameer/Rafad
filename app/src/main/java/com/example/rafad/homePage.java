@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.rafad.ChatJava.MainChatAllPeople;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,10 +24,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class homePage extends AppCompatActivity {
-    Button logout, profile, clothes , furniture,device,all,toReq,chatbtn;
+    Button logout, profile, clothes , furniture,device,all,toReq;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-TextView empty;
+    TextView empty;
     //////// for view list of items
     List<postinfo> arrayItem=new ArrayList<>();
     List<postinfo> arrayItemC=new ArrayList<>();
@@ -54,7 +53,6 @@ TextView empty;
         logout=findViewById(R.id.logoutButton);
         profile= findViewById(R.id.profileb);
         toReq = findViewById(R.id.benHomeToReq);
-        chatbtn=findViewById(R.id.chatbtn);
         //////// for view list of items
         listView=(ListView)findViewById(R.id.postedlist);
         //////// above is for view list of items
@@ -71,23 +69,16 @@ TextView empty;
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            fAuth.signOut();
-            startActivity(new Intent(homePage.this, login.class));
-            finish();
-        }
-    });
+                fAuth.signOut();
+                startActivity(new Intent(homePage.this, login.class));
+                finish();
+            }
+        });
 
         toReq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(homePage.this, benReqView.class));
-                finish();
-            }
-        });
-        chatbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(homePage.this, MainChatAllPeople.class));
                 finish();
             }
         });
@@ -100,7 +91,7 @@ TextView empty;
                 furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-                Query p =  fStore.collection("item").whereEqualTo("Catogery", "ملابس")
+                Query p =  fStore.collection("item").whereEqualTo("Catogery", "Ù…Ù„Ø§Ø¨Ø³")
                         .whereEqualTo("isRequested", "no" );
 
                 p.get()
@@ -115,11 +106,11 @@ TextView empty;
                                     }
                                     if (arrayItemC.size()==0)
                                     {
-                                            empty.setText("لا يوجد بيانات للعرض");
-                                        }
-                                        else{
-                                            empty.setText("");
-                                        }
+                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
+                                    }
+                                    else{
+                                        empty.setText("");
+                                    }
                                     ListViewAdaptorBen adapter = new ListViewAdaptorBen(homePage.this, arrayItemC);
                                     listView = (ListView) findViewById(R.id.postedlistHomePage);
                                     listView.setAdapter(adapter);
@@ -139,7 +130,7 @@ TextView empty;
                 furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
                 device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-                Query p =  fStore.collection("item").whereEqualTo("Catogery", "أثاث")
+                Query p =  fStore.collection("item").whereEqualTo("Catogery", "Ø£Ø«Ø§Ø«")
                         .whereEqualTo("isRequested", "no" );
 
                 p.get()
@@ -154,7 +145,7 @@ TextView empty;
                                     }
                                     if (arrayItemF.size()==0)
                                     {
-                                        empty.setText("لا يوجد بيانات للعرض");
+                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
                                     }
                                     else{
                                         empty.setText("");
@@ -177,7 +168,7 @@ TextView empty;
                 furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
                 all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-                Query p =  fStore.collection("item").whereEqualTo("Catogery", "أجهزة")
+                Query p =  fStore.collection("item").whereEqualTo("Catogery", "Ø£Ø¬Ù‡Ø²Ø©")
                         .whereEqualTo("isRequested", "no" );
 
                 p.get()
@@ -192,7 +183,7 @@ TextView empty;
                                     }
                                     if (arrayItemD.size()==0)
                                     {
-                                        empty.setText("لا يوجد بيانات للعرض");
+                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
                                     }
                                     else{
                                         empty.setText("");
@@ -231,7 +222,7 @@ TextView empty;
                                     }
                                     if (arrayItemA.size()==0)
                                     {
-                                        empty.setText("لا يوجد بيانات للعرض");
+                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
                                     }
                                     else{
                                         empty.setText("");
