@@ -5,7 +5,7 @@
 
     android:layout_width="match_parent"
     tools:context=".ListViewAdaptorBen"
-    android:layout_height="450dp"
+    android:layout_height="200dp"
     android:orientation="vertical"
     >
 
@@ -16,21 +16,21 @@
 
         <ImageView
             android:id="@+id/imageView10"
-            android:layout_width="181dp"
-            android:layout_height="200dp"
+            android:layout_width="249dp"
+            android:layout_height="227dp"
             android:layout_weight="1"
             android:contentDescription="@string/todo"
             android:padding="5dp"
             tools:src="@tools:sample/avatars" />
 
         <LinearLayout
-            android:layout_width="213dp"
-            android:layout_height="200dp"
+            android:layout_width="190dp"
+            android:layout_height="201dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/titAdabtorBen"
-                android:layout_width="200dp"
+                android:layout_width="180dp"
                 android:layout_height="44dp"
                 android:fontFamily="@font/tajawalmedium2"
                 android:text="Title"
@@ -40,8 +40,8 @@
 
             <TextView
                 android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="180dp"
+                android:layout_height="-5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/tajawalmedium2"
 
@@ -51,8 +51,8 @@
 
             <TextView
                 android:id="@+id/catAdabtorBen"
-                android:layout_width="200dp"
-                android:layout_height="28dp"
+                android:layout_width="180dp"
+                android:layout_height="31dp"
                 android:fontFamily="@font/tajawalmedium2"
                 android:gravity="start"
                 android:text="Catogery"
@@ -61,8 +61,8 @@
 
             <TextView
                 android:id="@+id/desAdabtorBen"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
+                android:layout_width="180dp"
+                android:layout_height="74dp"
                 android:fontFamily="@font/tajawalmedium2"
                 android:text="Descerption"
                 android:textAlignment="gravity"
@@ -70,8 +70,8 @@
 
             <Button
                 android:id="@+id/button11"
-                android:layout_width="90dp"
-                android:layout_height="20dp"
+                android:layout_width="70dp"
+                android:layout_height="15dp"
                 android:layout_weight="1"
                 android:background="@drawable/new_button"
                 android:fontFamily="@font/tajawalmedium2"
