@@ -1,17 +1,11 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,16 +14,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.iid.FirebaseInstanceId;
+
+import androidx.annotation.NonNull;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -38,12 +27,17 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.onesignal.OneSignal;
 import com.squareup.picasso.Picasso;
+
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.List;
+import java.util.Scanner;
+
 /*
 import com.example.rafad.notification.APIService;
 import com.example.rafad.notification.Client;
@@ -52,19 +46,6 @@ import com.example.rafad.notification.MyResponse;
 import com.example.rafad.notification.NotificationSender;
 import com.example.rafad.notification.Token;
 */
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-
-import com.onesignal.OneSignal;
 
 public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
 
@@ -81,6 +62,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     // private APIService apiService;
     String LoggedIn_User_Email;
      static String Demail;
+    static String itemN;
+
 
 
 
@@ -116,7 +99,13 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         fAuth = FirebaseAuth.getInstance();
         request=rowView.findViewById(R.id.button11);
         final String UID=arrayList.get(position).getUID();
-        Demail= arrayList.get(position).getDemail();
+        Demail = arrayList.get(position).Demail;
+        itemN = arrayList.get(position).tit;
+
+        Log.d(TAG, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&dem " + arrayList.get(position).Demail);
+        Log.d(TAG, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&get " + arrayList.get(position).getDemail());
+        Log.d(TAG, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&isRe " + arrayList.get(position).isRe);
+
         benE=FirebaseAuth.getInstance().getCurrentUser().getEmail();
         //apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
         // Logging set to help debug issues, remove before releasing your app.
@@ -541,7 +530,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         TextView titText = (TextView) rowView.findViewById(R.id.titAdabtorBen);
         final ImageView HisImage = (ImageView)rowView.findViewById(R.id.imageView10);
         TextView catText = (TextView) rowView.findViewById(R.id.catAdabtorBen);
-        TextView date = (TextView) rowView.findViewById(R.id.date);
+        TextView date = (TextView) rowView.findViewById(R.id.time);
 
 
 
@@ -559,7 +548,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         desText.setText(arrayList.get(position).des);
         titText.setText(arrayList.get(position).tit);
         catText.setText(arrayList.get(position).cat);
-
+        date.setText(arrayList.get(position).date);
         return rowView;
 
     }
@@ -608,8 +597,8 @@ private void UpdateToken(){
                     //This is a Simple Logic to Send Notification different Device Programmatically....
                     String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
                     OneSignal.sendTag("User_ID",LoggedIn_User_Email);
-                    //send_email=Demail;
-                    send_email="arob2604@gmail.com";
+                    send_email=Demail;
+                    //send_email="arob2604@gmail.com";
                     /*
                     if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
                         send_email = "user2@gmail.com";
@@ -636,7 +625,7 @@ private void UpdateToken(){
                                 + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
 
                                 + "\"data\": {\"foo\": \"bar\"},"
-                                + "\"contents\": {\"en\": \"تلقيت طلب جديد!\"}"
+                                + "\"contents\": {\"en\": \"تلقيت طلب جديد!\""+itemN+"\"}"
                                 + "}";
 
 

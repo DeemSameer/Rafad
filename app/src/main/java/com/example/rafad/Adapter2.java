@@ -24,13 +24,14 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter2 extends ArrayAdapter<postinfo> {
 
     public static final String TAG = "TAG";
     private final Activity context;
-    final List<postinfo> arrayList;
+     List<postinfo> arrayList=new ArrayList<>();;
     StorageReference storageRef;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
@@ -65,7 +66,7 @@ public class Adapter2 extends ArrayAdapter<postinfo> {
         final ImageView HisImage = (ImageView)rowView.findViewById(R.id.imageView10);
         TextView catText = (TextView) rowView.findViewById(R.id.cat);
         del = rowView.findViewById(R.id.delete);
-        TextView date = (TextView) rowView.findViewById(R.id.date);
+        TextView date = (TextView) rowView.findViewById(R.id.time);
 
 
 

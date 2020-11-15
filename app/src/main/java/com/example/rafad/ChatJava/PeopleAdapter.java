@@ -14,11 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 
-import com.bumptech.glide.Glide;
 import com.example.rafad.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +25,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import static com.example.rafad.R.*;
+import static com.example.rafad.R.id;
+import static com.example.rafad.R.layout;
 
 
 public class PeopleAdapter extends ArrayAdapter<PeopleModel> {
@@ -68,17 +66,22 @@ public class PeopleAdapter extends ArrayAdapter<PeopleModel> {
         final ImageView profileImageViewChat = (ImageView) rowView.findViewById(id.imageView9);
 
         Log.d(TAG, "before1 People Adapter");
+        try {
 
-        StorageReference profileRef = storageReference.child("users/" + arrayList.get(position).getUID() + "profile.jpg");
-        Log.d(TAG, "before12 People Adapter" + profileRef);
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profileImageViewChat);
-                Log.d(TAG, "interrrrrr People Adapter");
+            StorageReference profileRef = storageReference.child("users/" + arrayList.get(position).getUID() + "profile.jpg");
+            Log.d(TAG, "before12 People Adapter" + profileRef);
+            profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri).into(profileImageViewChat);
+                    Log.d(TAG, "interrrrrr People Adapter");
 
-            }
-        });
+
+                }
+            });
+        }catch (Exception e){
+
+        }
 
         titleText.setText(arrayList.get(position).getName());
         subtitleText.setText(arrayList.get(position).getLastMsg());

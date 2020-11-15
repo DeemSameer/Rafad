@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -36,11 +37,11 @@ public class homepageDonator extends AppCompatActivity {
     FirebaseFirestore fStore;
 
     //////// for view list of items
-    List<postinfo> arrayItem=new ArrayList<>();
-    List<postinfo> arrayItemC=new ArrayList<>();
-    List<postinfo> arrayItemD=new ArrayList<>();
-    List<postinfo> arrayItemF=new ArrayList<>();
-    List<postinfo> arrayItemA=new ArrayList<>();
+    List<postinfo> arrayItem;
+    List<postinfo> arrayItemC;
+    List<postinfo> arrayItemD;
+    List<postinfo> arrayItemF;
+    List<postinfo> arrayItemA;
     public static final String TAG = "TAG";
     ListView listView;
     TextView empty;
@@ -83,6 +84,11 @@ public class homepageDonator extends AppCompatActivity {
         clothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                arrayItemC =new ArrayList<>();
                 clothes.setPaintFlags(clothes.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                 Query p =  fStore.collection("item").whereEqualTo("Catogery", "ملابس")
                         .whereEqualTo("isRequested", "no" );
@@ -119,7 +125,11 @@ public class homepageDonator extends AppCompatActivity {
         furniture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                arrayItemF =new ArrayList<>();
                 Query p =  fStore.collection("item").whereEqualTo("Catogery", "أثاث")
                         .whereEqualTo("isRequested", "no" );
 
@@ -154,7 +164,11 @@ public class homepageDonator extends AppCompatActivity {
         device.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                arrayItemD =new ArrayList<>();
                 Query p =  fStore.collection("item").whereEqualTo("Catogery", "أجهزة")
                         .whereEqualTo("isRequested", "no" );
 
@@ -186,11 +200,15 @@ public class homepageDonator extends AppCompatActivity {
 
             }
         });
-  
+
         all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                arrayItemA=new ArrayList<>();
                 Query p =  fStore.collection("item")
                         .whereEqualTo("isRequested", "no" );
 
@@ -268,7 +286,8 @@ public class homepageDonator extends AppCompatActivity {
 
 //////////////////// for list of items second try////////////////////////
 
-
+        all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+        arrayItem =new ArrayList<>();
         // FirebaseFirestore db = FirebaseFirestore.getInstance();
         fStore.collection("item")
                 .whereEqualTo("isRequested", "no")

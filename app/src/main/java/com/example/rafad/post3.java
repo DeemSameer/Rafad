@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +38,11 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DecimalStyle;
+import java.time.format.FormatStyle;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -171,6 +178,7 @@ public class post3 extends AppCompatActivity {
 
                                 DocumentReference docRef=fStore.collection("donators").document(UID);//.get("User id")
                                 docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                                     @Override
                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                         if (task.isSuccessful()){
@@ -180,12 +188,18 @@ public class post3 extends AppCompatActivity {
                                                 String donN= (String)document.get("userName");
                                                 Log.d(TAG, "donN in post"+donN);
                                                 String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-
+                                                Locale arabicLocale = Locale.forLanguageTag("ar");
+                                                DateTimeFormatter arabicDateFormatter
+                                                        = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
+                                                        .withLocale(arabicLocale)
+                                                        .withDecimalStyle(DecimalStyle.of(arabicLocale));
+                                                LocalDate today = LocalDate.now(ZoneId.of("Asia/Muscat"));
+                                                //System.out.println(today.format(arabicDateFormatter));
                                 //store data
                                 Map<String, Object> post = new HashMap<>();
 
                                 post.put("Image", idImage);
-                                post.put("Date", currentDate);
+                                post.put("Date",today.format(arabicDateFormatter));
                                 post.put("Title", tit);
                                 post.put("Description", des);
                                 post.put("Catogery", cat);

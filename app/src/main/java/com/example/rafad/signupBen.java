@@ -228,6 +228,8 @@ public class signupBen extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 Log.d(TAG, " تم إنشاء الحساب بنجاح " + userID);
+                                                sendNot1();
+
                                                 /////////////////////////////////////////////////////////////////
 
                                                 documentrefReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -918,7 +920,6 @@ public class signupBen extends AppCompatActivity {
                     } else {
                         send_email = "user1@gmail.com";
                     }*/
-
                     try {
                         String jsonResponse;
 

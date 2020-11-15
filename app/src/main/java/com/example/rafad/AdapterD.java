@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,27 +23,42 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.onesignal.OneSignal;
 import com.squareup.picasso.Picasso;
 
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 
 public class AdapterD extends ArrayAdapter<postinfo> {
 
     public static final String TAG = "TAG";
     private final Activity context;
-    private final List<postinfo> arrayList;
+    private List<postinfo> arrayList=new ArrayList<>();
     StorageReference storageRef;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     Button request;
     String UID1;
+    static String bemail;
+    static String itemN;
 
 
 
@@ -75,7 +92,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
         fAuth = FirebaseAuth.getInstance();
 
 
-        TextView titText = (TextView) rowView.findViewById(R.id.name);
+        TextView titText = (TextView) rowView.findViewById(R.id.name2);
         TextView titText2 = (TextView) rowView.findViewById(R.id.status);
         TextView titText3 = (TextView) rowView.findViewById(R.id.name2);
 
@@ -98,14 +115,15 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                 new AlertDialog.Builder(getContext())
 
                         .setTitle("رفض الطلب")
-                        .setMessage("هل انت متأكد من رفض الطلب؟")
+                        .setMessage("هل أنت متأكد من رفض الطلب؟")
                         .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 FirebaseFirestore db = FirebaseFirestore.getInstance()
                                         ;
                                 final String itemID=arrayList.get(position).itemID;
-                                bemail=arrayList.get(position).Bemail;
+                                 bemail=arrayList.get(position).Bemail;
+                                 itemN=arrayList.get(position).tit;
                                 UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
                                 CollectionReference beneficiaries = db.collection("item");
                                 DocumentReference docRefB = beneficiaries.document(itemID);
@@ -118,7 +136,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
 
                                 //dialog1.dismiss();
                             }
-                        }).setNegativeButton("الغاء", null).show();
+                        }).setNegativeButton("إلغاء", null).show();
                 AlertDialog dialog1;    }
         });
         Button Approve=rowView.findViewById(R.id.button);
@@ -129,13 +147,16 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                 new AlertDialog.Builder(getContext())
 
                         .setTitle("قبول الطلب")
-                        .setMessage("هل انت متأكد من قبول الطلب؟")
+                        .setMessage("هل أنت متأكد من قبول الطلب؟")
                         .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                                 final String itemID=arrayList.get(position).itemID;
                                 bemail=arrayList.get(position).Bemail;
+                                itemN=arrayList.get(position).tit;
+
+                                Log.d(TAG, "benE data after request: " + bemail);
 
                                 UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -157,7 +178,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
                                                 Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                                String benID= (String)document.get("benID");
+                                                final String benID= (String)document.get("benID");
                                                 final String ItemName=(String)document.get("Title");//name
 
                                                 DocumentReference docRef2=fStore.collection("beneficiaries").document(benID);//.get("User id")
@@ -555,7 +576,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
 
                                 //dialog1.dismiss();
                             }
-                        }).setNegativeButton("الغاء", null).show();
+                        }).setNegativeButton("إلغاء", null).show();
                 AlertDialog dialog1;    }
         });
 
@@ -576,8 +597,8 @@ public class AdapterD extends ArrayAdapter<postinfo> {
 
 
         titText.setText("اسم المستفيد: "+arrayList.get(position).BN);
-        titText2.setText("درجة حالة المستفيد من 5: "+arrayList.get(position).BS);
-        titText3.setText("عنوان الطلب: "+arrayList.get(position).tit);
+        titText2.setText(" حالة المستفيد من 5 : "+arrayList.get(position).BS);
+        titText3.setText("عنوان الطلب : "+arrayList.get(position).tit);
 
 
         return rowView;
@@ -598,7 +619,8 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                     //This is a Simple Logic to Send Notification different Device Programmatically....
                     String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
                     OneSignal.sendTag("User_ID",LoggedIn_User_Email);
-                    send_email="may.a.alfahad@gmail.com";
+                    send_email=bemail;
+                    //send_email="may.a.alfahad@gmail.com";
                     /*
                     if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
                         send_email = "user2@gmail.com";
@@ -625,7 +647,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
 
                                 + "\"data\": {\"foo\": \"bar\"},"
-                                + "\"contents\": {\"en\": \"عذرا تم رفض طلبك!\"}"
+                                + "\"contents\": {\"en\": \"تم رفض طلبك\""+itemN+"\"}"
                                 + "}";
 
 
@@ -670,12 +692,11 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                             .permitAll().build();
                     StrictMode.setThreadPolicy(policy);
                     String send_email;
-
                     //This is a Simple Logic to Send Notification different Device Programmatically....
                     String LoggedIn_User_Email =FirebaseAuth.getInstance().getCurrentUser().getEmail();
                     OneSignal.sendTag("User_ID",LoggedIn_User_Email);
-
-                    send_email="may.a.alfahad@gmail.com";
+                    send_email=bemail;
+                    //send_email="may.a.alfahad@gmail.com";
                     /*
                     if (MainActivity.LoggedIn_User_Email.equals("user1@gmail.com")) {
                         send_email = "user2@gmail.com";
@@ -702,7 +723,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
 
                                 + "\"data\": {\"foo\": \"bar\"},"
-                                + "\"contents\": {\"en\": \"تم قبول طلبك!\"}"
+                                + "\"contents\": {\"en\": \"تم قبول طلبك\""+itemN+"\"}"
                                 + "}";
 
 

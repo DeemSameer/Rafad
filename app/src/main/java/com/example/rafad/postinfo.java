@@ -1,7 +1,5 @@
 package com.example.rafad;
 
-import android.net.Uri;
-
 public class postinfo {
     String itemID;
     String imageID;
@@ -44,6 +42,19 @@ public class postinfo {
         this.BS=BS;
         this.isRe=isRe;
         this.BID=BID;
+
+    }
+
+    public postinfo(String itemID1, String UID1, String imageUri1,String tit,String BN,String BS,String isRe,String BID, String benE){
+        itemID = itemID1;
+        UID=UID1;
+        imageID = imageUri1;
+        this.tit=tit;
+        this.BN=BN;
+        this.BS=BS;
+        this.isRe=isRe;
+        this.BID=BID;
+        Bemail=benE;
 
 
 

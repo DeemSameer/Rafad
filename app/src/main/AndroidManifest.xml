@@ -29,6 +29,7 @@
             tools:ignore="Instantiatable" />
 
         <activity android:name=".changePasswordDon" />
+        <activity android:name=".benReqView" />
         <activity android:name=".don_3view"/>
         <activity android:name=".homePageAdminBase" />
         <activity android:name=".adminMainProfile" />
@@ -64,6 +65,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+
+
+
+
 
         <meta-data
             android:name="preloaded_fonts"

@@ -1,18 +1,16 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,10 +24,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class homePage extends AppCompatActivity {
-    Button logout, profile, clothes , furniture,device,all;
+    Button logout, profile, clothes , furniture,device,all,toReq;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-TextView empty;
+    TextView empty;
     //////// for view list of items
     List<postinfo> arrayItem=new ArrayList<>();
     List<postinfo> arrayItemC=new ArrayList<>();
@@ -54,6 +52,7 @@ TextView empty;
         empty = findViewById(R.id.homepagetext2);
         logout=findViewById(R.id.logoutButton);
         profile= findViewById(R.id.profileb);
+        toReq = findViewById(R.id.benHomeToReq);
         //////// for view list of items
         listView=(ListView)findViewById(R.id.postedlist);
         //////// above is for view list of items
@@ -70,18 +69,29 @@ TextView empty;
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            fAuth.signOut();
-            startActivity(new Intent(homePage.this, login.class));
-            finish();
-        }
-    });
+                fAuth.signOut();
+                startActivity(new Intent(homePage.this, login.class));
+                finish();
+            }
+        });
+
+        toReq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homePage.this, benReqView.class));
+                finish();
+            }
+        });
 
 
         clothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Query p =  fStore.collection("item").whereEqualTo("Catogery", "ملابس")
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                Query p =  fStore.collection("item").whereEqualTo("Catogery", "Ù…Ù„Ø§Ø¨Ø³")
                         .whereEqualTo("isRequested", "no" );
 
                 p.get()
@@ -91,16 +101,16 @@ TextView empty;
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         Log.d(TAG, document.getId() + " => " + document.getData());
-                                        arrayItemC.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested"),(String) document.get("Date"),"" ));
+                                        arrayItemC.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested"),(String) document.get("Date"),"" ,(String) document.get("donE")));
                                         Log.d(TAG, "SIZE item list => " + arrayItemC.size());
                                     }
                                     if (arrayItemC.size()==0)
                                     {
-                                            empty.setText("لا يوجد بيانات للعرض");
-                                        }
-                                        else{
-                                            empty.setText("");
-                                        }
+                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
+                                    }
+                                    else{
+                                        empty.setText("");
+                                    }
                                     ListViewAdaptorBen adapter = new ListViewAdaptorBen(homePage.this, arrayItemC);
                                     listView = (ListView) findViewById(R.id.postedlistHomePage);
                                     listView.setAdapter(adapter);
@@ -116,8 +126,11 @@ TextView empty;
         furniture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Query p =  fStore.collection("item").whereEqualTo("Catogery", "أثاث")
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                Query p =  fStore.collection("item").whereEqualTo("Catogery", "Ø£Ø«Ø§Ø«")
                         .whereEqualTo("isRequested", "no" );
 
                 p.get()
@@ -127,12 +140,12 @@ TextView empty;
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         Log.d(TAG, document.getId() + " => " + document.getData());
-                                        arrayItemF.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),""));
+                                        arrayItemF.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),"",(String) document.get("donE")));
                                         Log.d(TAG, "SIZE item list => " + arrayItemF.size());
                                     }
                                     if (arrayItemF.size()==0)
                                     {
-                                        empty.setText("لا يوجد بيانات للعرض");
+                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
                                     }
                                     else{
                                         empty.setText("");
@@ -151,8 +164,11 @@ TextView empty;
         device.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Query p =  fStore.collection("item").whereEqualTo("Catogery", "أجهزة")
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                Query p =  fStore.collection("item").whereEqualTo("Catogery", "Ø£Ø¬Ù‡Ø²Ø©")
                         .whereEqualTo("isRequested", "no" );
 
                 p.get()
@@ -162,12 +178,12 @@ TextView empty;
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         Log.d(TAG, document.getId() + " => " + document.getData());
-                                        arrayItemD.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),""));
+                                        arrayItemD.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),"",(String) document.get("donE")));
                                         Log.d(TAG, "SIZE item list => " + arrayItemD.size());
                                     }
                                     if (arrayItemD.size()==0)
                                     {
-                                        empty.setText("لا يوجد بيانات للعرض");
+                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
                                     }
                                     else{
                                         empty.setText("");
@@ -187,7 +203,10 @@ TextView empty;
         all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
                 Query p =  fStore.collection("item")
                         .whereEqualTo("isRequested", "no" );
 
@@ -198,12 +217,12 @@ TextView empty;
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         Log.d(TAG, document.getId() + " => " + document.getData());
-                                        arrayItemA.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),""));
+                                        arrayItemA.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),"",(String) document.get("donE")));
                                         Log.d(TAG, "SIZE item list => " + arrayItemA.size());
                                     }
                                     if (arrayItemA.size()==0)
                                     {
-                                        empty.setText("لا يوجد بيانات للعرض");
+                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
                                     }
                                     else{
                                         empty.setText("");
@@ -221,6 +240,7 @@ TextView empty;
         });
         //////////////////// for list of items second try////////////////////////
 
+        all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
 
         // FirebaseFirestore db = FirebaseFirestore.getInstance();
         fStore.collection("item")
@@ -232,7 +252,7 @@ TextView empty;
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title") ,(String) document.get("isRequested") ,(String) document.get("Date"),""));
+                                arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title") ,(String) document.get("isRequested") ,(String) document.get("Date"),"",(String) document.get("donE")));
                                 Log.d(TAG, "SIZE item list => " + arrayItem.size());
                             }
                             ListViewAdaptorBen adapter = new ListViewAdaptorBen(homePage.this, arrayItem);
