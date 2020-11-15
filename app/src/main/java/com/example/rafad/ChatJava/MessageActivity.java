@@ -222,6 +222,32 @@ public class MessageActivity extends AppCompatActivity {
         hashMap2.put("tmsg", new Message(message,date,time));
         reference2.child(receiver).child("People").child(sender).child("Messages").push().setValue(hashMap2);
         //*********//
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        //0
+        DatabaseReference refmsg0 = database.getReference(receiverUID+"/People/"+fuser+"/Messages/content");
+        refmsg0.setValue(message);
+
+        DatabaseReference reft0 = database.getReference(receiverUID+"/People/"+fuser+"/Messages/time");
+        reft0.setValue(time);
+
+        DatabaseReference refd0 = database.getReference(receiverUID+"/People/"+fuser+"/Messages/date");
+        refd0.setValue(date);
+
+
+        //1
+        DatabaseReference refmsg1 = database.getReference(fuser+"/People/"+receiverUID+"/Messages/content");
+        refmsg1.setValue(message);
+
+        DatabaseReference reft1 = database.getReference(fuser+"/People/"+receiverUID+"/Messages/time");
+        reft1.setValue(time);
+
+        DatabaseReference refd1 = database.getReference(fuser+"/People/"+receiverUID+"/Messages/date");
+        refd1.setValue(date);
+
+
+
         //***//
         sendNotification(message,senderMail);//Add the name of the one who send it
 
