@@ -30,13 +30,13 @@
         android:textSize="18sp"
         android:layout_marginLeft="25dp"
         android:textColor="#fff"
-        android:layout_marginStart="200dp"/>
+        android:layout_marginStart="180dp"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:id="@+id/profile_image"
-            android:layout_marginLeft="25dp"/>
+            android:layout_marginLeft="15dp"/>
 
 
     </androidx.appcompat.widget.Toolbar>
