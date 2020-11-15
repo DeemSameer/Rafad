@@ -49,8 +49,7 @@ public class MainChatAllPeople extends AppCompatActivity {
     final DatabaseReference ref = database.getReference(UserId+"/People");//we can put the path on it like "server/saving-data/fireblog/posts"
     ListView recyclerViewPeople;
     TextView empty;
-
-
+    
 
 
     @Override
