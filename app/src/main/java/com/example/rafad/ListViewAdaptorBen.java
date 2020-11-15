@@ -62,6 +62,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
     // private APIService apiService;
     String LoggedIn_User_Email;
      static String Demail;
+    static String itemN;
+
 
 
 
@@ -98,6 +100,8 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         request=rowView.findViewById(R.id.button11);
         final String UID=arrayList.get(position).getUID();
         Demail = arrayList.get(position).Demail;
+        itemN = arrayList.get(position).tit;
+
         Log.d(TAG, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&dem " + arrayList.get(position).Demail);
         Log.d(TAG, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&get " + arrayList.get(position).getDemail());
         Log.d(TAG, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&isRe " + arrayList.get(position).isRe);
@@ -621,7 +625,7 @@ private void UpdateToken(){
                                 + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
 
                                 + "\"data\": {\"foo\": \"bar\"},"
-                                + "\"contents\": {\"en\": \"تلقيت طلب جديد!\"}"
+                                + "\"contents\": {\"en\": \"تلقيت طلب جديد!\""+itemN+"\"}"
                                 + "}";
 
 
