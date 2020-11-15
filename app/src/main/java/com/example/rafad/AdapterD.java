@@ -58,6 +58,8 @@ public class AdapterD extends ArrayAdapter<postinfo> {
     Button request;
     String UID1;
     static String bemail;
+    static String itemN;
+
 
 
 
@@ -121,6 +123,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                         ;
                                 final String itemID=arrayList.get(position).itemID;
                                  bemail=arrayList.get(position).Bemail;
+                                 itemN=arrayList.get(position).tit;
                                 UID1=FirebaseAuth.getInstance().getCurrentUser().getUid();
                                 CollectionReference beneficiaries = db.collection("item");
                                 DocumentReference docRefB = beneficiaries.document(itemID);
@@ -151,6 +154,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                                 final String itemID=arrayList.get(position).itemID;
                                 bemail=arrayList.get(position).Bemail;
+                                itemN=arrayList.get(position).tit;
 
                                 Log.d(TAG, "benE data after request: " + bemail);
 
@@ -643,7 +647,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
 
                                 + "\"data\": {\"foo\": \"bar\"},"
-                                + "\"contents\": {\"en\": \"عذرا تم رفض طلبك!\"}"
+                                + "\"contents\": {\"en\": \"تم رفض طلبك\""+itemN+"\"}"
                                 + "}";
 
 
@@ -719,7 +723,7 @@ public class AdapterD extends ArrayAdapter<postinfo> {
                                 + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
 
                                 + "\"data\": {\"foo\": \"bar\"},"
-                                + "\"contents\": {\"en\": \"تم قبول طلبك!\"}"
+                                + "\"contents\": {\"en\": \"تم قبول طلبك\""+itemN+"\"}"
                                 + "}";
 
 
