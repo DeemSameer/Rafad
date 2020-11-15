@@ -51,7 +51,7 @@
     <TextView
         android:id="@+id/ifempty2"
         android:layout_width="154dp"
-        android:layout_height="18dp"
+        android:layout_height="22dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="2dp"
@@ -138,7 +138,7 @@
         android:layout_height="48dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
-        android:text="الجميع"
+        android:text="تم التبرع بها"
         android:textColor="#397A96"
         android:textSize="12sp"
         android:textStyle="bold"
