@@ -106,7 +106,7 @@ public class homePage extends AppCompatActivity {
                                     }
                                     if (arrayItemC.size()==0)
                                     {
-                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
+                                        empty.setText("لا يوجد بيانات للعرض");
                                     }
                                     else{
                                         empty.setText("");
@@ -145,7 +145,7 @@ public class homePage extends AppCompatActivity {
                                     }
                                     if (arrayItemF.size()==0)
                                     {
-                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
+                                        empty.setText("لا يوجد بيانات للعرض");
                                     }
                                     else{
                                         empty.setText("");
@@ -183,7 +183,7 @@ public class homePage extends AppCompatActivity {
                                     }
                                     if (arrayItemD.size()==0)
                                     {
-                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
+                                        empty.setText("لا يوجد بيانات للعرض");
                                     }
                                     else{
                                         empty.setText("");
@@ -222,7 +222,7 @@ public class homePage extends AppCompatActivity {
                                     }
                                     if (arrayItemA.size()==0)
                                     {
-                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
+                                        empty.setText("لا يوجد بيانات للعرض");
                                     }
                                     else{
                                         empty.setText("");
