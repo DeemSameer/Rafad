@@ -28,7 +28,7 @@
         android:padding="12dp">
 
         <RelativeLayout
-            android:layout_width="385dp"
+            android:layout_width="wrap_content"
             android:layout_height="130dp"
             android:background="@drawable/new_button">
 

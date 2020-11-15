@@ -19,6 +19,11 @@ public class PeopleModel {
         this.mail=mail;
     }
 
+    public PeopleModel() {
+
+    }
+
+
     public String getUID() {
         return UID;
     }

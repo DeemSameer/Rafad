@@ -2,8 +2,10 @@ package com.example.rafad;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.rafad.ChatJava.MainChatAllPeople;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class don_3view extends AppCompatActivity {
-    Button all,req,done;
+    Button all,req,done,buttonChat222;
     TextView empty;
     String benN;
     String benS;
@@ -37,6 +40,7 @@ public class don_3view extends AppCompatActivity {
     String isRe;
     Button back,homebutton , logout ,profile1, post;
  Activity context;
+    Typeface boldTypeface;
     public static final String TAG = "TAG";
     StorageReference storageRef;
     FirebaseFirestore fStore;
@@ -61,10 +65,18 @@ public class don_3view extends AppCompatActivity {
                 empty = findViewById(R.id.homepagetext);
         fStore= FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
+       boldTypeface = Typeface.defaultFromStyle(Typeface.BOLD);
+        buttonChat222=findViewById(R.id.buttonChat222);
+
+
         all.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
+
+                done.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                req.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 arrayItem=new ArrayList<>();
                 Query p =  fStore.collection("item")
                         .whereEqualTo("User id",FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -102,6 +114,9 @@ public class don_3view extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                done.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                req.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
                 arrayItem2=new ArrayList<>();
                 fStore.collection("item")
                         .whereEqualTo("isRequested", "Pending")
@@ -163,6 +178,10 @@ public class don_3view extends AppCompatActivity {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                done.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                req.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 arrayItem3=new ArrayList<>();
                 Query p =  fStore.collection("item")
                         .whereEqualTo("User id",FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -232,5 +251,48 @@ public class don_3view extends AppCompatActivity {
                 finish();
             }
         });
+
+        buttonChat222.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(don_3view.this, MainChatAllPeople.class));
+                finish();
+            }
+        });
+
+
+
+        all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+
+        arrayItem=new ArrayList<>();
+        Query p =  fStore.collection("item")
+                .whereEqualTo("User id",FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .whereEqualTo("isRequested", "no" );
+
+        p.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),"",(String) document.get("Demail")));
+                                Log.d(TAG, "SIZE item list => " + arrayItem.size());
+                            }
+                            if (arrayItem.size()==0)
+                            {
+                                empty.setText("لا يوجد بيانات للعرض");
+                            }
+                            else{
+                                empty.setText("");
+                            }
+                            Adapter2 adapter = new Adapter2(don_3view.this, arrayItem);
+                            listView = (ListView) findViewById(R.id.postedlistDonaterHome);
+                            listView.setAdapter(adapter);
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
     }
 }

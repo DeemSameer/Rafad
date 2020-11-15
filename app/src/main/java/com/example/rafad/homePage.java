@@ -3,6 +3,7 @@ package com.example.rafad;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -26,7 +27,7 @@ public class homePage extends AppCompatActivity {
     Button logout, profile, clothes , furniture,device,all,toReq;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-TextView empty;
+    TextView empty;
     //////// for view list of items
     List<postinfo> arrayItem=new ArrayList<>();
     List<postinfo> arrayItemC=new ArrayList<>();
@@ -68,11 +69,11 @@ TextView empty;
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            fAuth.signOut();
-            startActivity(new Intent(homePage.this, login.class));
-            finish();
-        }
-    });
+                fAuth.signOut();
+                startActivity(new Intent(homePage.this, login.class));
+                finish();
+            }
+        });
 
         toReq.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,8 +87,11 @@ TextView empty;
         clothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Query p =  fStore.collection("item").whereEqualTo("Catogery", "ملابس")
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                Query p =  fStore.collection("item").whereEqualTo("Catogery", "Ù…Ù„Ø§Ø¨Ø³")
                         .whereEqualTo("isRequested", "no" );
 
                 p.get()
@@ -102,11 +106,11 @@ TextView empty;
                                     }
                                     if (arrayItemC.size()==0)
                                     {
-                                            empty.setText("لا يوجد بيانات للعرض");
-                                        }
-                                        else{
-                                            empty.setText("");
-                                        }
+                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
+                                    }
+                                    else{
+                                        empty.setText("");
+                                    }
                                     ListViewAdaptorBen adapter = new ListViewAdaptorBen(homePage.this, arrayItemC);
                                     listView = (ListView) findViewById(R.id.postedlistHomePage);
                                     listView.setAdapter(adapter);
@@ -122,8 +126,11 @@ TextView empty;
         furniture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Query p =  fStore.collection("item").whereEqualTo("Catogery", "أثاث")
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                Query p =  fStore.collection("item").whereEqualTo("Catogery", "Ø£Ø«Ø§Ø«")
                         .whereEqualTo("isRequested", "no" );
 
                 p.get()
@@ -138,7 +145,7 @@ TextView empty;
                                     }
                                     if (arrayItemF.size()==0)
                                     {
-                                        empty.setText("لا يوجد بيانات للعرض");
+                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
                                     }
                                     else{
                                         empty.setText("");
@@ -157,8 +164,11 @@ TextView empty;
         device.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Query p =  fStore.collection("item").whereEqualTo("Catogery", "أجهزة")
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                Query p =  fStore.collection("item").whereEqualTo("Catogery", "Ø£Ø¬Ù‡Ø²Ø©")
                         .whereEqualTo("isRequested", "no" );
 
                 p.get()
@@ -173,7 +183,7 @@ TextView empty;
                                     }
                                     if (arrayItemD.size()==0)
                                     {
-                                        empty.setText("لا يوجد بيانات للعرض");
+                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
                                     }
                                     else{
                                         empty.setText("");
@@ -193,7 +203,10 @@ TextView empty;
         all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
                 Query p =  fStore.collection("item")
                         .whereEqualTo("isRequested", "no" );
 
@@ -209,7 +222,7 @@ TextView empty;
                                     }
                                     if (arrayItemA.size()==0)
                                     {
-                                        empty.setText("لا يوجد بيانات للعرض");
+                                        empty.setText("Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ù„Ù„Ø¹Ø±Ø¶");
                                     }
                                     else{
                                         empty.setText("");
@@ -227,6 +240,7 @@ TextView empty;
         });
         //////////////////// for list of items second try////////////////////////
 
+        all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
 
         // FirebaseFirestore db = FirebaseFirestore.getInstance();
         fStore.collection("item")

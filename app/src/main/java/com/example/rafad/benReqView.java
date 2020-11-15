@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.rafad.ChatJava.MainChatAllPeople;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,7 +37,7 @@ public class benReqView extends AppCompatActivity {
     String tit;
     String isRe;
     Button back;
-    Button homebutton, toPro;
+    Button homebutton, toPro,button15;
     TextView empty;
     public static final String TAG = "TAG";
 
@@ -52,6 +53,7 @@ public class benReqView extends AppCompatActivity {
         homebutton=findViewById(R.id.benReqToHomeicon);
         empty = findViewById(R.id.benReqEmpty);
         fStore= FirebaseFirestore.getInstance();
+        button15=findViewById(R.id.button15);
 
 
 
@@ -130,6 +132,15 @@ public class benReqView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(benReqView.this, BenMainProfile.class));
+                finish();
+
+            }
+        });
+
+        button15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(benReqView.this, MainChatAllPeople.class));
                 finish();
 
             }
