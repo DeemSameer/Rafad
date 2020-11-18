@@ -12,8 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RoundedRectangle"
-            tools:ignore="MissingClass"></activity>
+
 
         <activity
             android:name=".AdapterD"
