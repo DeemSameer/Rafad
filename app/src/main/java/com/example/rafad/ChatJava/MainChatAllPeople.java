@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rafad.BenMainProfile;
@@ -23,6 +24,7 @@ import com.example.rafad.requests;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,8 +49,7 @@ public class MainChatAllPeople extends AppCompatActivity {
     final DatabaseReference ref = database.getReference(UserId+"/People");//we can put the path on it like "server/saving-data/fireblog/posts"
     ListView recyclerViewPeople;
     TextView empty;
-
-
+    
 
 
     @Override
@@ -134,12 +135,14 @@ public class MainChatAllPeople extends AppCompatActivity {
             }
 
 
-        //Listener
+
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                adapter.clear();//To clear data and retrive again -- I did not test it yet -_-
+               adapter.clear();//To clear data and retrive again -- I did not test it yet -_-
+                arrayList.clear();
                 for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Log.d(TAG, arrayList.size() + " arrayListSIZE");
                     final String key = snapshot.getKey();
                     Log.d(TAG, dataSnapshot.getValue() + " Hello from the another world");
                     //Retrieve the name of that ID,
@@ -155,114 +158,38 @@ public class MainChatAllPeople extends AppCompatActivity {
                                     final String UID = document.getId();
                                     final String mail=document.get("email").toString();
                                     Log.d(TAG, name + " nameUser");
-                                    final FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                    final DatabaseReference ref = database.getReference(UserId + "/People/" + key + "/Messages");
-                                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
-
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                            adapter.clear();
-                                            //startActivity(new Intent(getApplicationContext(), MainChatAllPeople.class));
-                                            String msg = "";
-                                            String t = "";
-                                            String d = "";
-                                            String unread = "";
-
-                                            for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
-
-                                                if (snapshot.child("fmsg").getValue() != null) {
-                                                    Log.d(TAG, "MMMMMMMMMMMMMMM message " + snapshot.child("fmsg").child("content").getValue().toString());
-                                                    msg = snapshot.child("fmsg").child("content").getValue().toString();
-                                                    Log.d(TAG, "fmsg " + msg);
-                                                    t = snapshot.child("fmsg").child("time").getValue().toString();
-                                                    d = snapshot.child("fmsg").child("date").getValue().toString();
-                                                    Calendar calendar = Calendar.getInstance();
-                                                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                                                    String Today = simpleDateFormat.format(calendar.getTime());
-                                                    if (Today.equals(d))
-                                                        d = "اليوم";
-                                                } else if (snapshot.child("tmsg").getValue() != null) {
-                                                    Log.d(TAG, "MMMMMMMMMMMMMMM message " + snapshot.child("tmsg").child("content").getValue().toString());
-                                                    msg = snapshot.child("tmsg").child("content").getValue().toString();
-                                                    t = snapshot.child("tmsg").child("time").getValue().toString();
-                                                    d = snapshot.child("tmsg").child("date").getValue().toString();
-
-                                                    Calendar calendar = Calendar.getInstance();
-
-                                                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                                                    String Today = simpleDateFormat.format(calendar.getTime());
-                                                    if (Today.equals(d))
-                                                        d = "اليوم";
-
-                                                }
-
-                                            }
-                                            //setting adapter array
-                                            //unreadded messages
-                                            final FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                            final DatabaseReference ref = database.getReference(UserId + "/People/" + key + "/Messages/unread");
-                                            final String finalMsg = msg;
-                                            final String finalT = t;
-                                            final String finalD = d;
-                                            //adapter.clear();
-                                            ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                                                String unread;
-
-                                                @Override
-                                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                                    if (dataSnapshot.getValue() != null) {
-                                                        Log.d(TAG, "dataSnapshot::::  " + dataSnapshot.getValue().toString());
-                                                        unread = dataSnapshot.getValue().toString();
-                                                        Log.d(TAG, "unreadunread " + unread);
-                                                        Log.d(TAG, "unreadunread 2 " + unread);
-
-                                                    }
-                                                    arrayList.add(new PeopleModel(name, finalMsg, finalT, finalD, UID, unread,mail));
-                                                    adapter.notifyDataSetChanged();
-                                                }
-
-                                                @Override
-                                                public void onCancelled(DatabaseError databaseError) {
-                                                    // ...
-                                                }
-                                            });
-
-                                            //end
-                                            adapter.clear();
-
-                                        }
-
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                        }
-                                    });
-
 
                                     //
                                     String lastMsg;
                                     String date;
-                                    String time;
-                                    Log.d(TAG, snapshot.child("Messages").getValue() + " VALUVALULOOL" + name);
-                                /*if (snapshot.child("Messages").child("lastMessage").child("content").getValue() != null) {
-                                    lastMsg = snapshot.child("Messages").child("lastMessage").child("content").getValue().toString();
-                                    date = snapshot.child("Messages").child("lastMessage").child("date").getValue().toString();
-                                    time = snapshot.child("Messages").child("lastMessage").child("time").getValue().toString();
+                                    String time,unread;
+                                    Log.d(TAG, snapshot.child("Messages").child("date").getValue() + " VALUVALULOOL" + name);
+                                if (snapshot.child("Messages").child("date").getValue() != null) {
+                                    lastMsg = snapshot.child("Messages").child("content").getValue().toString();
+                                    date = snapshot.child("Messages").child("date").getValue().toString();
+                                    time = snapshot.child("Messages").child("time").getValue().toString();
+                                    unread=snapshot.child("Messages").child("unread").getValue().toString();
+
                                 } else {
                                     lastMsg = " ";
                                     date = " ";
                                     time = " ";
-                                }*/
+                                    unread="0";
+                                }
                                     //end retrieve
+                                    arrayList.add(new PeopleModel(name, lastMsg, time, date, UID, unread,mail));
+                                    Log.d(TAG, arrayList.size() + " arrayListSIZE");
 
 
+                                    adapter.notifyDataSetChanged();
                                 }//End Existing
                             }
                         });
                     //End retrieving db.collection("donators").document(key).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
 
                 }
-                adapter.notifyDataSetChanged();
+                adapter.clear();
+                //adapter.notifyDataSetChanged();
                 //OnclickListener
 
 
@@ -278,7 +205,7 @@ public class MainChatAllPeople extends AppCompatActivity {
         if (arrayList.size() == 0) {
             //Toast.makeText(requests.this, "This is my Toast message!",
             //  Toast.LENGTH_LONG).show();
-            empty.setText("لا يوجد شخص للمحادثة");
+            empty.setText("لا يوجد اشخاص للمحادثة");
         } else {
             empty.setText("");
         }

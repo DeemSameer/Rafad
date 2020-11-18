@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import android.graphics.Bitmap;
 
 public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
 
@@ -52,12 +54,12 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
 
 
 
-
         TextView desText = (TextView) rowView.findViewById(R.id.des);
         TextView titText = (TextView) rowView.findViewById(R.id.tit);
         final ImageView HisImage = (ImageView)rowView.findViewById(R.id.imageView10);
         TextView catText = (TextView) rowView.findViewById(R.id.cat);
         TextView date = (TextView) rowView.findViewById(R.id.date);
+
 
 
         StorageReference profileRef = storageRef.child(arrayList.get(position).imageID);
@@ -71,6 +73,9 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
         });
 
 
+
+
+
         desText.setText(arrayList.get(position).des);
         titText.setText(arrayList.get(position).tit);
         catText.setText(arrayList.get(position).cat);
@@ -78,23 +83,7 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
         return rowView;
 
     }
-    private String replaceArabicNumbers(CharSequence original) {
-        if (original != null) {
-            return original.toString().replaceAll("١","1")
-                    .replaceAll("٢","2")
-                    .replaceAll("٣","3")
-                    .replaceAll("٣","3")
-                    .replaceAll("٤","4")
-                    .replaceAll("٥","5")
-                    .replaceAll("٦","6")
-                    .replaceAll("٧","7")
-                    .replaceAll("٨","8")
-                    .replaceAll("٨","9")
-                    .replaceAll("٠","0");
-        }
 
-        return null;
-    }
 
 
 }

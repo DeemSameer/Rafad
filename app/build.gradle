@@ -88,5 +88,6 @@ dependencies {
     implementation files('libs\\javax.mail.jar')
 
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation 'com.jcminarro:RoundKornerLayouts:0.2.0'
 }
 apply plugin: 'com.google.gms.google-services'
