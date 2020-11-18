@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:paddingLeft="10dp"
+
+    android:paddingRight="10dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="246dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/tajawalmedium2"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="تأكيد رفع بلاغ"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:layout_width="341dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="213dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/tajawalmedium2"
+                    android:gravity="bottom" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/tajawalmedium2"
+                    android:text="نوع البلاغ:"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:layout_width="250dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="103dp">
+
+                        <RadioButton
+                            android:id="@+id/radioButton"
+                            android:layout_width="229dp"
+                            android:layout_height="43dp"
+                            android:layout_above="@+id/radioButton2"
+                            android:layout_below="@+id/radioButton3"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="13dp"
+                            android:layout_marginTop="-2dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="1dp"
+                            android:layoutDirection="rtl"
+                            android:text="كلام غير اخلاقي"
+                            android:textAlignment="textStart"
+                            app:buttonTint="@color/base" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton2"
+                            android:layout_width="227dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_gravity="start"
+                            android:layout_marginEnd="9dp"
+                            android:layout_marginBottom="10dp"
+                            android:layoutDirection="rtl"
+                            android:text="صورة غير اخلاقية"
+                            android:textAlignment="textStart"
+                            app:buttonTint="@color/base" />
+                    </RelativeLayout>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/settext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#880A0A" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="228dp"
+                android:layout_height="36dp"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/Decline"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="#fff"
+                    android:fontFamily="@font/tajawalmedium2"
+                    android:text="الغاء"
+                    android:textAlignment="gravity"
+                    android:textColor="#656262"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/Accept"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="#ffff"
+                    android:fontFamily="@font/tajawalmedium2"
+                    android:text="إرسال"
+                    android:textColor="@color/base"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

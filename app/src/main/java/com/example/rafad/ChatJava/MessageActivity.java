@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -18,13 +19,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.rafad.R;
+import com.example.rafad.login;
+import com.example.rafad.report.pop_up_reported;
+import com.example.rafad.report.pop_up_typeOfReport;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.core.Repo;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.onesignal.OneSignal;
@@ -38,6 +49,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -53,10 +65,13 @@ public class MessageActivity extends AppCompatActivity {
     static String receivername;
     StorageReference storageReference;
     static String senderMail;
+    FirebaseFirestore fStore;
 
     List<Chat> arrayList=new ArrayList<>();
     MessageAdapter adapter;
     ListView recyclerViewChat;
+    Button report;
+
 
 
 
@@ -91,6 +106,73 @@ public class MessageActivity extends AppCompatActivity {
 
             }
         });
+
+        //make the report appear just for the donator
+        fStore= FirebaseFirestore.getInstance();
+        report = (Button) findViewById(R.id.report);
+        report.setVisibility(View.VISIBLE);
+
+        if (login.getType() != null)
+            if (!login.getType().equals("beneficiaries"))
+                report.setVisibility(View.GONE);
+
+            //Add the functionality to the button
+            report.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View view) {
+                    Log.d(TAG, "report clicked  ");
+                    DocumentReference documentrefReference = fStore.collection("Reports").document(receiverUID);
+                    //Check if he/she has been reported from the same person?
+                    FirebaseFirestore db=FirebaseFirestore.getInstance();
+                    CollectionReference beneficiaries = db.collection("Reports");
+                    final DocumentReference Reports = beneficiaries.document(receiverUID);
+                    Reports.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document.exists()) {
+                                    List<String> donatorsID = (List<String>) document.get("donatorsID");
+                                    boolean reported=false;
+                                    if (donatorsID!=null){
+                                        for (int i=0;i<donatorsID.size();i++)
+                                            if (donatorsID.get(i).equals(fuser)) {//he/she already report to the admin
+                                               //Show message you already report
+                                                pop_up_reported poped=new pop_up_reported();
+                                                poped.showPopupWindow(view);
+                                               reported=true;
+                                            }
+                                    }
+                                    if (!reported) {//hasn't been reported
+                                        //Show message and let him write 200 character about why he/she want to report to the admin
+                                        pop_up_typeOfReport pop=new pop_up_typeOfReport();
+                                        pop.showPopupWindow(view);
+                                    }
+                                }
+                            }
+                        }
+                    });
+                    //end checking
+
+
+                    //store data
+                    Map<String,Object> user= new HashMap<>();
+                   // user.put("phoneNumber", Phone);
+
+
+                    // user.put("items",Arrays.asList("array for items"));
+                    //check the add if it's success or not
+                    documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                      //      Log.d(TAG,"User id created for"+userID);
+                        }
+                    });
+
+                }
+            });
+
+        //end hidden
 
 
 
@@ -222,11 +304,10 @@ public class MessageActivity extends AppCompatActivity {
         hashMap2.put("tmsg", new Message(message,date,time));
         reference2.child(receiver).child("People").child(sender).child("Messages").push().setValue(hashMap2);
         //*********//
+         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        //0
-        DatabaseReference refmsg0 = database.getReference(receiverUID+"/People/"+fuser+"/Messages/content");
+         //0
+         DatabaseReference refmsg0 = database.getReference(receiverUID+"/People/"+fuser+"/Messages/content");
         refmsg0.setValue(message);
 
         DatabaseReference reft0 = database.getReference(receiverUID+"/People/"+fuser+"/Messages/time");
@@ -245,8 +326,6 @@ public class MessageActivity extends AppCompatActivity {
 
         DatabaseReference refd1 = database.getReference(fuser+"/People/"+receiverUID+"/Messages/date");
         refd1.setValue(date);
-
-
 
         //***//
         sendNotification(message,senderMail);//Add the name of the one who send it
