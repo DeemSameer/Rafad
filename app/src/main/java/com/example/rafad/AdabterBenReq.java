@@ -13,7 +13,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -40,7 +42,7 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
 
 
 
-    public android.view.View getView(final int position, View view, ViewGroup parent) {
+    public View getView(final int position, View view, ViewGroup parent) {
 
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.activity_adabter_ben_req, null,true);
@@ -52,6 +54,8 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
         TextView titText = (TextView) rowView.findViewById(R.id.name);
         TextView titText2 = (TextView) rowView.findViewById(R.id.status);
         TextView tit = (TextView) rowView.findViewById(R.id.benReqTit);
+        //for  rate
+        TextView Rate = (TextView) rowView.findViewById(R.id.rate);
 
         final ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
 
@@ -80,12 +84,29 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
             st = "مقبول";
         }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+        fStore.collection("donators").document(arrayList.get(position).UID)
+                .get();
+
+
+
+
+
+        Task<DocumentSnapshot> document12= fStore.collection("donators").document(arrayList.get(position).UID).get();
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
         titText.setText("اسم المتبرع: "+arrayList.get(position).BN);
         titText2.setText(" حالة الطلب: "+st);
         tit.setText("عنوان الطلب: "+arrayList.get(position).tit);
+        //for rate
+        Rate.setText("تقييم  المتبرع: "+ (double) document12.getResult().get("Rate"));
 
 
         return rowView;

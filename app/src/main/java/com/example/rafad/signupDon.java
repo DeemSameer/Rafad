@@ -135,6 +135,7 @@ public class signupDon extends AppCompatActivity {
                                     user.put("userName", userName);
                                     user.put("type",Type);
                                     user.put("email",email);
+                                    user.put("Rate",0.0);
 
                                    // user.put("items",Arrays.asList("array for items"));
                                     //check the add if it's success or not
