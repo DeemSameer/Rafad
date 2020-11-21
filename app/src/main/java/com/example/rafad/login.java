@@ -69,7 +69,7 @@ public class login extends AppCompatActivity {
         lSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lSignup.setBackgroundColor(getResources().getColor(R.color.blueLight));
+                //lSignup.setBackgroundColor(getResources().getColor(R.color.blueLight));
                 Intent ins=new Intent(login.this, signUpBase.class);
                 startActivity(ins);
                 finish();
@@ -81,7 +81,7 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                lLogin.setBackgroundColor(getResources().getColor(R.color.blueLight));
+                //lLogin.setBackgroundColor(getResources().getColor(R.color.blueLight));
                 String email = lEmail.getText().toString().trim();
                 String password = lpassword.getText().toString().trim();
 
