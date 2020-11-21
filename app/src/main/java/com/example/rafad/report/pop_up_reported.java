@@ -41,7 +41,7 @@ public class pop_up_reported  extends AppCompatActivity {
     public void showPopupWindow(final View view) {
 
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.pop_up_window_reported, null);
+        View popupView = inflater.inflate(R.layout.pop_up_window_report, null);
 
 
 

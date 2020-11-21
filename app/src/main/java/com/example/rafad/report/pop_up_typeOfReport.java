@@ -40,7 +40,7 @@ public class pop_up_typeOfReport extends AppCompatActivity {
     public void showPopupWindow(final View view) {
 
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.pop_up_window_report, null);
+        View popupView = inflater.inflate(R.layout.pop_up_window_reported , null);
 
 
 
@@ -61,12 +61,7 @@ public class pop_up_typeOfReport extends AppCompatActivity {
 
         Accept = popupView.findViewById(R.id.Accept);
         Decline = popupView.findViewById(R.id.Decline);
-        radioButton1=popupView.findViewById(R.id.radioButton);
-        radioButton2=popupView.findViewById(R.id.radioButton2);
 
-        nameOfDonator=popupView.findViewById(R.id.textView16);
-
-        //nameOfDonator.setText(name);//Name of the donator
 
 
         Decline.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +71,7 @@ public class pop_up_typeOfReport extends AppCompatActivity {
                 return;
             }
         });//end decline
+
 
 
         //Handler for clicking on the inactive zone of the window

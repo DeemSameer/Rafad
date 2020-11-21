@@ -19,7 +19,12 @@
         android:layout_width="match_parent"
         android:background="#397A96">
 
-
+        <Button
+            android:id="@+id/report"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/report"
+            android:text=" " />
 
 
     <TextView
@@ -40,6 +45,8 @@
 
 
     </androidx.appcompat.widget.Toolbar>
+
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout

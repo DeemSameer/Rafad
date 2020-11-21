@@ -1,11 +1,13 @@
 package com.example.rafad.ChatJava;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.rafad.R;
+import com.example.rafad.homepageAdmin;
 import com.example.rafad.login;
 import com.example.rafad.report.pop_up_reported;
 import com.example.rafad.report.pop_up_typeOfReport;
@@ -35,6 +38,7 @@ import com.google.firebase.database.core.Repo;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -121,7 +125,6 @@ public class MessageActivity extends AppCompatActivity {
                 @Override
                 public void onClick(final View view) {
                     Log.d(TAG, "report clicked  ");
-                    DocumentReference documentrefReference = fStore.collection("Reports").document(receiverUID);
                     //Check if he/she has been reported from the same person?
                     FirebaseFirestore db=FirebaseFirestore.getInstance();
                     CollectionReference beneficiaries = db.collection("Reports");
@@ -130,44 +133,110 @@ public class MessageActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.isSuccessful()) {
-                                DocumentSnapshot document = task.getResult();
+                                Log.d(TAG, "report clicked  task");
+
+                                final DocumentSnapshot document = task.getResult();
                                 if (document.exists()) {
-                                    List<String> donatorsID = (List<String>) document.get("donatorsID");
+                                    Log.d(TAG, "report clicked doc ");
+
+                                    if (document.get("count")!=null){
+                                    final int count = (Integer.parseInt(document.get("count").toString())) ;
                                     boolean reported=false;
-                                    if (donatorsID!=null){
-                                        for (int i=0;i<donatorsID.size();i++)
-                                            if (donatorsID.get(i).equals(fuser)) {//he/she already report to the admin
+
+                                        for (int i=1;i<=count;i++)
+                                            if (document.get("id"+i).equals(fuser)) {//he/she already report to the admin
                                                //Show message you already report
                                                 pop_up_reported poped=new pop_up_reported();
                                                 poped.showPopupWindow(view);
+                                                //click delete my report
+                                                final int finalI = i;
+                                                poped.Accept.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        DocumentReference docRef= fStore.collection("Reports").document(receiverUID);
+                                                        final Map<String, Object> user = new HashMap<>();
+                                                        user.put("count",count-1);
+                                                        if (count ==1)
+                                                            docRef.delete();
+                                                        else if (finalI!=count){//he/she not the last one
+                                                            user.put("id" + finalI, document.get("id" + count));//if he the only one
+                                                            user.put("id" + count, FieldValue.delete());
+                                                            docRef.update(user);
+
+                                                        }
+                                                        else {//the last take the first
+                                                            //do nothing will work as expected
+                                                            user.put("id" + finalI, FieldValue.delete());
+                                                            docRef.update(user);
+                                                        }
+                                                        startActivity(new Intent(MessageActivity.this, MessageActivity.class));
+
+                                                    }
+                                                });
+
+                                                //end clicking
                                                reported=true;
                                             }
-                                    }
+
                                     if (!reported) {//hasn't been reported
                                         //Show message and let him write 200 character about why he/she want to report to the admin
                                         pop_up_typeOfReport pop=new pop_up_typeOfReport();
                                         pop.showPopupWindow(view);
+                                        Log.d(TAG, "report clicked  !reported");
+
+                                        pop.Accept.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                final Map<String, Object> user = new HashMap<>();
+                                                user.put("count",count+1);
+                                                user.put("id"+(count+1),fuser);
+                                                DocumentReference docRef= fStore.collection("Reports").document(receiverUID);
+                                                docRef.update(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+                                                        Log.d(TAG,"report clicked User id created for"+user);
+                                                    }
+                                                });
+                                                startActivity(new Intent(MessageActivity.this, MessageActivity.class));
+
+                                            }
+                                        });
                                     }
+                                    }
+
+                                }
+                                else {//no document show pop up message FIRST
+                                    Log.d(TAG, "report clicked else ");
+
+
+                                    pop_up_typeOfReport pop=new pop_up_typeOfReport();
+                                    pop.showPopupWindow(view);
+                                    Log.d(TAG, "report clicked  !reported");
+
+                                    pop.Accept.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+
+                                            final Map<String, Object> user = new HashMap<>();
+                                            user.put("count",1);
+                                            user.put("id"+1,fuser);
+                                            DocumentReference docRef= fStore.collection("Reports").document(receiverUID);
+                                            docRef.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    Log.d(TAG,"report clicked User id created for"+user);
+                                                }
+                                            });
+                                            startActivity(new Intent(MessageActivity.this, MessageActivity.class));
+
+                                        }
+
+                                    });
                                 }
                             }
                         }
                     });
                     //end checking
-
-
-                    //store data
-                    Map<String,Object> user= new HashMap<>();
-                   // user.put("phoneNumber", Phone);
-
-
-                    // user.put("items",Arrays.asList("array for items"));
-                    //check the add if it's success or not
-                    documentrefReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                      //      Log.d(TAG,"User id created for"+userID);
-                        }
-                    });
 
                 }
             });
