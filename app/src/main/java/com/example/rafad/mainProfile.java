@@ -50,7 +50,7 @@ public class mainProfile extends AppCompatActivity {
 
         back=findViewById(R.id.backHome);
         homebutton = findViewById(R.id.bHome);
-        editbutton2 = findViewById(R.id.edit);
+        editbutton2 = findViewById(R.id.textView24);
 
         phone = findViewById(R.id.phonenumber);
         fullName = findViewById(R.id.fullname);
@@ -101,57 +101,6 @@ post = findViewById(R.id.postItem);
             }
         });
 
-        buttonchat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(mainProfile.this, MainChatAllPeople.class));
-                finish();
-
-            }
-        });
-
-        post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Intent i = new Intent(homepageDonator.this, postitem.class);
-                startActivity(new Intent(mainProfile.this, post3.class));
-                finish();
-            }
-        });
-
-
-        homebutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(mainProfile.this, homepageDonator.class));
-                finish();
-
-            }
-        });
-
-
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(mainProfile.this, don_3view.class));
-                finish();
-
-            }
-        });
-
-        editbutton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-               Intent i = new Intent(view.getContext(),donProfile.class);
-               //pass the data
-                i.putExtra("fullName",fullName.getText().toString());
-                i.putExtra("email",email.getText().toString());
-                i.putExtra("phone", phone.getText().toString());
-               startActivity(i);
-
-            }
-        });
 
 
 
