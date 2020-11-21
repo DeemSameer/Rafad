@@ -58,31 +58,30 @@
         android:fontFamily="@font/tajawalmedium2"
         android:text="جميع التبرعات "
         android:textAlignment="center"
+        android:textColor="#ea907a"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026" />
+        app:layout_constraintVertical_bias="0.024" />
 
     <TextView
         android:id="@+id/homepagetext"
         android:layout_width="150dp"
         android:layout_height="23dp"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
         android:text=""
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.178" />
+        app:layout_constraintVertical_bias="0.175" />
 
     <Button
         android:id="@+id/profileb"
@@ -120,7 +119,7 @@
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="  الطلبات المعلقة"
-        android:textColor="#397A96"
+        android:textColor="#724F6E"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -137,7 +136,7 @@
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="تم التبرع بها"
-        android:textColor="#397A96"
+        android:textColor="#724F6E"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -154,7 +153,7 @@
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="تبرعاتي"
-        android:textColor="#397A96"
+        android:textColor="#724F6E"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

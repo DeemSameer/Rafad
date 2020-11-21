@@ -4,25 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bac7"
     tools:context=".mainProfile">
 
-    <ImageView
 
-        app:srcCompat="@drawable/header"
-        android:id="@+id/imageView2"
-        android:layout_width="555dp"
-        android:layout_height="240dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginBottom="136dp"
-        android:contentDescription="TODO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+
+
+
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -50,61 +39,6 @@
 
     </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="414dp"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/footer" />
-
-    <Button
-        android:id="@+id/button13"
-        android:layout_width="39dp"
-        android:layout_height="40dp"
-        android:background="@drawable/request"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.311"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
-
-    <Button
-        android:id="@+id/postItem"
-        android:layout_width="56dp"
-        android:layout_height="68dp"
-        android:background="@drawable/savebtn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
-
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="600dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/userp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.739"
-        app:layout_constraintStart_toStartOf="@+id/imageView8"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.966"
-        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/fullname"
@@ -113,7 +47,7 @@
         android:fontFamily="@font/tajawalmedium2"
         android:gravity="center_horizontal"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="#583560"
         android:textSize="13sp"
         android:verticalScrollbarPosition="defaultPosition"
         android:visibility="visible"
@@ -132,7 +66,7 @@
         android:fontFamily="@font/tajawalmedium2"
         android:gravity="center_horizontal"
         android:textAlignment="center"
-        android:textColor="#D8D5D5"
+        android:textColor="#583560"
         android:textSize="11sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -153,65 +87,9 @@
         app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.036" />
+        app:layout_constraintVertical_bias="0.036"
 
-    <Button
-        android:id="@+id/bHome"
-        android:layout_width="37dp"
-        android:layout_height="37dp"
-        android:background="@drawable/home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView8"
-        app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.988" />
-
-    <Button
-        android:id="@+id/edit"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginBottom="550dp"
-        android:background="#00FFFFFF"
-        android:fontFamily="@font/tajawalmedium2"
-        android:text="تعديل "
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.991"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.097" />
-
-    <Button
-        android:id="@+id/buttonchat"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/chat2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.717"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
-
-
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.306"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
 
 
     <TextView
@@ -228,29 +106,138 @@
         app:layout_constraintVertical_bias="0.276"
         tools:visibility="invisible" />
 
-    <ListView
-        android:id="@+id/postedlist"
-        android:layout_width="360dp"
-        android:layout_height="290dp"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shapeableImageView"
+        android:layout_width="90dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="100dp"
+        android:orientation="horizontal"
+        android:src="@drawable/rate6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.584"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.8" />
-
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="99dp"
-        android:layout_height="23dp"
-        android:fontFamily="@font/tajawalmedium2"
-        android:text="تبرعاتي السابقة :"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintHorizontal_bias="0.977"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.41000003" />
+
+        app:layout_constraintVertical_bias="0.56"
+        tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shapeableImageView2"
+        android:layout_width="59dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="100dp"
+        android:orientation="horizontal"
+        android:src="@drawable/chat1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.684"
+        tools:ignore="MissingConstraints" />
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shapeableImageView3"
+        android:layout_width="62dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="100dp"
+        android:orientation="horizontal"
+        android:src="@drawable/logout1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.797"
+         />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shapeableImageView6"
+        android:layout_width="97dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="-20dp"
+        android:orientation="horizontal"
+        android:src="@drawable/user1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.47" />
+
+    <Button
+        android:id="@+id/textView21"
+        android:layout_width="252dp"
+        android:layout_height="44dp"
+        android:background="#ffff"
+        android:fontFamily="@font/tajawalmedium2"
+        android:textColor="#583560"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.796"
+        tools:text="تسجيل الخروج" />
+
+    <Button
+        android:id="@+id/textView9"
+        android:layout_width="252dp"
+        android:layout_height="44dp"
+        android:background="#ffff"
+        android:fontFamily="@font/tajawalmedium2"
+        android:textColor="#583560"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.296"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.685"
+        tools:text="محادثاتي" />
+
+    <Button
+        android:id="@+id/textView26"
+        android:layout_width="252dp"
+        android:layout_height="44dp"
+        android:background="#ffff"
+        android:fontFamily="@font/tajawalmedium2"
+        android:textColor="#583560"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.296"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.569"
+        tools:text="تقييمي"
+        />
+
+    <Button
+        android:id="@+id/textView24"
+        android:layout_width="252dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center"
+        android:background="#ffff"
+        android:fontFamily="@font/tajawalmedium2"
+        android:textColor="#583560"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.358"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.474"
+        tools:text="تعديل معلوماتي" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
