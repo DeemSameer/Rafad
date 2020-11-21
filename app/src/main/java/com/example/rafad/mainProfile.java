@@ -62,15 +62,11 @@ public class mainProfile extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
-        buttonchat=findViewById(R.id.buttonchat);
 post = findViewById(R.id.postItem);
 
 
 
 
-        //////// for view list of items
-        listView=(ListView)findViewById(R.id.postedlist);
-        //////// above is for view list of items
 
 
 
