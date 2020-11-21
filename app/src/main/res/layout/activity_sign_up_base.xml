@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/signbase"
+    android:background="@drawable/loglight"
     tools:context=".signUpBase">
 
     <Button
         android:id="@+id/signupBen"
-        android:layout_width="150dp"
-        android:layout_height="55dp"
-        android:background="#397A96"
+        android:layout_width="190dp"
+        android:layout_height="48dp"
+        android:background="@drawable/roundshapebtn"
         android:fontFamily="@font/tajawalmedium2"
         android:text="مستفيد"
         android:textColor="#FFFFFF"
@@ -19,16 +19,16 @@
         android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.711" />
+        app:layout_constraintVertical_bias="0.707" />
 
     <Button
         android:id="@+id/signupDon"
-        android:layout_width="150dp"
-        android:layout_height="55dp"
-        android:background="#397A96"
+        android:layout_width="190dp"
+        android:layout_height="48dp"
+        android:background="@drawable/orange_rounded_button"
         android:fontFamily="@font/tajawalmedium2"
         android:text="متبرع"
         android:textColor="#FFFFFF"
@@ -36,10 +36,10 @@
         android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.584" />
+        app:layout_constraintVertical_bias="0.595" />
 
     <TextView
         android:id="@+id/textView3"
@@ -47,26 +47,27 @@
         android:layout_height="37dp"
         android:fontFamily="@font/tajawalmedium2"
         android:text="إنشاء حساب كـ: "
+        android:textColor="#523B60"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.808"
+        app:layout_constraintHorizontal_bias="0.818"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.472"
+        app:layout_constraintVertical_bias="0.465"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/but"
-        android:layout_width="25dp"
-        android:layout_height="22dp"
-        android:background="@drawable/leftarrow"
+        android:layout_width="32dp"
+        android:layout_height="26dp"
+        android:background="@drawable/purparrow"
 
         app:layout_constraintBottom_toTopOf="@+id/signupDon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintHorizontal_bias="0.015"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.099" />
+        app:layout_constraintVertical_bias="0.074" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
