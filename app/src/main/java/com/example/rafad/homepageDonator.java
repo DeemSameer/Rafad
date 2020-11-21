@@ -191,6 +191,7 @@ public class homepageDonator extends AppCompatActivity {
                                     }
                                     HistoryItemAdapter adapter = new HistoryItemAdapter(homepageDonator.this, arrayItemD);
                                     listView = (ListView) findViewById(R.id.postedlistDonaterHome);
+
                                     listView.setAdapter(adapter);
                                 } else {
                                     Log.d(TAG, "Error getting documents: ", task.getException());
