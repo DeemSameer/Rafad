@@ -33,6 +33,18 @@
             android:background="@drawable/new_button">
 
 
+            <Button
+                android:id="@+id/RateDon"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:background="#ffff"
+                android:fontFamily="@font/tajawalmedium2"
+                android:text="تقييم"
+                android:textColor="@color/base"
+                android:layout_marginTop="91dp"
+                android:layout_marginLeft="115dp"
+                android:textSize="16sp" />
+
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
