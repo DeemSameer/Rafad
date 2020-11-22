@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdabterBenReq"
-    android:orientation="vertical">
+    android:orientation="vertical"
+
+
+    >
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -13,18 +16,21 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
-        app:cardCornerRadius="8dp">
+        app:cardCornerRadius="8dp"
+        style="?android:attr/borderlessButtonStyle">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="12dp">
+            android:padding="12dp"
+            style="?android:attr/borderlessButtonStyle">
 
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="130dp">
+                android:layout_height="130dp"
+                >
 
 
                 <TextView
