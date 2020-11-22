@@ -1,6 +1,7 @@
 package com.example.rafad;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -56,7 +58,7 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
         storageRef = FirebaseStorage.getInstance().getReference();
         fAuth = FirebaseAuth.getInstance();
         //for Rating
-        RateDon = (Button) rowView.findViewById(R.id.RateDon);
+        RateDon = (Button) rowView.findViewById(R.id.RateDonButton);
 
 
 
@@ -93,12 +95,8 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
             st = "مقبول";
         }
 
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
 
 
 
@@ -106,30 +104,95 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
         DocumentReference docRefB = donators.document(arrayList.get(position).UID);
 
         docRefB.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                    if (task.isSuccessful()) {
-                                                        DocumentSnapshot document = task.getResult();
-                                                        if (document.exists()) {
-                                                            Log.d(TAG, "inter AdaptorBenReq doc DocumentSnapshot data: " + document.getData());
-                                                            Rating=document.getDouble("Rate");
-                                                                    //get("Rate");
-                                                        } else {
-                                                            Log.d(TAG, "No such document");
-                                                        }
-                                                    } else {
-                                                        Log.d(TAG, "get failed with ", task.getException());
-                                                    }
-                                                }
-                                            });
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "inter AdaptorBenReq doc DocumentSnapshot data: " + document.getData());
+                        Rating=document.getDouble("Rate");
+                        //get("Rate");
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
 
 
 
-       // DocumentSnapshot document12= fStore.collection("donators").document(arrayList.get(position).UID).get().getResult();
+        // DocumentSnapshot document12= fStore.collection("donators").document(arrayList.get(position).UID).get().getResult();
 
 
         //DocumentReference document12= fStore.collection("donators").document(arrayList.get(position).UID);
         Log.d(TAG, "inter AdaptorBenReq ID: "+arrayList.get(position).UID);
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        RateDon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "RateDon in AdabterBenReq ");
+                final popUpRate popupRate = new popUpRate();
+                popupRate.showPopupWindow(view);
+                ///Approve Rate///
+                popupRate.AcceptRate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ///////////////////
+                        if (popupRate.radioButton1.isChecked()|| popupRate.radioButton2.isChecked()||popupRate.radioButton3.isChecked()|| popupRate.radioButton4.isChecked()|| popupRate.radioButton5.isChecked()) {
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            CollectionReference donators = db.collection("donators");
+                            DocumentReference docRefB = donators.document(arrayList.get(position).UID);
+                            //docRefB.update("flag", "Accepted");
+                            //Map<String, Object> user = new HashMap<>();
+                            double rate=0;
+                            if (popupRate.radioButton1.isChecked())
+                                rate=1;
+                            if (popupRate.radioButton2.isChecked())
+                                rate=2;
+                            if (popupRate.radioButton3.isChecked())
+                                rate=3;
+                            if (popupRate.radioButton4.isChecked())
+                                rate=4;
+                            if (popupRate.radioButton5.isChecked())
+                                rate=5;
+
+                            Rating=(Rating+rate)/2;
+                            docRefB.update("Rate", Rating);
+                            //user.put("State",state);
+                            //docRefB.update(user);
+
+                            //////////////////////////////////////////////////////
+
+
+
+                            context.startActivity(new Intent(context, benReqView.class));
+                            Toast.makeText(getContext(),"لقد تم تقييم المتبرع بنجاح",Toast.LENGTH_SHORT).show();
+
+                            return;
+                        }else{
+                            //Toast.makeText(MyListAdapter.this, " الرجاء ادخال الحالة ", Toast.LENGTH_LONG).show();
+                            popupRate.settext.setText("يرجى إدخال التقييم");
+                        }
+                        //////////////////
+                    }
+                });
+                ///end approve///
+
+
+
+
+            }
+        });//End Big accept button
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
         Log.d(TAG, "inter AdaptorBenReq BN: "+arrayList.get(position).BN);

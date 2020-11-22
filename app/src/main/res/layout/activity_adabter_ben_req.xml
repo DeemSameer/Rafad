@@ -34,7 +34,7 @@
 
 
             <Button
-                android:id="@+id/RateDon"
+                android:id="@+id/RateDonButton"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
                 android:background="#ffff"
