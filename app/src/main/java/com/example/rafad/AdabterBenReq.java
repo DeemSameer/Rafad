@@ -39,7 +39,7 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
     FirebaseAuth fAuth;
     String st;
     Button RateDon;
-    double Rating=0;
+    double Rating;
 
     public AdabterBenReq(@NonNull Activity context, @NonNull List<postinfo> arrayList) {
         super(context, R.layout.activity_adapter_d, arrayList);
@@ -133,7 +133,13 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+        if(arrayList.get(position).isRe.equals("yes")) {
+            //btnDone.setVisibility(View.GONE);
+            RateDon.setVisibility(View.VISIBLE);
+        } else {
+            RateDon.setVisibility(View.INVISIBLE);
+            // btnDone.setVisibility(View.VISIBLE);
+        }
 
         RateDon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,68 +148,82 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
                 final popUpRate popupRate = new popUpRate();
                 popupRate.showPopupWindow(view);
                 ///Approve Rate///
-                popupRate.AcceptRate.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        ///////////////////
-                        if (popupRate.radioButton1.isChecked()|| popupRate.radioButton2.isChecked()||popupRate.radioButton3.isChecked()|| popupRate.radioButton4.isChecked()|| popupRate.radioButton5.isChecked()) {
-                            FirebaseFirestore db = FirebaseFirestore.getInstance();
-                            CollectionReference donators = db.collection("donators");
-                            DocumentReference docRefB = donators.document(arrayList.get(position).UID);
-                            //docRefB.update("flag", "Accepted");
-                            //Map<String, Object> user = new HashMap<>();
-                            double rate=0;
-                            if (popupRate.radioButton1.isChecked())
-                                rate=1;
-                            if (popupRate.radioButton2.isChecked())
-                                rate=2;
-                            if (popupRate.radioButton3.isChecked())
-                                rate=3;
-                            if (popupRate.radioButton4.isChecked())
-                                rate=4;
-                            if (popupRate.radioButton5.isChecked())
-                                rate=5;
+               /* if (!arrayList.get(position).isRe.equals("yes")){
+                    RateDon.setVisibility(View.GONE);
+                }*/
+                //RateDon.setVisibility(!arrayList.get(position).isRe.equals("yes")? View.VISIBLE : View.GONE );
 
-                            Rating=(Rating+rate)/2;
-                            docRefB.update("Rate", Rating);
-                            //user.put("State",state);
-                            //docRefB.update(user);
+                    popupRate.AcceptRate.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ///////////////////
+                            if (popupRate.radioButton1.isChecked() || popupRate.radioButton2.isChecked() || popupRate.radioButton3.isChecked() || popupRate.radioButton4.isChecked() || popupRate.radioButton5.isChecked()) {
+                                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                CollectionReference donators = db.collection("donators");
+                                DocumentReference docRefB = donators.document(arrayList.get(position).UID);
+                                //docRefB.update("flag", "Accepted");
+                                //Map<String, Object> user = new HashMap<>();
+                                double rate = 0;
+                                if (popupRate.radioButton1.isChecked())
+                                    rate = 1;
+                                if (popupRate.radioButton2.isChecked())
+                                    rate = 2;
+                                if (popupRate.radioButton3.isChecked())
+                                    rate = 3;
+                                if (popupRate.radioButton4.isChecked())
+                                    rate = 4;
+                                if (popupRate.radioButton5.isChecked())
+                                    rate = 5;
 
-                            //////////////////////////////////////////////////////
+                                Rating = (Rating + rate) / 2;
+                                docRefB.update("Rate", Rating);
+                                //user.put("State",state);
+                                //docRefB.update(user);
+
+                                //////////////////////////////////////////////////////
 
 
+                                context.startActivity(new Intent(context, benReqView.class));
+                                Toast.makeText(getContext(), "لقد تم تقييم المتبرع بنجاح", Toast.LENGTH_SHORT).show();
 
-                            context.startActivity(new Intent(context, benReqView.class));
-                            Toast.makeText(getContext(),"لقد تم تقييم المتبرع بنجاح",Toast.LENGTH_SHORT).show();
-
-                            return;
-                        }else{
-                            //Toast.makeText(MyListAdapter.this, " الرجاء ادخال الحالة ", Toast.LENGTH_LONG).show();
-                            popupRate.settext.setText("يرجى إدخال التقييم");
+                                //return;
+                            } else {
+                                //Toast.makeText(MyListAdapter.this, " الرجاء ادخال الحالة ", Toast.LENGTH_LONG).show();
+                                popupRate.settext.setText("يرجى إدخال التقييم");
+                            }
+                            //////////////////
                         }
-                        //////////////////
-                    }
-                });
+                    });
                 ///end approve///
 
 
-
+          /*  }//end if (arrayList.get(position).isRe.equals("yes")) {
+                else {
+                    RateDon.setVisibility(View.GONE);
+                }*/
 
             }
         });//End Big accept button
 
 
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        Log.d(TAG, "inter AdaptorBenReq BN: "+arrayList.get(position).BN);
+        Log.d(TAG, "inter AdaptorBenReq BN: "+arrayList.get(position).UID);
         Log.d(TAG, "inter AdaptorBenReq st: "+st);
         Log.d(TAG, "inter AdaptorBenReq tit: "+arrayList.get(position).tit);
         titText.setText("اسم المتبرع: "+arrayList.get(position).BN);
         titText2.setText(" حالة الطلب: "+st);
         tit.setText("عنوان الطلب: "+arrayList.get(position).tit);
-        Log.d(TAG, "inter AdaptorBenReq Rate: "+Rating);
+        fStore.collection("donators").document(arrayList.get(position).UID).get().getResult().getDouble("Rate");
+        Log.d(TAG, "inter AdaptorBenReq Rate: "+fStore.collection("donators").document(arrayList.get(position).UID).get().getResult().getDouble("Rate"));
         //for rate
-        Rate.setText("تقييم  المتبرع: "+ Rating);
+        int i;
+        Rating=Rating+0.0005;
+        i= (int) (Rating*1000);
+        Double b = Double.valueOf(i/1000);
+        String s = b.toString();
+        Rate.setText("تقييم  المتبرع: "+ s);
 
 
         return rowView;
