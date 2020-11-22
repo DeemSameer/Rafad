@@ -45,7 +45,7 @@
                     android:layout_marginRight="54dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="TextView"
-                    android:textColor="#616668" />
+                    android:textColor="@color/base" />
 
                 <TextView
                     android:id="@+id/benReqTit"
@@ -54,12 +54,12 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="14dp"
                     android:layout_marginEnd="25dp"
                     android:layout_marginRight="25dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="TextView"
-                    android:textColor="#616668" />
+                    android:textColor="@color/base" />
 
                 <ImageView
                     android:id="@+id/imageView10"
@@ -83,7 +83,7 @@
                     android:layout_marginRight="57dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="TextView"
-                    android:textColor="#616668" />
+                    android:textColor="@color/base" />
             </RelativeLayout>
 
 

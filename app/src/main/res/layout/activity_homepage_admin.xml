@@ -6,15 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".homepageAdmin">
 
+
     <Button
         android:id="@+id/but"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="25dp"
         android:layout_height="22dp"
-        android:layout_marginStart="8dp"
 
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/leftarrow"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/purparrow"
         app:layout_constraintBottom_toTopOf="@+id/signupDon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.021"
@@ -22,19 +23,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.073" />
 
-
     <TextView
         android:id="@+id/homepagetext2"
-        android:layout_width="417dp"
-        android:layout_height="23dp"
-        android:background="#66397A96"
+        android:layout_width="407dp"
+        android:layout_height="27dp"
         android:gravity="center"
         android:textColor="#4C4D4E"
         android:textSize="18dp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@id/list"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.088"
         tools:ignore="HardcodedText" />
@@ -43,21 +41,22 @@
         android:id="@+id/list"
         android:layout_width="405dp"
         android:layout_height="651dp"
-        android:background="#66397A96"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homepagetext2">
+        app:layout_constraintTop_toBottomOf="@+id/homepagetext2"
+        android:divider="#00000000">
 
 
     </ListView>
 
     <TextView
         android:id="@+id/textView23"
-        android:layout_width="183dp"
-        android:layout_height="27dp"
+        android:layout_width="216dp"
+        android:layout_height="28dp"
         android:fontFamily="@font/tajawalmedium2"
-        android:text="حسابات المستفيدين المعلقة:"
+        android:text="حسابات المستفيدين المعلقة"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

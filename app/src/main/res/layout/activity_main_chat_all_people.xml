@@ -58,8 +58,8 @@
     <Button
         android:id="@+id/bHome2"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
         android:layout_marginStart="36dp"
         android:background="@drawable/homep"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,8 +72,8 @@
     <Button
         android:id="@+id/button14"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:background="@drawable/chato"
         android:textColorHighlight="@color/buttonBG"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -86,8 +86,8 @@
     <Button
         android:id="@+id/FromChatToProfileButton"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
         android:layout_marginStart="300dp"
         android:layout_marginTop="600dp"
         android:layout_marginEnd="32dp"
@@ -105,8 +105,8 @@
     <Button
         android:id="@+id/button16"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="28dp"
         android:background="@drawable/requestp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,12 +118,11 @@
     <Button
         android:id="@+id/chatPostItem"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
         android:background="@drawable/addp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.981" />

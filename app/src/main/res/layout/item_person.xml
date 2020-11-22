@@ -16,7 +16,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="76dp">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/Username"
@@ -25,9 +25,10 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginRight="100dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="101dp"
+            android:layout_marginRight="101dp"
+            android:fontFamily="@font/tajawalmedium2"
             android:textAppearance="@style/Base.TextAppearance.AppCompat"
             android:textColor="#4D4D4D"
             android:textSize="16sp"
@@ -45,32 +46,33 @@
             android:layout_marginRight="101dp"
             android:layout_marginBottom="12dp"
             android:ellipsize="end"
+            android:fontFamily="@font/tajawalmedium2"
             android:maxLines="1"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             tools:text="Reso Coder" />
 
         <TextView
             android:id="@+id/timetext"
-            android:layout_width="82dp"
+            android:layout_width="107dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="266dp"
-            android:layout_marginRight="296dp"
-            android:layout_marginBottom="17dp"
+            android:layout_marginEnd="280dp"
+            android:layout_marginRight="280dp"
+            android:layout_marginBottom="44dp"
             android:text="TextView" />
 
         <TextView
             android:id="@+id/datetext"
-            android:layout_width="wrap_content"
+            android:layout_width="107dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="274dp"
-            android:layout_marginRight="334dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="279dp"
+            android:layout_marginRight="279dp"
             android:text="TextView" />
 
         <androidx.cardview.widget.CardView
@@ -100,14 +102,16 @@
 
             <ImageView
                 android:id="@+id/imageView9"
-                android:layout_width="wrap_content"
-                android:layout_height="76dp"
+                android:layout_width="85dp"
+                android:layout_height="80dp"
                 android:layout_marginStart="-4dp"
                 android:layout_marginLeft="00dp"
                 android:layout_marginTop="-2dp"
                 android:contentDescription="TODO"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/userp" />
+
+
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -115,15 +119,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="25dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="43dp"
-            android:layout_toStartOf="@+id/Username"
+            android:layout_marginRight="83dp"
+            android:layout_marginBottom="4dp"
             android:layout_toLeftOf="@+id/Username"
             android:background="@drawable/white_circle_drawable"
             android:gravity="center"
-            android:text="TextView"
+            android:text=""
             android:textColor="@color/white" />
+
 
     </RelativeLayout>
 
