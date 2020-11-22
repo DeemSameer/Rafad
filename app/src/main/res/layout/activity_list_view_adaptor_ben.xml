@@ -72,10 +72,13 @@
                 android:id="@+id/button11"
                 android:layout_width="70dp"
                 android:layout_height="15dp"
+                android:layout_marginRight="100dp"
                 android:layout_weight="1"
                 android:background="@drawable/new_button"
                 android:fontFamily="@font/tajawalmedium2"
                 android:gravity="center"
+                android:layout_marginStart="100dp"
+
                 android:text="طلب"
                 android:textColor="#CC397A96" />
 

@@ -27,27 +27,25 @@
         <activity
             android:name=".HistoryItemAdapter"
             tools:ignore="Instantiatable" />
+
         <activity android:name=".changePasswordDon" />
         <activity android:name=".benReqView" />
-        <activity android:name=".don_3view" />
+        <activity android:name=".don_3view"/>
         <activity android:name=".homePageAdminBase" />
         <activity android:name=".adminMainProfile" />
         <activity android:name=".homepageDonator" />
         <activity android:name=".homepageAdmin" />
         <activity android:name=".ChatJava.MainChatAllPeople" />
-        <activity
-            android:name=".ChatJava.Chat"
+        <activity android:name=".ChatJava.Chat"
             tools:ignore="DuplicateActivity,Instantiatable" />
         <activity android:name=".ChatJava.MessageActivity" />
-        <activity
-            android:name=".ChatJava.Message"
+        <activity android:name=".ChatJava.Message"
             tools:ignore="Instantiatable" />
-        <activity
-            android:name=".ChatJava.MessageAdapter"
+        <activity android:name=".ChatJava.MessageAdapter"
             tools:ignore="Instantiatable" />
-        <activity
-            android:name=".ChatJava.PeopleAdapter"
+        <activity android:name=".ChatJava.PeopleAdapter"
             tools:ignore="Instantiatable" />
+
         <activity android:name=".BenMainProfile" />
         <activity android:name=".donProfile" />
         <activity android:name=".homePage" />
@@ -60,12 +58,19 @@
         <activity android:name=".mainProfile" />
         <activity android:name=".signUpBase" />
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+
+
+
+
 
         <meta-data
             android:name="preloaded_fonts"

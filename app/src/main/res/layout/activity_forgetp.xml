@@ -5,31 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".forgetp"
-    android:background="@drawable/newreset">
+    android:background="@drawable/loglight">
 
     <Button
         android:id="@+id/but"
-        android:layout_width="25dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="8dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="28dp"
+        android:layout_height="25dp"
 
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/leftarrow"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/purparrow"
         app:layout_constraintBottom_toTopOf="@+id/signupDon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.073" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
-        android:layout_width="210dp"
-        android:layout_height="45dp"
+        android:layout_width="273dp"
+        android:layout_height="46dp"
         android:ems="10"
         android:fontFamily="@font/tajawalmedium2"
-        android:hint="أدخل بريدك الألكتروني"
         android:inputType="textPersonName"
         android:textColor="#717171"
         android:textSize="15sp"
@@ -37,23 +36,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.879"
+        app:layout_constraintVertical_bias="0.806"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="105dp"
-        android:layout_height="50dp"
-        android:background="#397A96"
+        android:layout_width="148dp"
+        android:layout_height="46dp"
+        android:background="@drawable/orange_rounded_button"
         android:fontFamily="@font/tajawalmedium2"
         android:text="إعادة تعيين"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.636"
+        app:layout_constraintVertical_bias="0.685"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="219dp"
+        android:layout_height="35dp"
+        android:fontFamily="@font/tajawalmedium2"
+        android:text="أدخل بريدك الإلكتروني"
+        android:textColor="@color/base"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.64"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.439" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
