@@ -136,7 +136,7 @@ public class signupDon extends AppCompatActivity {
                                     user.put("type",Type);
                                     user.put("email",email);
                                     user.put("Rate",0.0);
-                                    user.put("IsRated","no");
+
                                     
 
                                    // user.put("items",Arrays.asList("array for items"));

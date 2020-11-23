@@ -27,9 +27,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AdabterBenReq extends ArrayAdapter<postinfo> {
 
@@ -71,8 +69,6 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
         TextView Rate = (TextView) rowView.findViewById(R.id.rate);
 
         final ImageView HisImage=(ImageView)rowView.findViewById(R.id.imageView10);
-
-
 
 
 
@@ -144,11 +140,11 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
         }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        CollectionReference items = db.collection("item");
-        DocumentReference docRefItem = items.document(arrayList.get(position).itemID);
+        FirebaseFirestore db1 = FirebaseFirestore.getInstance();
+        CollectionReference items1 = db1.collection("item");
+        DocumentReference docRefItem1 = items1.document(arrayList.get(position).itemID);
 
-        docRefB.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        docRefItem1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -156,6 +152,7 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
                     if (document.exists()) {
                         Log.d(TAG, "inter AdaptorBenReq doc DocumentSnapshot data: " + document.getData());
                         isRated= (String) document.get("IsRated");
+                        Log.d(TAG, "isRated in AdabterBenReq "+isRated);
                         if(isRated.equals("yes"))
                             RateDon.setVisibility(View.INVISIBLE);
                         //get("Rate");
@@ -168,7 +165,9 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
             }
         });
 
+        Log.d(TAG, "isRated in AdabterBenReq out"+isRated);
 
+        Log.d(TAG, "No such document"+isRated);
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -207,10 +206,11 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
                                 CollectionReference items = db.collection("item");
                                 DocumentReference docRefItem = items.document(arrayList.get(position).itemID);
                                 Log.d(TAG, "inter AdaptorBenReqr itemID: "+arrayList.get(position).itemID);
-                                Map<String, Object> user = new HashMap<>();
+                                /*Map<String, Object> user = new HashMap<>();
                                 user.put("IsRated","yes");
-                                docRefItem.update(user);
-                                //docRefItem.update("IsRated","yes");
+                                docRefItem.update(user);*/
+                                docRefItem.update("IsRated","yes");
+                                RateDon.setVisibility(View.INVISIBLE);
 
 
 
