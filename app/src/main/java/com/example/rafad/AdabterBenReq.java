@@ -27,7 +27,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AdabterBenReq extends ArrayAdapter<postinfo> {
 
@@ -37,7 +39,7 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
     StorageReference storageRef;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
-    String st;
+    String st, isRated;
     Button RateDon;
     double Rating;
 
@@ -140,6 +142,35 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
             RateDon.setVisibility(View.INVISIBLE);
             // btnDone.setVisibility(View.VISIBLE);
         }
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference items = db.collection("item");
+        DocumentReference docRefItem = items.document(arrayList.get(position).itemID);
+
+        docRefB.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "inter AdaptorBenReq doc DocumentSnapshot data: " + document.getData());
+                        isRated= (String) document.get("IsRated");
+                        if(isRated.equals("yes"))
+                            RateDon.setVisibility(View.INVISIBLE);
+                        //get("Rate");
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
         RateDon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,10 +179,6 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
                 final popUpRate popupRate = new popUpRate();
                 popupRate.showPopupWindow(view);
                 ///Approve Rate///
-               /* if (!arrayList.get(position).isRe.equals("yes")){
-                    RateDon.setVisibility(View.GONE);
-                }*/
-                //RateDon.setVisibility(!arrayList.get(position).isRe.equals("yes")? View.VISIBLE : View.GONE );
 
                     popupRate.AcceptRate.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -161,8 +188,7 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                                 CollectionReference donators = db.collection("donators");
                                 DocumentReference docRefB = donators.document(arrayList.get(position).UID);
-                                //docRefB.update("flag", "Accepted");
-                                //Map<String, Object> user = new HashMap<>();
+
                                 double rate = 0;
                                 if (popupRate.radioButton1.isChecked())
                                     rate = 1;
@@ -177,8 +203,17 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
 
                                 Rating = (Rating + rate) / 2;
                                 docRefB.update("Rate", Rating);
-                                //user.put("State",state);
-                                //docRefB.update(user);
+
+                                CollectionReference items = db.collection("item");
+                                DocumentReference docRefItem = items.document(arrayList.get(position).itemID);
+                                Log.d(TAG, "inter AdaptorBenReqr itemID: "+arrayList.get(position).itemID);
+                                Map<String, Object> user = new HashMap<>();
+                                user.put("IsRated","yes");
+                                docRefItem.update(user);
+                                //docRefItem.update("IsRated","yes");
+
+
+
 
                                 //////////////////////////////////////////////////////
 
@@ -215,15 +250,16 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
         titText.setText("اسم المتبرع: "+arrayList.get(position).BN);
         titText2.setText(" حالة الطلب: "+st);
         tit.setText("عنوان الطلب: "+arrayList.get(position).tit);
-        fStore.collection("donators").document(arrayList.get(position).UID).get().getResult().getDouble("Rate");
-        Log.d(TAG, "inter AdaptorBenReq Rate: "+fStore.collection("donators").document(arrayList.get(position).UID).get().getResult().getDouble("Rate"));
+        //fStore.collection("donators").document(arrayList.get(position).UID).get().getResult().getDouble("Rate");
+//        Log.d(TAG, "inter AdaptorBenReq Rate: "+fStore.collection("donators").document(arrayList.get(position).UID).get().getResult().getDouble("Rate"));
         //for rate
         int i;
+        Log.d(TAG, "inter AdaptorBenReqr Rating: "+Rating);
         Rating=Rating+0.0005;
-        i= (int) (Rating*1000);
-        Double b = Double.valueOf(i/1000);
-        String s = b.toString();
-        Rate.setText("تقييم  المتبرع: "+ s);
+        Log.d(TAG, "inter AdaptorBenReqr Rating1: "+Rating);
+        Log.d(TAG, "inter AdaptorBenReqr Rating3: "+String.format("%.2f", Rating));
+        Log.d(TAG, "inter AdaptorBenReqr Rating4: "+String.format("%.2f", Rating));
+        Rate.setText("تقييم  المتبرع: "+ String.format("%.2f", Rating));
 
 
         return rowView;
