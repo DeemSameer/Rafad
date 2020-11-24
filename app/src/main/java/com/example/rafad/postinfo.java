@@ -14,6 +14,8 @@ public class postinfo {
     String date;
     String Demail;
     String Bemail;
+    String IsRated;
+    double rate;
 
     public postinfo(String itemID1, String UID1, String imageUri1 , String des1 , String cat1, String tit1,String isRe ,String date1,String dummy,String Demail){
         itemID = itemID1;
@@ -33,6 +35,20 @@ public class postinfo {
         this.tit=tit;
 
     }
+    public postinfo(String itemID1, String UID1, String imageUri1,String tit,String BN,String BS,String isRe,String BID,String IsRated1,double rate1){
+        itemID = itemID1;
+        UID=UID1;
+        imageID = imageUri1;
+        this.tit=tit;
+        this.BN=BN;
+        this.BS=BS;
+        this.isRe=isRe;
+        this.BID=BID;
+        IsRated=IsRated1;
+        rate=rate1;
+
+    }
+
     public postinfo(String itemID1, String UID1, String imageUri1,String tit,String BN,String BS,String isRe,String BID){
         itemID = itemID1;
         UID=UID1;
