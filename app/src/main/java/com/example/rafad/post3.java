@@ -137,6 +137,7 @@ public class post3 extends AppCompatActivity {
                 if ((rg5.isChecked() )){
                     cat ="ادوات";
                 }
+                //
                 if (imageUri != null)
                     uploadImageToFirebase(imageUri);
                 else
