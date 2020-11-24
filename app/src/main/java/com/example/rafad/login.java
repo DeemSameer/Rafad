@@ -176,7 +176,12 @@ public class login extends AppCompatActivity {
                                                     fAuth.getCurrentUser().delete();
                                                     Log.d(TAG, "DELETED ");
                                                     Toast.makeText(login.this, " لم يتم قبول الحساب يمكنك محاولة التسجيل مرة اخرى ", Toast.LENGTH_LONG).show();
-                                                    finish();
+                                                    return;
+                                                }
+                                                else if (((String)document.get("flag")).equals("Blocked")){
+                                                    Log.d(TAG, "DELETED ");
+                                                    Toast.makeText(login.this, " لقد تم حظر الحساب بسبب البلاغات المتكررة عليه ", Toast.LENGTH_LONG).show();
+                                                    return;
                                                 }
                                                 else if(((String)document.get("flag")).equals("Accepted")){
                                                     Toast.makeText(login.this,"تم تسجيل الدخول بنجاح",Toast.LENGTH_SHORT).show();

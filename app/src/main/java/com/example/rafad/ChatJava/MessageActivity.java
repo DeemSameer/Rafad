@@ -1,12 +1,15 @@
 package com.example.rafad.ChatJava;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -18,13 +21,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.rafad.R;
+import com.example.rafad.homepageAdmin;
+import com.example.rafad.login;
+import com.example.rafad.report.pop_up_reported;
+import com.example.rafad.report.pop_up_typeOfReport;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.core.Repo;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.onesignal.OneSignal;
@@ -38,6 +53,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -53,10 +69,13 @@ public class MessageActivity extends AppCompatActivity {
     static String receivername;
     StorageReference storageReference;
     static String senderMail;
+    FirebaseFirestore fStore;
 
     List<Chat> arrayList=new ArrayList<>();
     MessageAdapter adapter;
     ListView recyclerViewChat;
+    Button report;
+
 
 
 
@@ -91,6 +110,139 @@ public class MessageActivity extends AppCompatActivity {
 
             }
         });
+
+        //make the report appear just for the donator
+        fStore= FirebaseFirestore.getInstance();
+        report = (Button) findViewById(R.id.report);
+        report.setVisibility(View.VISIBLE);
+
+        if (login.getType() != null)
+            if (!login.getType().equals("beneficiaries"))
+                report.setVisibility(View.GONE);
+
+            //Add the functionality to the button
+            report.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View view) {
+                    Log.d(TAG, "report clicked  ");
+                    //Check if he/she has been reported from the same person?
+                    FirebaseFirestore db=FirebaseFirestore.getInstance();
+                    CollectionReference beneficiaries = db.collection("Reports");
+                    final DocumentReference Reports = beneficiaries.document(receiverUID);
+                    Reports.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                Log.d(TAG, "report clicked  task");
+
+
+                                final DocumentSnapshot document = task.getResult();
+                                if (document.exists()) {
+                                    Log.d(TAG, "report clicked doc ");
+
+                                    if (document.get("count")!=null){
+                                    final int count = (Integer.parseInt(document.get("count").toString())) ;
+                                    boolean reported=false;
+
+                                        for (int i=1;i<=count;i++)
+                                            if (document.get("id"+i).equals(fuser)) {//he/she already report to the admin
+                                               //Show message you already report
+                                                pop_up_reported poped=new pop_up_reported();
+                                                poped.showPopupWindow(view);
+                                                //click delete my report
+                                                final int finalI = i;
+                                                poped.Accept.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        DocumentReference docRef= fStore.collection("Reports").document(receiverUID);
+                                                        final Map<String, Object> user = new HashMap<>();
+                                                        user.put("count",count-1);
+                                                        if (count ==1)
+                                                            docRef.delete();
+                                                        else if (finalI!=count){//he/she not the last one
+                                                            user.put("id" + finalI, document.get("id" + count));//if he the only one
+                                                            user.put("id" + count, FieldValue.delete());
+                                                            docRef.update(user);
+
+                                                        }
+                                                        else {//the last take the first
+                                                            //do nothing will work as expected
+                                                            user.put("id" + finalI, FieldValue.delete());
+                                                            docRef.update(user);
+                                                        }
+                                                        startActivity(new Intent(MessageActivity.this, MessageActivity.class));
+
+                                                    }
+                                                });
+
+                                                //end clicking
+                                               reported=true;
+                                            }
+
+                                    if (!reported) {//hasn't been reported
+                                        //Show message and let him write 200 character about why he/she want to report to the admin
+                                        pop_up_typeOfReport pop=new pop_up_typeOfReport();
+                                        pop.showPopupWindow(view);
+                                        Log.d(TAG, "report clicked  !reported");
+
+                                        pop.Accept.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                final Map<String, Object> user = new HashMap<>();
+                                                user.put("count",count+1);
+                                                user.put("id"+(count+1),fuser);
+                                                DocumentReference docRef= fStore.collection("Reports").document(receiverUID);
+                                                docRef.update(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+                                                        Log.d(TAG,"report clicked User id created for"+user);
+                                                    }
+                                                });
+                                                startActivity(new Intent(MessageActivity.this, MessageActivity.class));
+
+                                            }
+                                        });
+                                    }
+                                    }
+
+                                }
+                                else {//no document show pop up message FIRST
+                                    Log.d(TAG, "report clicked else ");
+
+
+                                    pop_up_typeOfReport pop=new pop_up_typeOfReport();
+                                    pop.showPopupWindow(view);
+                                    Log.d(TAG, "report clicked  !reported");
+
+                                    pop.Accept.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+
+                                            final Map<String, Object> user = new HashMap<>();
+                                            user.put("count",1);
+                                            user.put("id"+1,fuser);
+                                            DocumentReference docRef= fStore.collection("Reports").document(receiverUID);
+                                            docRef.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    Log.d(TAG,"report clicked User id created for"+user);
+                                                }
+                                            });
+                                            startActivity(new Intent(MessageActivity.this, MessageActivity.class));
+
+                                        }
+
+                                    });
+                                }
+                            }
+                        }
+                    });
+                    //end checking
+
+                }
+            });
+
+        //end hidden
 
 
 
@@ -222,11 +374,10 @@ public class MessageActivity extends AppCompatActivity {
         hashMap2.put("tmsg", new Message(message,date,time));
         reference2.child(receiver).child("People").child(sender).child("Messages").push().setValue(hashMap2);
         //*********//
+         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        //0
-        DatabaseReference refmsg0 = database.getReference(receiverUID+"/People/"+fuser+"/Messages/content");
+         //0
+         DatabaseReference refmsg0 = database.getReference(receiverUID+"/People/"+fuser+"/Messages/content");
         refmsg0.setValue(message);
 
         DatabaseReference reft0 = database.getReference(receiverUID+"/People/"+fuser+"/Messages/time");
@@ -245,8 +396,6 @@ public class MessageActivity extends AppCompatActivity {
 
         DatabaseReference refd1 = database.getReference(fuser+"/People/"+receiverUID+"/Messages/date");
         refd1.setValue(date);
-
-
 
         //***//
         sendNotification(message,senderMail);//Add the name of the one who send it

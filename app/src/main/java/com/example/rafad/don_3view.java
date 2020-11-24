@@ -77,6 +77,7 @@ public class don_3view extends AppCompatActivity {
                 done.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
                 req.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                arrayItem=null;
                 arrayItem=new ArrayList<>();
                 Query p =  fStore.collection("item")
                         .whereEqualTo("User id",FirebaseAuth.getInstance().getCurrentUser().getUid())

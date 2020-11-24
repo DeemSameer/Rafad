@@ -68,6 +68,7 @@ public class post3 extends AppCompatActivity {
     RadioButton rg2;
     RadioButton rg3;
     RadioButton rg4;
+    RadioButton rg5;
     String des;
     String tit;
     TextView category;
@@ -128,10 +129,15 @@ public class post3 extends AppCompatActivity {
                 if ((rg3.isChecked() )){
                     cat ="أثاث";
                 }
-                rg4 = (RadioButton) findViewById(R.id.radio_other);
+                rg4 = (RadioButton) findViewById(R.id.radio_acc);
                 if ((rg4.isChecked() )){
-                    cat ="غير ذلك";
+                    cat ="اكسسوارات";
                 }
+                rg5 = (RadioButton) findViewById(R.id.radiotools);
+                if ((rg5.isChecked() )){
+                    cat ="ادوات";
+                }
+                //
                 if (imageUri != null)
                     uploadImageToFirebase(imageUri);
                 else
@@ -207,6 +213,7 @@ public class post3 extends AppCompatActivity {
                                 post.put("isRequested", "no");
                                 post.put("donN", donN );
                                 post.put("donE", LoggedIn_User_Email);
+                                post.put("IsRated","no");
 
                                 //assign itemID to the person how post it
                               /*  postRef=fStore.collection("item").document(itemID).getPath();
