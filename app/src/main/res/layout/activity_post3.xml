@@ -6,24 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".post3">
 
+
     <ImageView
         android:id="@+id/postImage"
-        android:layout_width="219dp"
-        android:layout_height="161dp"
+        android:layout_width="181dp"
+        android:layout_height="186dp"
         android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
         android:layout_marginBottom="136dp"
         android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.239"
-        app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
+        app:layout_constraintVertical_bias="0.342"
+        app:srcCompat="@drawable/image"
         tools:ignore="VectorDrawableCompat" />
-
 
     <Button
         android:id="@+id/button3"
@@ -32,7 +31,7 @@
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="نشر"
-        android:textColor="#397A96"
+        android:textColor="#523B60"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,16 +47,17 @@
         android:layout_height="38dp"
         android:ems="20"
         android:hint="العنوان"
+        android:fontFamily="@font/tajawalmedium2"
         android:inputType="textPersonName"
         android:textColor="#397A96"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.858"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.444" />
+        app:layout_constraintVertical_bias="0.202" />
 
     <Button
         android:id="@+id/chosepicture"
@@ -66,17 +66,17 @@
         android:background="@drawable/default_outlined_button_style"
         android:fontFamily="@font/tajawalmedium2"
         android:text="اختر صورة"
-        android:textColor="#397A96"
-        android:textColorHighlight="#397A96"
-        android:textColorLink="#397A96"
+        android:textColor="#523B60"
+        android:textColorHighlight="#523B60"
+        android:textColorLink="#523B60"
         android:textSize="11sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35000002" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <Button
         android:id="@+id/button4"
@@ -86,7 +86,7 @@
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="إلغاء"
-        android:textColor="#397A96"
+        android:textColor="#523B60"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/button3"
@@ -100,41 +100,42 @@
         android:layout_height="22dp"
         android:fontFamily="@font/tajawalmedium2"
         android:text="الفئة : "
-        android:textColor="#397A96"
+        android:textColor="#523B60"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintHorizontal_bias="0.892"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.658" />
+        app:layout_constraintVertical_bias="0.509" />
 
     <EditText
         android:id="@+id/descrption"
-        android:layout_width="317dp"
-        android:layout_height="95dp"
+        android:layout_width="164dp"
+        android:layout_height="140dp"
         android:ems="10"
         android:gravity="start|top"
+        android:fontFamily="@font/tajawalmedium2"
         android:hint="الوصف : "
         android:inputType="textMultiLine"
         android:textColor="#397A96"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.33"
+        app:layout_constraintHorizontal_bias="0.858"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.566" />
+        app:layout_constraintVertical_bias="0.314" />
 
     <RadioGroup
         android:id="@+id/cato"
-        android:layout_width="96dp"
-        android:layout_height="146dp"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.841"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.873">
+        app:layout_constraintVertical_bias="0.677">
 
 
         <RadioButton
@@ -178,20 +179,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.556" />
-
         <RadioButton
-            android:id="@+id/radio_other"
+            android:id="@+id/radio_acc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/tajawalmedium2"
             android:layoutDirection="rtl"
-            android:text="غير ذلك"
+            android:text="اكسسوارات"
             app:layout_constraintBottom_toBottomOf="@+id/textViewcat"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.581"
+            app:layout_constraintHorizontal_bias="0.571"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.795" />
+            app:layout_constraintVertical_bias="0.556" />
+        <RadioButton
+            android:id="@+id/radiotools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/tajawalmedium2"
+            android:layoutDirection="rtl"
+            android:text="ادوات"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewcat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.556" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
