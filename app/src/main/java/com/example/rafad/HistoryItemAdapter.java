@@ -57,8 +57,8 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
         TextView desText = (TextView) rowView.findViewById(R.id.des);
         TextView titText = (TextView) rowView.findViewById(R.id.tit);
         final ImageView HisImage = (ImageView)rowView.findViewById(R.id.imageView10);
-        TextView catText = (TextView) rowView.findViewById(R.id.cat);
-        TextView date = (TextView) rowView.findViewById(R.id.date);
+        //TextView catText = (TextView) rowView.findViewById(R.id.cat);
+        //TextView date = (TextView) rowView.findViewById(R.id.date);
 
 
 
@@ -78,8 +78,8 @@ public class HistoryItemAdapter extends ArrayAdapter<postinfo> {
 
         desText.setText(arrayList.get(position).des);
         titText.setText(arrayList.get(position).tit);
-        catText.setText(arrayList.get(position).cat);
-        date.setText(arrayList.get(position).date);
+        //catText.setText(arrayList.get(position).cat);
+        //date.setText(arrayList.get(position).date);
         return rowView;
 
     }
