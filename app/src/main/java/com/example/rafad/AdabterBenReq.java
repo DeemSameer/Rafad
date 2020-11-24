@@ -37,7 +37,7 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
     StorageReference storageRef;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
-    String st, isRated;
+    String st;
     Button RateDon;
     double Rating;
 
@@ -141,48 +141,20 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        FirebaseFirestore db1 = FirebaseFirestore.getInstance();
-        CollectionReference items1 = db1.collection("item");
-        DocumentReference docRefItem1 = items1.document(arrayList.get(position).itemID);
 
-        docRefItem1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d(TAG, "inter AdaptorBenReq doc DocumentSnapshot data: " + document.getData());
-                        isRated= (String) document.get("IsRated");
-                        Log.d(TAG, "isRated in AdabterBenReq 156 "+isRated);
-                        Log.d(TAG, "isRated in AdabterBenReq 157 "+(String) document.get("Title"));
-
-
-
-
-                    } else {
-                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
-
-        Log.d(TAG, "isRated in AdabterBenReq out "+isRated);
+        Log.d(TAG, "inter AdaptorBenReq rate 173: "+arrayList.get(position).rate);
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
         RateDon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "RateDon in AdabterBenReq isRated 177 "+isRated);
-                Log.d(TAG, "RateDon in AdabterBenReq isRated 177id "+arrayList.get(position).itemID);
-
 
                 /// already rated
                 if (arrayList.get(position).IsRated.equals("yes")) {
                     final popUpRated popupRated = new popUpRated();
                     popupRated.showPopupWindow(view);
+                    Log.d(TAG, "inter AdaptorBenReq rate 188: "+arrayList.get(position).rate);
                     popupRated.AcceptRate.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -198,7 +170,6 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
                     final popUpRate popupRate = new popUpRate();
                     popupRate.showPopupWindow(view);
                     ///Approve Rate///
-                    Log.d(TAG, "isRated in AdabterBenReq 201 " + isRated);
                     popupRate.AcceptRate.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -226,12 +197,8 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
                                 CollectionReference items = db.collection("item");
                                 DocumentReference docRefItem = items.document(arrayList.get(position).itemID);
                                 Log.d(TAG, "inter AdaptorBenReqr itemID: " + arrayList.get(position).itemID);
-                                /*Map<String, Object> user = new HashMap<>();
-                                user.put("IsRated","yes");
-                                docRefItem.update(user);*/
                                 docRefItem.update("IsRated", "yes");
                                 //RateDon.setVisibility(View.INVISIBLE);
-                                Log.d(TAG, "isRated in AdabterBenReq 222" + isRated);
 
 
                                 //////////////////////////////////////////////////////
@@ -260,14 +227,11 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
 
         Log.d(TAG, "inter AdaptorBenReq BN: "+arrayList.get(position).UID);
         Log.d(TAG, "inter AdaptorBenReq st: "+st);
-        Log.d(TAG, "inter AdaptorBenReq tit: "+arrayList.get(position).tit);
+        Log.d(TAG, "inter AdaptorBenReq rate: "+arrayList.get(position).rate);
         titText.setText("اسم المتبرع: "+arrayList.get(position).BN);
         titText2.setText(" حالة الطلب: "+st);
         tit.setText("عنوان الطلب: "+arrayList.get(position).tit);
-        //fStore.collection("donators").document(arrayList.get(position).UID).get().getResult().getDouble("Rate");
-//        Log.d(TAG, "inter AdaptorBenReq Rate: "+fStore.collection("donators").document(arrayList.get(position).UID).get().getResult().getDouble("Rate"));
-        //for rate
-        int i;
+
         Log.d(TAG, "inter AdaptorBenReqr Rating: "+Rating);
         Rating=Rating+0.0005;
         Log.d(TAG, "inter AdaptorBenReqr Rating1: "+Rating);

@@ -39,6 +39,7 @@ public class benReqView extends AppCompatActivity {
     Button back;
     Button homebutton, toPro,button15;
     TextView empty;
+    double Rating;
     public static final String TAG = "TAG";
 
     @Override
