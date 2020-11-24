@@ -135,6 +135,7 @@ public class MessageActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Log.d(TAG, "report clicked  task");
 
+
                                 final DocumentSnapshot document = task.getResult();
                                 if (document.exists()) {
                                     Log.d(TAG, "report clicked doc ");
