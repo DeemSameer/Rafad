@@ -15,6 +15,9 @@ import com.example.rafad.ChatJava.MainChatAllPeople;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -58,7 +61,9 @@ public class benReqView extends AppCompatActivity {
 
 
 
-
+        final AdabterBenReq adapter = new AdabterBenReq(benReqView.this, arrayItem);
+        listView = (ListView) findViewById(R.id.benReqListView);
+        listView.setAdapter(adapter);
 
 
 
@@ -81,12 +86,39 @@ public class benReqView extends AppCompatActivity {
                                 isRe=(String) document1.get("isRequested");
                                 BenId=(String) document1.get("benID");
                                 Log.d(TAG, "isRe data request: " + isRe);
-
-
-
+                                
                                 Log.d(TAG, "donnN data after request: " + donN);
 
-                                arrayItem.add(new postinfo((String) document1.getId(), (String) document1.get("User id"), (String) document1.get("Image"),(String) document1.get("Title"), (String) document1.get("donN"), (String) document1.get("benS"),(String) document1.get("isRequested"), (String) document1.get("benID"),(String) document1.get("IsRated"),(double) 0));
+                                //////////////////////////////////////////////////////////////////////////////////
+
+                                CollectionReference donators = fStore.collection("donators");
+                                DocumentReference docRefB = donators.document(UID);
+
+                                docRefB.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                        if (task.isSuccessful()) {
+                                            DocumentSnapshot document = task.getResult();
+                                            if (document.exists()) {
+                                                Log.d(TAG, "inter AdaptorBenReq doc DocumentSnapshot data: " + document.getData());
+                                                Rating=document.getDouble("Rate");
+                                                arrayItem.add(new postinfo((String) document1.getId(), (String) document1.get("User id"), (String) document1.get("Image"),(String) document1.get("Title"), (String) document1.get("donN"), (String) document1.get("benS"),(String) document1.get("isRequested"), (String) document1.get("benID"),(String) document1.get("IsRated"),Rating));
+                                                adapter.notifyDataSetChanged();
+                                                Log.d(TAG, "Rate inside request => " + Rating);
+                                                Log.d(TAG, "SIZE item list inside request => " + arrayItem.size());
+                                            } else {
+                                                Log.d(TAG, "No such document");
+                                            }
+                                        } else {
+                                            Log.d(TAG, "get failed with ", task.getException());
+                                        }
+                                    }
+                                });
+
+                                /////////////////////////////////////////////////////////////////////////////////
+
+
+                                //arrayItem.add(new postinfo((String) document1.getId(), (String) document1.get("User id"), (String) document1.get("Image"),(String) document1.get("Title"), (String) document1.get("donN"), (String) document1.get("benS"),(String) document1.get("isRequested"), (String) document1.get("benID"),(String) document1.get("IsRated"),(double) 0));
 
 
 
@@ -105,9 +137,9 @@ public class benReqView extends AppCompatActivity {
                             else{
                                 empty.setText("");
                             }
-                            AdabterBenReq adapter = new AdabterBenReq(benReqView.this, arrayItem);
+                            /*AdabterBenReq adapter = new AdabterBenReq(benReqView.this, arrayItem);
                             listView = (ListView) findViewById(R.id.benReqListView);
-                            listView.setAdapter(adapter);
+                            listView.setAdapter(adapter);*/
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
