@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Block.blockBen"></activity>
         <activity android:name=".popUpRated"></activity>
         <activity android:name=".popUpRate" />
         <activity
@@ -28,6 +29,7 @@
         <activity
             android:name=".HistoryItemAdapter"
             tools:ignore="Instantiatable" />
+
         <activity android:name=".changePasswordDon" />
         <activity android:name=".benReqView" />
         <activity android:name=".don_3view" />
@@ -49,6 +51,7 @@
         <activity
             android:name=".ChatJava.PeopleAdapter"
             tools:ignore="Instantiatable" />
+
         <activity android:name=".BenMainProfile" />
         <activity android:name=".donProfile" />
         <activity android:name=".homePage" />
@@ -61,6 +64,7 @@
         <activity android:name=".mainProfile" />
         <activity android:name=".signUpBase" />
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
