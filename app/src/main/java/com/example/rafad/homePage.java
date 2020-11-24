@@ -54,9 +54,9 @@ public class homePage extends AppCompatActivity {
         profile= findViewById(R.id.profileb);
         toReq = findViewById(R.id.benHomeToReq);
         //////// for view list of items
-        listView=(ListView)findViewById(R.id.postedlist);
+        //listView=(ListView)findViewById(R.id.postedlist);
         //////// above is for view list of items
-
+///
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

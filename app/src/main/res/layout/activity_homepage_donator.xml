@@ -4,204 +4,320 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/homepage"
-    tools:context=".homepageDonator">
+    tools:context=".homepageDonator"
+    android:background="@drawable/rectangle">
 
     <ListView
+        android:background="@drawable/rectangle"
         android:id="@+id/postedlistDonaterHome"
-        android:layout_width="360dp"
-        android:layout_height="451dp"
+        android:layout_width="409dp"
+        android:layout_height="350dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.63" />
+        app:layout_constraintVertical_bias="0.734" />
 
-    <Button
-        android:id="@+id/bHome"
-        android:layout_width="37dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="600dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/ic_baseline_home_24"
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="414dp"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        tools:visibility="visible" />
+        app:srcCompat="@drawable/footer" />
 
     <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="22dp"
-        android:layout_height="20dp"
-        android:background="@drawable/logout"
-        android:textColor="#FFFFFF"
+        android:id="@+id/bHome"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="36dp"
+        android:background="@drawable/homeo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.958"
+        app:layout_constraintEnd_toEndOf="@+id/imageView8"
+        app:layout_constraintHorizontal_bias="0.017"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026" />
+        app:layout_constraintVertical_bias="0.985"/>
+
 
     <TextView
         android:id="@+id/ifempty2"
-        android:layout_width="94dp"
-        android:layout_height="23dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:text="@string/hp"
-        android:textSize="14sp"
+        android:fontFamily="@font/tajawalmedium2"
+        android:gravity="right"
+        android:text="الصفحة الرئيسية"
+
+        android:textColor="#523B60"
+        android:textSize="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintVertical_bias="0.064"
+        />
 
     <TextView
         android:id="@+id/homepagetext"
         android:layout_width="150dp"
         android:layout_height="23dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="31dp"
+        android:layout_marginTop="31dp"
+        android:fontFamily="@font/tajawalmedium2"
         android:text=""
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.178" />
+        app:layout_constraintVertical_bias="0.3" />
 
     <Button
         android:id="@+id/profileb"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginLeft="200dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="300dp"
         android:layout_marginTop="600dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/userr"
+        android:background="@drawable/pro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.857"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="@+id/imageView8"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.966" />
+        app:layout_constraintVertical_bias="0.932"
+        tools:visibility="visible" />
 
     <Button
         android:id="@+id/postItem"
-        android:layout_width="56dp"
-        android:layout_height="68dp"
-        android:background="@drawable/savebtn"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:background="@drawable/addp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
+        app:layout_constraintVertical_bias="0.981"/>
 
-    <Button
-        android:id="@+id/all1"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:background="#00FFFFFF"
-        android:fontFamily="@font/tajawalmedium2"
-        android:text="الجميع"
-        android:textColor="#397A96"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
 
-    <Button
-        android:id="@+id/device1"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:background="#00FFFFFF"
-        android:fontFamily="@font/tajawalmedium2"
-        android:text="أجهزة"
-        android:textColor="#397A96"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.668"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
 
-    <Button
-        android:id="@+id/clothes1"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:background="#00FFFFFF"
-        android:fontFamily="@font/tajawalmedium2"
-        android:text="ملابس"
-        android:textColor="#397A96"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.981"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
 
-    <Button
-        android:id="@+id/furniture"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:background="#00FFFFFF"
-        android:fontFamily="@font/tajawalmedium2"
-        android:text="أثاث"
-        android:textColor="#397A96"
-        android:textSize="12sp"
-        android:textStyle="bold"
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:gravity="right"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.359"
+        app:layout_constraintHorizontal_bias="0.912"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.191"
+        tools:context=".HistoryItemAdapter"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        >
+    <LinearLayout
+        android:layout_marginRight="20dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+        <Button
+            android:id="@+id/device1"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
 
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="39dp"
-        android:layout_height="40dp"
-        android:background="@drawable/request"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.311"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
+            android:background="@drawable/television"
+
+            android:fontFamily="@font/tajawalmedium2"
+            android:textColor="@color/base"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.674"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.19"
+          />
+        <TextView
+            android:id="@+id/dev"
+            android:layout_width="30dp"
+            android:layout_height="15dp"
+            android:fontFamily="@font/tajawalmedium2"
+            android:text=""
+            android:textSize="14sp"
+            android:textColor="#523B60"
+            />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_marginRight="20dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+            <Button
+                android:id="@+id/tool1"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:background="@drawable/stationery"
+                android:fontFamily="@font/tajawalmedium2"
+                android:textColor="@color/base"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/tool"
+                android:layout_width="30dp"
+                android:layout_height="15dp"
+                android:fontFamily="@font/tajawalmedium2"
+                android:text=""
+                android:textSize="14sp"
+                android:textColor="#523B60"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/clothes1"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:background="@drawable/wardrobe"
+                android:fontFamily="@font/tajawalmedium2"
+
+                android:textColor="@color/base"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.884"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.189" />
+
+            <TextView
+                android:id="@+id/clu"
+                android:layout_width="40dp"
+                android:layout_height="15dp"
+                android:fontFamily="@font/tajawalmedium2"
+                android:text=""
+                android:textColor="#523B60"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginRight="20dp"
+        >
+
+        <Button
+            android:id="@+id/furniture"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="36dp"
+            android:layout_height="40dp"
+            android:background="@drawable/couch"
+            android:fontFamily="@font/tajawalmedium2"
+            android:gravity="center"
+            android:textColor="@color/base"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/fun"
+            android:gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="15dp"
+            android:fontFamily="@font/tajawalmedium2"
+            android:text=""
+            android:textSize="14sp"
+            android:textColor="#523B60"
+            />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_marginRight="20dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+            <Button
+                android:id="@+id/acc"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:background="@drawable/accessory"
+                android:fontFamily="@font/tajawalmedium2"
+                android:textColor="@color/base"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/acce"
+                android:layout_width="39dp"
+                android:layout_height="15dp"
+                android:fontFamily="@font/tajawalmedium2"
+                android:text=""
+                android:textSize="14sp"
+                android:textColor="#523B60"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/button12"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/chat2"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:background="@drawable/chatp"
+        android:textColorHighlight="@color/buttonBG"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.717"
+        app:layout_constraintHorizontal_bias="0.704"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.981" />
-
+    <Button
+        android:id="@+id/button10"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="30dp"
+        android:layout_height="28dp"
+        android:background="@drawable/requestp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.305"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.985" />
 </androidx.constraintlayout.widget.ConstraintLayout>

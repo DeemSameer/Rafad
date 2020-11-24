@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/homepage"
     tools:context=".homepageDonator">
 
     <ListView
@@ -16,24 +15,35 @@
         app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.63" />
+        app:layout_constraintVertical_bias="0.63"
+        android:divider="#00000000"/>
 
-    <Button
-        android:id="@+id/bHome"
-        android:layout_width="37dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="600dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/ic_baseline_home_24"
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="414dp"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        tools:visibility="visible" />
+        app:srcCompat="@drawable/footer" />
+
+
+    <Button
+        android:id="@+id/bHome"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="36dp"
+        android:background="@drawable/homep"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView8"
+        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.985" />
 
     <Button
         android:id="@+id/logoutButton"
@@ -46,23 +56,22 @@
         app:layout_constraintHorizontal_bias="0.958"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026" />
+        app:layout_constraintVertical_bias="0.026"
+        style="?android:attr/borderlessButtonStyle"/>
 
     <TextView
         android:id="@+id/ifempty2"
-        android:layout_width="154dp"
-        android:layout_height="22dp"
+        android:layout_width="160dp"
+        android:layout_height="32dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/tajawalmedium2"
         android:text="جميع التبرعات "
         android:textAlignment="center"
-        android:textColor="#ea907a"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.024" />
@@ -81,36 +90,39 @@
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.175" />
+        app:layout_constraintVertical_bias="0.175"
+        style="?android:attr/borderlessButtonStyle"/>
 
     <Button
         android:id="@+id/profileb"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginLeft="200dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="300dp"
         android:layout_marginTop="600dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/userr"
+        android:background="@drawable/pro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.857"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="@+id/imageView8"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.966" />
+        app:layout_constraintVertical_bias="0.932"
+        tools:visibility="visible" />
+
 
     <Button
         android:id="@+id/postItem"
-        android:layout_width="56dp"
-        android:layout_height="68dp"
-        android:background="@drawable/savebtn"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:background="@drawable/addp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
+        app:layout_constraintVertical_bias="0.981"/>
 
     <Button
         android:id="@+id/req_don"
@@ -119,7 +131,7 @@
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="  الطلبات المعلقة"
-        android:textColor="#724F6E"
+        android:textColor="#523B60"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -127,7 +139,8 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.096"
+        style="?android:attr/borderlessButtonStyle"/>
 
     <Button
         android:id="@+id/done_don"
@@ -136,7 +149,7 @@
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="تم التبرع بها"
-        android:textColor="#724F6E"
+        android:textColor="#523B60"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -144,7 +157,8 @@
         app:layout_constraintHorizontal_bias="0.866"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.096"
+        style="?android:attr/borderlessButtonStyle"/>
 
     <Button
         android:id="@+id/all_don"
@@ -153,7 +167,7 @@
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="تبرعاتي"
-        android:textColor="#724F6E"
+        android:textColor="#523B60"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -161,30 +175,34 @@
         app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.096"
+        style="?android:attr/borderlessButtonStyle"/>
 
     <Button
         android:id="@+id/button10"
-        android:layout_width="39dp"
-        android:layout_height="40dp"
-        android:background="@drawable/request"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="30dp"
+        android:layout_height="28dp"
+        android:background="@drawable/requesto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintHorizontal_bias="0.305"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
+        app:layout_constraintVertical_bias="0.985" />
 
     <Button
         android:id="@+id/buttonChat222"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/chat2"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:background="@drawable/chatp"
+        android:textColorHighlight="@color/buttonBG"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.717"
+        app:layout_constraintHorizontal_bias="0.704"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
+        app:layout_constraintVertical_bias="0.981"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

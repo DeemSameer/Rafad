@@ -1,83 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:gravity="center"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:clipToPadding="false">
 
 <LinearLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:gravity="center"
+    android:gravity="right"
     tools:context=".HistoryItemAdapter"
     android:layout_marginTop="20dp"
     android:layout_marginBottom="35dp"
-    android:layout_height="270dp"
-    android:layout_width="350dp"
+    android:layout_height="330dp"
+    android:layout_width="330dp"
     android:orientation="vertical"
-
+    android:elevation="2dp"
+    android:divider="#00000000"
+    android:background="@drawable/layout_bg"
 
  >
     <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="202dp"
+        android:layout_width="330dp"
+        android:layout_height="250dp"
+        android:gravity="center"
         app:corner_radius="30dp">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:id="@+id/imageView10"
-        android:gravity="center"
-        android:radius="20dp"
-        android:layout_weight="1"
-        android:contentDescription="@string/todo"
-        android:scaleType="centerCrop"
-        tools:src="@tools:sample/avatars"
 
-       />
-</com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="330dp"
+            android:layout_height="250dp"
+
+            android:contentDescription="@string/todo"
+            android:gravity="center"
+            android:radius="20dp"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
+    </com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>
     <TextView
-        android:gravity="center"
+        android:gravity="right"
         android:id="@+id/tit"
         android:layout_width="200dp"
         android:layout_height="30dp"
         android:fontFamily="@font/tajawalmedium2"
         android:text="Title"
         android:textAlignment="inherit"
-        android:textColor="#397A96"
-        android:textSize="18sp" />
+        android:textColor="#523B60"
+        android:textSize="18sp"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="10dp"
+        />
+
 
     <TextView
-        android:gravity="center"
-                android:id="@+id/date"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/tajawalmedium2"
-                android:text="10/10/2020"
-                android:textAlignment="inherit"
-                android:textColor="#397A96"
-                android:textSize="12sp" />
-
-            <TextView
-                android:gravity="center"
-                android:id="@+id/cat"
-                android:layout_width="200dp"
-                android:layout_height="20dp"
-                android:fontFamily="@font/tajawalmedium2"
-
-                android:text="Catogery"
-          android:textSize="12sp" />
-
-            <TextView
-                android:gravity="center"
-                android:id="@+id/des"
-                android:layout_width="250dp"
-                android:layout_height="35dp"
-                android:fontFamily="@font/tajawalmedium2"
-                android:text="Descerption"
-                android:textAlignment="gravity"
-                android:textColor="#CB0C0C0C" />
+        android:id="@+id/des"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/tajawalmedium2"
+        android:gravity="right"
+        android:text="Descerption"
+        android:textAlignment="gravity"
+        android:textColor="#CB0C0C0C"
+        android:layout_marginRight="20dp"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"/>
 </LinearLayout>
 
 </LinearLayout>

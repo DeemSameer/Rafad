@@ -52,7 +52,7 @@ public class don_3view extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_don_3view);
-        listView=(ListView)findViewById(R.id.postedlist);
+       // listView=(ListView)findViewById(R.id.postedlist);
         fAuth = FirebaseAuth.getInstance();
         all = findViewById(R.id.all_don);
         req = findViewById(R.id.req_don);
@@ -77,6 +77,7 @@ public class don_3view extends AppCompatActivity {
                 done.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
                 req.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                arrayItem=null;
                 arrayItem=new ArrayList<>();
                 Query p =  fStore.collection("item")
                         .whereEqualTo("User id",FirebaseAuth.getInstance().getCurrentUser().getUid())
