@@ -85,7 +85,7 @@ public class benReqView extends AppCompatActivity {
 
                                 Log.d(TAG, "donnN data after request: " + donN);
 
-                                arrayItem.add(new postinfo((String) document1.getId(), (String) document1.get("User id"), (String) document1.get("Image"),(String) document1.get("Title"), (String) document1.get("donN"), (String) document1.get("benS"),(String) document1.get("isRequested"), (String) document1.get("benID")));
+                                arrayItem.add(new postinfo((String) document1.getId(), (String) document1.get("User id"), (String) document1.get("Image"),(String) document1.get("Title"), (String) document1.get("donN"), (String) document1.get("benS"),(String) document1.get("isRequested"), (String) document1.get("benID"),(String) document1.get("IsRated"),(double) 0));
 
 
 

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".popUpRate"></activity>
+        <activity android:name=".popUpRated"></activity>
+        <activity android:name=".popUpRate" />
         <activity
             android:name=".AdapterD"
             tools:ignore="Instantiatable" />

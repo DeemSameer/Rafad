@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    tools:context=".popUpRated">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="246dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/tajawalmedium2"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="تقييم المتبرع "
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:layout_width="341dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/tajawalmedium2"
+                    android:gravity="bottom"
+                    android:text="لا يمكنك التقييم مرة أخرى" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/tajawalmedium2"
+                    android:text="لقد قيمت هذا المتبرع سابقا:"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/settext2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#880A0A" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="228dp"
+                android:layout_height="36dp"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/OkRate"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="#ffff"
+                    android:fontFamily="@font/tajawalmedium2"
+                    android:text="حسنًا"
+                    android:textColor="@color/base"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

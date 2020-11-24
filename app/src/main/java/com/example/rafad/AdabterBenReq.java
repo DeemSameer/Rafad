@@ -138,6 +138,7 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
             RateDon.setVisibility(View.INVISIBLE);
             // btnDone.setVisibility(View.VISIBLE);
         }
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
         FirebaseFirestore db1 = FirebaseFirestore.getInstance();
@@ -152,10 +153,12 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
                     if (document.exists()) {
                         Log.d(TAG, "inter AdaptorBenReq doc DocumentSnapshot data: " + document.getData());
                         isRated= (String) document.get("IsRated");
-                        Log.d(TAG, "isRated in AdabterBenReq "+isRated);
-                        if(isRated.equals("yes"))
-                            RateDon.setVisibility(View.INVISIBLE);
-                        //get("Rate");
+                        Log.d(TAG, "isRated in AdabterBenReq 156 "+isRated);
+                        Log.d(TAG, "isRated in AdabterBenReq 157 "+(String) document.get("Title"));
+
+
+
+
                     } else {
                         Log.d(TAG, "No such document");
                     }
@@ -165,20 +168,37 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
             }
         });
 
-        Log.d(TAG, "isRated in AdabterBenReq out"+isRated);
-
-        Log.d(TAG, "No such document"+isRated);
+        Log.d(TAG, "isRated in AdabterBenReq out "+isRated);
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
         RateDon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "RateDon in AdabterBenReq ");
-                final popUpRate popupRate = new popUpRate();
-                popupRate.showPopupWindow(view);
-                ///Approve Rate///
+                Log.d(TAG, "RateDon in AdabterBenReq isRated 177 "+isRated);
+                Log.d(TAG, "RateDon in AdabterBenReq isRated 177id "+arrayList.get(position).itemID);
 
+
+                /// already rated
+                if (arrayList.get(position).IsRated.equals("yes")) {
+                    final popUpRated popupRated = new popUpRated();
+                    popupRated.showPopupWindow(view);
+                    popupRated.AcceptRate.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ///////////////////
+                            context.startActivity(new Intent(context, benReqView.class));
+                            Toast.makeText(getContext(), "لقد تم التقييم من قبل ", Toast.LENGTH_SHORT).show();
+                            //////////////////
+                        }
+                    });
+                }else {
+
+
+                    final popUpRate popupRate = new popUpRate();
+                    popupRate.showPopupWindow(view);
+                    ///Approve Rate///
+                    Log.d(TAG, "isRated in AdabterBenReq 201 " + isRated);
                     popupRate.AcceptRate.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -205,14 +225,13 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
 
                                 CollectionReference items = db.collection("item");
                                 DocumentReference docRefItem = items.document(arrayList.get(position).itemID);
-                                Log.d(TAG, "inter AdaptorBenReqr itemID: "+arrayList.get(position).itemID);
+                                Log.d(TAG, "inter AdaptorBenReqr itemID: " + arrayList.get(position).itemID);
                                 /*Map<String, Object> user = new HashMap<>();
                                 user.put("IsRated","yes");
                                 docRefItem.update(user);*/
-                                docRefItem.update("IsRated","yes");
-                                RateDon.setVisibility(View.INVISIBLE);
-
-
+                                docRefItem.update("IsRated", "yes");
+                                //RateDon.setVisibility(View.INVISIBLE);
+                                Log.d(TAG, "isRated in AdabterBenReq 222" + isRated);
 
 
                                 //////////////////////////////////////////////////////
@@ -229,13 +248,8 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
                             //////////////////
                         }
                     });
+                }
                 ///end approve///
-
-
-          /*  }//end if (arrayList.get(position).isRe.equals("yes")) {
-                else {
-                    RateDon.setVisibility(View.GONE);
-                }*/
 
             }
         });//End Big accept button
