@@ -59,9 +59,9 @@ public BlockBenList(@NonNull Activity context, @NonNull List<BenModelBlock> arra
         TextView subtitleText1 =  rowView.findViewById(R.id.ssn);
 
 
-        titleText.setText(arrayList.get(position).getName());
-        subtitleText.setText(arrayList.get(position).getPhoneNumber());
-        subtitleText1.setText(arrayList.get(position).getCount());
+        titleText.setText("الاسم: "+arrayList.get(position).getPhoneNumber());
+        subtitleText.setText("رقم الجوال: "+arrayList.get(position).getName());
+        subtitleText1.setText("عدد مرات الابلاغ: "+arrayList.get(position).getCount());
         final ImageView profileImageViewChat = (ImageView) rowView.findViewById(R.id.profile_image);
 
         try {
@@ -110,9 +110,18 @@ public BlockBenList(@NonNull Activity context, @NonNull List<BenModelBlock> arra
         declined.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DocumentReference docRef= fStore.collection("Reports").document(arrayList.get(position).getUID());
-                docRef.delete();
-                context.startActivity(new Intent(context, blockBen.class));
+                PopUpBlockConfirmation2 pop=new PopUpBlockConfirmation2();
+                pop.showPopupWindow(view);
+                pop.Accept.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        DocumentReference docRef= fStore.collection("Reports").document(arrayList.get(position).getUID());
+                        docRef.delete();
+                        context.startActivity(new Intent(context, blockBen.class));
+
+                    }
+                });
+
             }
         });
 
