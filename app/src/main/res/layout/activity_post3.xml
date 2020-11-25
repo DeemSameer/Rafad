@@ -26,8 +26,8 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
+        android:layout_width="416dp"
+        android:layout_height="47dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="نشر"
