@@ -7,56 +7,43 @@
     android:orientation="vertical"
     >
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="159dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        app:cardCornerRadius="8dp"
+        style="?android:attr/borderlessButtonStyle">
 
-        app:cardCornerRadius="8dp">
 
         <LinearLayout
-            android:layout_width="399dp"
-            android:layout_height="150dp"
-            android:background="@drawable/default_outlined_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="12dp">
+            android:padding="12dp"
+            style="?android:attr/borderlessButtonStyle">
+
 
             <RelativeLayout
-                android:layout_width="398dp"
-                android:layout_height="139dp">
+                android:layout_width="371dp"
+                android:layout_height="159dp">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_image"
-                    android:layout_width="66dp"
-                    android:layout_height="67dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginBottom="48dp" />
 
                 <TextView
                     android:id="@+id/Username"
-                    android:layout_width="116dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="241dp"
-                    android:layout_marginLeft="241dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginRight="28dp"
                     android:fontFamily="@font/tajawalmedium2"
-                    android:foregroundGravity="center"
-                    android:gravity="center"
                     android:text="TextView"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/base" />
 
                 <Button
                     android:id="@+id/button7"
@@ -66,15 +53,16 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="bottom"
-                    android:layout_marginStart="252dp"
-                    android:layout_marginLeft="252dp"
+                    android:layout_marginStart="228dp"
+                    android:layout_marginLeft="228dp"
                     android:layout_marginRight="50sp"
                     android:layout_marginBottom="13dp"
-                    android:background="@drawable/new_button"
+                    android:background="@drawable/orange_rounded_button"
                     android:fontFamily="@font/tajawalmedium2"
-                    android:text="الغاء"
-                    android:textColor="#CC397A96"
-                    android:textSize="15sp" />
+                    android:text="إلغاء"
+                    android:textColor="@color/newColor"
+                    android:textSize="13sp" />
+
 
                 <Button
                     android:id="@+id/button"
@@ -84,29 +72,29 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="bottom"
-                    android:layout_marginStart="313dp"
-                    android:layout_marginLeft="313dp"
-                    android:layout_marginBottom="13dp"
-                    android:background="@drawable/new_button2"
+                    android:layout_marginStart="291dp"
+                    android:layout_marginLeft="291dp"
+                    android:layout_marginBottom="14dp"
+                    android:background="@drawable/roundshapebtn"
                     android:fontFamily="@font/tajawalmedium2"
                     android:gravity="center"
                     android:text="حذف"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp" />
+                    android:textColor="@color/base"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="286dp"
-                    android:layout_marginLeft="286dp"
-                    android:layout_marginBottom="83dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="59dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginRight="41dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="TextView"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/base" />
 
                 <TextView
                     android:id="@+id/ssn"
@@ -115,16 +103,31 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="62dp"
-                    android:layout_marginEnd="55dp"
-                    android:layout_marginRight="55dp"
+                    android:layout_marginTop="87dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginRight="36dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="TextView"
-                    android:textColor="#616668" />
+                    android:textColor="@color/base" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="66dp"
+                    android:layout_height="67dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="37dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="42dp" />
+
 
             </RelativeLayout>
 
+
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
 

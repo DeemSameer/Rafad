@@ -23,6 +23,7 @@
             android:orientation="vertical"
             android:padding="10dp">
 
+
             <TextView
                 android:id="@+id/titleText"
                 android:layout_width="246dp"
@@ -31,9 +32,9 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="تأكيد رفع بلاغ"
+                android:textColor="@color/base"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-
 
             <LinearLayout
                 android:layout_width="341dp"
@@ -47,7 +48,8 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="سيتم رفع بلاغ على هذا المستفيد"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:textColor="@color/base"/>
 
             </LinearLayout>
 
@@ -79,7 +81,7 @@
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="الغاء"
                     android:textAlignment="gravity"
-                    android:textColor="#656262"
+                    android:textColor="@color/newColor"
                     android:textSize="16sp" />
 
                 <Button

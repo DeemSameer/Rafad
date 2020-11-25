@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@drawable/smallpro"
     android:orientation="vertical"
     tools:context=".donProfile">
-
-    <ImageView
+    <RelativeLayout
         android:id="@+id/imageView2"
         android:layout_width="555dp"
         android:layout_height="220dp"
@@ -23,8 +23,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/header" />
 
+        />
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="110dp"
@@ -32,7 +32,7 @@
         android:layout_margin="70dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-
+        android:padding="20dp"
         app:cardCornerRadius="60dp"
         app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,60 +40,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
-
+        <ImageView
+            android:id="@+id/profileImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="TODO"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription " />
     </androidx.cardview.widget.CardView>
+
 
     <Button
         android:id="@+id/save"
         android:layout_width="88dp"
         android:layout_height="48dp"
         android:background="#00FFFFFF"
-        android:text="حفظ"
         android:fontFamily="@font/tajawalmedium2"
-        android:textColor="#FFFFFF"
+        android:text="حفظ"
+        android:textColor="#583560"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/cancel"
         android:layout_width="88dp"
         android:layout_height="48dp"
         android:background="#00FFFFFF"
+        android:fontFamily="@font/tajawalmedium2"
         android:text="إلغاء"
-        android:textColor="#FFFFFF"
+        android:textColor="#583560"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:fontFamily="@font/tajawalmedium2"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toStartOf="@+id/save"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093" />
-
-    <Button
-        android:id="@+id/change"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="25dp"
-
-        android:layout_marginLeft="25dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/changeimg"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/cardView"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/cardView"
-        app:layout_constraintVertical_bias="0.957" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView15"
@@ -137,7 +122,7 @@
         app:layout_constraintStart_toEndOf="@+id/changepass"
         app:layout_constraintTop_toBottomOf="@+id/imageView7"
         app:layout_constraintVertical_bias="0.124"
-        app:srcCompat="@drawable/password" />
+        app:srcCompat="@drawable/pass1" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -149,7 +134,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.544"
-        app:srcCompat="@drawable/phone" />
+        app:srcCompat="@drawable/mobile1" />
 
     <EditText
         android:id="@+id/newName"
@@ -172,7 +157,7 @@
         android:layout_width="85dp"
         android:layout_height="23dp"
         android:text="الإسم الكامل : "
-        android:textColor="#397A96"
+        android:textColor="#583560"
         android:textSize="12sp"
         android:fontFamily="@font/tajawalmedium2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -192,7 +177,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.471"
-        app:srcCompat="@drawable/user" />
+        app:srcCompat="@drawable/user1" />
 
     <Button
         android:id="@+id/changepass"
@@ -201,7 +186,7 @@
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="تغيير كلمة المرور"
-        android:textColor="#397A96"
+        android:textColor="#583560"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -215,7 +200,7 @@
         android:layout_width="82dp"
         android:layout_height="21dp"
         android:text="رقم الجوال :"
-        android:textColor="#397A96"
+        android:textColor="#583560"
         android:textSize="12sp"
         android:fontFamily="@font/tajawalmedium2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -231,7 +216,7 @@
         android:layout_height="33dp"
         android:fontFamily="@font/tajawalmedium2"
         android:text="المعلومات الشخصية:"
-        android:textColor="#616668"
+        android:textColor="#583560"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -268,6 +253,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.922" />
+
+    <Button
+        android:id="@+id/change"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/ediit"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/cardView"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0.957" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

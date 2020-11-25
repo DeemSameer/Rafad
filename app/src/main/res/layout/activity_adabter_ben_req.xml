@@ -12,7 +12,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="143dp"
+        android:layout_height="159dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
@@ -28,21 +28,21 @@
 
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="130dp"
-                >
+                android:layout_width="371dp"
+                android:layout_height="159dp">
 
                 <Button
                     android:id="@+id/RateDonButton"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="57dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="290dp"
+                    android:layout_marginTop="125dp"
                     android:background="#ffff"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="تقييم"
-                    android:textColor="@color/base"
-                    android:layout_marginTop="91dp"
-                    android:layout_marginLeft="115dp"
-                    android:textSize="16sp" />
+                    android:textColor="@color/newColor"
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/name"
@@ -51,9 +51,9 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="41dp"
+                    android:layout_marginTop="47dp"
                     android:layout_marginEnd="25dp"
-                    android:layout_marginRight="54dp"
+                    android:layout_marginRight="25dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="TextView"
                     android:textColor="@color/base" />
@@ -65,7 +65,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="25dp"
                     android:layout_marginRight="25dp"
                     android:fontFamily="@font/tajawalmedium2"
@@ -89,9 +89,9 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="68dp"
+                    android:layout_marginTop="76dp"
                     android:layout_marginEnd="25dp"
-                    android:layout_marginRight="57dp"
+                    android:layout_marginRight="25dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="TextView"
                     android:textColor="@color/base" />
@@ -103,12 +103,14 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="98dp"
+                    android:layout_marginTop="105dp"
                     android:layout_marginEnd="25dp"
-                    android:layout_marginRight="57dp"
+                    android:layout_marginRight="25dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="TextView"
                     android:textColor="@color/base" />
+
+
             </RelativeLayout>
 
 

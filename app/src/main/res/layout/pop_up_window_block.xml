@@ -30,9 +30,10 @@
                 android:fontFamily="@font/tajawalmedium2"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="تأكيد الغاء الحساب"
+                android:text="تأكيد إلغاء الحساب"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/base"/>
 
 
             <LinearLayout
@@ -47,7 +48,8 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="سيتم حذف الحساب بشكل كامل "
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:textColor="@color/base"/>
 
             </LinearLayout>
 
@@ -77,9 +79,9 @@
                     android:layout_height="match_parent"
                     android:background="#fff"
                     android:fontFamily="@font/tajawalmedium2"
-                    android:text="الغاء"
+                    android:text="إلغاء"
                     android:textAlignment="gravity"
-                    android:textColor="#656262"
+                    android:textColor="@color/newColor"
                     android:textSize="16sp" />
 
                 <Button

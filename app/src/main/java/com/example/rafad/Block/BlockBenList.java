@@ -97,7 +97,7 @@ public BlockBenList(@NonNull Activity context, @NonNull List<BenModelBlock> arra
                         DocumentReference docRef= fStore.collection("Reports").document(arrayList.get(position).getUID());
                         docRef.delete();//delete so the item will not be shown again.
                         //send mail to the benficary
-                        sendMail(arrayList.get(position).getName(),arrayList.get(position).getEmail());
+                        sendMail(arrayList.get(position).getPhoneNumber(),arrayList.get(position).getEmail());
                         context.startActivity(new Intent(context, blockBen.class));
 
                     }
@@ -122,7 +122,7 @@ public BlockBenList(@NonNull Activity context, @NonNull List<BenModelBlock> arra
     };
 
     void sendMail(String name , String email){
-        sendMail.sendMail(email, "لقد تم حظ حسابك! " , "   <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+        sendMail.sendMail(email, "لقد تم حظر حسابك! " , "   <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                 "\n" +
                 "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:v=\"urn:schemas-microsoft-com:vml\">\n" +
                 "<head>\n" +

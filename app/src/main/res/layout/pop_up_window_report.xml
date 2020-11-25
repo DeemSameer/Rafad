@@ -30,8 +30,9 @@
                 android:fontFamily="@font/tajawalmedium2"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="تأكيد الغاء بلاغ"
+                android:text="تأكيد إلغاء بلاغ"
                 android:textSize="20sp"
+                android:textColor="@color/base"
                 android:textStyle="bold" />
 
 
@@ -46,8 +47,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/tajawalmedium2"
-                    android:text="لقد تم رفع بلاغ سابق لكم هل تود الغاءه ؟ "
-                    android:textSize="18dp" />
+                    android:text="لقد تم رفع بلاغ سابق لكم هل تود إلغاءه ؟ "
+                    android:textSize="18dp"
+                    android:textColor="@color/base"/>
 
             </LinearLayout>
 
@@ -79,7 +81,7 @@
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="عودة"
                     android:textAlignment="gravity"
-                    android:textColor="#656262"
+                    android:textColor="@color/base"
                     android:textSize="16sp" />
 
                 <Button
@@ -88,9 +90,10 @@
                     android:layout_height="match_parent"
                     android:background="#ffff"
                     android:fontFamily="@font/tajawalmedium2"
-                    android:text="الغاء البلاغ"
-                    android:textColor="@color/base"
-                    android:textSize="16sp" />
+                    android:text="إلغاء البلاغ"
+                    android:textColor="@color/newColor"
+                    android:textSize="16sp"
+                    />
 
             </LinearLayout>
 

@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.rafad.Block.BlockBenList;
+import com.example.rafad.Block.blockBen;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +27,7 @@ Button up1;
 int Tsize,size;
 Button backHomeIcon;
 Button backHomArrow;
-    Button logout;
+    Button logout,list;
     FirebaseAuth fAuth;
 
     @Override
@@ -36,6 +38,8 @@ Button backHomArrow;
         up1=findViewById(R.id.button6);
         backHomeIcon=findViewById(R.id.adminbHome);
         backHomArrow=findViewById(R.id.button);
+        list= findViewById(R.id.button66);
+
 
         // Logging set to help debug issues, remove before releasing your app.
         OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
@@ -131,6 +135,13 @@ Button backHomArrow;
                 startActivity(new Intent(homePageAdminBase.this, homePageAdminBase.class));
                 finish();
 
+            }
+        });
+        list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homePageAdminBase.this, blockBen.class));
+                finish();
             }
         });
 

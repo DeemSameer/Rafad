@@ -34,7 +34,7 @@ public class mainProfile extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userId ;
     ImageView profileImageView;
-    TextView fullName , email , phone, editProfile;
+    TextView fullName , email , phone, editProfile,logout,Chat;
 
 
     //////// for view list of items
@@ -66,15 +66,24 @@ post = findViewById(R.id.postItem);
 
 
 
-        editProfile= findViewById(R.id.textView24);
-        editProfile.setOnClickListener(new View.OnClickListener() {
+
+
+        logout= findViewById(R.id.textView21);
+        logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(mainProfile.this, donProfile.class));
-
+                startActivity(new Intent(mainProfile.this, login.class));
+                finish();
             }
         });
 
+        Chat= findViewById(R.id.textView9);
+Chat.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        startActivity(new Intent(mainProfile.this, MainChatAllPeople.class));
+    }
+});
 
 
         //profile pic
@@ -140,6 +149,20 @@ post = findViewById(R.id.postItem);
 */
 
         //////////////////// for list of items second try////////////////////////
+
+        editProfile= findViewById(R.id.textView24);
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(),donProfile.class);
+                //pass the data
+                i.putExtra("fullName",fullName.getText().toString());
+                i.putExtra("email",email.getText().toString());
+                i.putExtra("phone", phone.getText().toString());
+                startActivity(i);
+
+            }
+        });
 
     }
 }
