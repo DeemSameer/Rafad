@@ -34,7 +34,7 @@ public class mainProfile extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userId ;
     ImageView profileImageView;
-    TextView fullName , email , phone;
+    TextView fullName , email , phone, editProfile;
 
 
     //////// for view list of items
@@ -66,7 +66,14 @@ post = findViewById(R.id.postItem);
 
 
 
+        editProfile= findViewById(R.id.textView24);
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mainProfile.this, donProfile.class));
 
+            }
+        });
 
 
 

@@ -81,7 +81,7 @@
         android:id="@+id/backHome"
         android:layout_width="29dp"
         android:layout_height="27dp"
-        android:background="@drawable/arr"
+        android:background="@drawable/purp_arrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.041"

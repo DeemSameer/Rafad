@@ -5,12 +5,25 @@ public class BenModelBlock {
     String Count;
     String Name;
     String PhoneNumber;
+    String email;
 
-    public BenModelBlock(String UID, String count, String name, String phoneNumber) {
+
+
+
+    public BenModelBlock(String UID, String count, String name, String phoneNumber,String email) {
         this.UID = UID;
         Count = count;
         Name = name;
         PhoneNumber = phoneNumber;
+        this.email=email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUID() {

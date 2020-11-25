@@ -31,6 +31,8 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class donProfile extends AppCompatActivity {
 
     private static final int GALLERY_INTENT_CODE=1023;
@@ -98,10 +100,7 @@ public class donProfile extends AppCompatActivity {
                     Toast.makeText(donProfile.this, " لا يمكن ترك الإسم فارغًا  ", Toast.LENGTH_LONG).show();
                     return;
                 }
-                if (profileEmail.getText().toString().isEmpty()){
-                    Toast.makeText(donProfile.this, " لا يمكن ترك البريد الإلكتروني فارغًا ", Toast.LENGTH_LONG).show();
-                    return;
-                }
+
                 if (profilePhoneNumber.getText().toString().isEmpty()){
                     Toast.makeText(donProfile.this, " لا يمكن ترك رقم الجوال فارغًا ", Toast.LENGTH_LONG).show();
                     return;
@@ -119,22 +118,17 @@ public class donProfile extends AppCompatActivity {
 
 
 
-                //extract the email to change it
-                final String email2 = profileEmail.getText().toString();
-                user.updateEmail(email2).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
+
                         DocumentReference docRef = fstore.collection("donators").document(user.getUid());
                        //put new data to firebase
                         Map<String,Object> edited = new HashMap<>();
-                        edited.put("email", email2);
                         edited.put("userName", profileFullName.getText().toString());
                         edited.put("phoneNumber", profilePhoneNumber.getText().toString());
                         docRef.update(edited).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
 
-                                if(profileFullName.getText().toString().equals(fullName) && profileEmail.getText().toString().equals(email) && profilePhoneNumber.getText().toString().equals(phone)){
+                                if(profileFullName.getText().toString().equals(fullName)  && profilePhoneNumber.getText().toString().equals(phone)){
                                     startActivity(new Intent(getApplicationContext(), mainProfile.class));
                                     finish();
                                 }
@@ -143,14 +137,8 @@ public class donProfile extends AppCompatActivity {
                                     Toast.makeText(donProfile.this, " تم تحديث الملف الشخصي بنجاح ", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(getApplicationContext(), mainProfile.class));
                                 finish();}
-                            }
-                        });
 
-                        if (!email.equals(email2)){
-                            fAuth.getCurrentUser().sendEmailVerification();
 
-                            Toast.makeText(donProfile.this, " تم تحديث البريد الإلكتروني بنجاح، يرجى اتباع الرابط المرسل لتفعيله ", Toast.LENGTH_LONG).show();
-                        }
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -175,16 +163,17 @@ public class donProfile extends AppCompatActivity {
         });
 
 
+try {
+    StorageReference profileRef = storageRefrence.child("users/" + fAuth.getCurrentUser().getUid() + "profile.jpg");
+    profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        @Override
+        public void onSuccess(Uri uri) {
+            Picasso.get().load(uri).into(profileImage);
+        }
+    });
 
-        StorageReference profileRef = storageRefrence.child("users/"+fAuth.getCurrentUser().getUid()+"profile.jpg");
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profileImage);
-            }
-        });
-
-
+}
+catch (Exception e){}
         changeProfileIMG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

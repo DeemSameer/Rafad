@@ -68,7 +68,7 @@ public class blockBen extends AppCompatActivity {
                                     if (document.exists()) {
                                         Log.d(TAG, (String)document.get("phoneNumber") + " lalalalal");
 
-                                        arrayList.add(new BenModelBlock((String)document.getId(), count, (String)document.get("phoneNumber"),(String)document.get("userName")));
+                                        arrayList.add(new BenModelBlock((String)document.getId(), count, (String)document.get("phoneNumber"),(String)document.get("userName"),(String)document.get("email")));
                                         adapter.notifyDataSetChanged();
                                     }
                                 }
