@@ -86,7 +86,7 @@ public class benReqView extends AppCompatActivity {
                                 isRe=(String) document1.get("isRequested");
                                 BenId=(String) document1.get("benID");
                                 Log.d(TAG, "isRe data request: " + isRe);
-                                
+
                                 Log.d(TAG, "donnN data after request: " + donN);
 
                                 //////////////////////////////////////////////////////////////////////////////////
@@ -132,7 +132,7 @@ public class benReqView extends AppCompatActivity {
                             {
                                 //Toast.makeText(requests.this, "This is my Toast message!",
                                 //  Toast.LENGTH_LONG).show();
-                                empty.setText("لا يوجد بيانات للعرض");
+                                //empty.setText("لا يوجد بيانات للعرض");
                             }
                             else{
                                 empty.setText("");
