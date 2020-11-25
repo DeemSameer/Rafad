@@ -29,11 +29,11 @@ public class homePage extends AppCompatActivity {
     FirebaseFirestore fStore;
     TextView empty;
     //////// for view list of items
-    List<postinfo> arrayItem=new ArrayList<>();
-    List<postinfo> arrayItemC=new ArrayList<>();
-    List<postinfo> arrayItemD=new ArrayList<>();
-    List<postinfo> arrayItemF=new ArrayList<>();
-    List<postinfo> arrayItemA=new ArrayList<>();
+    List<postinfo> arrayItem;
+    List<postinfo> arrayItemC;
+    List<postinfo> arrayItemD;
+    List<postinfo> arrayItemF;
+    List<postinfo> arrayItemA;
 
     public static final String TAG = "TAG";
     ListView listView;
@@ -87,11 +87,12 @@ public class homePage extends AppCompatActivity {
         clothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                arrayItemC=new ArrayList<>();
                 clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
                 furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-                Query p =  fStore.collection("item").whereEqualTo("Catogery", "Ù…Ù„Ø§Ø¨Ø³")
+                Query p =  fStore.collection("item").whereEqualTo("Catogery", "ملابس")
                         .whereEqualTo("isRequested", "no" );
 
                 p.get()
@@ -126,11 +127,12 @@ public class homePage extends AppCompatActivity {
         furniture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                arrayItemF=new ArrayList<>();
                 clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
                 device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-                Query p =  fStore.collection("item").whereEqualTo("Catogery", "Ø£Ø«Ø§Ø«")
+                Query p =  fStore.collection("item").whereEqualTo("Catogery", "اثاث")
                         .whereEqualTo("isRequested", "no" );
 
                 p.get()
@@ -164,11 +166,12 @@ public class homePage extends AppCompatActivity {
         device.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                arrayItemD=new ArrayList<>();
                 clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
                 all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-                Query p =  fStore.collection("item").whereEqualTo("Catogery", "Ø£Ø¬Ù‡Ø²Ø©")
+                Query p =  fStore.collection("item").whereEqualTo("Catogery", "اجهزه")
                         .whereEqualTo("isRequested", "no" );
 
                 p.get()
@@ -203,6 +206,7 @@ public class homePage extends AppCompatActivity {
         all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                arrayItemA=new ArrayList<>();
                 clothes.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 furniture.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 device.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
@@ -239,7 +243,7 @@ public class homePage extends AppCompatActivity {
             }
         });
         //////////////////// for list of items second try////////////////////////
-
+        arrayItem=new ArrayList<>();
         all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
 
         // FirebaseFirestore db = FirebaseFirestore.getInstance();
