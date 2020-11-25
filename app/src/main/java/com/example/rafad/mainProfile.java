@@ -34,7 +34,7 @@ public class mainProfile extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userId ;
     ImageView profileImageView;
-    TextView fullName , email , phone, editProfile,logout,Chat;
+    TextView fullName , email , phone, editProfile,logout,Chat,rate;
 
 
     //////// for view list of items
@@ -63,6 +63,8 @@ public class mainProfile extends AppCompatActivity {
         fStore= FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
 post = findViewById(R.id.postItem);
+        rate= findViewById(R.id.rate);
+
 
 
 
@@ -103,6 +105,11 @@ Chat.setOnClickListener(new View.OnClickListener() {
                 phone.setText(value.getString("phoneNumber"));
                 fullName.setText(value.getString("userName"));
                 email.setText(value.getString("email"));
+                if (value.get("Rate")!=null)
+                rate.setText("التقييم: "+value.get("Rate").toString());
+                else
+                    rate.setText("التقييم: "+"0");
+
             }
         });
 

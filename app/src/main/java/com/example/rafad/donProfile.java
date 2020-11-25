@@ -84,6 +84,7 @@ public class donProfile extends AppCompatActivity {
         final String email = data.getStringExtra("email");
         final String phone = data.getStringExtra("phone");
 
+
         profileEmail.setText(email);
         profileFullName.setText(fullName);
         profilePhoneNumber.setText(phone);

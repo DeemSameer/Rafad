@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/smallpro"
+
     tools:context=".adminMainProfile">
 
 
     <ImageView
 
-        app:srcCompat="@drawable/header"
         android:id="@+id/imageView2"
         android:layout_width="555dp"
         android:layout_height="230dp"
@@ -54,38 +55,11 @@
 
     </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="414dp"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/footer" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="600dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/userp"
-        android:textColor="#7493A6"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.796"
-        app:layout_constraintStart_toStartOf="@+id/imageView8"
 
 
-        app:layout_constraintTop_toTopOf="parent"
 
-        app:layout_constraintVertical_bias="0.982"
-        tools:visibility="visible" />
+
+
 
 
     <Button
@@ -96,7 +70,7 @@
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="إلغاء"
-        android:textColor="#FFFFFF"
+        android:textColor="#583560"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +88,7 @@
         android:layout_marginEnd="3dp"
         android:layout_marginRight="3dp"
         android:layout_marginBottom="28dp"
-        android:background="@drawable/changeimg"
+        android:background="@drawable/ediit"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toStartOf="@+id/cardView"
         app:layout_constraintHorizontal_bias="0.654"
@@ -122,24 +96,6 @@
         app:layout_constraintTop_toTopOf="@+id/cardView"
         app:layout_constraintVertical_bias="0.869" />
 
-    <Button
-        android:id="@+id/adminbHome"
-        android:layout_width="37dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="600dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/home"
-        app:layout_constraintEnd_toEndOf="@+id/imageView8"
-        app:layout_constraintBottom_toBottomOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.219"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.989" />
 
 
     <Button
@@ -155,7 +111,7 @@
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="حفظ"
-        android:textColor="#FFFFFF"
+        android:textColor="#583560"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -173,7 +129,7 @@
         android:text="رقم الجوال :"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="#397A96"
+        android:textColor="#583560"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -247,7 +203,7 @@
         app:layout_constraintStart_toEndOf="@+id/e222"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.739"
-        app:srcCompat="@drawable/email" />
+        app:srcCompat="@drawable/mail1" />
 
     <TextView
         android:id="@+id/e222"
@@ -256,7 +212,7 @@
         android:fontFamily="@font/tajawalmedium2"
         android:text="البريد الإلكتروني :"
         android:textAlignment="center"
-        android:textColor="#397A96"
+        android:textColor="#583560"
         android:textSize="14sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -279,7 +235,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.481"
-        app:srcCompat="@drawable/user" />
+        app:srcCompat="@drawable/user1" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -291,7 +247,7 @@
         app:layout_constraintStart_toEndOf="@+id/ph222"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.538"
-        app:srcCompat="@drawable/phone" />
+        app:srcCompat="@drawable/mobile1" />
 
     <TextView
         android:id="@+id/textView16"
@@ -329,7 +285,7 @@
         android:layout_height="25dp"
         android:fontFamily="@font/tajawalmedium2"
         android:text="الإسم الكامل :"
-        android:textColor="#397A96"
+        android:textColor="#583560"
         app:layout_constraintBottom_toTopOf="@+id/ph222"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.089"

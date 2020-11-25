@@ -5,13 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:clipToPadding="false"
     >
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal" />
+        android:orientation="horizontal"
+        android:elevation="5dp"
+        android:outlineProvider="bounds"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -23,15 +26,16 @@
         app:cardCornerRadius="8dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@drawable/admin"
+            android:layout_width="411dp"
+            android:layout_height="184dp"
+            android:elevation="5dp"
             android:orientation="vertical"
+            android:outlineProvider="bounds"
             android:padding="12dp">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="139dp">
+                android:layout_height="168dp">
 
                 <TextView
                     android:id="@+id/Username"
@@ -40,14 +44,14 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="23dp"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginStart="268dp"
+                    android:layout_marginLeft="268dp"
+                    android:layout_marginTop="20dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:foregroundGravity="center"
                     android:gravity="center"
                     android:text="TextView"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="@color/base" />
 
                 <Button
                     android:id="@+id/button7"
@@ -57,14 +61,14 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="bottom"
-                    android:layout_marginStart="219dp"
-                    android:layout_marginLeft="219dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginLeft="2dp"
                     android:layout_marginRight="50sp"
-                    android:layout_marginBottom="14dp"
+                    android:layout_marginBottom="11dp"
                     android:background="@drawable/roundshapebtn"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="رفض"
-                    android:textColor="#fff"
+                    android:textColor="#523B60"
                     android:textSize="13sp" />
 
                 <Button
@@ -75,30 +79,30 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="bottom"
-                    android:layout_marginStart="292dp"
-                    android:layout_marginLeft="292dp"
-                    android:layout_marginBottom="13dp"
+                    android:layout_marginStart="65dp"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginBottom="11dp"
                     android:background="@drawable/orange_rounded_button"
                     android:fontFamily="@font/tajawalmedium2"
                     android:gravity="center"
                     android:text="قبول"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#FF8564"
                     android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/phone"
-                    android:layout_width="103dp"
+                    android:layout_width="159dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="23dp"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginBottom="74dp"
+                    android:layout_marginStart="204dp"
+                    android:layout_marginLeft="204dp"
+                    android:layout_marginBottom="28dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="TextView"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="@color/base" />
 
                 <TextView
                     android:id="@+id/income"
@@ -107,25 +111,27 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginRight="58dp"
+                    android:layout_marginTop="47dp"
+                    android:layout_marginEnd="31dp"
+                    android:layout_marginRight="31dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="TextView"
+                    android:textAlignment="center"
                     android:textColor="@color/base" />
 
                 <TextView
                     android:id="@+id/ssn"
-                    android:layout_width="wrap_content"
+                    android:layout_width="192dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="62dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginRight="55dp"
+                    android:layout_marginTop="96dp"
+                    android:layout_marginEnd="22dp"
+                    android:layout_marginRight="22dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="TextView"
+                    android:textAlignment="center"
                     android:textColor="@color/base" />
 
                 <TextView
@@ -135,9 +141,9 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="33dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginRight="56dp"
+                    android:layout_marginTop="69dp"
+                    android:layout_marginEnd="29dp"
+                    android:layout_marginRight="29dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="TextView"
                     android:textColor="@color/base" />

@@ -548,7 +548,7 @@ public class ListViewAdaptorBen extends ArrayAdapter<postinfo> {
         desText.setText(arrayList.get(position).des);
         titText.setText(arrayList.get(position).tit);
         //catText.setText(arrayList.get(position).cat);
-        //date.setText(arrayList.get(position).date);
+        date.setText(arrayList.get(position).date);
         return rowView;
 
     }

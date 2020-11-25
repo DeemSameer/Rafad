@@ -64,7 +64,6 @@ public class adminMainProfile extends AppCompatActivity {
         adminPhone =findViewById(R.id.ph2);
         changeimg = findViewById(R.id.adminChangeBenImg);
         backHomeIcon = findViewById(R.id.adminbackHome);
-        backHomArrow = findViewById(R.id.adminbHome);
         saveChanges = findViewById(R.id.adminEdit);
 
 
@@ -183,14 +182,7 @@ public class adminMainProfile extends AppCompatActivity {
             }
         });
 
-        backHomArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(adminMainProfile.this, homePageAdminBase.class));
-                finish();
 
-            }
-        });
 
 
 
