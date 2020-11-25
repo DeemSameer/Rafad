@@ -56,23 +56,18 @@ public class BenMainProfile extends AppCompatActivity {
         setContentView(R.layout.ben_main_profile);
 
         backHomeArrow = findViewById(R.id.benBackHome);
-        backHomeicon = findViewById(R.id.benHomeicon);
         storageReference = FirebaseStorage.getInstance().getReference();
         profileImageViewben =findViewById(R.id.profileImgben);
         benEmail = findViewById(R.id.benEmail);
         benName = findViewById(R.id.benName);
         benPhone = findViewById(R.id.benPhone);
-        editBen = findViewById(R.id.editBen);
-        button8=findViewById(R.id.button8);
 
         fAuth = FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
-        benProfilToReq=findViewById(R.id.benProfilToReq);
 
 
         //////// for view list of items
-        listView=(ListView)findViewById(R.id.benprofillist);
         //////// above is for view list of items
 
 
@@ -95,7 +90,7 @@ public class BenMainProfile extends AppCompatActivity {
             }
         });
 
-
+        editBen= findViewById(R.id.textView24);
         editBen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,7 +106,7 @@ public class BenMainProfile extends AppCompatActivity {
 
 
 
-
+        button8= findViewById(R.id.textView9);
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,13 +115,7 @@ public class BenMainProfile extends AppCompatActivity {
             }
         });
 
-        backHomeicon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(BenMainProfile.this, homePage.class));
-                finish();
-            }
-        });
+
 
 
         backHomeArrow.setOnClickListener(new View.OnClickListener() {
@@ -137,6 +126,7 @@ public class BenMainProfile extends AppCompatActivity {
             }
         });
 
+        benProfilToReq= findViewById(R.id.textView26);
         benProfilToReq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,35 +135,16 @@ public class BenMainProfile extends AppCompatActivity {
             }
         });
 
-        //////////////////// for list of items second try////////////////////////
+        TextView logout= findViewById(R.id.textView21);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BenMainProfile.this, login.class));
+                finish();
+            }
+        });
 
 
-        // FirebaseFirestore db = FirebaseFirestore.getInstance();
-        fStore.collection("item")
-                .whereEqualTo("benID", userId)
-                .whereEqualTo("isRequested", "yes")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " BenMainProfile=> " + document.getData());
-                                arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),"",(String) document.get("Demail")));
-                                Log.d(TAG, "SIZE item list => " + arrayItem.size());
-                            }
-                            HistoryItemAdapter adapter = new HistoryItemAdapter(BenMainProfile.this, arrayItem);
-                            listView = (ListView) findViewById(R.id.benprofillist);
-                            listView.setAdapter(adapter);
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
-
-
-
-        //////////////////// for list of items second try////////////////////////
 
     }
 }

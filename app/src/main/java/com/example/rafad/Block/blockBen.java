@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.rafad.R;
+import com.example.rafad.adminMainProfile;
 import com.example.rafad.benDataModel;
 import com.example.rafad.homePageAdminBase;
 import com.example.rafad.homepageAdmin;
@@ -31,11 +32,32 @@ public class blockBen extends AppCompatActivity {
     List<BenModelBlock> arrayList=new ArrayList<>();
     public static final String TAG = "TAG";
     ListView list;
+    Button adminbHome222, adminpro;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bock_ben);
+        adminbHome222=findViewById(R.id.adminbHome222);
+        adminpro=findViewById(R.id.adminpro);
+
+        adminbHome222.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(blockBen.this, homePageAdminBase.class));
+                finish();
+
+            }
+        });
+        adminpro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(blockBen.this, adminMainProfile.class));
+                finish();
+
+            }
+        });
 
         fAuth = FirebaseAuth.getInstance();
         final FirebaseFirestore db=FirebaseFirestore.getInstance();

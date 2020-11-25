@@ -32,6 +32,7 @@
                 android:padding="10dp"
                 android:text="تقييم المتبرع "
                 android:textSize="20sp"
+                android:textColor="@color/base"
                 android:textStyle="bold" />
 
 
@@ -47,7 +48,8 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/tajawalmedium2"
                     android:gravity="bottom"
-                    android:text="لا يمكنك التقييم مرة أخرى" />
+                    android:text="لا يمكنك التقييم مرة أخرى!"
+                    android:textColor="@color/newColor"/>
 
                 <TextView
                     android:id="@+id/textView19"
@@ -55,8 +57,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/tajawalmedium2"
-                    android:text="لقد قيمت هذا المتبرع سابقا:"
-                    android:textSize="14dp" />
+                    android:text="لقد قيمت هذاالمتبرع سابقًا:"
+                    android:textSize="14dp"
+                    android:textColor="@color/base"/>
 
             </LinearLayout>
 

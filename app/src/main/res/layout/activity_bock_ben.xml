@@ -14,20 +14,20 @@
 
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/leftarrow"
+        android:background="@drawable/purparrow"
         app:layout_constraintBottom_toTopOf="@+id/signupDon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.021"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintVertical_bias="0.073"
+        style="?android:attr/borderlessButtonStyle"/>
 
 
     <TextView
         android:id="@+id/homepagetext2"
         android:layout_width="417dp"
         android:layout_height="23dp"
-        android:background="#66397A96"
         android:gravity="center"
         android:textColor="#4C4D4E"
         android:textSize="18dp"
@@ -41,9 +41,9 @@
 
     <ListView
         android:id="@+id/list"
-        android:layout_width="405dp"
-        android:layout_height="651dp"
-        android:background="#66397A96"
+        android:layout_width="406dp"
+        android:layout_height="601dp"
+        android:divider="#00000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,16 +52,67 @@
 
     </ListView>
 
+
+
     <TextView
         android:id="@+id/textView23"
         android:layout_width="222dp"
         android:layout_height="28dp"
         android:fontFamily="@font/tajawalmedium2"
-        android:text="حسابات المستفيدين المبلغ عنها:"
+        android:text="حسابات المستفيدين المبلغ عنها"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.036" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="414dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/footer" />
+    <Button
+        android:id="@+id/adminpro"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/pro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintStart_toStartOf="@+id/imageView8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:visibility="visible"
+        style="?android:attr/borderlessButtonStyle"/>
+
+
+    <Button
+        android:id="@+id/adminbHome222"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/homep"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView8"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.988"
+        style="?android:attr/borderlessButtonStyle"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

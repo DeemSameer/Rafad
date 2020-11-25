@@ -4,49 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/smallpro"
     tools:context=".BenMainProfile">
 
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/chat2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
-
-    <ListView
-        android:id="@+id/benprofillist"
-        android:layout_width="365dp"
-        android:layout_height="292dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.238"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.824" />
-
-    <ImageView
-
-        app:srcCompat="@drawable/header"
-        android:id="@+id/imageView2"
-        android:layout_width="555dp"
-        android:layout_height="240dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginBottom="136dp"
-        android:contentDescription="TODO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -70,58 +30,50 @@
             android:layout_height="match_parent"
             android:contentDescription="TODO"
             android:scaleType="centerCrop"
-            tools:ignore="ContentDescription " />
+            tools:ignore="ContentDescription "  />
 
 
 
     </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="414dp"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/footer" />
 
-    <Button
-        android:id="@+id/benProfilToReq"
-        android:layout_width="39dp"
-        android:layout_height="40dp"
-        android:background="@drawable/request"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.36"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
+    <com.google.android.material.imageview.ShapeableImageView
 
-    <Button
-        android:id="@+id/editBen"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:background="#00FFFFFF"
-        android:fontFamily="@font/tajawalmedium2"
-        android:text="تعديل "
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:id="@+id/shapeableImageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="100dp"
+        android:orientation="horizontal"
+        android:src="@drawable/request1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.893"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.032" />
+
+        app:layout_constraintVertical_bias="0.567"
+        tools:ignore="MissingConstraints" />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shapeableImageView2"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="100dp"
+        android:orientation="horizontal"
+        android:src="@drawable/chat1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.671"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/benBackHome"
         android:layout_width="29dp"
         android:layout_height="27dp"
-        android:background="@drawable/arr"
+        android:background="@drawable/purp_arrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.041"
@@ -131,62 +83,45 @@
 
     <TextView
         android:id="@+id/benName"
-        android:layout_width="221dp"
-        android:layout_height="28dp"
+        android:layout_width="219dp"
+        android:layout_height="35dp"
         android:fontFamily="@font/tajawalmedium2"
         android:gravity="center_horizontal"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="13sp"
+        android:textColor="#583560"
+        android:textSize="15sp"
         android:verticalScrollbarPosition="defaultPosition"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32"
+        app:layout_constraintVertical_bias="0.304"
         tools:visibility="visible" />
+
 
     <TextView
         android:id="@+id/benEmail"
-        android:layout_width="221dp"
-        android:layout_height="30dp"
+        android:layout_width="219dp"
+        android:layout_height="41dp"
         android:fontFamily="@font/tajawalmedium2"
         android:gravity="center_horizontal"
         android:textAlignment="center"
-        android:textColor="#D8D5D5"
-        android:textSize="11sp"
+        android:textColor="#EF8D6E"
+        android:textSize="12sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35000002"
+        app:layout_constraintVertical_bias="0.342"
         tools:visibility="visible" />
 
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/userp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.802"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
 
-    <Button
-        android:id="@+id/benHomeicon"
-        android:layout_width="37dp"
-        android:layout_height="37dp"
-        android:background="@drawable/home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.988" />
+
+
 
 
 
@@ -203,5 +138,109 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.164" />
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shapeableImageView3"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="100dp"
+        android:orientation="horizontal"
+        android:src="@drawable/logout1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.773" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shapeableImageView6"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="-20dp"
+        android:orientation="horizontal"
+        android:src="@drawable/ediit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.477" />
+
+    <Button
+        android:id="@+id/textView21"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="252dp"
+        android:layout_height="44dp"
+        android:background="#ffff"
+        android:fontFamily="@font/tajawalmedium2"
+        android:text="تسجيل الخروج"
+        android:textAlignment="textStart"
+        android:textColor="#583560"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.78" />
+
+    <Button
+        android:id="@+id/textView9"
+        android:layout_width="252dp"
+        android:layout_height="44dp"
+        android:background="#ffff"
+        android:fontFamily="@font/tajawalmedium2"
+        android:textAlignment="textStart"
+        android:textColor="#583560"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        style="?android:attr/borderlessButtonStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.675"
+        android:text="محادثاتي" />
+
+    <Button
+        android:id="@+id/textView26"
+        android:layout_width="252dp"
+        android:layout_height="44dp"
+        android:background="#ffff"
+        android:fontFamily="@font/tajawalmedium2"
+        android:textAlignment="textStart"
+        android:textColor="#583560"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        style="?android:attr/borderlessButtonStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.569"
+        android:text="طلباتي" />
+
+    <Button
+        android:id="@+id/textView24"
+        android:layout_width="252dp"
+        android:layout_height="44dp"
+        android:background="#ffff"
+        android:fontFamily="@font/tajawalmedium2"
+        android:textAlignment="textStart"
+        android:textColor="#583560"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        style="?android:attr/borderlessButtonStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="تعديل معلوماتي"
+        app:layout_constraintVertical_bias="0.487" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

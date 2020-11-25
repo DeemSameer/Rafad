@@ -7,20 +7,6 @@
     tools:context=".benChangePass">
 
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="221dp"
-        android:layout_height="225dp"
-        android:layout_marginTop="412dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
-        android:background="#00FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/prof" />
-
     <Button
         android:id="@+id/saveNewPassBen"
         android:layout_width="wrap_content"
@@ -28,7 +14,7 @@
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="تم"
-        android:textColor="#397A96"
+        android:textColor="#583560"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,7 +28,7 @@
         android:id="@+id/backtoProfilBen"
         android:layout_width="29dp"
         android:layout_height="26dp"
-        android:background="@drawable/backarrblue"
+        android:background="@drawable/purp_arrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.041"
@@ -88,7 +74,7 @@
         android:layout_height="24dp"
         android:fontFamily="@font/tajawalmedium2"
         android:text="تأكيد كلمة المرور :"
-        android:textColor="#397A96"
+        android:textColor="#583560"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -104,7 +90,7 @@
         android:layout_height="23dp"
         android:fontFamily="@font/tajawalmedium2"
         android:text="كلمة المرور الجديدة :"
-        android:textColor="#397A96"
+        android:textColor="#583560"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -26,8 +26,9 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="91dp"
+        android:layout_height="46dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="نشر"
@@ -63,10 +64,10 @@
         android:id="@+id/chosepicture"
         android:layout_width="60dp"
         android:layout_height="36dp"
-        android:background="@drawable/default_outlined_button_style"
+        android:background="@drawable/roundshapebtn"
         android:fontFamily="@font/tajawalmedium2"
         android:text="اختر صورة"
-        android:textColor="#523B60"
+        android:textColor="@color/base"
         android:textColorHighlight="#523B60"
         android:textColorLink="#523B60"
         android:textSize="11sp"
@@ -76,7 +77,8 @@
         app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.499"
+        style="?android:attr/borderlessButtonStyle"/>
 
     <Button
         android:id="@+id/button4"
@@ -92,7 +94,8 @@
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        style="?android:attr/borderlessButtonStyle"/>
 
     <TextView
         android:id="@+id/textViewcat"
@@ -145,6 +148,7 @@
             android:fontFamily="@font/tajawalmedium2"
             android:layoutDirection="rtl"
             android:text="ملابس"
+            android:textColor="@color/base"
             app:layout_constraintBottom_toBottomOf="@+id/textViewcat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.828"
@@ -159,6 +163,7 @@
             android:fontFamily="@font/tajawalmedium2"
             android:layoutDirection="rtl"
             android:text="أجهزة"
+            android:textColor="@color/base"
             app:layout_constraintBottom_toBottomOf="@+id/textViewcat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.825"
@@ -173,6 +178,7 @@
             android:fontFamily="@font/tajawalmedium2"
             android:layoutDirection="rtl"
             android:text="أثاث"
+            android:textColor="@color/base"
             app:layout_constraintBottom_toBottomOf="@+id/textViewcat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.571"
@@ -186,6 +192,7 @@
             android:fontFamily="@font/tajawalmedium2"
             android:layoutDirection="rtl"
             android:text="اكسسوارات"
+            android:textColor="@color/base"
             app:layout_constraintBottom_toBottomOf="@+id/textViewcat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.571"
@@ -198,7 +205,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/tajawalmedium2"
             android:layoutDirection="rtl"
-            android:text="ادوات"
+            android:text="أدوات"
+            android:textColor="@color/base"
             app:layout_constraintBottom_toBottomOf="@+id/textViewcat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.571"
