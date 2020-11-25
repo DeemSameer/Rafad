@@ -13,38 +13,38 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent" >
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:background="#397A96">
 
-        <Button
-            android:id="@+id/report"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/report"
-            android:text=" " />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#523B60">
+
+            <Button
+                android:id="@+id/report"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/blocked" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_marginStart="180dp"
+                android:layout_marginLeft="25dp"
+                android:fontFamily="@font/tajawalmedium2"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp" />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:id="@+id/username"
-        android:textSize="18sp"
-        android:layout_marginLeft="25dp"
-        android:textColor="#fff"
-        android:layout_marginStart="180dp"/>
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:id="@+id/profile_image"
-            android:layout_marginLeft="15dp"/>
-
-
-    </androidx.appcompat.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -71,12 +71,12 @@
         <ImageButton
 
             android:id="@+id/btn_send"
-            android:layout_width="37dp"
-            android:layout_height="38dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="-4dp"
-            android:background="@drawable/ic_baseline_send_24" />
+            android:background="@drawable/purpsend" />
 
     </RelativeLayout>
 
