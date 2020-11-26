@@ -59,19 +59,19 @@
                 android:layout_marginRight="18dp"
                 android:layout_marginTop="10dp"
                 />
+
             <TextView
-                android:gravity="right"
                 android:id="@+id/tit"
                 android:layout_width="200dp"
                 android:layout_height="30dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="18dp"
                 android:fontFamily="@font/tajawalmedium2"
+                android:gravity="right"
                 android:text="Title"
                 android:textAlignment="inherit"
                 android:textColor="#523B60"
-                android:textSize="18sp"
-                android:layout_marginRight="18dp"
-                android:layout_marginTop="10dp"
-                />
+                android:textSize="18sp" />
         </LinearLayout>
         <TextView
             android:id="@+id/des"

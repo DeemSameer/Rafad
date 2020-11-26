@@ -28,6 +28,7 @@ public class homepageAdmin extends AppCompatActivity {
     static int size;
     public static final String TAG = "TAG";
     ListView list;
+    Button adminbHome2,adminpro2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,25 @@ public class homepageAdmin extends AppCompatActivity {
         OneSignal.sendTag("User_ID","deemsameer.ds@gmail.com");
 
 
+        adminbHome2=findViewById(R.id.adminbHome2);
+        adminpro2=findViewById(R.id.adminpro2);
+
+        adminbHome2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homepageAdmin.this, homePageAdminBase.class));
+                finish();
+
+            }
+        });
+        adminpro2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homepageAdmin.this, adminMainProfile.class));
+                finish();
+
+            }
+        });
 
 /////////////////////////////////////////////////DB////////////////////////////////////
         FirebaseFirestore db=FirebaseFirestore.getInstance();

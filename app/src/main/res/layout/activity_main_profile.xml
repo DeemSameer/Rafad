@@ -79,7 +79,7 @@
         android:id="@+id/rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="62dp"
         android:text="TextView"
 
         android:textColor="@color/base"

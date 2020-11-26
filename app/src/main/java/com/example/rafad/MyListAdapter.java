@@ -789,8 +789,8 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
         else
             SecNum= arrayList.get(position).getSecurityNumber();
 
-        titleText.setText(arrayList.get(position).getUserName());
-        subtitleText.setText(arrayList.get(position).getPhoneNumber());
+        titleText.setText("الاسم: "+arrayList.get(position).getUserName());
+        subtitleText.setText("رقم الجوال: "+arrayList.get(position).getPhoneNumber());
         subtitleText1.setText("رقم الضمان الإجتماعي: "+SecNum);
         subtitleText2.setText("نوع السكن: "+arrayList.get(position).getTypeOfResidence());
         subtitleText3.setText("الدخل: "+arrayList.get(position).getTotalIncome());

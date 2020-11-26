@@ -63,17 +63,17 @@ public class homepageDonator extends AppCompatActivity {
         clothes = findViewById(R.id.clothes1);
         furniture = findViewById(R.id.furniture);
         device = findViewById(R.id.device1);
-        all = findViewById(R.id.all1);
+        //all = findViewById(R.id.all1);
         Chat= findViewById(R.id.button12);
         ///
         //device2k = findViewById(R.id.devke);
         tool= findViewById(R.id.tool1);
         access= findViewById(R.id.acc);
         //device3m= findViewById(R.id.devicem);
-       // dk =findViewById(R.id.devke);
-               // dm=findViewById(R.id.devm);
-                ac=findViewById(R.id.acce);
-                        to=findViewById(R.id.tool);
+        // dk =findViewById(R.id.devke);
+        // dm=findViewById(R.id.devm);
+        ac=findViewById(R.id.acce);
+        to=findViewById(R.id.tool);
         ///
         BigT=findViewById(R.id.ifempty2);
 
@@ -87,7 +87,7 @@ public class homepageDonator extends AppCompatActivity {
         profile1= findViewById(R.id.profileb);
         post= findViewById(R.id.postItem);
         Button b=findViewById(R.id.button10);
-         empty = findViewById(R.id.homepagetext);
+        empty = findViewById(R.id.homepagetext);
         //////// for view list of items
         listView=(ListView)findViewById(R.id.postedlistDonaterHome);
         //////// above is for view list of items
@@ -111,7 +111,7 @@ public class homepageDonator extends AppCompatActivity {
 //        device2k.setLayoutParams (new TableRow.LayoutParams(60, 60));
         tool.setLayoutParams (new TableRow.LayoutParams(75, 75));
         access.setLayoutParams (new TableRow.LayoutParams(75, 75));
-    //    device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
+        //    device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
 
         //
 
@@ -125,14 +125,14 @@ public class homepageDonator extends AppCompatActivity {
                 //device2k.setLayoutParams (new TableRow.LayoutParams(60, 60));
                 tool.setLayoutParams (new TableRow.LayoutParams(75, 75));
                 access.setLayoutParams (new TableRow.LayoutParams(75, 75));
-               // device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
+                // device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
                 c.setText("ملابس");
                 c.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
                 c.setTypeface(BigT.getTypeface(), Typeface.BOLD);
                 d.setText("");
                 f.setText("");
                 //dk.setText("");
-               // dm.setText("");
+                // dm.setText("");
                 ac.setText("");
                 to.setText("");
                 arrayItemC =new ArrayList<>();
@@ -140,7 +140,7 @@ public class homepageDonator extends AppCompatActivity {
                 Query p =  fStore.collection("item").whereEqualTo("Catogery", "ملابس")
                         .whereEqualTo("isRequested", "no" );
 
-                                p.get()
+                p.get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -170,17 +170,17 @@ public class homepageDonator extends AppCompatActivity {
                 clothes.setLayoutParams (new TableRow.LayoutParams(75, 75));
                 device.setLayoutParams (new TableRow.LayoutParams(75, 75));
                 furniture.setLayoutParams (new TableRow.LayoutParams(90, 90));
-              //  device2k.setLayoutParams (new TableRow.LayoutParams(60, 60));
+                //  device2k.setLayoutParams (new TableRow.LayoutParams(60, 60));
                 tool.setLayoutParams (new TableRow.LayoutParams(75, 75));
                 access.setLayoutParams (new TableRow.LayoutParams(75, 75));
-             //   device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
+                //   device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
                 f.setText("اثاث");
                 f.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 f.setTypeface(BigT.getTypeface(), Typeface.BOLD);
                 d.setText("");
                 c.setText("");
-              //  dk.setText("");
-              //  dm.setText("");
+                //  dk.setText("");
+                //  dm.setText("");
                 ac.setText("");
                 to.setText("");
                 arrayItemF =new ArrayList<>();
@@ -217,17 +217,17 @@ public class homepageDonator extends AppCompatActivity {
                 clothes.setLayoutParams (new TableRow.LayoutParams(75, 75));
                 device.setLayoutParams (new TableRow.LayoutParams(90, 90));
                 furniture.setLayoutParams (new TableRow.LayoutParams(75, 75));
-              //  device2k.setLayoutParams (new TableRow.LayoutParams(60, 60));
+                //  device2k.setLayoutParams (new TableRow.LayoutParams(60, 60));
                 tool.setLayoutParams (new TableRow.LayoutParams(75, 75));
                 access.setLayoutParams (new TableRow.LayoutParams(75, 75));
-              //  device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
+                //  device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
                 d.setText("أجهزه");
                 d.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 d.setTypeface(BigT.getTypeface(), Typeface.BOLD);
                 f.setText("");
                 c.setText("");
-              //  dk.setText("");
-             //   dm.setText("");
+                //  dk.setText("");
+                //   dm.setText("");
                 ac.setText("");
                 to.setText("");
                 arrayItemD =new ArrayList<>();
@@ -268,21 +268,21 @@ public class homepageDonator extends AppCompatActivity {
                 clothes.setLayoutParams (new TableRow.LayoutParams(75, 75));
                 device.setLayoutParams (new TableRow.LayoutParams(75, 75));
                 furniture.setLayoutParams (new TableRow.LayoutParams(75, 75));
-              //  device2k.setLayoutParams (new TableRow.LayoutParams(60, 60));
+                //  device2k.setLayoutParams (new TableRow.LayoutParams(60, 60));
                 tool.setLayoutParams (new TableRow.LayoutParams(90, 90));
                 access.setLayoutParams (new TableRow.LayoutParams(75, 75));
-              //  device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
+                //  device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
                 to.setText("أدوات");
                 to.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 to.setTypeface(BigT.getTypeface(), Typeface.BOLD);
                 d.setText("");
                 c.setText("");
-            //    dk.setText("");
-            //    dm.setText("");
+                //    dk.setText("");
+                //    dm.setText("");
                 ac.setText("");
                 f.setText("");
                 arrayItemT =new ArrayList<>();
-                Query p =  fStore.collection("item").whereEqualTo("Catogery", "أدوات")
+                Query p =  fStore.collection("item").whereEqualTo("Catogery", "ادوات")
                         .whereEqualTo("isRequested", "no" );
 
                 p.get()
@@ -316,17 +316,17 @@ public class homepageDonator extends AppCompatActivity {
                 clothes.setLayoutParams (new TableRow.LayoutParams(75, 75));
                 device.setLayoutParams (new TableRow.LayoutParams(75, 75));
                 furniture.setLayoutParams (new TableRow.LayoutParams(75, 75));
-              //  device2k.setLayoutParams (new TableRow.LayoutParams(60, 60));
+                //  device2k.setLayoutParams (new TableRow.LayoutParams(60, 60));
                 tool.setLayoutParams (new TableRow.LayoutParams(75, 75));
                 access.setLayoutParams (new TableRow.LayoutParams(90, 90));
-              //  device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
+                //  device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
                 ac.setText("اكسسوارات");
                 ac.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 ac.setTypeface(BigT.getTypeface(), Typeface.BOLD);
                 d.setText("");
                 c.setText("");
-              //  dk.setText("");
-             //   dm.setText("");
+                //  dk.setText("");
+                //   dm.setText("");
                 f.setText("");
                 to.setText("");
                 arrayItemAc =new ArrayList<>();
@@ -444,24 +444,39 @@ public class homepageDonator extends AppCompatActivity {
 
 //////////////////// for list of items second try////////////////////////
 
-       // all.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-        arrayItem =new ArrayList<>();
-        // FirebaseFirestore db = FirebaseFirestore.getInstance();
-        fStore.collection("item")
-                .whereEqualTo("isRequested", "no")
-                .get()
+        clothes.setLayoutParams (new TableRow.LayoutParams(75, 75));
+        device.setLayoutParams (new TableRow.LayoutParams(75, 75));
+        furniture.setLayoutParams (new TableRow.LayoutParams(75, 75));
+        //  device2k.setLayoutParams (new TableRow.LayoutParams(60, 60));
+        tool.setLayoutParams (new TableRow.LayoutParams(75, 75));
+        access.setLayoutParams (new TableRow.LayoutParams(90, 90));
+        //  device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
+        ac.setText("اكسسوارات");
+        ac.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        ac.setTypeface(BigT.getTypeface(), Typeface.BOLD);
+        d.setText("");
+        c.setText("");
+        //  dk.setText("");
+        //   dm.setText("");
+        f.setText("");
+        to.setText("");
+        arrayItemAc =new ArrayList<>();
+        Query p =  fStore.collection("item").whereEqualTo("Catogery", "اكسسوارات")
+                .whereEqualTo("isRequested", "no" );
+
+        p.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                arrayItem.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),"",(String) document.get("Demail")));
-                                Log.d(TAG, "SIZE item list => " + arrayItem.size());
+                                arrayItemAc.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),"",(String) document.get("Demail")));
+                                Log.d(TAG, "SIZE item list => " + arrayItemAc.size());
                             }
-                            empty.setText(arrayItem.size()+" منتج ");
+                            empty.setText(arrayItemAc.size()+" منتج ");
                             empty.setTypeface(BigT.getTypeface(), Typeface.BOLD);
-                            HistoryItemAdapter adapter = new HistoryItemAdapter(homepageDonator.this, arrayItem);
+                            HistoryItemAdapter adapter = new HistoryItemAdapter(homepageDonator.this, arrayItemAc);
                             listView = (ListView) findViewById(R.id.postedlistDonaterHome);
                             listView.setAdapter(adapter);
                         } else {
@@ -469,6 +484,7 @@ public class homepageDonator extends AppCompatActivity {
                         }
                     }
                 });
+
 
 
 

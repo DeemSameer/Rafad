@@ -69,8 +69,8 @@
 
     <ListView
         android:id="@+id/benReqListView"
-        android:layout_width="401dp"
-        android:layout_height="539dp"
+        android:layout_width="421dp"
+        android:layout_height="629dp"
         android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView8"
         app:layout_constraintEnd_toEndOf="parent"

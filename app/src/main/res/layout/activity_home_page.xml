@@ -19,137 +19,234 @@
         app:srcCompat="@drawable/footer" />
 
     <TextView
-        android:id="@+id/homepagetext"
-        android:layout_width="133dp"
-        android:layout_height="25dp"
+        android:id="@+id/ifempty2"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
         android:fontFamily="@font/tajawalmedium2"
-        android:text="@string/hp"
-        android:textAlignment="center"
+        android:gravity="right"
+        android:text="الصفحة الرئيسية"
+
+        android:textColor="#523B60"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.064"
+        />
+
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:gravity="right"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.191"
+        tools:context=".HistoryItemAdapter"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        >
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/device1"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+
+                android:background="@drawable/television"
+
+                android:fontFamily="@font/tajawalmedium2"
+                android:textColor="@color/base"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.674"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.19" />
+
+            <TextView
+                android:id="@+id/dev"
+                android:layout_width="30dp"
+                android:layout_height="15dp"
+                android:fontFamily="@font/tajawalmedium2"
+                android:text=""
+                android:textColor="#523B60"
+                android:textSize="14sp"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginRight="20dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+            <Button
+                android:id="@+id/tool1"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:background="@drawable/stationery"
+                android:fontFamily="@font/tajawalmedium2"
+                android:textColor="@color/base"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/tool"
+                android:layout_width="30dp"
+                android:layout_height="15dp"
+                android:fontFamily="@font/tajawalmedium2"
+                android:text=""
+                android:textSize="14sp"
+                android:textColor="#523B60"
+                android:gravity="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/clothes1"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:background="@drawable/wardrobe"
+                android:fontFamily="@font/tajawalmedium2"
+
+                android:textColor="@color/base"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.884"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.189" />
+
+            <TextView
+                android:id="@+id/clu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/tajawalmedium2"
+                android:text=""
+                android:textColor="#523B60"
+                android:textSize="12sp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="65dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/acc"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:background="@drawable/accessory"
+                android:fontFamily="@font/tajawalmedium2"
+                android:textColor="@color/base"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/acce"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/tajawalmedium2"
+                android:text=""
+                android:textColor="#523B60"
+                android:textSize="12sp"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/furniture"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:background="@drawable/couch"
+                android:fontFamily="@font/tajawalmedium2"
+                android:gravity="center"
+                android:textColor="@color/base"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/fun"
+                android:layout_width="30dp"
+                android:layout_height="15dp"
+                android:fontFamily="@font/tajawalmedium2"
+                android:gravity="center"
+                android:text=""
+                android:textColor="#523B60"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ListView
+        android:background="@drawable/rectangle"
+        android:id="@+id/postedlistHomePage"
+        android:layout_width="409dp"
+        android:layout_height="350dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.028"
-        android:gravity="center_horizontal" />
+        app:layout_constraintVertical_bias="0.734" />
     <TextView
-        android:id="@+id/homepagetext2"
+        android:id="@+id/homepagetext"
         android:layout_width="150dp"
         android:layout_height="23dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="31dp"
+        android:layout_marginTop="31dp"
+        android:fontFamily="@font/tajawalmedium2"
         android:text=""
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.178" />
-    <ListView
-        android:id="@+id/postedlistHomePage"
-        android:layout_width="338dp"
-        android:layout_height="466dp"
-        android:layout_marginBottom="52dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.84000003" />
-
-    <Button
-        android:id="@+id/all1"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:background="#00FFFFFF"
-        android:fontFamily="@font/tajawalmedium2"
-        android:text="الجميع"
-        android:textColor="@color/base"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096"
-        style="?android:attr/borderlessButtonStyle"/>
-
-    <Button
-        android:id="@+id/device1"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:background="#00FFFFFF"
-        android:fontFamily="@font/tajawalmedium2"
-        android:text="أجهزة"
-        android:textColor="@color/base"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.662"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096"
-        style="?android:attr/borderlessButtonStyle"
-        />
-
-    <Button
-        android:id="@+id/clothes1"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:background="#00FFFFFF"
-        android:fontFamily="@font/tajawalmedium2"
-        android:text="ملابس"
-        android:textColor="@color/base"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.962"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096"
-        style="?android:attr/borderlessButtonStyle"/>
-
-    <Button
-        android:id="@+id/furniture"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:background="#00FFFFFF"
-        android:fontFamily="@font/tajawalmedium2"
-        android:text="أثاث"
-        android:textColor="@color/base"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.365"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096"
-        style="?android:attr/borderlessButtonStyle"/>
-
-    <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="22dp"
-        android:layout_height="20dp"
-        android:background="@drawable/logout"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.958"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026" />
+        app:layout_constraintVertical_bias="0.3" />
 
 
     <Button

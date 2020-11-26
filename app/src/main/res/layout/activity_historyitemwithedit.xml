@@ -70,7 +70,7 @@
                 android:textColor="#523B60"
                 android:textSize="18sp"
                 android:layout_marginRight="18dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="0dp"
                 />
         </LinearLayout>
 
