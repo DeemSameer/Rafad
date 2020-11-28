@@ -273,8 +273,8 @@
             <Button
                 android:id="@+id/acc"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="27dp"
-                android:layout_height="27dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:background="@drawable/accessory"
                 android:fontFamily="@font/tajawalmedium2"
                 android:textColor="@color/base"
@@ -320,4 +320,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.985" />
+
+    <Button
+        android:id="@+id/backToMainCardsD"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/purparrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ifempty2"
+        app:layout_constraintHorizontal_bias="0.309"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073"
+        style="?android:attr/borderlessButtonStyle"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

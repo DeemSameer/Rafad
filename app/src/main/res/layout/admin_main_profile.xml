@@ -203,7 +203,7 @@
         app:layout_constraintStart_toEndOf="@+id/e222"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.739"
-        app:srcCompat="@drawable/mail1" />
+         />
 
     <TextView
         android:id="@+id/e222"

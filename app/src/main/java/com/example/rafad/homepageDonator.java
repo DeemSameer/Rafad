@@ -1,40 +1,35 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TableRow;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rafad.ChatJava.MainChatAllPeople;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.StorageReference;
 import com.onesignal.OneSignal;
 
 import java.util.ArrayList;
 import java.util.List;
-import android.graphics.Paint;
-import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class homepageDonator extends AppCompatActivity {
-    Button logout ,profile1, post , clothes , furniture,device,all,Chat,device2k,access,tool,device3m;
+    Button logout ,profile1, post , clothes , furniture,device,all,Chat,device2k,access,tool,device3m,backToMainCardsD;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 
@@ -63,6 +58,7 @@ public class homepageDonator extends AppCompatActivity {
         clothes = findViewById(R.id.clothes1);
         furniture = findViewById(R.id.furniture);
         device = findViewById(R.id.device1);
+        backToMainCardsD=findViewById(R.id.backToMainCardsD);
         //all = findViewById(R.id.all1);
         Chat= findViewById(R.id.button12);
         ///
@@ -422,6 +418,18 @@ public class homepageDonator extends AppCompatActivity {
 
             }
         });
+
+
+        backToMainCardsD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homepageDonator.this, mainRecyclerView.class));
+                finish();
+
+            }
+        });
+
+
 /*
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -146,7 +146,7 @@ public class login extends AppCompatActivity {
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
                                                 Toast.makeText(login.this, " تم تسجيل دخولك بنجاح! ", Toast.LENGTH_LONG).show();
-                                                Intent i = new Intent(login.this, homepageDonator.class);
+                                                Intent i = new Intent(login.this, mainRecyclerView.class);
                                                 type="beneficiaries";
                                                 startActivity(i);
                                                 finish();
