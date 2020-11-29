@@ -88,20 +88,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
+
     <Button
         android:id="@+id/backHome"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="29dp"
         android:layout_height="27dp"
-        android:background="@drawable/purp_arrow"
+        android:background="@drawable/purparrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintHorizontal_bias="0.002"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.036"
+        app:layout_constraintVertical_bias="0.184"
 
         />
-
 
     <TextView
         android:id="@+id/phonenumber"
@@ -120,18 +121,18 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/shapeableImageView6"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
         android:layout_marginStart="100dp"
         android:layout_marginBottom="-20dp"
         android:orientation="horizontal"
-        android:src="@drawable/user1"
+        android:src="@drawable/ediit2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintHorizontal_bias="0.895"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.477" />
+        app:layout_constraintVertical_bias="0.486" />
 
     <Button
         android:id="@+id/textView9"
@@ -147,15 +148,29 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.553"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.605" />
+        app:layout_constraintVertical_bias="0.66" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shapeableImageView3"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="100dp"
+        android:orientation="horizontal"
+        android:src="@drawable/logout1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.902"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.743" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/shapeableImageView2"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
         android:layout_marginStart="100dp"
         android:orientation="horizontal"
         android:src="@drawable/chat1"
@@ -165,22 +180,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
-        app:layout_constraintVertical_bias="0.603"
+        app:layout_constraintVertical_bias="0.655"
         tools:ignore="MissingConstraints" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/shapeableImageView3"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="100dp"
-        android:orientation="horizontal"
-        android:src="@drawable/logout1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.895"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.705" />
 
     <Button
         android:id="@+id/textView21"
@@ -196,15 +197,16 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.553"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.71" />
+        app:layout_constraintVertical_bias="0.751" />
 
     <Button
         android:id="@+id/textView24"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="252dp"
-        android:layout_height="44dp"
+        android:layout_height="36dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="تعديل معلوماتي"
@@ -212,14 +214,46 @@
         android:textColor="#583560"
         android:textSize="14sp"
         android:textStyle="bold"
-        style="?android:attr/borderlessButtonStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.553"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
-        app:layout_constraintVertical_bias="0.487" />
+        app:layout_constraintVertical_bias="0.494" />
 
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="100dp"
+        android:orientation="horizontal"
+        android:background="@drawable/request1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="?android:attr/borderlessButtonStyle"
+        app:layout_constraintVertical_bias="0.572" />
+
+    <Button
+        android:id="@+id/mydonations"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="251dp"
+        android:layout_height="36dp"
+        android:background="#ffff"
+        android:fontFamily="@font/tajawalmedium2"
+        android:text="قائمة تبرعاتي"
+        android:textAlignment="textStart"
+        android:textColor="#583560"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.577" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
