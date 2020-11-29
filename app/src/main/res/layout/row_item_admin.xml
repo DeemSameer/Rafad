@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linear_layout555"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingStart="10dp"
+        android:layout_marginEnd="10dp">
+
+
+        <ImageView
+            android:id="@+id/image_view555"
+            android:layout_width="340dp"
+            android:layout_height="500dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="125dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/orangecard" />
+
+        <TextView
+            android:id="@+id/text_view555"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/tajawalmedium2"
+            android:text="الصفحة الرئيسية"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:visibility="invisible"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

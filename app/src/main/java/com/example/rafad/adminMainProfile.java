@@ -1,9 +1,5 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -15,6 +11,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -144,7 +144,7 @@ public class adminMainProfile extends AppCompatActivity {
 
                                 else {*/
                                     Toast.makeText(adminMainProfile.this, " تم تحديث الملف الشخصي بنجاح ", Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(getApplicationContext(), homePageAdminBase.class));
+                                    startActivity(new Intent(getApplicationContext(), mainRVAdmin.class));
                                     finish();  //}
                             }
                         });
@@ -176,7 +176,7 @@ public class adminMainProfile extends AppCompatActivity {
         backHomeIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(adminMainProfile.this, homePageAdminBase.class));
+                startActivity(new Intent(adminMainProfile.this, mainRVAdmin.class));
                 finish();
 
             }

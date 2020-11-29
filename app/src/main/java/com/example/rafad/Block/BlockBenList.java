@@ -14,9 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.example.rafad.ChatJava.MessageActivity;
 import com.example.rafad.R;
-import com.example.rafad.benDataModel;
 import com.example.rafad.sendMail;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,9 +25,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class BlockBenList extends ArrayAdapter<BenModelBlock> {
 public static final String TAG = "TAG";
@@ -59,9 +55,9 @@ public BlockBenList(@NonNull Activity context, @NonNull List<BenModelBlock> arra
         TextView subtitleText1 =  rowView.findViewById(R.id.ssn);
 
 
-        titleText.setText("الاسم: "+arrayList.get(position).getPhoneNumber());
+        titleText.setText("الإسم: "+arrayList.get(position).getPhoneNumber());
         subtitleText.setText("رقم الجوال: "+arrayList.get(position).getName());
-        subtitleText1.setText("عدد مرات الابلاغ: "+arrayList.get(position).getCount());
+        subtitleText1.setText("عدد مرات الإبلاغ: "+arrayList.get(position).getCount());
         final ImageView profileImageViewChat = (ImageView) rowView.findViewById(R.id.profile_image);
 
         try {

@@ -56,7 +56,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                      Intent intent = new Intent(context, mainProfile.class);
                      context.startActivity(intent);
                  }
-                 else if (mainModels.get(position).getLangName().equals("االطلبات المعلقة")){
+                 else if (mainModels.get(position).getLangName().equals("الطلبات المعلقة")){
                      Intent intent = new Intent(context, don_3view.class);
                      context.startActivity(intent);
                  }
