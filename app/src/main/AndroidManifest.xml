@@ -27,6 +27,8 @@
             tools:ignore="Instantiatable" />
         <activity android:name=".post3" />
         <activity android:name=".mainRVAdmin"/>
+        <activity android:name=".mainRVBen"/>
+
         <activity
             android:name=".HistoryItemAdapter"
             tools:ignore="Instantiatable" />

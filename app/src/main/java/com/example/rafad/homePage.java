@@ -1,40 +1,34 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TableRow;
+import android.widget.TextView;
 
-import com.example.rafad.ChatJava.MainChatAllPeople;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.StorageReference;
 import com.onesignal.OneSignal;
 
 import java.util.ArrayList;
 import java.util.List;
-import android.graphics.Paint;
-import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class homePage extends AppCompatActivity {
-    Button logout ,profile1, post , clothes , furniture,device,all,Chat,device2k,access,tool,device3m;
+    Button logout ,profile1, post , clothes , furniture,device,all,Chat,device2k,access,tool,device3m,backMainBen;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 
@@ -65,6 +59,7 @@ public class homePage extends AppCompatActivity {
         device = findViewById(R.id.device1);
         //all = findViewById(R.id.all1);
         Chat= findViewById(R.id.button12);
+        backMainBen = findViewById(R.id.backMainBen);
         ///
         //device2k = findViewById(R.id.devke);
         tool= findViewById(R.id.tool1);
@@ -472,6 +467,14 @@ public class homePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(homePage.this, benReqView.class));
+                finish();
+            }
+        });
+
+        backMainBen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homePage.this, mainRVBen.class));
                 finish();
             }
         });

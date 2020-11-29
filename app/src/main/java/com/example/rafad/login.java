@@ -185,7 +185,7 @@ public class login extends AppCompatActivity {
                                                 }
                                                 else if(((String)document.get("flag")).equals("Accepted")){
                                                     Toast.makeText(login.this,"تم تسجيل الدخول بنجاح",Toast.LENGTH_SHORT).show();
-                                                    Intent i = new Intent(login.this, homePage.class);
+                                                    Intent i = new Intent(login.this, mainRVBen.class);
                                                     type="donators";
                                                     startActivity(i);
                                                     finish();
