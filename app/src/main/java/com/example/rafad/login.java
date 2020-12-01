@@ -167,7 +167,7 @@ public class login extends AppCompatActivity {
 
                                             if (document.exists()) {
                                                 if (((String)document.get("flag")).equals("Admin")){
-                                                    Toast.makeText(login.this,"حسابك معلق,الجاء انتظار الموافقة",Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(login.this,"حسابك معلق,الرجاء انتظار الموافقة",Toast.LENGTH_SHORT).show();
                                                     return;
 
                                                 }
