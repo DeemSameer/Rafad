@@ -56,25 +56,20 @@
     </androidx.cardview.widget.CardView>
 
 
-
-
-
-
-
-
     <Button
         android:id="@+id/adminbackHome"
         android:layout_width="88dp"
         android:layout_height="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="132dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="إلغاء"
+        style="?android:attr/borderlessButtonStyle"
         android:textColor="#583560"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.003"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,12 +78,12 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginStart="25dp"
-
+        style="?android:attr/borderlessButtonStyle"
         android:layout_marginLeft="25dp"
         android:layout_marginEnd="3dp"
         android:layout_marginRight="3dp"
         android:layout_marginBottom="28dp"
-        android:background="@drawable/ediit"
+        android:background="@drawable/ediit2"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toStartOf="@+id/cardView"
         app:layout_constraintHorizontal_bias="0.654"
@@ -97,29 +92,27 @@
         app:layout_constraintVertical_bias="0.869" />
 
 
-
     <Button
         android:id="@+id/adminEdit"
         android:layout_width="88dp"
         android:layout_height="48dp"
         android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginBottom="550dp"
+        android:layout_marginBottom="50dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="حفظ"
+        style="?android:attr/borderlessButtonStyle"
         android:textColor="#583560"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.097" />
+        app:layout_constraintVertical_bias="0.195" />
 
     <TextView
         android:id="@+id/ph222"
@@ -127,7 +120,7 @@
         android:layout_height="20dp"
         android:fontFamily="@font/tajawalmedium2"
         android:text="رقم الجوال :"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="#583560"
         android:visibility="visible"
@@ -188,22 +181,22 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.258"
+        app:layout_constraintHorizontal_bias="0.309"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.738" />
+        app:layout_constraintVertical_bias="0.747" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="18dp"
+        android:layout_width="15dp"
         android:layout_height="18dp"
+        android:background="@drawable/emailicon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintHorizontal_bias="0.193"
         app:layout_constraintStart_toEndOf="@+id/e222"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.739"
-        app:srcCompat="@drawable/mail1" />
+        app:layout_constraintVertical_bias="0.739" />
 
     <TextView
         android:id="@+id/e222"
@@ -217,10 +210,10 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintHorizontal_bias="0.194"
         app:layout_constraintStart_toEndOf="@+id/e2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.744"
+        app:layout_constraintVertical_bias="0.747"
         tools:visibility="visible" />
 
     <ImageView

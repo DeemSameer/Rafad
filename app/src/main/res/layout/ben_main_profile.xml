@@ -38,25 +38,9 @@
 
 
     <com.google.android.material.imageview.ShapeableImageView
-
-        android:id="@+id/shapeableImageView"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="100dp"
-        android:orientation="horizontal"
-        android:src="@drawable/request1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        app:layout_constraintVertical_bias="0.567"
-        tools:ignore="MissingConstraints" />
-    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/shapeableImageView2"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
         android:layout_marginStart="100dp"
         android:orientation="horizontal"
         android:src="@drawable/chat1"
@@ -140,8 +124,8 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/shapeableImageView3"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
         android:layout_marginStart="100dp"
         android:orientation="horizontal"
         android:src="@drawable/logout1"
@@ -154,18 +138,18 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/shapeableImageView6"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
         android:layout_marginStart="100dp"
         android:layout_marginBottom="-20dp"
         android:orientation="horizontal"
-        android:src="@drawable/ediit"
+        android:src="@drawable/ediit2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintHorizontal_bias="0.895"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.477" />
+        app:layout_constraintVertical_bias="0.486" />
 
     <Button
         android:id="@+id/textView21"
@@ -207,22 +191,39 @@
 
     <Button
         android:id="@+id/textView26"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="252dp"
         android:layout_height="44dp"
         android:background="#ffff"
         android:fontFamily="@font/tajawalmedium2"
+        android:text="طلباتي"
         android:textAlignment="textStart"
         android:textColor="#583560"
         android:textSize="14sp"
         android:textStyle="bold"
-        style="?android:attr/borderlessButtonStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.569"
-        android:text="طلباتي" />
+        app:layout_constraintVertical_bias="0.573" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+
+        android:id="@+id/shapeableImageView"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="100dp"
+        android:orientation="horizontal"
+        android:src="@drawable/request1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.572"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/textView24"
