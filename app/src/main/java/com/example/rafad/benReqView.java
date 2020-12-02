@@ -150,7 +150,7 @@ public class benReqView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Intent i = new Intent(homepageDonator.this, postitem.class);
-                startActivity(new Intent(benReqView.this, homePage.class));
+                startActivity(new Intent(benReqView.this, BenMainProfile.class));
                 finish();
             }
         });

@@ -9,6 +9,7 @@ public class benDataModel {
     private String userName;
     private String email;
     private String SSN;
+    private int i;
 
     public benDataModel(String UID,String phoneNumber, String typeOfResidence, String totalIncome, String userName, String email, String SSN, String securityNumber) {
         this.UID = UID;
@@ -19,6 +20,7 @@ public class benDataModel {
         this.email = email;
         this.SSN = SSN;
         this.securityNumber = securityNumber;
+        this.i=i;
     }
     public benDataModel(String UID,String userName) {
         this.UID = UID;
@@ -76,6 +78,9 @@ public class benDataModel {
 
     public String getSSN() {
         return SSN;
+    }
+    public int geti() {
+        return i;
     }
 
     public void setSSN(String SSN) {

@@ -329,7 +329,7 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
         TextView subtitleText1 =  rowView.findViewById(R.id.ssn);
         TextView subtitleText2 =  rowView.findViewById(R.id.Resd);
         TextView subtitleText3 =  rowView.findViewById(R.id.income);
-
+//TextView s= rowView.findViewById(R.id.index);
         String SecNum;
         if(arrayList.get(position).getSecurityNumber().isEmpty())
          SecNum= "لا يوجد";
@@ -341,6 +341,7 @@ class MyListAdapter extends ArrayAdapter<benDataModel> {
         subtitleText1.setText("رقم الضمان الإجتماعي: "+SecNum);
         subtitleText2.setText("نوع السكن: "+arrayList.get(position).getTypeOfResidence());
         subtitleText3.setText("الدخل: "+arrayList.get(position).getTotalIncome());
+        //s.setText(arrayList.get(position).geti());
 
         return rowView;
 

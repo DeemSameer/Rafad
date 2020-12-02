@@ -26,6 +26,7 @@ public class homepageAdmin extends AppCompatActivity {
     FirebaseAuth fAuth;
     List<benDataModel> arrayList=new ArrayList<>();
     static int size;
+    int i;
     public static final String TAG = "TAG";
     ListView list;
     Button adminbHome2,adminpro2;
@@ -82,6 +83,7 @@ public class homepageAdmin extends AppCompatActivity {
                                 Log.d(TAG, document.getId() + " => " + document.getData()+"//"+(String)document.get("typeOfResidence"));
                                 arrayList.add(new benDataModel((String)document.getId(), (String)document.get("phoneNumber"), (String)document.get("typeOfResidence"),(String)document.get("TotalIncome"), (String)document.get("userName"),(String)document.get("email"), (String)document.get("SSN"), (String)document.get("securityNumber")));
                                 Log.d(TAG,  "SIZE ADMIN => " +arrayList.size());
+                                i++;
 
                             }
 

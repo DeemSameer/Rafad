@@ -53,7 +53,7 @@ public class donProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_don_profile);
 
-        profileImage= findViewById(R.id.profileImg);
+        profileImage= findViewById(R.id.profile_image);
         changeProfileIMG=findViewById(R.id.change);
         cancell=findViewById(R.id.cancel);
         saveBtn = findViewById(R.id.save);
