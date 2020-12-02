@@ -17,10 +17,10 @@
 
         <ImageView
             android:id="@+id/image_view555"
-            android:layout_width="340dp"
-            android:layout_height="500dp"
+            android:layout_width="300dp"
+            android:layout_height="400dp"
             android:layout_marginLeft="9dp"
-            android:layout_marginTop="125dp"
+            android:layout_marginTop="135dp"
             android:layout_marginRight="5dp"
             android:src="@drawable/orangecard" />
 

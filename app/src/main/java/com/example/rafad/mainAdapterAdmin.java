@@ -63,6 +63,11 @@ public class mainAdapterAdmin extends RecyclerView.Adapter<mainAdapterAdmin.View
                     context.startActivity(intent);
                 }
 
+                else if (mainModels.get(position).getLangName().equals("تسجيل الخروج")){
+                    Intent intent = new Intent(context, login.class);
+                    context.startActivity(intent);
+                }
+
             }
         });
 

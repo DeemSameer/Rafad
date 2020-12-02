@@ -23,10 +23,10 @@ public class mainRVAdmin extends AppCompatActivity {
         recyclerView=findViewById(R.id.recycler_view_admin);
 
         //create int array
-        Integer[] langlogo= {R.drawable.managerequests, R.drawable.benblocked, R.drawable.adminprofilecard} ;
+        Integer[] langlogo= {R.drawable.managerequests, R.drawable.benblocked, R.drawable.adminprofilecard,R.drawable.logoutcard} ;
 
         //create string array
-        String[] langName = { "إدارة حسابات المستفيدين المعلقة", "حسابات المستفيدين المبلغ عنها", "الملف الشخصي"};
+        String[] langName = { "إدارة حسابات المستفيدين المعلقة", "حسابات المستفيدين المبلغ عنها", "الملف الشخصي","تسجيل الخروج"};
 
 
         //initialize arraylist

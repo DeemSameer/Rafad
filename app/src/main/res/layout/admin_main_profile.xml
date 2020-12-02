@@ -58,18 +58,18 @@
 
     <Button
         android:id="@+id/adminbackHome"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="88dp"
         android:layout_height="48dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="128dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="إلغاء"
-        style="?android:attr/borderlessButtonStyle"
         android:textColor="#583560"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.003"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
