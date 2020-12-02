@@ -170,7 +170,7 @@ public class homePage extends AppCompatActivity {
                 tool.setLayoutParams (new TableRow.LayoutParams(75, 75));
                 access.setLayoutParams (new TableRow.LayoutParams(75, 75));
                 //   device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
-                f.setText("اثاث");
+                f.setText("أثاث");
                 f.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 f.setTypeface(BigT.getTypeface(), Typeface.BOLD);
                 d.setText("");
@@ -362,7 +362,7 @@ public class homePage extends AppCompatActivity {
         tool.setLayoutParams (new TableRow.LayoutParams(75, 75));
         access.setLayoutParams (new TableRow.LayoutParams(75, 75));
         //   device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
-        f.setText("اثاث");
+        f.setText("أثاث");
         f.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
         f.setTypeface(BigT.getTypeface(), Typeface.BOLD);
         d.setText("");
