@@ -133,7 +133,7 @@
         android:layout_marginBottom="20dp"
         >
     <LinearLayout
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="3dp"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:gravity="center"
@@ -169,7 +169,7 @@
             />
     </LinearLayout>
         <LinearLayout
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="3dp"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:gravity="center"
@@ -200,7 +200,7 @@
         <LinearLayout
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="3dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -233,7 +233,7 @@
 
         </LinearLayout>
         <LinearLayout
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="3dp"
             android:layout_width="65dp"
             android:layout_height="60dp"
             android:gravity="center"
@@ -266,7 +266,7 @@
         android:layout_height="60dp"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="10dp"
         >
 
         <Button
