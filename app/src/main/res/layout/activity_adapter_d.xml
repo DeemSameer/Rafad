@@ -80,11 +80,12 @@
 
                 <ImageView
                     android:id="@+id/imageView10"
-                    android:layout_width="115dp"
+                    android:layout_width="155dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:contentDescription="@string/todo"
                     android:padding="5dp"
+                    android:layout_marginStart="20dp"
 
                     tools:src="@tools:sample/avatars" />
 
