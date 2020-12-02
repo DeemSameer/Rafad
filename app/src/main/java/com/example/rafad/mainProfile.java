@@ -105,8 +105,9 @@ Chat.setOnClickListener(new View.OnClickListener() {
                 phone.setText(value.getString("phoneNumber"));
                 fullName.setText(value.getString("userName"));
                 email.setText(value.getString("email"));
-                if (value.get("Rate")!=null)
-                rate.setText("التقييم: "+value.get("Rate").toString());
+                if (value.get("Rate")!=null){
+                    double r = (double) value.get("Rate")+0.0005;
+                rate.setText("التقييم: "+String.format("%.2f", r));}
                 else
                     rate.setText("التقييم: "+"0");
 
