@@ -47,7 +47,7 @@
 
             >
             <TextView
-                android:gravity="right"
+                android:gravity="left"
                 android:id="@+id/date"
                 android:layout_width="70dp"
                 android:layout_height="30dp"
@@ -56,7 +56,7 @@
                 android:textAlignment="inherit"
                 android:textColor="#523B60"
                 android:textSize="12sp"
-                android:layout_marginRight="18dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
                 />
             <TextView
@@ -85,7 +85,6 @@
             >
 
 
-
             <Button
                 android:id="@+id/delete"
                 style="?android:attr/borderlessButtonStyle"
@@ -97,15 +96,17 @@
                 android:textColor="@color/base"
                 android:textSize="12sp"
                 android:textStyle="bold"
+                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="@id/des"
-                app:layout_constraintHorizontal_bias="-0.4"
-                />
+                app:layout_constraintHorizontal_bias="0.2" />
+
             <TextView
                 android:id="@+id/des"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginleft="20dp"
                 android:fontFamily="@font/tajawalmedium2"
                 android:gravity="right"
                 android:text="Descerption"
