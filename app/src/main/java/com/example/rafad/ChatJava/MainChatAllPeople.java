@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.rafad.BenMainProfile;
 import com.example.rafad.R;
 import com.example.rafad.benReqView;
+import com.example.rafad.don_3view;
 import com.example.rafad.homePage;
 import com.example.rafad.homepageDonator;
 import com.example.rafad.login;
@@ -57,6 +58,7 @@ public class MainChatAllPeople extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //PUT CASSES (Donator, Ben)
+        Log.d(TAG,  "login.getType() "+login.getType());
         if (login.getType() != null)
             if (login.getType().equals("beneficiaries")) {
                 setContentView(R.layout.activity_main_chat_all_people);
@@ -86,7 +88,7 @@ public class MainChatAllPeople extends AppCompatActivity {
                 tolist.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        startActivity(new Intent(MainChatAllPeople.this, requests.class));
+                        startActivity(new Intent(MainChatAllPeople.this, don_3view.class));
                         finish();
                     }
                 });
