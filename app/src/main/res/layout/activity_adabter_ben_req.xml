@@ -93,7 +93,7 @@
                     android:layout_marginEnd="30dp"
                     android:layout_marginRight="25dp"
                     android:fontFamily="@font/tajawalmedium2"
-                    android:text="TextView"
+                    android:text="حالة الطلب: "
                     android:textColor="@color/base" />
 
                 <TextView
@@ -106,6 +106,20 @@
                     android:layout_marginTop="105dp"
                     android:layout_marginEnd="30dp"
                     android:layout_marginRight="25dp"
+                    android:fontFamily="@font/tajawalmedium2"
+                    android:text="TextView"
+                    android:textColor="@color/base" />
+
+                <TextView
+                    android:id="@+id/status2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="77dp"
+                    android:layout_marginEnd="109dp"
+                    android:layout_marginRight="109dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="TextView"
                     android:textColor="@color/base" />

@@ -2,6 +2,7 @@ package com.example.rafad;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -66,6 +67,7 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
 
         TextView titText = (TextView) rowView.findViewById(R.id.name);
         TextView titText2 = (TextView) rowView.findViewById(R.id.status);
+        TextView status = (TextView) rowView.findViewById(R.id.status2);
         TextView tit = (TextView) rowView.findViewById(R.id.benReqTit);
         //for  rate
         TextView Rate = (TextView) rowView.findViewById(R.id.rate);
@@ -222,7 +224,19 @@ public class AdabterBenReq extends ArrayAdapter<postinfo> {
         Log.d(TAG, "inter AdaptorBenReq st: "+st);
         Log.d(TAG, "inter AdaptorBenReq rate: "+arrayList.get(position).rate);
         titText.setText("اسم المتبرع: "+arrayList.get(position).BN);
-        titText2.setText(" حالة الطلب: "+st);
+        titText2.setText(" حالة الطلب: ");
+
+
+
+        if(arrayList.get(position).isRe.equals("no"))
+        { status.setTextColor(Color.parseColor("#b3697b"));}
+        if (arrayList.get(position).isRe.equals("Pending"))
+        { status.setTextColor(Color.parseColor("#e0af1f"));}
+        if (arrayList.get(position).isRe.equals("yes")) {
+            status.setTextColor(Color.parseColor("#7fa208"));
+        }
+
+        status.setText(st);
         tit.setText("عنوان الطلب: "+arrayList.get(position).tit);
 
         Log.d(TAG, "inter AdaptorBenReqr Rating: "+Rating);
