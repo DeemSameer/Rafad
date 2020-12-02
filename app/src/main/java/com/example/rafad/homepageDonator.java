@@ -459,17 +459,17 @@ public class homepageDonator extends AppCompatActivity {
         tool.setLayoutParams (new TableRow.LayoutParams(75, 75));
         access.setLayoutParams (new TableRow.LayoutParams(90, 90));
         //  device3m.setLayoutParams (new TableRow.LayoutParams(60, 60));
-        ac.setText("اكسسوارات");
-        ac.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-        ac.setTypeface(BigT.getTypeface(), Typeface.BOLD);
+        f.setText("أثاث");
+        f.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        f.setTypeface(BigT.getTypeface(), Typeface.BOLD);
         d.setText("");
         c.setText("");
         //  dk.setText("");
         //   dm.setText("");
-        f.setText("");
+        ac.setText("");
         to.setText("");
-        arrayItemAc =new ArrayList<>();
-        Query p =  fStore.collection("item").whereEqualTo("Catogery", "اكسسوارات")
+        arrayItemF =new ArrayList<>();
+        Query p =  fStore.collection("item").whereEqualTo("Catogery", "أثاث")
                 .whereEqualTo("isRequested", "no" );
 
         p.get()
@@ -479,12 +479,12 @@ public class homepageDonator extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                arrayItemAc.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),"",(String) document.get("Demail")));
-                                Log.d(TAG, "SIZE item list => " + arrayItemAc.size());
+                                arrayItemF.add(new postinfo((String) document.getId(), (String) document.get("User id"), (String) document.get("Image"), (String) document.get("Description"), (String) document.get("Catogery"), (String) document.get("Title"),(String) document.get("isRequested") ,(String) document.get("Date"),"",(String) document.get("Demail")));
+                                Log.d(TAG, "SIZE item list => " + arrayItemF.size());
                             }
-                            empty.setText(arrayItemAc.size()+" منتج ");
+                            empty.setText(arrayItemF.size()+" منتج ");
                             empty.setTypeface(BigT.getTypeface(), Typeface.BOLD);
-                            HistoryItemAdapter adapter = new HistoryItemAdapter(homepageDonator.this, arrayItemAc);
+                            HistoryItemAdapter adapter = new HistoryItemAdapter(homepageDonator.this, arrayItemF);
                             listView = (ListView) findViewById(R.id.postedlistDonaterHome);
                             listView.setAdapter(adapter);
                         } else {

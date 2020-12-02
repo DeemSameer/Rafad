@@ -89,8 +89,8 @@
             <Button
                 android:id="@+id/delete"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="27dp"
-                android:layout_height="27dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:background="@drawable/garbage"
 
                 android:gravity="left"
