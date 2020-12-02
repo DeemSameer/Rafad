@@ -17,25 +17,25 @@
         android:outlineProvider="bounds"/>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="360dp"
+        android:layout_height="168dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="25dp"
 
         app:cardCornerRadius="8dp">
 
         <LinearLayout
-            android:layout_width="390dp"
-            android:layout_height="184dp"
+            android:layout_width="360dp"
+            android:layout_height="168dp"
             android:elevation="5dp"
             android:orientation="vertical"
             android:outlineProvider="bounds"
             android:padding="12dp">
 
             <RelativeLayout
-                android:layout_width="370dp"
-                android:layout_height="168dp">
+                android:layout_width="350dp"
+                android:layout_height="148dp">
 
                 <TextView
                     android:id="@+id/Username"
@@ -93,19 +93,20 @@
 
                 <TextView
                     android:id="@+id/phone"
-                    android:layout_width="159dp"
+                    android:layout_width="157dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="183dp"
-                    android:layout_marginLeft="183dp"
+                    android:layout_marginStart="165dp"
+                    android:layout_marginLeft="165dp"
                     android:layout_marginEnd="28dp"
-                    android:layout_marginBottom="27dp"
+                    android:layout_marginBottom="14dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="TextView"
-                    android:textAlignment="textEnd"
+
+                    android:gravity="right"
                     android:textColor="@color/base" />
 
                 <TextView
@@ -125,17 +126,18 @@
 
                 <TextView
                     android:id="@+id/ssn"
-                    android:layout_width="192dp"
+                    android:layout_width="210dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="98dp"
+                    android:layout_marginTop="92dp"
                     android:layout_marginEnd="28dp"
                     android:layout_marginRight="28dp"
                     android:fontFamily="@font/tajawalmedium2"
+                    android:gravity="right"
+
                     android:text="TextView"
-                    android:textAlignment="textEnd"
                     android:textColor="@color/base" />
 
                 <TextView
