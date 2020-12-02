@@ -59,7 +59,7 @@ public class don_3view extends AppCompatActivity {
         done = findViewById(R.id.done_don);
         back=findViewById(R.id.button5);
         homebutton=findViewById(R.id.bHome);
-        logout = findViewById(R.id.logoutButton);
+        //logout = findViewById(R.id.logoutButton);
         profile1= findViewById(R.id.profileb);
         post= findViewById(R.id.postItem);
                 empty = findViewById(R.id.homepagetext);
@@ -244,14 +244,7 @@ public class don_3view extends AppCompatActivity {
             }
         });
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fAuth.signOut();
-                startActivity(new Intent(don_3view.this, login.class));
-                finish();
-            }
-        });
+
 
         buttonChat222.setOnClickListener(new View.OnClickListener() {
             @Override

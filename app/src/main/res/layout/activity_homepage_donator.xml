@@ -133,7 +133,7 @@
         android:layout_marginBottom="20dp"
         >
     <LinearLayout
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="3dp"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:gravity="center"
@@ -169,7 +169,7 @@
             />
     </LinearLayout>
         <LinearLayout
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="3dp"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:gravity="center"
@@ -200,7 +200,7 @@
         <LinearLayout
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="3dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -232,13 +232,41 @@
                 android:textSize="12sp" />
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_marginRight="3dp"
+            android:layout_width="65dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+            <Button
+                android:id="@+id/acc"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/accessory"
+                android:fontFamily="@font/tajawalmedium2"
+                android:textColor="@color/base"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/acce"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/tajawalmedium2"
+                android:text=""
+                android:textColor="#523B60"
+                android:textSize="12sp" />
+        </LinearLayout>
 
         <LinearLayout
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="10dp"
         >
 
         <Button
@@ -263,34 +291,6 @@
             android:textColor="#523B60"
             />
     </LinearLayout>
-        <LinearLayout
-            android:layout_marginRight="20dp"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            >
-            <Button
-                android:id="@+id/acc"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/accessory"
-                android:fontFamily="@font/tajawalmedium2"
-                android:textColor="@color/base"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:id="@+id/acce"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/tajawalmedium2"
-                android:text=""
-                android:textColor="#523B60"
-                android:textSize="12sp" />
-        </LinearLayout>
 
 
     </LinearLayout>
