@@ -26,7 +26,7 @@
         app:cardCornerRadius="8dp">
 
         <LinearLayout
-            android:layout_width="411dp"
+            android:layout_width="390dp"
             android:layout_height="184dp"
             android:elevation="5dp"
             android:orientation="vertical"
@@ -34,7 +34,7 @@
             android:padding="12dp">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="370dp"
                 android:layout_height="168dp">
 
                 <TextView
@@ -44,7 +44,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="268dp"
+                    android:layout_marginStart="258dp"
                     android:layout_marginLeft="268dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/tajawalmedium2"
@@ -96,7 +96,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="204dp"
+                    android:layout_marginStart="199dp"
                     android:layout_marginLeft="204dp"
                     android:layout_marginBottom="28dp"
                     android:fontFamily="@font/tajawalmedium2"

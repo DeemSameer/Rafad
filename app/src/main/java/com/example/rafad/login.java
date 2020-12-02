@@ -127,7 +127,7 @@ public class login extends AppCompatActivity {
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
                                                 Toast.makeText(login.this, " تم تسجيل دخولك بنجاح! ", Toast.LENGTH_LONG).show();
-                                                Intent i = new Intent(login.this, homePageAdminBase.class);
+                                                Intent i = new Intent(login.this, mainRVAdmin.class);
                                                 type="admins";
                                                 startActivity(i);
                                                 finish();
@@ -146,7 +146,7 @@ public class login extends AppCompatActivity {
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
                                                 Toast.makeText(login.this, " تم تسجيل دخولك بنجاح! ", Toast.LENGTH_LONG).show();
-                                                Intent i = new Intent(login.this, homepageDonator.class);
+                                                Intent i = new Intent(login.this, mainRecyclerView.class);
                                                 type="beneficiaries";
                                                 startActivity(i);
                                                 finish();
@@ -185,7 +185,7 @@ public class login extends AppCompatActivity {
                                                 }
                                                 else if(((String)document.get("flag")).equals("Accepted")){
                                                     Toast.makeText(login.this,"تم تسجيل الدخول بنجاح",Toast.LENGTH_SHORT).show();
-                                                    Intent i = new Intent(login.this, homePage.class);
+                                                    Intent i = new Intent(login.this, mainRVBen.class);
                                                     type="donators";
                                                     startActivity(i);
                                                     finish();

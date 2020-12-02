@@ -1,14 +1,14 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,6 +28,7 @@ public class homepageAdmin extends AppCompatActivity {
     static int size;
     public static final String TAG = "TAG";
     ListView list;
+    Button adminbHome2,adminpro2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,25 @@ public class homepageAdmin extends AppCompatActivity {
         OneSignal.sendTag("User_ID","deemsameer.ds@gmail.com");
 
 
+        adminbHome2=findViewById(R.id.adminbHome2);
+        adminpro2=findViewById(R.id.adminpro2);
+
+        adminbHome2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homepageAdmin.this, mainRVAdmin.class));
+                finish();
+
+            }
+        });
+        adminpro2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homepageAdmin.this, adminMainProfile.class));
+                finish();
+
+            }
+        });
 
 /////////////////////////////////////////////////DB////////////////////////////////////
         FirebaseFirestore db=FirebaseFirestore.getInstance();
@@ -80,7 +100,7 @@ public class homepageAdmin extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homepageAdmin.this, homePageAdminBase.class));
+                startActivity(new Intent(homepageAdmin.this, mainRVAdmin.class));
                 finish();
             }
         });

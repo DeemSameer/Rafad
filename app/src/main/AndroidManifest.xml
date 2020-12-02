@@ -20,12 +20,15 @@
             tools:ignore="Instantiatable" />
         <activity
             android:name=".requests"
-            android:label="@string/title_activity_requests"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_requests" />
+        <activity android:name=".mainRecyclerView"/>
         <activity
             android:name=".ListViewAdaptorBen"
             tools:ignore="Instantiatable" />
         <activity android:name=".post3" />
+        <activity android:name=".mainRVAdmin"/>
+        <activity android:name=".mainRVBen"/>
+
         <activity
             android:name=".HistoryItemAdapter"
             tools:ignore="Instantiatable" />
