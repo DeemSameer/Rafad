@@ -36,7 +36,7 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="57dp"
                     android:layout_height="24dp"
-                    android:layout_marginLeft="290dp"
+                    android:layout_marginLeft="275dp"
                     android:layout_marginTop="130dp"
                     android:background="@drawable/orange_rounded_button"
                     android:fontFamily="@font/tajawalmedium2"
