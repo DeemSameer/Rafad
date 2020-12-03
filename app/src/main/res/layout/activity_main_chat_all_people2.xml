@@ -23,7 +23,7 @@
 
     <Button
         android:id="@+id/bHome4"
-        style="?android:attr/borderlessButtonStyle"
+
         android:layout_width="27dp"
         android:layout_height="27dp"
         android:layout_marginStart="52dp"
@@ -37,7 +37,6 @@
 
     <Button
         android:id="@+id/button17"
-        style="?android:attr/borderlessButtonStyle"
         android:layout_width="27dp"
         android:layout_height="27dp"
         android:background="@drawable/chato"
@@ -51,7 +50,6 @@
 
     <Button
         android:id="@+id/fromChatToProfileButton2"
-        style="?android:attr/borderlessButtonStyle"
         android:layout_width="27dp"
         android:layout_height="27dp"
         android:layout_marginStart="300dp"
@@ -69,7 +67,7 @@
 
     <Button
         android:id="@+id/button18"
-        style="?android:attr/borderlessButtonStyle"
+
         android:layout_width="30dp"
         android:layout_height="28dp"
         android:background="@drawable/requestp"

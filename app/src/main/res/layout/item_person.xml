@@ -58,9 +58,9 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="280dp"
-            android:layout_marginRight="280dp"
-            android:layout_marginBottom="44dp"
+            android:layout_marginEnd="260dp"
+            android:layout_marginRight="260dp"
+            android:layout_marginBottom="45dp"
             android:text="TextView" />
 
         <TextView
@@ -71,8 +71,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="279dp"
-            android:layout_marginRight="279dp"
+            android:layout_marginEnd="261dp"
+            android:layout_marginRight="261dp"
             android:text="TextView" />
 
         <androidx.cardview.widget.CardView

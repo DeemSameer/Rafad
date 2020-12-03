@@ -52,6 +52,7 @@
 
     <Button
         android:id="@+id/saveBenChange"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="88dp"
         android:layout_height="48dp"
         android:background="#00FFFFFF"
@@ -62,22 +63,22 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.996"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093" />
+        app:layout_constraintVertical_bias="0.726" />
 
     <Button
         android:id="@+id/changeBenImg"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         android:layout_marginStart="25dp"
 
         android:layout_marginLeft="25dp"
         android:layout_marginEnd="3dp"
         android:layout_marginRight="3dp"
         android:layout_marginBottom="28dp"
-        android:background="@drawable/ediit"
+        android:background="@drawable/edit3"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toStartOf="@+id/cardView"
         app:layout_constraintHorizontal_bias="0.666"
@@ -91,7 +92,7 @@
         android:layout_height="23dp"
         android:fontFamily="@font/tajawalmedium2"
         android:text="المعلومات الشخصية:"
-        android:textColor="#583560"
+        android:textColor="#616668"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,10 +112,10 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.323"
+        app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.471" />
+        app:layout_constraintVertical_bias="0.469" />
 
     <EditText
         android:id="@+id/benNewPhone"
@@ -128,28 +129,29 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.323"
+        app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.541" />
+        app:layout_constraintVertical_bias="0.551" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="77dp"
-        android:layout_height="21dp"
+        android:layout_width="81dp"
+        android:layout_height="20dp"
         android:fontFamily="@font/tajawalmedium2"
         android:text="الإسم الكامل : "
         android:textColor="#583560"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintHorizontal_bias="0.284"
         app:layout_constraintStart_toEndOf="@+id/benNewName"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.47" />
+        app:layout_constraintVertical_bias="0.469" />
 
     <Button
         android:id="@+id/changeBenPass"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="86dp"
         android:layout_height="38dp"
         android:background="#00FFFFFF"
@@ -160,10 +162,10 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintHorizontal_bias="0.833"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.624" />
+        app:layout_constraintVertical_bias="0.626" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -171,10 +173,10 @@
         android:layout_height="21dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.312"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toEndOf="@+id/changeBenPass"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.621"
+        app:layout_constraintVertical_bias="0.622"
         app:srcCompat="@drawable/pass1" />
 
     <TextView
@@ -187,7 +189,7 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintHorizontal_bias="0.414"
         app:layout_constraintStart_toEndOf="@+id/benNewPhone"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.542" />
@@ -198,7 +200,7 @@
         android:layout_height="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.294"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.468"
@@ -210,7 +212,7 @@
         android:layout_height="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.325"
+        app:layout_constraintHorizontal_bias="0.264"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.54"
@@ -262,6 +264,7 @@
 
     <Button
         android:id="@+id/c1"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="88dp"
         android:layout_height="48dp"
         android:background="#02FFFFFF"
@@ -274,6 +277,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.183" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -53,33 +53,37 @@
 
     <Button
         android:id="@+id/save"
-        android:layout_width="58dp"
-        android:layout_height="47dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="حفظ"
         android:textColor="#583560"
-        android:textSize="13sp"
+        android:textSize="14sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.996"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.726"  />
 
     <Button
         android:id="@+id/cancel"
-        android:layout_width="71dp"
-        android:layout_height="49dp"
-        android:background="#00FFFFFF"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:background="#02FFFFFF"
         android:fontFamily="@font/tajawalmedium2"
         android:text="إلغاء"
         android:textColor="#583560"
-        android:textSize="13sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/save"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.183" />
 
     <TextView
         android:id="@+id/textView15"
@@ -101,14 +105,14 @@
         android:layout_width="201dp"
         android:layout_height="35dp"
         android:ems="10"
+        android:fontFamily="@font/tajawalmedium2"
         android:hint="مثال : (0545947952)"
         android:inputType="textPersonName"
         android:textColor="#4B4D4E"
         android:textSize="12sp"
-        android:fontFamily="@font/tajawalmedium2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.534" />
@@ -142,16 +146,16 @@
         android:layout_width="201dp"
         android:layout_height="37dp"
         android:ems="10"
+        android:fontFamily="@font/tajawalmedium2"
         android:inputType="textPersonName"
         android:textColor="#4B4D4E"
         android:textSize="12sp"
-        android:fontFamily="@font/tajawalmedium2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.456" />
+        app:layout_constraintVertical_bias="0.459" />
 
     <TextView
         android:id="@+id/textView4"
@@ -258,14 +262,14 @@
 
     <Button
         android:id="@+id/change"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
         android:layout_marginEnd="3dp"
         android:layout_marginRight="3dp"
         android:layout_marginBottom="28dp"
-        android:background="@drawable/ediit"
+        android:background="@drawable/edit3"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toStartOf="@+id/cardView"
         app:layout_constraintHorizontal_bias="0.666"

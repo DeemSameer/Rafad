@@ -55,15 +55,17 @@
 
     <Button
         android:id="@+id/benBackHome"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="29dp"
         android:layout_height="27dp"
-        android:background="@drawable/purp_arrow"
+        android:background="@drawable/purparrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.041" />
+        app:layout_constraintVertical_bias="0.184" />
+
 
     <TextView
         android:id="@+id/benName"
@@ -81,9 +83,8 @@
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.304"
+        app:layout_constraintVertical_bias="0.3"
         tools:visibility="visible" />
-
 
     <TextView
         android:id="@+id/benEmail"
@@ -143,7 +144,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginBottom="-20dp"
         android:orientation="horizontal"
-        android:src="@drawable/ediit2"
+        android:src="@drawable/edit3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.895"
@@ -165,29 +166,29 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.402"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.78" />
+        app:layout_constraintVertical_bias="0.784" />
 
     <Button
         android:id="@+id/textView9"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="252dp"
         android:layout_height="44dp"
         android:background="#ffff"
         android:fontFamily="@font/tajawalmedium2"
+        android:text="محادثاتي"
         android:textAlignment="textStart"
         android:textColor="#583560"
         android:textSize="14sp"
         android:textStyle="bold"
-        style="?android:attr/borderlessButtonStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.402"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.675"
-        android:text="محادثاتي" />
+        app:layout_constraintVertical_bias="0.675" />
 
     <Button
         android:id="@+id/textView26"
@@ -203,7 +204,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.402"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.573" />
@@ -227,21 +228,21 @@
 
     <Button
         android:id="@+id/textView24"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="252dp"
         android:layout_height="44dp"
         android:background="#ffff"
         android:fontFamily="@font/tajawalmedium2"
+        android:text="تعديل معلوماتي"
         android:textAlignment="textStart"
         android:textColor="#583560"
         android:textSize="14sp"
         android:textStyle="bold"
-        style="?android:attr/borderlessButtonStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.402"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="تعديل معلوماتي"
-        app:layout_constraintVertical_bias="0.487" />
+        app:layout_constraintVertical_bias="0.484" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

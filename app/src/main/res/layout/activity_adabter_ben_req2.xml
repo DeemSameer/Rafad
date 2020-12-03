@@ -17,15 +17,15 @@
 
         <LinearLayout
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="382dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="12dp">
 
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="159dp">
+                android:layout_width="361dp"
+                android:layout_height="172dp">
 
 
                 <TextView
@@ -35,9 +35,9 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="129dp"
-                    android:layout_marginEnd="22dp"
-                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="131dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginRight="28dp"
                     android:fontFamily="@font/tajawalmedium2"
                     android:text="تم التقييم ✔"
                     android:textColor="@color/greenLight"

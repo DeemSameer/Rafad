@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class mainProfile extends AppCompatActivity {
-    Button back , homebutton, editbutton2,post,buttonchat;
+    Button back , homebutton, editbutton2,post,buttonchat,mydonations;
     StorageReference storageReference;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -58,6 +58,7 @@ public class mainProfile extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference();
         profileImageView = findViewById(R.id.profileImg);
         Button b=findViewById(R.id.button13);
+        mydonations=findViewById(R.id.mydonations);
 
         fAuth = FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
@@ -78,6 +79,17 @@ post = findViewById(R.id.postItem);
                 finish();
             }
         });
+
+
+        mydonations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mainProfile.this, don_3view.class));
+                finish();
+            }
+        });
+
+
 
         Chat= findViewById(R.id.textView9);
 Chat.setOnClickListener(new View.OnClickListener() {

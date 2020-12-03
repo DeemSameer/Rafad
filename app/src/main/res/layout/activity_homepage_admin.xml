@@ -85,13 +85,13 @@
 
     <ListView
         android:id="@+id/list"
-        android:layout_width="395dp"
-        android:layout_height="501dp"
+        android:layout_width="392dp"
+        android:layout_height="576dp"
+        android:divider="#00000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homepagetext2"
-        android:divider="#00000000">
+        app:layout_constraintTop_toBottomOf="@+id/homepagetext2">
 
 
     </ListView>

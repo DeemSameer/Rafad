@@ -1,13 +1,9 @@
 package com.example.rafad;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +12,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,14 +30,12 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class donProfile extends AppCompatActivity {
 
     private static final int GALLERY_INTENT_CODE=1023;
     public static final String TAG = "TAG";
     TextView fullname , email , phone , pass;
-    Button changeProfileIMG, cancell, resetPassLocal, resendCode, saveBtn, changePassBtn;
+    Button changeProfileIMG, cancell, resetPassLocal, resendCode, saveBtn, changePassBtn,mydonations1;
     FirebaseAuth fAuth;
     FirebaseFirestore fstore;
     String userID;
@@ -53,11 +50,12 @@ public class donProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_don_profile);
 
-        profileImage= findViewById(R.id.profile_image);
+        profileImage= findViewById(R.id.profileImg);
         changeProfileIMG=findViewById(R.id.change);
         cancell=findViewById(R.id.cancel);
         saveBtn = findViewById(R.id.save);
         changePassBtn = findViewById(R.id.changepass);
+        mydonations1=findViewById(R.id.mydonations);
 
 
         profileFullName =findViewById(R.id.newName);
@@ -196,6 +194,8 @@ catch (Exception e){}
 
             }
         });
+
+
 
     }
    @Override

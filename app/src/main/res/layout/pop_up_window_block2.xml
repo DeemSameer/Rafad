@@ -10,7 +10,7 @@
     android:paddingRight="10dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="370dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="5dp"
 
